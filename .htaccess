@@ -1,0 +1,6 @@
+RewriteEngine On
+# pages
+RewriteRule ^([a-z-]+).html$ /?page=$1 [L]
+# admin
+RewriteCond %{HTTP_HOST} ^fsc.localhost.local$
+RewriteRule ^admin/(.*)$ http://admin.fsc.localhost.local/$1 [QSA,L,R]

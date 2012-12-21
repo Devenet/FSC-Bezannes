@@ -1,0 +1,4 @@
+Options FollowSymLinks
+
+#RewriteEngine On
+#RewriteRule ^([a-z-]+).html$ /?page=$1 [L]
