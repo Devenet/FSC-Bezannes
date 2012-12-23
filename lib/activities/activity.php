@@ -13,7 +13,7 @@ class Activity {
   private $place;
   private $website;
   private $email;
-  private $aggregate;
+  private $aggregate; // 1: creneaux libres; 0: horaires indépendants
   private $price;
   private $price_young;
   private $created;
@@ -168,7 +168,9 @@ class Activity {
   }
   
   public function setAggregate($bool) {
-    $this->aggregate = $this->boolToInt($bool);
+    if ($bool == 'on') $this->aggregate = 1;
+    else $this->aggregate = 0;
+    return true;
   }
   public function aggregate() {
     return $this->aggregate;
