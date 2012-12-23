@@ -19,6 +19,7 @@ if (isset($_POST) and $_POST != null) {
     'name',
     'description',
     'place',
+    'aggregate',
     'price',
     'price_young',
     'email',
@@ -38,10 +39,12 @@ if (isset($_POST) and $_POST != null) {
     
     if (!$act->setName($_POST['name']))
       throw new \Exception('Merci de compléter le nom de l’activité');
-    if (!$act->setDescription($_POST['description']))
+    if (!$act->setDescription(htmlspecialchars_decode($_POST['description'])))
       throw new \Exception('Merci de compléter la description de l’activité');
     if (!$act->setPlace($_POST['place']))
       throw new \Exception('Merci de compléter le lieu de l’activité');
+    if (!$act->setAggregate(isset($_POST['aggregate']) ? $_POST['aggregate'] : null))
+      throw new \Exception('Merci de préciser s’il s’agit d’une activité à créneaux libres');
     if (!$act->setPrice($_POST['price']))
       throw new \Exception('Merci de compléter le tarif de l’activité');
     if (!$act->setPriceYoung($_POST['price_young']))
