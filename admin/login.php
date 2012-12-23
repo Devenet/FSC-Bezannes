@@ -1,11 +1,21 @@
 <?php
 
+namespace lib;
+use lib\content\Message;
+
+set_include_path('../');
+spl_autoload_extensions('.php');
+spl_autoload_register();
+
 session_start();
+
+require '../config/config.php';
 
 if (isset($_GET['logout'])) {
 	$_SESSION['authentificated'] = false;
-	session_destroy();
-	header('Location: /login.php?disconnected');
+	unset($_SESSION['authentificated']);
+	$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
+	header('Location: /login.php');
 	exit;
 }
 elseif (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
@@ -19,7 +29,8 @@ elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd'])) 
 		exit;
 	}
 	else {
-		header('Location: /login.php?wrong');
+		$_SESSION['msg'] = new Message('Mauvais utilisateur et/ou mot de passe', -1, 'Oups... !');
+		header('Location: /login.php');
 		exit;
 	}
 }
@@ -35,7 +46,7 @@ else {
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link href="//fsc.localhost.local/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		<style type="text/css">
       body {
         background-color: #f5f5f5;
@@ -73,14 +84,14 @@ else {
 			}
     </style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="//fsc.localhost.local/css/bootstrap-responsive.css" rel="stylesheet" />
+		<link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
 	</head>
 
 	<body>
 		
 		<header class="container">
 			<div class="page-header">
-				<h1 style="text-align: center;"><a href="//fsc.localhost.local">Foyer Social et Culturel de Bezannes</a></h1>
+				<h1 style="text-align: center;"><a href="<?php echo _FSC_; ?>">Foyer Social et Culturel de Bezannes</a></h1>
 			</div>
 		</header>
 		
@@ -88,38 +99,25 @@ else {
 		<div class="container">
 			
 			<?php
-				if (isset($_GET['disconnected'])) {
-			?>
-				<div class="alert alert-success">
-					<a href="#" class="close" data-dismiss="alert">&times;</a>
-					Vous avez bien été déconnecté !
-				</div>
-			<?php
-				}
-				elseif (isset($_GET['wrong'])) {
-			?>
-				<div class="alert alert-error">
-					<a href="#" class="close" data-dismiss="alert">&times;</a>
-					Mauvais utilisateur ou mot de passe !
-				</div>
-			<?php
+				if (isset($_SESSION['msg'])) {
+					echo $_SESSION['msg'];
+					unset($_SESSION['msg']);
 				}
 			?>
 			
       <form class="form-signin" action="login.php?login" method="post">
         <h2 class="form-signin-heading">Connexion</h2>
-        <input type="text" class="input-block-level" placeholder="Utilisateur" name="user" required="required" />
-        <input type="password" class="input-block-level" placeholder="Mot de passe" name="pwd" required="required" />
-        <!--<label class="checkbox">
-          <input type="checkbox" value="remember-me" /> Se souvenir de moi
-        </label>-->
+				<!--<label for="user">Utilisateur</label>-->
+        <input type="text" class="input-block-level" placeholder="Utilisateur" name="user" required="required" id="user"/>
+				<!--<label for="pwd">Mot de passe</label>-->
+        <input type="password" class="input-block-level" placeholder="Mot de passe" name="pwd" required="required" id="pwd" />
         <button class="btn btn-large btn-primary btn-block" type="submit">Se connecter</button>
       </form> 
 		</div>
 		<!-- /container -->
 		
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script src="//fsc.localhost.local/js/bootstrap.min.js"></script>  
+		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>  
 	</body>
 </html>
 <?php
