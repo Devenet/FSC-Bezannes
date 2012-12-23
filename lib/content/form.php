@@ -46,4 +46,9 @@ class Form {
     return (isset($this->inputs[$input]) ? stripslashes($this->inputs[$input]) : null);
   }
   
+  public function checkbox($input) {
+    return ((isset($this->inputs[$input]) && ($this->inputs[$input] == 'on' || $this->inputs[$input] == 1)) ? 'checked="checked"' : null);
+  }
+  
+  
 }
