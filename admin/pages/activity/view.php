@@ -9,6 +9,15 @@
         <ul class="dropdown-menu">
           <li><a href="/?page=edit-activity&id=<?php echo $act->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
           <li class="divider"></li>
+          <li class="dropdown-submenu">
+            <a tabindex="-1" href="#"><i class="icon-plus"></i> Ajouter</a>
+            <ul class="dropdown-menu">
+              <li><a href="/?page=add-schedule&activity=<?php echo $act->id(); ?>"><i class="icon-time"></i> Horaire</a></li>
+              <li><a href="/?page=add-referencee&activity=<?php echo $act->id(); ?>"><i class="icon-lock"></i> Référent</a></li>
+              <li><a href="/?page=add-participant&activity=<?php echo $act->id(); ?>"><i class="icon-user"></i> Participant</a></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
           <li><a href="#confirmBox<?php echo $act->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
         </ul>
       </div>
@@ -19,7 +28,7 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-book"></i> Description</a></li>
         <li><a href="#tab2" data-toggle="tab"><i class="icon-time"></i> Horaires</a></li>
-        <li><a href="#tab3" data-toggle="tab"><i class="icon-lock"></i> Autorités</a></li>
+        <li><a href="#tab3" data-toggle="tab"><i class="icon-lock"></i> Référents</a></li>
         <li class="pull-right"><a href="#tab4" data-toggle="tab"><i class="icon-user"></i> Participants</a></li>
       </ul>
       
@@ -27,13 +36,16 @@
         <!-- description -->
         <div class="tab-pane active" id="tab1">
           <div class="description">
-            <?php echo $act->description(); ?>
+            <?php echo stripslashes($act->description()); ?>
           </div>
         </div>
         
         <!-- horaires -->
         <div class="tab-pane" id="tab2">
-          <p>Coming very soon...</p>
+          <div>
+            <p class="pull-left">Il s’agit d’une activité à créneaux <?php echo ($act->aggregate() == 0 ? '<strong>non libres</strong>' : '<strong>libres</strong>'); ?>.</p>
+            <a class="btn btn-small btn-primary pull-right" href="/?page=new-schedule&activity=<?php echo $act->id(); ?>"><i class="icon-plus icon-white"></i> Ajouter</a>
+          </div>
         </div>
         
         <!-- autorites -->
