@@ -9,14 +9,14 @@ class Menu {
     
   }
   
-  public function addLink($name, $url, $icon) {
-    $this->links[] = array('name' => $name, 'url' => $url, 'icon' => $icon);
+  public function addLink($name, $url, $icon = '', $separator = false) {
+    $this->links[] = array('name' => $name, 'url' => $url, 'icon' => $icon, 'separator' => $separator);
   }
   
   public function display($current, $right) {
     $return = '<ul class="nav'. ($right ? ' pull-right' : null) .'">';
     foreach($this->links as $link)
-      $return .= '<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'">'. ($link['icon'] != null ? '<i class="icon-'. $link['icon'] .'"></i> ' : null) . $link['name'] .'</a></li>';
+      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : null) .'<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'">'. ($link['icon'] != null ? '<i class="icon-'. $link['icon'] .'"></i> ' : null) . $link['name'] .'</a></li>';
     $return .= '</ul>';
     return $return;
   }

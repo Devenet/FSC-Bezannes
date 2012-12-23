@@ -9,6 +9,8 @@ spl_autoload_register();
 
 session_start();
 
+require 'config/config.php';
+
 // Menu navigation
 $mainMenu = new Menu();
   $mainMenu->addLink('Accueil', '/', 'home');
@@ -25,9 +27,9 @@ if (empty($_GET['page'])) $_GET['page'] = 'home';
 str_replace("\0", '', $_GET['page']);
 str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
-$infosPage = 'pages/'.$_GET['page'].'/infos.php';
-$infosPage = file_exists($infosPage) ? $infosPage : 'pages/errors/404/infos.php';
-include $infosPage;
+$controller = 'pages/'.$_GET['page'].'/controller.php';
+$controller = file_exists($controller) ? $controller : 'pages/errors/404/controller.php';
+require_once $controller;
 
 ?><!DOCTYPE html>
 <html lang="fr">
@@ -42,15 +44,23 @@ include $infosPage;
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Imprima" type="text/css" />-->
     <style>
       header {
-        margin: 10px 0 0 0;
+        margin: 5px 0 0 0;
+      }
+      header img {
+        display: inline-block;
+        margin: 0 20px 0 0;
       }
       .page-header {
         margin-top: 0;
       }
       footer hr {
         margin-bottom: 10px;
+      }
+      .imprima {
+        font-family: Imprima, 'Helvetica Neue', Helvetica, Arial, sans-serif;
       }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -72,20 +82,14 @@ include $infosPage;
     <!-- /menu -->
 
     <header class="container">
-      <h1><a href="/">Foyer Social et Culturel de Bezannes</a></h1>
+      <h1 class="imprima"><a href="/"><img src="/img/logo-fsc.png" alt="FSC" />Foyer Social et Culturel de Bezannes</a></h1>
       <?php echo $page->breadcrumb(); ?>
     </header>
     
     <!-- container -->
     <div class="container">
     <?php
-      // Controller
-      $controllerPage = dirname($infosPage) . '/controller.php';
-      if (file_exists($controllerPage))
-        require $controllerPage;
-      
-      // View
-      include dirname($infosPage) . '/view.php';
+      include dirname($controller) . '/view.php';
     ?>   
     </div>
     <!-- /container -->
@@ -96,14 +100,14 @@ include $infosPage;
       <div class="container">
         <p class="pull-left">&copy; 2012 &mdash; Foyer Social et Culturel de Bezannes</p>
         <ul class="pull-right inline">
-          <li><a href="//admin.fsc.localhost.local/">Administration</a></li>
+          <li><a href="<?php echo _ADMIN_; ?>">Administration</a></li>
           <li><a href="/mentions-legales.html">Mentions légales</a></li>
         </ul>
       </div>
     </footer>
     <!-- /footer -->
     
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="<?php echo _JQUERY_; ?>"></script>
     <script src="/js/bootstrap.min.js"></script>  
   </body>
 </html>
