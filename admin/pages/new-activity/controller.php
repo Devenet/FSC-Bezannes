@@ -27,21 +27,17 @@ if (isset($_POST) and $_POST != null) {
   );
   foreach ($inputs as $input)
     $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
-  
-  function error($msg, $data) {
-    $_SESSION['form_msg'] = new Message($msg, -1);
-    $_SESSION['form_data']  = $data;
-  }
+
   
   $act = new Activity();
   
   try {
     
-    if (!$act->setName($_POST['name']))
+    if (!$act->setName(stripslashes($_POST['name'])))
       throw new \Exception('Merci de compléter le nom de l’activité');
-    if (!$act->setDescription(htmlspecialchars_decode($_POST['description'])))
+    if (!$act->setDescription(stripslashes($_POST['description'])))
       throw new \Exception('Merci de compléter la description de l’activité');
-    if (!$act->setPlace($_POST['place']))
+    if (!$act->setPlace(stripslashes($_POST['place'])))
       throw new \Exception('Merci de compléter le lieu de l’activité');
     if (!$act->setAggregate(isset($_POST['aggregate']) ? $_POST['aggregate'] : null))
       throw new \Exception('Merci de préciser s’il s’agit d’une activité à créneaux libres');
@@ -62,7 +58,7 @@ if (isset($_POST) and $_POST != null) {
     
   }
   catch (\Exception $e) {
-    error($e->getMessage(), $act);
+    $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !');
   }
   
 }
