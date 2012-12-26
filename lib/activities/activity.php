@@ -61,7 +61,7 @@ class Activity {
     return $this->name;
   }
 
-  public function setActive($bool) {
+  public function setActive($bool = false) {
     $this->active = $this->boolToInt($bool);
   }
   public function active() {
@@ -233,13 +233,14 @@ class Activity {
   public function create() {
     if (!$this->created) {
       if ($this->url == null) $this->setUrl($this->name);
-      $query = SQL::sql()->prepare('INSERT INTO fsc_activities(name, active, url, description, place, email, website, price, price_young) VALUES(:name, :active, :url, :description, :place, :email, :website, :price, :price_young)');
+      $query = SQL::sql()->prepare('INSERT INTO fsc_activities(name, active, url, description, place, aggregate, email, website, price, price_young) VALUES(:name, :active, :url, :description, :place, :aggregate, :email, :website, :price, :price_young)');
       $prepare = array(
         'name' => addslashes($this->name),
         'active' => ($this->active == null) ? 0 : $this->active,
         'url' => $this->url,
         'description' => addslashes($this->description),
         'place' => addslashes($this->place),
+        'aggregate' => $this->aggregate,
         'email' => ($this->email == null) ? '' : $this->email,
         'website' => ($this->website == null) ? '' : $this->website,
         'price' => ($this->price == null) ? 0 : $this->price,
@@ -258,6 +259,11 @@ class Activity {
   
   public function delete($bool = false) {
     if ($bool && $this->created) {
+      // suppression horaires liés
+      $query = SQL::sql()->prepare('DELETE FROM fsc_schedules WHERE activity = :activity');
+      $query->execute(array('activity' => $this->id));
+      $query->closeCursor();
+      // suppression activité
       $query = SQL::sql()->prepare('DELETE FROM fsc_activities WHERE id = :id');
       $query->execute(array('id' => $this->id));
       $query->closeCursor();
