@@ -3,7 +3,7 @@
     <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-globe"></i> Activités</a></li>
     <li><a href="#tab2" data-toggle="tab"><i class="icon-user"></i> Membres</a></li>
     <li><a href="#tab3" data-toggle="tab"><i class="icon-asterisk"></i> Préinscriptions</a></li>
-    <li class="pull-right"><a href="#tab4 data-toggle="tab"><i class="icon-cog"></i> Configuration</a></li>
+    <li class="pull-right"><a href="#tab4" data-toggle="tab"><i class="icon-cog"></i> Configuration</a></li>
   </ul>
   
   <div class="tab-content">
@@ -14,13 +14,19 @@
         <a href="/?page=new-activity" class="btn"><i class="icon-plus"></i> Ajouter</a>
       </div>
       <div style="margin-top:20px;">
-        <p>Il y a actuellement <span class="label"><?php echo $activities; ?></span> activités.</p>
+        <p>Il y a actuellement <span class="label"><?php echo $activities; ?></span> activité<?php echo $plural_activities; ?>.</p>
       </div>
     </div>
     
     <!-- membres -->
     <div class="tab-pane" id="tab2">
-      <p>Coming very soon...</p>
+      <div class="btn-group">
+        <a href="/?page=members" class="btn"><i class="icon-eye-open"></i> Voir</a>
+        <a href="/?page=new-member" class="btn"><i class="icon-plus"></i> Ajouter</a>
+      </div>
+      <div style="margin-top:20px;">
+        <p>Il y a actuellement <span class="label"><?php echo $members; ?></span> membre<?php echo $plural_members; ?>.</p>
+      </div>
     </div>
     
     <!-- preinscriptions -->
