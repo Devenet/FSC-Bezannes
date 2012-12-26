@@ -21,7 +21,7 @@ else {
 	
 // Menu navigation
 $mainMenu = new Menu();
-	$mainMenu->addLink('Administration', '/');
+	$mainMenu->addLink('Gestion', '/', 'wrench');
 	$mainMenu->addLink('Activités', '/?page=activities', 'globe');
 	$mainMenu->addLink('Membres', '/?page=members', 'user');
 // Menu secondaire droite
@@ -42,10 +42,11 @@ require_once 'admin/'.$controller;
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<title><?php echo ($page->url() != '/') ? $page->admin_title() .'&ndash; ' : null; ?>Administration &ndash; FSC Bezannes</title>
+		<title><?php echo ($page->url() != '/') ? $page->admin_title() .'&ndash; ' : null; ?>Gestion &ndash; FSC Bezannes</title>
 		<meta name="author" content="FSC Bezannes" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <!--<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />-->
+    <link rel="icon" type="image/png" href="/favicon.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link href="//fsc.localhost.local/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		<style>
@@ -69,7 +70,7 @@ require_once 'admin/'.$controller;
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-				<a class="brand" href="<?php echo _FSC_; ?>">FSC Bezannes</a>
+				<a class="brand" href="<?php echo _FSC_; ?>">FSC</a>
 				<?php echo $mainMenu->display($page->url(), false); ?>
 				<!-- user -->
 				<ul class="nav pull-right">
@@ -89,7 +90,6 @@ require_once 'admin/'.$controller;
 		<!-- /menu -->
 		
 		<header class="container">
-			<!--<h1><a href="/">Foyer Social et Culturel de Bezannes</a></h1>-->
 			<?php echo $page->breadcrumb(); ?>
 		</header>
 		
