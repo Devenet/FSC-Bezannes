@@ -32,11 +32,11 @@
   </div>
   
   <div class="control-group">
-    <div class="control-label"><i class="icon-time"></i></div>
+    <!--<div class="control-label"><i class="icon-time"></i></div>-->
     <div class="controls">
       <label class="checkbox" for="aggregate">
         <input type="checkbox" name="aggregate" id="aggregate" <?php echo $form->checkbox('aggregate'); ?>/>
-        Crénaux libres
+        Pratique libre
       </label>
     </div>
   </div>
