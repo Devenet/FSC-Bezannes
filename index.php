@@ -42,6 +42,7 @@ require_once $controller;
     <link rel="canonical" href="/" />
     <meta name="robots" content="<?php echo $page->search_engine(); ?>" />
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <!--<link rel="icon" type="image/png" href="/favicon.png" />-->
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Imprima" type="text/css" />-->
@@ -73,7 +74,7 @@ require_once $controller;
     <div class="navbar navbar-static-top">
       <div class="navbar-inner">
         <div class="container-fluid">
-        <!--<a class="brand" href="/">FSC Bezannes</a>-->
+        <a class="brand" href="/">FSC</a>
         <?php echo $mainMenu->display($page->url(), false); ?>
         <?php echo $rightMenu->display($page->url(), true); ?>
         </div>
