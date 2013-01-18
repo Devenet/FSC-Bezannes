@@ -2,6 +2,7 @@
 
 namespace lib;
 use lib\content\Message;
+use lib\users\UserAdmin;
 
 set_include_path('../');
 spl_autoload_extensions('.php');
@@ -14,6 +15,7 @@ require '../config/config.php';
 if (isset($_GET['logout'])) {
 	$_SESSION['authentificated'] = false;
 	unset($_SESSION['authentificated']);
+	unset($_SESSION['user_admin']);
 	$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
 	header('Location: /login.php');
 	exit;
@@ -23,18 +25,21 @@ elseif (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 	exit;
 }
 elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd'])) {
-	if ($_POST['user'] == 'admin' && $_POST['pwd'] == 'admin') {
+	$path = isset($_GET['path']) ? htmlspecialchars($_GET['path']) : '';
+	if (UserAdmin::isAuthorizedUser($_POST['user'], $_POST['pwd'])) {
+		$_SESSION['user_name'] = UserAdmin::getName(htmlspecialchars($_POST['user']));
 		$_SESSION['authentificated'] = true;
-		header('Location: /');
+		header('Location: /'. $path);
 		exit;
 	}
 	else {
 		$_SESSION['msg'] = new Message('Mauvais utilisateur et/ou mot de passe', -1, 'Oups... !');
-		header('Location: /login.php');
+		header('Location: /login.php?path='. $path);
 		exit;
 	}
 }
 else {
+	$path = isset($_GET['path']) ? htmlspecialchars(preg_replace('#/#', '', $_GET['path'])) : '';
 
 ?><!DOCTYPE html>
 <html lang="fr">
@@ -44,7 +49,7 @@ else {
 		<meta name="author" content="FSC Bezannes" />
 		<link rel="canonical" href="/" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		<style type="text/css">
@@ -105,19 +110,33 @@ else {
 				}
 			?>
 			
-      <form class="form-signin" action="login.php?login" method="post">
+      <form class="form-signin" action="login.php?login&amp;path=<?php echo $path; ?>" method="post">
         <h2 class="form-signin-heading">Connexion</h2>
 				<!--<label for="user">Utilisateur</label>-->
-        <input type="text" class="input-block-level" placeholder="Utilisateur" name="user" required="required" id="user"/>
+        <input type="text" class="input-block-level" placeholder="Utilisateur" name="user" id="user" autofocus/>
 				<!--<label for="pwd">Mot de passe</label>-->
-        <input type="password" class="input-block-level" placeholder="Mot de passe" name="pwd" required="required" id="pwd" />
+        <input type="password" class="input-block-level" placeholder="Mot de passe" name="pwd" id="pwd" />
         <button class="btn btn-large btn-primary btn-block" type="submit">Se connecter</button>
       </form> 
 		</div>
 		<!-- /container -->
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
-		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>  
+		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
+		<?php
+			echo (_ANALYTICS_ADMIN_ ? "
+			<script type=\"text/javascript\">
+				var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-37435384-2']);
+				_gaq.push(['_trackPageview']);
+			
+				(function() {
+					var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+				})();
+			</script>": null);
+		?>
 	</body>
 </html>
 <?php

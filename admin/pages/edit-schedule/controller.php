@@ -11,6 +11,7 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
   $s = new Schedule($_GET['id']+0);
   $act = new Activity($s->activity());
   
+  // suppression
   if (isset($_GET['action']) && $_GET['action'] == 'delete') {    
     if (!$act->active()) {
       $s->delete(true);
@@ -33,7 +34,7 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
   
   $pageInfos = array(
    'name' => 'Modifier un horaire',
-   'url' => '/?page=activity&id='. $act->id()
+   'url' => '/?page=activities'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '?page=activity&id='. $act->id()), $pageInfos));
   

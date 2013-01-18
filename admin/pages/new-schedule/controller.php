@@ -12,7 +12,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   
   $pageInfos = array(
    'name' => 'Nouvel horaire',
-   'url' => '/?page=activity&id='. $act->id()
+   'url' => '/?page=activities'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '?page=activity&id='. $act->id()), $pageInfos));
   

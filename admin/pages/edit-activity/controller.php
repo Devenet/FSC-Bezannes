@@ -27,7 +27,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
     'website'
   );
   foreach ($inputs as $input)
-    $form->add($input, ($act->$input()==-1 ? '' : $act->$input()));
+    $form->add($input, ($act->$input()==-1 ? '' : ($input == 'description' ? $act->clean_description() : $act->$input())));
   
   // controle formulaire
   if (isset($_POST) and $_POST != null) {

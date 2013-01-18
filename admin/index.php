@@ -3,7 +3,6 @@
 namespace lib;
 use lib\content\Page;
 use lib\content\Menu;
-use lib\content\Message;
 
 set_include_path('../');
 spl_autoload_extensions('.php');
@@ -26,7 +25,7 @@ $mainMenu = new Menu();
 	$mainMenu->addLink('Membres', '/?page=members', 'user');
 // Menu secondaire droite
 $rightMenu = new Menu();
-	$rightMenu->addLink('Feedback', '#', 'bullhorn');
+	$rightMenu->addLink('Feedback', 'mailto:nicolas+fsc@devenet.info', 'bullhorn');
 
 
 // Contenu de la page
@@ -38,6 +37,8 @@ $controller = '../admin/pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : '../pages/errors/404/controller.php';
 require_once 'admin/'.$controller;
 
+$scripts = '';
+
 ?><!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -48,7 +49,8 @@ require_once 'admin/'.$controller;
     <!--<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />-->
     <link rel="icon" type="image/png" href="/favicon.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link href="//fsc.localhost.local/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link href="<?php echo _FSC_; ?>/css/common.css" rel="stylesheet" media="screen" />
 		<style>
 			header {
 				margin: 20px 0 0 0;
@@ -61,7 +63,7 @@ require_once 'admin/'.$controller;
 			}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
+		<link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -70,20 +72,20 @@ require_once 'admin/'.$controller;
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-				<a class="brand" href="<?php echo _FSC_; ?>">FSC</a>
-				<?php echo $mainMenu->display($page->url(), false); ?>
+				<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
+				<ul class="nav"><?php echo $mainMenu->display($page->url()); ?></ul>
 				<!-- user -->
 				<ul class="nav pull-right">
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Nicolas
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $_SESSION['user_name']; ?>
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="/login.php?logout"><i class="icon-off"></i> Déconnexion</a></li>
 					</ul>
 					</li>
 				</ul>
-				<?php echo $rightMenu->display($page->url(), true); ?>
+				<ul class="nav pull-right"><?php echo $rightMenu->display($page->url()); ?></ul>
 				</div>
 			</div>
 		</div>
@@ -121,7 +123,22 @@ require_once 'admin/'.$controller;
 		<!-- /footer -->
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
-		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>  
+		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
+		<?php
+			echo (isset($scripts) ? $scripts : null);
+			echo (_ANALYTICS_ADMIN_ ? "
+				<script type=\"text/javascript\">
+					var _gaq = _gaq || [];
+					_gaq.push(['_setAccount', 'UA-37435384-2']);
+					_gaq.push(['_trackPageview']);
+				
+					(function() {
+						var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+					})();
+				</script>": null);
+		?>
 	</body>
 </html>
 <?php

@@ -4,32 +4,34 @@
 
 <table class="table table-striped">
   <thead>
-    <tr>
+    <tr class="small">
       <th>#</th>
-      <th>Nom</th>
+      <th>Nom <a href="/?page=members&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
       <th>Prénom</th>
-      <th>Adhérent</th>
-      <th>Bezannais</th>
+      <th style="width:110px; text-align:center;">Adhérent <a href="/?page=members&amp;sort=adherent-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adherent-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
+      <th style="width:110px; text-align:center;">Bezannais <a href="/?page=members&amp;sort=bezannais-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'bezannais-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
+      <th style="width:110px; text-align:center;">Catégorie <a href="/?page=members&amp;sort=adult-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adult-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
       <th></th>
       <th> </th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($members as $m): ?>
-    <tr <?php echo $m->adherent() == 0 ? 'class="muted"' : null; ?>>
-      <td><?php echo $m->id(); ?></td>
-      <td><?php echo $m->last_name(); ?></td>
-      <td><?php echo $m->first_name(); ?></td>
-      <td><i class="<?php echo ($m->adherent() ? 'icon-ok-circle' : 'icon-ban-circle'); ?>"></i></td>
-      <th><?php echo ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;' ); ?></th>
+    <tr>
+      <td<?php echo $m->adherent() == 0 ? ' class="muted"' : null; ?>><?php echo $m->id(); ?></td>
+      <td><a href="/?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->last_name(); ?></a></td>
+      <td><a href="/?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->first_name(); ?></a></td>
+      <td style="width:110px; text-align:center;"><i class="<?php echo ($m->adherent() ? 'icon-ok' : 'icon-ban-circle'); ?>"></i></td>
+      <td style="width:110px; text-align:center;"><?php echo ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;' ); ?></td>
+      <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : 'A'); ?></td>
       <td style="width: 80px;">
         <div class="btn-group">
           <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-edit"></i> 
           <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/?page=member&id=<?php echo $m->id(); ?>"><i class="icon-eye-open"></i> Voir</a></li>
-            <li><a href="/?page=edit-member&id=<?php echo $m->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
+            <li><a href="/?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-eye-open"></i> Voir</a></li>
+            <li><a href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
             <li class="divider"></li>
             <li><a href="#confirmBox<?php echo $m->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
           </ul>
@@ -50,8 +52,8 @@
     <p class="text-error">Êtes-vous sûr de vouloir supprimer ce membre ?</p>
   </div>
   <div class="modal-footer">
-    <a class="btn" data-dismiss="modal" aria-hidden="true"/>Annuler</a>
-    <a href="/?page=member&id=<?php echo $m->id(); ?>&action=delete" class="btn btn-danger">Confirmer</a>
+    <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+    <a href="/?page=member&amp;id=<?php echo $m->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
   </div>
 </div>
 <?php endforeach; ?>

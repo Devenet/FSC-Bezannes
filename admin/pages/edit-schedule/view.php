@@ -1,3 +1,3 @@
 <?php
-  require 'admin/pages/form/schedule.php';
+  require 'admin/form/schedule.php';
 ?>

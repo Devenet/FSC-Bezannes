@@ -5,10 +5,11 @@ use lib\content\Menu;
 
 class Page {
   
-  private $name;
-  private $url;
-  private $breadcrumb;
+  protected $name;
+  protected $url;
+  protected $breadcrumb;
   private $search_engine;
+  private $options;
   
   public function __construct($name, $url, $breadcrumb) {
     $this->name = $name;
@@ -22,8 +23,10 @@ class Page {
   public function name() {
     return $this->name;
   }
-  
   public function url() {
+    return $this->url;
+  }
+  public function parent_url() {
     return $this->url;
   }
   
@@ -40,7 +43,7 @@ class Page {
       $return = '';
       $links = $this->breadcrumb->links();
       unset($links[0]);
-      rsort($links);
+      krsort($links);
       foreach ($links as $link) $return .= $link['name'] .' &ndash; ';
       return substr($return, 0, -8);
     }
@@ -52,11 +55,18 @@ class Page {
       $return = '';
       $links = $this->breadcrumb->links();
       unset($links[0]);
-      rsort($links);
+      krsort($links);
       foreach ($links as $link) $return .= $link['name'] .' &ndash; ';
       return substr($return, 0, -8);
     }
-    return 'Administration';
+  }
+  
+  public function addOption($option, $bool = true) {
+    $this->options[$option] = $bool;
+  }
+  
+  public function option($option) {
+    return isset($this->options[$option]) && $this->options[$option]; 
   }
   
 }

@@ -63,6 +63,11 @@ class Activity {
 
   public function setActive($bool = false) {
     $this->active = $this->boolToInt($bool);
+    if (!$this->active) {
+      $query = SQL::sql()->prepare('DELETE FROM fsc_participants WHERE activity = :activity');
+      $query->execute(array('activity' => $this->id));
+      $query->closeCursor();
+    }
   }
   public function active() {
     return $this->active;
@@ -70,6 +75,11 @@ class Activity {
   public function changeActive() {
     $this->active = ($this->active == 0 ? 1 : 0);
     $this->update_sql('active', $this->active);
+    if (!$this->active) {
+      $query = SQL::sql()->prepare('DELETE FROM fsc_participants WHERE activity = :activity');
+      $query->execute(array('activity' => $this->id));
+      $query->closeCursor();
+    }
   }
   
   protected function setUrl($url) {
@@ -110,6 +120,9 @@ class Activity {
   
   public function setDescription($description) {
     if ($description != null) {
+      $description = preg_replace('#^[^(<p>)](.*)#', '<p>$0', htmlspecialchars_decode($description));
+      $description = preg_replace('#(.*)[^(</p>)]$#', '$0</p>', $description);
+      $description = preg_replace('#<br />([\t\n\r\s]*)<br />([\t\n\r\s]*)#', '</p><p>', nl2br($description));
       $this->description = htmlspecialchars($description);
       return true;
     }
@@ -117,6 +130,13 @@ class Activity {
   }
   public function description() {
     return htmlspecialchars_decode($this->description);
+  }
+  public function clean_description() {
+    $description = preg_replace('#</p><p>#', "\n\r", htmlspecialchars_decode(nl2br($this->description)));
+    $description = preg_replace('#<br /><br />#', '', $description);
+    $description = preg_replace('#<p>#', '', $description);
+    $description = preg_replace('#</p>#', '', $description);
+    return $description;
   }
   
   public function setPlace($place) {
@@ -135,7 +155,7 @@ class Activity {
       if (!preg_match('#^[a-z0-9._\+-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', strtolower(htmlspecialchars($email))))
         return false;
       else {
-        $this->email = strtolower($email);
+        $this->email = strtolower(htmlspecialchars($email));
         return true;
       }
     }
@@ -263,6 +283,14 @@ class Activity {
       $query = SQL::sql()->prepare('DELETE FROM fsc_schedules WHERE activity = :activity');
       $query->execute(array('activity' => $this->id));
       $query->closeCursor();
+      // suppression participants
+      $query = SQL::sql()->prepare('DELETE FROM fsc_participants WHERE activity = :activity');
+      $query->execute(array('activity' => $this->id));
+      $query->closeCursor();
+      // suppression referents
+      $query = SQL::sql()->prepare('DELETE FROM fsc_referents WHERE activity = :activity');
+      $query->execute(array('activity' => $this->id));
+      $query->closeCursor();
       // suppression activité
       $query = SQL::sql()->prepare('DELETE FROM fsc_activities WHERE id = :id');
       $query->execute(array('id' => $this->id));
@@ -279,10 +307,58 @@ class Activity {
       $ids[] = $data['id'];
     return in_array($id, $ids);
   }
+  static public function isActivityURL($url) {
+    $query = SQL::sql()->query('SELECT url FROM fsc_activities');
+    $urls = array();
+    while ($data = $query->fetch())
+      $urls[] = $data['url'];
+    return in_array($url, $urls);
+  }
+  
+  static public function isActiveActivity($id) {
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities WHERE active = 1');
+    $ids = array();
+    while ($data = $query->fetch())
+      $ids[] = $data['id'];
+    return in_array($id, $ids);
+  }
   
   static public function Activities() {
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_activities');
+    while ($data = $query->fetch())
+      $return[] = new Activity($data['id']); 
+    $query->closeCursor();
+    return $return;
+  }
+  static public function ActiveActivities() {
+    $return = array();
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities WHERE active = 1 ORDER BY name');
+    while ($data = $query->fetch())
+      $return[] = new Activity($data['id']); 
+    $query->closeCursor();
+    return $return;
+  }
+  
+  static public function ActivitiesByName($sens = true) {
+    $return = array();
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY name '. ($sens ? '' :  'DESC'));
+    while ($data = $query->fetch())
+      $return[] = new Activity($data['id']); 
+    $query->closeCursor();
+    return $return;
+  }
+  static public function ActivitiesByActive($sens = true) {
+    $return = array();
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY active '. ($sens ? 'DESC' :  '') .', name');
+    while ($data = $query->fetch())
+      $return[] = new Activity($data['id']); 
+    $query->closeCursor();
+    return $return;
+  }
+  static public function ActivitiesByPrice($sens = true) {
+    $return = array();
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY price '. ($sens ? '' :  'DESC') .', name');
     while ($data = $query->fetch())
       $return[] = new Activity($data['id']); 
     $query->closeCursor();
@@ -294,6 +370,23 @@ class Activity {
     $data = $query->fetch();
     $query->closeCursor();
     return $data['total'];
+  }
+  static public function countActiveActivities() {
+    $query = SQL::sql()->query('SELECT count(id) AS total FROM fsc_activities WHERE active = 1');
+    $data = $query->fetch();
+    $query->closeCursor();
+    return $data['total'];
+  }
+  
+  static public function IDfromURL($url) {
+    if (Activity::isActivityURL($url)) {
+      $query = SQL::sql()->prepare('SELECT id FROM fsc_activities WHERE url = ?');
+      $query->execute(array(htmlspecialchars($url)));
+      $data = $query->fetch();
+      $query->closeCursor();
+      return $data['id'];
+    }
+    return NULL;
   }
   
 }

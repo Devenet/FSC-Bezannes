@@ -13,12 +13,15 @@ class Menu {
     $this->links[] = array('name' => $name, 'url' => $url, 'icon' => $icon, 'separator' => $separator);
   }
   
-  public function display($current, $right) {
-    $return = '<ul class="nav'. ($right ? ' pull-right' : null) .'">';
+  public function display($current = null, $white = false) {
+    $return = '';
+    $white = $white ? ' icon-white' : null;
     foreach($this->links as $link)
-      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : null) .'<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'">'. ($link['icon'] != null ? '<i class="icon-'. $link['icon'] .'"></i> ' : null) . $link['name'] .'</a></li>';
-    $return .= '</ul>';
+      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : null) .'<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'">'. ($link['icon'] != null ? '<i class="icon-'. $link['icon'] . $white .'"></i> ' : null) . $link['name'] .'</a></li>';
     return $return;
+  }
+  public function displayWhite($current) {
+    return $this->display($current, true);
   }
   
   public function breadcrumb($current) {

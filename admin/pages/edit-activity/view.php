@@ -1,3 +1,3 @@
 <?php
-  require 'admin/pages/form/activity.php';
+  require 'admin/form/activity.php';
 ?>

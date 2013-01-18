@@ -12,7 +12,6 @@ class Schedule {
   private $more;
   private $type; // 0: horaire journalier; 1: horaire "libre"
   private $day;
-  private $days = array('dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi');
   private $time_begin;
   private $time_end;
   private $description;
@@ -77,7 +76,7 @@ class Schedule {
     }
     else {
       $this->type = 1;
-      $this->day = 1;
+      $this->day = 0;
       $this->time_begin = '';
       $this->time_end = '';
       $this->more = '';
@@ -87,9 +86,6 @@ class Schedule {
   
   public function day() {
     return $this->day;
-  }
-  public function day_word() {
-    return $this->days[$this->day];
   }
   public function setDay($day = null) {
     if ($this->type == 0) {
@@ -200,6 +196,11 @@ class Schedule {
   
   public function delete($bool = false) {
     if ($bool && $this->created) {
+      // suppression participants
+      $query = SQL::sql()->prepare('DELETE FROM fsc_participants WHERE schedule = :id');
+      $query->execute(array('id' => $this->id));
+      $query->closeCursor();
+      // suppressions horaire
       $query = SQL::sql()->prepare('DELETE FROM fsc_schedules WHERE id = :id');
       $query->execute(array('id' => $this->id));
       $query->closeCursor();

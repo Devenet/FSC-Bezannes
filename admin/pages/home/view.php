@@ -2,7 +2,7 @@
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-globe"></i> Activités</a></li>
     <li><a href="#tab2" data-toggle="tab"><i class="icon-user"></i> Membres</a></li>
-    <li><a href="#tab3" data-toggle="tab"><i class="icon-asterisk"></i> Préinscriptions</a></li>
+    <li><a href="#tab3" data-toggle="tab"><i class="icon-list-alt"></i> Préinscriptions</a></li>
     <li class="pull-right"><a href="#tab4" data-toggle="tab"><i class="icon-cog"></i> Configuration</a></li>
   </ul>
   
@@ -14,7 +14,7 @@
         <a href="/?page=new-activity" class="btn"><i class="icon-plus"></i> Ajouter</a>
       </div>
       <div style="margin-top:20px;">
-        <p>Il y a actuellement <span class="label"><?php echo $activities; ?></span> activité<?php echo $plural_activities; ?>.</p>
+        <p>Il y a actuellement <span class="label"><?php echo $activities; ?></span> activité<?php echo $plural_activities; ?>, dont <span class="label label-success"><?php echo $active_activities; ?></span> active<?php echo $plural_active_activities; ?>.</p>
       </div>
     </div>
     
@@ -25,13 +25,13 @@
         <a href="/?page=new-member" class="btn"><i class="icon-plus"></i> Ajouter</a>
       </div>
       <div style="margin-top:20px;">
-        <p>Il y a actuellement <span class="label"><?php echo $members; ?></span> membre<?php echo $plural_members; ?>.</p>
+        <p>Il y a actuellement <span class="label"><?php echo $members; ?></span> membre<?php echo $plural_members; ?>, dont <span class="label label-success"><?php echo $adherents; ?></span> adhérent<?php echo $plural_adherents; ?></span>.</p>
       </div>
     </div>
     
     <!-- preinscriptions -->
     <div class="tab-pane" id="tab3">
-      <p>Coming soon...</p>
+      <p><a href="<?php echo _INSCRIPTION_; ?>" class="btn">Coming soon...</a></p>
     </div>
     
     <!-- config -->

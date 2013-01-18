@@ -7,13 +7,13 @@
         <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="/?page=edit-activity&id=<?php echo $act->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
+          <li><a href="/?page=edit-activity&amp;id=<?php echo $act->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
           <li class="divider"></li>
           <li class="dropdown-submenu">
             <a tabindex="-1" href="#"><i class="icon-plus"></i> Ajouter</a>
             <ul class="dropdown-menu">
               <li><a href="/?page=new-schedule&amp;activity=<?php echo $act->id(); ?>"><i class="icon-time"></i> Horaire</a></li>
-              <li><a href="/?page=new-referencee&amp;activity=<?php echo $act->id(); ?>"><i class="icon-lock"></i> Référent</a></li>
+              <li><a href="/?page=new-referent&amp;activity=<?php echo $act->id(); ?>"><i class="icon-lock"></i> Référent</a></li>
               <li><a href="/?page=new-participant&amp;activity=<?php echo $act->id(); ?>"><i class="icon-user"></i> Participant</a></li>
             </ul>
           </li>
@@ -29,7 +29,7 @@
         <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-book"></i> Description</a></li>
         <li><a href="#tab2" data-toggle="tab"><i class="icon-time"></i> Horaires</a></li>
         <li><a href="#tab3" data-toggle="tab"><i class="icon-lock"></i> Référents</a></li>
-        <li class="pull-right"><a href="#tab4" data-toggle="tab"><i class="icon-user"></i> Participants</a></li>
+        <?php echo $act->active() ? '<li class="pull-right"><a href="#tab4" data-toggle="tab"><i class="icon-user"></i> Participants <span class="label label-info">'.$count_participants.'</span></a></li>' : null; ?>
       </ul>
       
       <div class="tab-content">
@@ -44,22 +44,36 @@
         <div class="tab-pane" id="tab2">
           <div style="overflow: hidden;">
             <p class="pull-left">Il s’agit d’une activité à pratique <span class="label"><?php echo ($act->aggregate() == 0 ? 'non libre' : 'libre'); ?></span>.</p>
-            <a class="btn btn-small pull-right" href="/?page=new-schedule&activity=<?php echo $act->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
+            <a class="btn btn-small pull-right" href="/?page=new-schedule&amp;activity=<?php echo $act->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
           </div>
           <div style="clear:both; margin-top: 10px;">
             <?php echo $display_schedules; ?>
           </div>
         </div>
         
-        <!-- autorites -->
+        <!-- referents -->
         <div class="tab-pane" id="tab3">
-          <p>Coming soon...</p>
+          <div style="overflow: hidden;">
+            <p class="pull-left">L’activité possède <span class="label"><?php echo $count_referents; ?></span> référent<?php echo $plural_count_referents; ?>.</p>
+            <a class="btn btn-small pull-right" href="/?page=new-referent&amp;activity=<?php echo $act->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
+          </div>
+          <div style="clear:both; margin-top: 10px;">
+            <?php echo $display_referents; ?>
+          </div>
         </div>
         
         <!-- participants -->
+        <?php if ($act->active()): ?>
         <div class="tab-pane" id="tab4">
-          <p>Coming later...</p>
+          <div style="overflow: hidden;">
+            <p class="pull-left">L’activité possède <span class="label"><?php echo $count_participants; ?></span> participant<?php echo $plural_count_participants; ?>.</p>
+            <a class="btn btn-small pull-right" href="/?page=new-participant&amp;activity=<?php echo $act->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
+          </div>
+          <div style="clear:both; margin-top: 10px;">
+            <?php echo $display_participants; ?>
+          </div>
         </div>
+        <?php endif; ?>
         
       </div>
     </div>
@@ -72,7 +86,7 @@
     </div>
     
     <div class="alert <?php echo ($act->active() == 1 ? 'alert-success' : ''); ?>">
-      Activité <strong><?php echo ($act->active() == 1) ? 'activée</strong> [<a href="'. _FSC_ .'/?page=activite&id='. $act->id() .'" target="_blank">voir</a>]' : 'désactivée</strong>' ; ?>
+      Activité <strong><?php echo ($act->active() == 1) ? 'activée</strong> [<a href="'. _FSC_ .'/activite/'. $act->url() .'.html" target="_blank">voir</a>]' : 'désactivée</strong>' ; ?>
       <div class="close" style="margin-top:5px;">
         <a href="?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=status"><i class="icon-refresh"></i></a>
       </div>
@@ -99,21 +113,20 @@
     </div>
     
   </div>
-</div>
   
 </div><!-- /row -->
 
 
 <div id="confirmBox<?php echo $act->id(); ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelActivity<?php echo $act->id(); ?>" aria-hidden="true">
-<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-<h3 id="ConfirmDelActivity<?php echo $act->id(); ?>"><?php echo $act->name(); ?></h3>
-</div>
-<div class="modal-body">
-<p class="text-error">Êtes-vous sûr de vouloir supprimer cette activité ?</p>
-</div>
-<div class="modal-footer">
-<a class="btn" data-dismiss="modal" aria-hidden="true"/>Annuler</a>
-<a href="/?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
-</div>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="ConfirmDelActivity<?php echo $act->id(); ?>"><?php echo $act->name(); ?></h3>
+  </div>
+  <div class="modal-body">
+    <p class="text-error">Êtes-vous sûr de vouloir supprimer cette activité ?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+    <a href="/?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
+  </div>
 </div>

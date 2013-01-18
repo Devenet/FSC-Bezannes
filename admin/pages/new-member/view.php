@@ -1,3 +1,3 @@
 <?php
-  require 'admin/pages/form/member.php';
+  require 'admin/form/member.php';
 ?>

@@ -8,4 +8,7 @@ $pageInfos = array(
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
+$page->addOption('hide-breadcrumb');
+$page->addOption('hide-anchor-menu');
+
 ?>

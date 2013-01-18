@@ -1,0 +1,58 @@
+@import url(http://fonts.googleapis.com/css?family=Imprima);
+
+/*
+ * font: Imprima
+ */
+.imprima,
+.navbar .brand,
+.page-error h2 {
+  font-family: Imprima, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+}
+.fsc-blue {
+  color: #29A1C1;
+}
+.fsc-green {
+  color: #009D90;
+}
+.fsc-orange {
+  color: #E45238;
+}
+
+.center {
+  text-align: center;
+}
+
+.espace {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.espace-top {
+  margin-top: 25px;
+}
+.espace-small-top {
+  margin-top: 10px;
+}
+.espace-bottom {
+  margin-bottom: 25px;
+}
+
+footer hr {
+  margin-bottom: 10px;
+}
+
+/*
+ * error
+ */
+.page-error h2 {
+  font-size: 65px;
+  line-height: 1;
+  margin: 20px 0 5px;
+}
+.page-error h3 {
+  margin-top: 0;
+  font-weight: 400;
+}
+.page-error .img-error {
+  margin-top: 50px;
+}
