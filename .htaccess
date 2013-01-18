@@ -1,6 +1,13 @@
+Options -Indexes
+
 RewriteEngine On
 # pages
 RewriteRule ^([a-z-]+).html$ /?page=$1 [L]
+RewriteRule ^activite/([a-z-]+).html /?page=activite&url=$1 [L]
+RewriteRule ^([a-z-]+)/([a-z-]+).html /?page=$1&rel=$2 [L]
 # admin
 RewriteCond %{HTTP_HOST} ^fsc.localhost.local$
 RewriteRule ^admin/(.*)$ http://admin.fsc.localhost.local/$1 [QSA,L,R]
+# inscriptions
+RewriteCond %{HTTP_HOST} ^fsc.localhost.local$
+RewriteRule ^inscriptions/(.*)$ http://inscriptions.fsc.localhost.local/$1 [QSA,L,R]
