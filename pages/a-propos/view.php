@@ -13,14 +13,20 @@ case 'doc':
 ?>
 
 <div class="row h3-imprima">
-  <div class="span4">
+  <div class="span8">
     <h3>Préinscriptions</h3>
-    <p>Comme les années précédentes, vous pouvez dès à présent remplir les fiches à présenter pour l’inscription pour l’année à venir.</p>
-    <p class="text-success">Innovation de cette année : plus besoin d’imprimer un document, tout se fait en ligne :) !</p>
+    <p class="lead">Comme les années précédentes, vous pouvez dès à présent remplir les fiches à présenter pour l’inscription pour l’année à venir.</p>
+  </div>
+  <div class="span4">
+    <p class="text-success espace-top">Nouveauté : plus besoin d’imprimer un document, tout se fait en ligne :) !</p>
     <p class="espace-top"><a class="btn btn-success" href="<?php echo _INSCRIPTION_; ?>">Se préinscrire</a></p>
   </div>
-   <div class="span4">
-    <h3>Régement intérieur</h3>
+</div>
+
+<hr />
+<div class="row h3-imprima">
+  <div class="span4">
+    <h3>Réglement intérieur</h3>
     <p><a class="btn" href="/uploads/pdf/fsc-reglement-interieur.pdf"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Le réglement intérieur est là pour rappeler les règles à respecter et les droits et devoirs que chaque adhérent ou membre possède et peut faire valoir.</p>
     <p>Vous le trouverez affiché dans le hall de l'Espace de Bezannes.</p>
@@ -30,11 +36,6 @@ case 'doc':
     <p><a class="btn" href="/uploads/pdf/fsc-statuts.pdf"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Les statuts définissent l’association, sa raison et ses objectifs généraux. Il présice les règles exactes du fonctionnement. À chaque modification validée par un vote, il est envoyé à la Préfecture.</p>
   </div>
-</div>
-
-<hr />
-
-<div class="row h3-imprima">
   <div class="span4">
     <h3>Assemblée générale</h3>
     <p>Tous les ans en décembre, l’AG permet de faire un bilan de l’année écoulée et de voter les prochaines désicions et actions de la vie l’association.</p>
@@ -42,11 +43,17 @@ case 'doc':
       <li><a href="/uploads/pdf/fsc-assemblee-generale-2011.pdf">Compte-rendu 2011 <i class="icon-file"></i></a></li>
     </ul>
   </div>
-  <div class="span8">
+</div>
+
+<!--
+<hr />
+<div class="row h3-imprima">
+  <div class="span6">
     <h3>Loi Informatique et Libertés</h3>
     <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en vous adressant au secrétariat.</p>
   </div>
 </div>
+-->
 
 <?php
   
@@ -211,7 +218,7 @@ default:
   </div>
   <div class="span4">
     <h3>Être adhérent</h3>
-    <p>En devenant adhérent, vous accédez à l’ensemble des <a href="/activites.html">activités</a> proposées mais vous pouvez aussi faire part de vos idées, suggestions et avis pour permettre au Foyer d’évoluer dans votre intérêt et celui de la collectivité.</p>
+    <p>En devenant <a href="<?php echo _INSCRIPTION_; ?>">adhérent</a>, vous accédez à l’ensemble des <a href="/activites.html">activités</a> proposées mais vous pouvez aussi faire part de vos idées, suggestions et avis pour permettre au Foyer d’évoluer dans votre intérêt et celui de la collectivité.</p>
   </div>
   <div class="span4">
     <h3>We want you !</h3>

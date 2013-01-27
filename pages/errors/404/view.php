@@ -31,7 +31,7 @@
   </div>
   <div class="span3">
     <p class="center"><img src="<?php echo _FSC_; ?>/img/errors/developper.png" alt="developper" class="center"/></p>
-    <p>Si vous n’en dormez plus, vous pouvez nous <a href="/contact.html">contacter</a>, on transmettra le problème au développeur...</p>
+    <p>Si vous n’en dormez plus, vous pouvez nous <a href="<?php echo _FSC_; ?>/contact.html">contacter</a>, on transmettra le problème au développeur...</p>
   </div>
 </div>
 
