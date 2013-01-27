@@ -23,11 +23,11 @@ else {
 <html lang="fr">
 <head>
 <meta charset="UTF-8" />
-<title>Test</title>
+<title>Database</title>
 </head>
 <body>
 <?php
-  $bases = array('activities', 'schedules', 'participants', 'members', 'payments_transactions', 'payments_advantages', 'users_admin');
+  $bases = array('activities', 'schedules', 'participants', 'members', 'payments_transactions', 'payments_advantages', 'users_admin', 'history_admin');
   foreach ($bases as $db) {
     echo '<p style="width:250px; display:inline-block; text-align:right; margin-right:15px;">fsc_<strong>', $db ,'</strong></p><p style="display:inline-block;">';
     $query = SQL::sql()->query('SELECT COUNT(id) AS total FROM fsc_'.$db);

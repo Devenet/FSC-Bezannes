@@ -21,6 +21,7 @@
     define('_JQUERY_', 'http://api.localhost.local/jquery/jquery-1.8.0.min.js');
   }
   
+  define('_SEARCH_ENGINE_', false);
   define('_YEAR_', 2012);
   define('_PHONE_SEC_', '0326362384');
   

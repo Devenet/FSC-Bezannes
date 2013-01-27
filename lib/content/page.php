@@ -35,7 +35,7 @@ class Page {
   }
   
   public function search_engine() {
-    return $this->search_engine;
+    return _SEARCH_ENGINE_ ? $this->search_engine : 'NOINDEX, NOARCHIVE, NOFOLLOW';
   }
   
   public function title() {

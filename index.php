@@ -61,23 +61,24 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <link href="/css/fsc.css" rel="stylesheet" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
   </head>
 
 	<body class="page-<?php echo strtolower($_GET['page']); ?>">
 
     <!-- head -->
     <header>
-      <a href="/"><img src="/img/logo-fsc.png" /></a>
-      <h1>Foyer Social et Culturel <span>de Bezannes</span></h1>
+      <a href="/"><img src="/img/logo-fsc<?php echo $page->url() != '/' ? '-small' : null; ?>.png" alt="FSC Bezannes" /></a>
+    <!--<h1>Foyer Social et Culturel <span class="bezannes">de Bezannes</span></h1>-->
+    <h1><span class="fsc-blue">Foyer</span> <span class="fsc-green">Social</span> et <span class="fsc-orange">Culturel</span> <span class="bezannes">de Bezannes</span></h1>
     </header>
-    <!-- /head -->
+  <!-- /head -->
     
     <!-- menu -->
     <div class="navbar navbar-static-top clearfix" id="menu">
       <div class="navbar-inner">
         <div class="container-fluid">
-          <a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
+          <!--<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>-->
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -119,9 +120,12 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
           </ul>
         </div>
         
-        <div class="colophon">
-          <address><i class="icon-map-marker"></i> Espace de Bezannes, 3 rue Source de Muire, 51430 Bezannes</address>
-          <p>&copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes</p>
+        <div class="clearfix">
+          <p class="pull-left">&copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes</p>
+          <!--<ul class="inline pull-right">
+            <li><a href="#" title="Site valide HTML5"><img src="/img/badge-html5.png" alt="HTML5" /></a></li>
+            <li><a href="https://nicolabricot.com" title="Site adapté par nicolabricot"><img src="//nicolabricot.com/favicon.png" alt="nicolabricot" /></a></li>
+          </ul>-->
         </div>
       </div>
     </footer>
@@ -130,7 +134,7 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     <script src="<?php echo _JQUERY_; ?>"></script>
     <script src="/js/bootstrap.min.js"></script>
     <?php
-      echo (!$page->option('hide-anchor-menu') ? '<script>$(document).ready(function() { document.location.href = "#menu"; }); </script>' : null);
+      // echo (!$page->option('hide-anchor-menu') ? '<script>$(document).ready(function() { document.location.href = "#menu"; }); </script>' : null);
       echo isset($jquery) ? $jquery : null;
       echo (_ANALYTICS_FSC_ ? "
       <script type=\"text/javascript\">

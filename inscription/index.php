@@ -18,7 +18,7 @@ $mainMenu = new Menu();
 // Menu secondaire droite
 $rightMenu = new Menu();
 	$rightMenu->addLink('Feedback', 'mailto:nicolas+fsc@devenet.info', 'bullhorn');
-	$rightMenu->addLink('FSC', _FSC_, 'home', true);
+	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'home', true);
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
@@ -65,7 +65,7 @@ $scripts = '';
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-				<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
+				<!--<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>-->
 				<ul class="nav"><?php echo $mainMenu->display($page->url()); ?></ul>
 				<!-- user
 				<ul class="nav pull-right">

@@ -72,7 +72,7 @@ $scripts = '';
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-				<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
+				<!--<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>-->
 				<ul class="nav"><?php echo $mainMenu->display($page->url()); ?></ul>
 				<!-- user -->
 				<ul class="nav pull-right">
@@ -117,7 +117,7 @@ $scripts = '';
 		<footer>
 			<hr />
 			<div class="container">
-				<p class="pull-left">&copy; 2012 &mdash; Foyer Social et Culturel de Bezannes</p>
+				<p class="pull-left">&copy; <?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes</p>
 			</div>
 		</footer>
 		<!-- /footer -->
