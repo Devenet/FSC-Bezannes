@@ -2,6 +2,7 @@
 
 namespace lib\members;
 use lib\db\SQL;
+use lib\laravel\Str;
 
 class Member {
   protected $id;
@@ -77,7 +78,8 @@ class Member {
   }
   public function setLastName($name) {
     if ($name != null) {
-      $this->last_name = ucwords(mb_strtolower(htmlspecialchars($name), 'UTF-8'));
+      //$this->last_name = ucwords(mb_strtolower(htmlspecialchars($name), 'UTF-8'));
+      $this->last_name = Str::title(htmlspecialchars($name));
       return true;
     }
     return false;
@@ -88,7 +90,8 @@ class Member {
   }
   public function setFirstName($name) {
     if ($name != null) {
-      $this->first_name = ucwords(mb_strtolower(htmlspecialchars($name), 'UTF-8'));
+      //$this->first_name = ucwords(mb_strtolower(htmlspecialchars($name), 'UTF-8'));
+      $this->first_name = Str::title(htmlspecialchars($name));
       return true;
     }
     return false;
@@ -103,8 +106,19 @@ class Member {
   }
   public function setDateBirthday($year, $month, $day) {
     if ($year != null && $month != null && $day != null && $year >= 1920 && $year <= date('Y')-1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
-      $this->date_birthday = $year.'-'.$month.'-'.$day;
-      return true;
+      if ($month == 2) {
+        // bissextile (et 29 days max) ou 28 days max
+        if ((date("L", mktime(0, 0, 0, 1, 1, $year)) == 1 && $day <= 29) || $day <= 28) {
+          $this->date_birthday = $year.'-'.$month.'-'.$day;
+          return true;
+        }
+        else
+          return false;
+      }
+      else {
+        $this->date_birthday = $year.'-'.$month.'-'.$day;
+        return true;
+      }
     }
     return false;
   }
@@ -323,15 +337,15 @@ class Member {
   }
   public function date_registration_year() {
     $date = explode('-', $this->date_registration);
-    return $date[0];
+    return $this->date_registration != null ? $date[0] : null;
   }
     public function date_registration_month() {
     $date = explode('-', $this->date_registration);
-    return $date[1];
+    return $this->date_registration != null ? $date[1] : null;
   }
   public function date_registration_day() {
     $date = explode('-', $this->date_registration);
-    return $date[2];
+    return $this->date_registration != null ? $date[2] : null;
   }
   
   public function date_creation() {
@@ -418,6 +432,9 @@ class Member {
       $query->execute(array('id' => $this->id));
       // suppression transactions
       $query = SQL::sql()->prepare('DELETE FROM fsc_payments_transactions WHERE adherent = :id');
+      $query->execute(array('id' => $this->id));
+      // suppression advantages
+      $query = SQL::sql()->prepare('DELETE FROM fsc_payments_advantages WHERE adherent = :id');
       $query->execute(array('id' => $this->id));
       $query->closeCursor();
       return true;

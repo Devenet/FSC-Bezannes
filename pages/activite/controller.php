@@ -9,7 +9,7 @@ use lib\members\Referent;
 use lib\content\Message;
 use lib\content\Display;
 
-if (isset($_GET['url']) && Activity::isActivityURL($_GET['url'])) {
+if (isset($_GET['url']) && Activity::isActiveActivityURL($_GET['url'])) {
   
   $act = new Activity(Activity::IDfromURL($_GET['url']));
   

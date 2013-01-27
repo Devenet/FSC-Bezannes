@@ -2,6 +2,7 @@
 
 namespace lib\activities;
 use lib\db\SQL;
+use lib\laravel\Str;
  
 class Activity {
   
@@ -82,13 +83,19 @@ class Activity {
     }
   }
   
-  protected function setUrl($url) {
+  private function accept_url($url) {
     $query = SQL::sql()->query('SELECT url FROM fsc_activities'); 
     $urls = array();
     while ($data = $query->fetch())
       $urls[] = $data['url'];
     $query->closeCursor();
+    if (!in_array($url, $urls) || ($this->created && ($this->id == Activity::IDfromURL($url))))
+      return true;
+    return false;
+  }
+  protected function setUrl($url) {    
     if ($url != NULL) {
+      /*
       $url = mb_strtolower($url, 'UTF-8');
       $url = preg_replace('#à|â|ä#', 'a', $url);
       $url = preg_replace('#é|ê|è|ë#', 'e', $url);
@@ -98,13 +105,15 @@ class Activity {
       $url = preg_replace('#ç#', 'c', $url);
       $url = preg_replace('#([^a-z])+#', '-', $url);
       $url = preg_replace('#\-$#', '', $url);
-      if (!in_array($url, $urls)) {
+      */
+      $url = Str::slug($url);
+      if ($this->accept_url($url)) {
         $this->url = $url;
         return true;
       }
       else {
         $url = $url . '-' . rand(1,10);
-        if (!in_array($url, $urls)) {
+        if ($this->accept_url($url)) {
           $this->url = $url;
           return true;
         }
@@ -321,6 +330,13 @@ class Activity {
     while ($data = $query->fetch())
       $ids[] = $data['id'];
     return in_array($id, $ids);
+  }
+  static public function isActiveActivityURL($url) {
+    $query = SQL::sql()->query('SELECT url FROM fsc_activities WHERE active = 1');
+    $urls = array();
+    while ($data = $query->fetch())
+      $urls[] = $data['url'];
+    return in_array($url, $urls);
   }
   
   static public function Activities() {
