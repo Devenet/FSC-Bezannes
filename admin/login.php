@@ -15,7 +15,8 @@ require '../config/config.php';
 if (isset($_GET['logout'])) {
 	$_SESSION['authentificated'] = false;
 	unset($_SESSION['authentificated']);
-	unset($_SESSION['user_admin']);
+	unset($_SESSION['user_name']);
+	unset($_SESSION['user_privilege']);
 	$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
 	header('Location: /login.php');
 	exit;
@@ -27,7 +28,11 @@ elseif (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd'])) {
 	$path = isset($_GET['path']) ? htmlspecialchars($_GET['path']) : '';
 	if (UserAdmin::isAuthorizedUser($_POST['user'], $_POST['pwd'])) {
-		$_SESSION['user_name'] = UserAdmin::getName(htmlspecialchars($_POST['user']));
+		$user = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
+		$_SESSION['user_name'] = $user->name();
+		$_SESSION['user_privilege'] = $user->privilege();
+		//if ($user->privilege() < 9)
+			UserAdmin::history($user->id(), $_SERVER['REMOTE_ADDR']);
 		$_SESSION['authentificated'] = true;
 		header('Location: /'. $path);
 		exit;
