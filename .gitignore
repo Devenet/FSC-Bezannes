@@ -2,5 +2,6 @@
 test*
 versions/*
 *-full.png
+CIMG*
 .ovh
 lib/db/sql.php
