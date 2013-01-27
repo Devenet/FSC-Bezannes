@@ -23,14 +23,14 @@ use lib\content\Display;
     
     <div class="tabbable">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#tab1" data-toggle="tab"><i class="icon-user"></i> Informations</a></li>
-        <li><a href="#tab2" data-toggle="tab"><i class="icon-map-marker"></i> Coordonnées</a></li>
-        <?php echo ($m->adherent() ? '<li><a href="#tab3" data-toggle="tab"><i class="icon-shopping-cart"></i> Paiements</a></li><li class="pull-right"><a href="#tab4" data-toggle="tab"><i class="icon-globe"></i> Activités <span class="label label-info">'. $count_activites .'</span></a></li>' : null); ?>
+        <li class="active"><a href="#tab-infos" data-toggle="tab"><i class="icon-user"></i> Informations</a></li>
+        <li><a href="#tab-address" data-toggle="tab"><i class="icon-map-marker"></i> Coordonnées</a></li>
+        <?php echo ($m->adherent() ? '<li><a href="#tab-payments" data-toggle="tab"><i class="icon-shopping-cart"></i> Paiements</a></li><li class="pull-right"><a href="#tab-activities" data-toggle="tab"><i class="icon-globe"></i> Activités <span class="label label-info">'. $count_activites .'</span></a></li>' : null); ?>
       </ul>
       
       <div class="tab-content">
         <!-- infos -->
-        <div class="tab-pane active" id="tab1">
+        <div class="tab-pane active" id="tab-infos">
           <div class="clearfix">
           <div class="span3">
             <h4>Civilité</h4>
@@ -54,17 +54,19 @@ use lib\content\Display;
             </div>
           <?php endif; ?>
           <?php
-            if ($m->countResponsabilities() > 0 || isset($display_referent)) {
-              echo '<div class="span4">', '<h4>Responsabilité</h4>';
-              if ($m->countResponsabilities() > 0) {
-                $minors = $m->Responsabilities();
-                echo '<ul>';
-                foreach ($minors as $minor)
-                  echo '<li>', Display::Gender($minor->gender()), ' ', $minor->name(), ' [<a href="/?page=member&amp;id=', $minor->id(), '">#', $minor->id(), '</a>]</li>';
-                echo '</ul>';
-              }
-              if (isset($display_referent))
-                echo '<ul>', $display_referent, '</ul>';
+            if ($m->countResponsabilities() > 0) {
+              echo '<div class="span3">', '<h4>Responsabilité</h4>';
+              $minors = $m->Responsabilities();
+              echo '<ul>';
+              foreach ($minors as $minor)
+                echo '<li>', Display::Gender($minor->gender()), ' ', $minor->name(), ' [<a href="/?page=member&amp;id=', $minor->id(), '">#', $minor->id(), '</a>]</li>';
+              echo '</ul>', '</div>';
+            }
+          ?>
+          <?php
+            if (isset($display_referent)) {
+              echo '<div class="span3'. ($m->countResponsabilities() > 0 ? ' offset1': null) .'">', '<h4>Référent</h4>';
+              echo '<ul>', $display_referent, '</ul>';
               echo '</div>';
             }
           ?>
@@ -73,7 +75,7 @@ use lib\content\Display;
         </div>
         
         <!-- coordonnees -->
-        <div class="tab-pane" id="tab2">
+        <div class="tab-pane" id="tab-address">
           <div class="span3">
             <?php if (!$m->minor() || $m->address_different()) : ?>
             <h4>Adresse</h4>
@@ -110,7 +112,7 @@ use lib\content\Display;
         
         <!-- paiements -->
         <?php if ($m->adherent()): ?>
-        <div class="tab-pane" id="tab3">
+        <div class="tab-pane" id="tab-payments">
           <div class="clearfix">
             <p class="pull-left">
               Les frais d’inscription de <?php echo $m->first_name(); ?> s’élèvent à <span class="label"><?php echo preg_replace('#\.#', ',', $cost_payments); ?></span> &euro;.
@@ -139,7 +141,7 @@ use lib\content\Display;
         </div>
         
         <!-- activites -->
-        <div class="tab-pane" id="tab4">
+        <div class="tab-pane" id="tab-activities">
           <div style="overflow: hidden;">
             <p class="pull-left"><?php echo $m->first_name(); ?> participe à <span class="label"><?php echo $count_activites; ?></span> activité<?php echo $plural_count_activities; ?>.</p>
             <a class="btn btn-small pull-right" href="/?page=new-participant&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
