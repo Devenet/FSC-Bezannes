@@ -27,9 +27,27 @@ class Display {
     return $date[2] .'.'. $date[1] .'.'. $date[0];
   }
   
+  static public function FullTimestamp($time) {
+    $time = preg_split('/[-\s]/', $time);
+    return $time[2] .' '. Display::Month($time[1]) .' '. $time[0] .' à '. $time[3];
+  }
+  static public function FullTimestampDate($time) {
+    $time = preg_split('/[-\s]/', $time);
+    return $time[2] .' '. Display::Month($time[1]) .' '. $time[0];
+  }
+  static public function FullTimestampHour($time) {
+    $time = preg_split('/[-\s]/', $time);
+    return $time[3];
+  }
+  
   static public function Day($day) {
     $days = array('dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi');
     return $days[$day];
+  }
+  
+  static public function Month($month) {
+    $months = array('janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre');
+    return $months[$month-1];
   }
   
   static public function Referent($type) {
@@ -40,6 +58,15 @@ class Display {
   static public function Transaction($type) {
     $types = array('chèque', 'espèces', 'chèques vacances', 'autre');
     return $types[$type];
+  }
+  
+  static public function Privilege($int) {
+    $privileges = array('disabled', 'referent', '', '', '', '', '', 'manager', 'administrator', 'god');
+    return $privileges[$int];
+  }
+  static public function FrenchPrivilege($int) {
+    $privileges = array('désactivé', 'référant', '', '', '', '', '', 'gestionnaire', 'administrateur', 'dieu');
+    return $privileges[$int];
   }
   
   static public function Double($double) {
