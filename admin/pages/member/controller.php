@@ -42,7 +42,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
     }
   }
   // forcer bezannais
-  // à écrire
+  /* à écrire */
   
   $pageInfos = array(
    'name' => $m->name(),
