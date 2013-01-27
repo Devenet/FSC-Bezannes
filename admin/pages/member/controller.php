@@ -172,7 +172,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
     }
   }
   else
-    $display_payments .= '<div class="alert">Aucun paiement n’a encore été effectué !</div>';
+    $display_payments .= Price::Total($m->id()) == 0 ? '<div class="alert alert-success">Ce membre est à jour de ses paiements</div>' : '<div class="alert">Aucun paiement n’a encore été effectué !</div>';
   
   // Activités
   $count_activites = Participant::countActivities($m->id());
