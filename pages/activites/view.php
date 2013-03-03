@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h2>Activitiés</h2>
+  <h2>Activités</h2>
 </div>
 
 <ul>

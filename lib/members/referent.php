@@ -118,6 +118,15 @@ class Referent {
       $return[] = new Referent($data['id']);
     return $return;
   }
+  static public function ReferentsByType($activity, $type = 0) {
+    $return = array();
+    $query = SQL::sql()->prepare('SELECT id FROM fsc_referents WHERE activity = ? AND type = ?');
+    $query->execute(array($activity, $type));
+    while ($data = $query->fetch())
+      $return[] = new Referent($data['id']);
+    return $return;
+  }
+  
   static public function Responsabilities($member) {
     $return = array();
     $query = SQL::sql()->prepare('SELECT id FROM fsc_referents WHERE member = ?');
@@ -134,6 +143,13 @@ class Referent {
     $query->closeCursor();
     return $data['total'];
   }
+  static public function countReferentsByType($activity, $type = 0) {
+    $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_referents WHERE activity = ? AND type = ?');
+    $query->execute(array($activity, $type));
+    $data = $query->fetch();
+    $query->closeCursor();
+    return $data['total'];
+  }
   
   static public function countResponsabilities($member) {
     $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_referents WHERE member = ?');
@@ -144,6 +160,5 @@ class Referent {
   }
   
 }
-
 
 ?>

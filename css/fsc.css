@@ -110,6 +110,14 @@ header h1,
  * a-propos
  */
 
+
+/*
+ * activites
+ */
+.page-activite .container .well ul {
+  margin-bottom: 0;
+}
+
 /*
  * mediqueries
  */
@@ -126,6 +134,12 @@ header h1,
   .carousel img {
     width: auto;
     height: 500px;
+  }
+}
+
+@media (min-width: 980px) {
+  .page-activite .container .infos {
+    margin-top: 15px;
   }
 }
 

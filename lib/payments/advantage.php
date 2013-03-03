@@ -81,7 +81,7 @@ class Advantage {
   }
   
   public function description() {
-    return $this->description;
+    return htmlspecialchars_decode($this->description);
   }
   public function setDescription($string) {
     if ($string != null) {

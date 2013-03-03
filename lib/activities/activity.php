@@ -3,6 +3,7 @@
 namespace lib\activities;
 use lib\db\SQL;
 use lib\laravel\Str;
+use lib\upload\UploadImage;
  
 class Activity {
   
@@ -17,6 +18,11 @@ class Activity {
   private $aggregate; // 1: creneaux libres; 0: horaires indépendants
   private $price;
   private $price_young;
+  
+  private $image = 0;
+  static protected $path_image = 'activities';
+  private $image_temp;
+  
   private $created;
   
   public function __construct($id = null) {
@@ -36,6 +42,9 @@ class Activity {
       $this->price_young = $activity['price_young'];
       $this->created = true;
       $query->closeCursor();
+      
+      if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg'))
+        $this->image = 1;
     }
     else
       $created = false;
@@ -129,23 +138,39 @@ class Activity {
   
   public function setDescription($description) {
     if ($description != null) {
+      /*
       $description = preg_replace('#^[^(<p>)](.*)#', '<p>$0', htmlspecialchars_decode($description));
       $description = preg_replace('#(.*)[^(</p>)]$#', '$0</p>', $description);
       $description = preg_replace('#<br />([\t\n\r\s]*)<br />([\t\n\r\s]*)#', '</p><p>', nl2br($description));
+      */
+      $description = preg_replace('#<br>#', '<br />', htmlspecialchars_decode($description));
+      $description = preg_replace('#<b>#', '<strong>', $description);
+      $description = preg_replace('#</b>#', '</strong>', $description);
+      $description = preg_replace('#<i>#', '<em>', $description);
+      $description = preg_replace('#</i>#', '</em>', $description);
       $this->description = htmlspecialchars($description);
       return true;
     }
     return false;
   }
   public function description() {
+    //return '<p>'. htmlspecialchars_decode($this->description) .'</p>';
     return htmlspecialchars_decode($this->description);
   }
-  public function clean_description() {
+  public function wysihtmlDescription() {
+    /*
     $description = preg_replace('#</p><p>#', "\n\r", htmlspecialchars_decode(nl2br($this->description)));
     $description = preg_replace('#<br /><br />#', '', $description);
     $description = preg_replace('#<p>#', '', $description);
     $description = preg_replace('#</p>#', '', $description);
     return $description;
+    */
+    $description = preg_replace('#<br />#', "<br>", htmlspecialchars_decode($this->description));
+    $description = preg_replace('#<strong>#', '<b>', $description);
+    $description = preg_replace('#</strong>#', '</b>', $description);
+    $description = preg_replace('#<em>#', '<i>', $description);
+    $description = preg_replace('#</em>#', '</i>', $description);
+    return htmlspecialchars_decode($description);
   }
   
   public function setPlace($place) {
@@ -157,6 +182,18 @@ class Activity {
   }
   public function place() {
     return $this->place;
+  }
+  
+  public function setImage($image) {
+    $img = new UploadImage($image);
+    $img->save(($this->created ? $this->id : 'temp') . '.jpg', Activity::$path_image);
+    $img->resize(175, 115);
+    $this->image = 1;
+    if (! $this->created)
+      $this->image_temp = $img->file();
+  }
+  public function image()  {
+    return $this->image;
   }
   
   public function setEmail($email) {
@@ -282,6 +319,12 @@ class Activity {
       $data = $query->fetch();
       $this->id = $data['id'];
       $query->closeCursor();
+      if ($this->image) {
+        $src = imagecreatefromjpeg($this->image_temp);
+        imagejpeg($src, dirname($this->image_temp). DIRECTORY_SEPARATOR .$this->id.'.jpg');
+        unlink(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. 'temp.jpg');
+        unset($this->image_temp);
+      }
       $this->created = true;
     }
   }
@@ -300,6 +343,9 @@ class Activity {
       $query = SQL::sql()->prepare('DELETE FROM fsc_referents WHERE activity = :activity');
       $query->execute(array('activity' => $this->id));
       $query->closeCursor();
+      // supression image
+      if ($this->image)
+        unlink(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg');
       // suppression activité
       $query = SQL::sql()->prepare('DELETE FROM fsc_activities WHERE id = :id');
       $query->execute(array('id' => $this->id));

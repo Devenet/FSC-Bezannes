@@ -50,9 +50,9 @@ class Display {
     return $months[$month-1];
   }
   
-  static public function Referent($type) {
-    $types = array('responsable', 'animateur');
-    return $types[$type];
+  static public function Referent($type, $gender = 0) {
+    $types = array('responsable', 'animateur', 'animatrice');
+    return $types[($type == 1 && $gender != 0 ? $type+1 : $type )];
   }
   
   static public function Transaction($type) {

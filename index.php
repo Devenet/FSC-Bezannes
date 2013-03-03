@@ -27,7 +27,7 @@ $footerMenu = new Menu();
   $footerMenu->addLink('Accueil', '/', 'home');
   $footerMenu->addLink('Contact', '/contact.html', 'envelope');
   $footerMenu->addLink('Mentions légales', '/mentions-legales.html', 'asterisk');
-  $footerMenu->addLink('Gestion', _ADMIN_, 'lock');
+  $footerMenu->addLink('Gestion', _GESTION_, 'lock');
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
@@ -94,7 +94,7 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     <!-- /menu -->
     
     <?php if (!$page->option('hide-breadcrumb')) : ?>
-    <div class="container hidden-desktop" id="breadcrumb">
+    <div class="container" id="breadcrumb">
       <?php echo $page->breadcrumb(); ?>
     </div>
     <?php endif; ?>

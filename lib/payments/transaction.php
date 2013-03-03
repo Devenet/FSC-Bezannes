@@ -94,7 +94,7 @@ class Transaction {
   }
   
   public function note() {
-    return $this->note;
+    return htmlspecialchars_decode($this->note);
   }
   public function setNote($string) {
     if ($string != null) {

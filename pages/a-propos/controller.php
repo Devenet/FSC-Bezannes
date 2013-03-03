@@ -19,12 +19,12 @@ $rel = null;
 if (isset($_GET['rel'])) {
   switch (htmlspecialchars($_GET['rel'])) {
     case 'vie-associative':
-      $page = new PageChild($page, 'La vie associative', '/a-propos/vie-associative.html');
+      $page = new PageChild($page, 'La vie associative', '/a-propos/vie-associative.html', true);
       $rel = 'asso';
       break;
     
     case 'documents':
-      $page = new PageChild($page, 'Documents', '/a-propos/documents.html');
+      $page = new PageChild($page, 'Documents', '/a-propos/documents.html', true);
       $rel = 'doc';
       break;
     
