@@ -22,7 +22,7 @@
   <div class="control-group">
     <label class="control-label" for="description"><i class="icon-book"></i> Description</label>
     <div class="controls">
-      <textarea name="description" id="description" rows="10" placeholder="Decsription de l’activité" class="input-xxlarge"><?php echo $form->input('description'); ?></textarea>
+      <textarea name="description" id="description" rows="10" placeholder="Description de l’activité" class="input-xxlarge"><?php echo $form->input('description'); ?></textarea>
     </div>
   </div>
   
