@@ -26,7 +26,7 @@
       <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : 'A'); ?></td>
       <td style="width: 80px;">
         <div class="btn-group">
-          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-edit"></i> 
+          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="/?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-edit"></i> 
           <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">

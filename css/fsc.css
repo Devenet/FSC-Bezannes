@@ -82,7 +82,9 @@ header h1,
  * content
  */
 
-
+.page-header h2 {
+  margin-bottom: 0;
+}
 
 /*
  * home
@@ -154,12 +156,12 @@ header h1,
     float: none;
   }
   header h1 {
-    font-size: 40px;
+    font-size: 40px !important;
     line-height: 1;
     margin-left: 0;
   }
   header h1 span.bezannes {
-    font-size: 35px;
+    font-size: 35px !important;
   }
   .carousel {
     margin-left: -20px;

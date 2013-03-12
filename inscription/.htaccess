@@ -1,0 +1,6 @@
+Options -Indexes
+
+RewriteEngine On
+# pages
+RewriteRule ^([a-z]+)((-([0-9]+))*).html$ /?page=$1&id=$4 [L]
+RewriteRule ^([a-z]+)((-([a-z]+))*).html$ /?page=$1&rel=$4 [L]

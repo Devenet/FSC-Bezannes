@@ -31,7 +31,8 @@ class PageChild extends Page {
     return $this->child_url;
   }
   
-  public function breadcrumb() {
+  public function breadcrumb($home = 'Accueil') {
+    $this->breadcrumb->changeNameLink(0, $home);
     return $this->breadcrumb->breadcrumb($this->child_url);
   }
   

@@ -18,12 +18,12 @@ class UserAdmin extends User {
   
   public function __construct($id = null) {
     if ($id != null) {
-      $query = SQL::sql()->prepare('SELECT login, email, name, privilege FROM fsc_users_admin WHERE id = ?');
+      $query = SQL::sql()->prepare('SELECT login, password, name, privilege FROM fsc_users_admin WHERE id = ?');
       $query->execute(array($id+0));
       $data = $query->fetch();
       $this->id = $id;
       $this->login = $data['login'];
-      $this->email = $data['email'];
+      $this->password = $data['password'];
       $this->name = $data['name'];
       $this->privilege = $data['privilege'];
       $query->closeCursor();
@@ -50,11 +50,15 @@ class UserAdmin extends User {
     return true;
   }
   
-  public static function getName($login) {
-    $query = SQL::sql()->prepare('SELECT name FROM fsc_users_admin WHERE login = ?');
-    $query->execute(array(htmlspecialchars($login)));
+  public function create() {
+    
+  }
+  
+  public function lastHistory() {
+    $query = SQL::sql()->prepare('SELECT id, date, ip FROM fsc_history_admin WHERE id_user_admin = ? ORDER BY date DESC');
+    $query->execute(array($this->id));
     $data = $query->fetch();
-    return $data['name'];
+    return $data;
   }
   
   public static function getID($login) {
@@ -65,18 +69,37 @@ class UserAdmin extends User {
   }
   
   public static function isAuthorizedUser($login, $pwd) {
-    $query = SQL::sql()->query('SELECT login, password FROM fsc_users_admin');
-    $logins = array();
-    $passwords = array();
-    while ($data = $query->fetch()) {
-      $logins[] = $data['login'];
-      $passwords[] = $data['password'];
-    }
+    if (! in_array(htmlspecialchars($login), self::getLogins())) return false;
+    $query = SQL::sql()->prepare('SELECT password FROM fsc_users_admin WHERE login = ?');
+    $query->execute(array(htmlspecialchars($login)));
+    $data = $query->fetch();
     $query->closeCursor();
-    return in_array(htmlspecialchars($login), $logins) && in_array(md5(htmlspecialchars($pwd)), $passwords);
+    return User::hash_password($pwd, htmlspecialchars($login)) == $data['password'];
   }
   
-  public static function history($user, $ip) {
+  public static function getUsers() {
+    $query = SQL::sql()->query('SELECT id, login, name, privilege FROM fsc_users_admin');
+    $users = array();
+    while ($data = $query->fetch()) {
+      $users[] = array(
+        'id' => $data['id'],
+        'login' => $data['login'],
+        'name' => $data['name'],
+        'privilege' => $data['privilege']
+      );
+    }
+    return $users;
+  }
+  
+  protected function getLogins() {
+    $query = SQL::sql()->query('SELECT login FROM fsc_users_admin');
+    $logins = array();
+    while ($data = $query->fetch())
+      $logins[] = $data['login'];
+    return $logins;
+  }
+  
+  public static function historize($user, $ip) {
     $query = SQL::sql()->prepare('INSERT INTO fsc_history_admin(id_user_admin, ip) VALUES(:user, :ip)');
     $query->execute(array(
       'user' => $user,
@@ -85,26 +108,14 @@ class UserAdmin extends User {
     $query->closeCursor();
   }
   public static function getHistory() {
-    $query = SQL::sql()->query('SELECT fsc_users_admin.name, fsc_users_admin.privilege, fsc_users_admin.email, date, ip FROM fsc_history_admin INNER JOIN fsc_users_admin ON fsc_users_admin.id = fsc_history_admin.id_user_admin ORDER BY fsc_history_admin.id DESC');
+    $query = SQL::sql()->query('SELECT fsc_users_admin.login, fsc_users_admin.name, fsc_users_admin.privilege, date, ip FROM fsc_history_admin INNER JOIN fsc_users_admin ON fsc_users_admin.id = fsc_history_admin.id_user_admin ORDER BY fsc_history_admin.id DESC');
     $return = array();
     while ($data = $query->fetch())
       $return[] = array(
+        'login' => $data['login'],
         'name' => $data['name'],
-        'email' => $data['email'],
         'date' => $data['date'],
         'privilege' => $data['privilege'],
-        'ip' => $data['ip']
-      );
-    $query->closeCursor();
-    return $return;
-  }
-  public static function getUserHistory($user) {
-    $query = SQL::sql()->prepare('SELECT date, ip FROM fsc_history_admin WHERE id_user_admin = ? ORDER BY id DESC');
-    $query->execute(array($user));
-    $return = array();
-    while ($data = $query->fetch())
-      $return[] = array(
-        'date' => $data['date'],
         'ip' => $data['ip']
       );
     $query->closeCursor();

@@ -7,7 +7,7 @@ use lib\content\Display;
     <div class="page-header">
       <h2 style="margin-bottom:0;"><?php echo $m->name(); ?>
       <div class="btn-group pull-right">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog"></i>
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="/?page=edit-member&amp;id=<?php echo $act->id(); ?>"><i class="icon-cog"></i>
         <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">

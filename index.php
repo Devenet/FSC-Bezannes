@@ -21,7 +21,7 @@ $mainMenu = new Menu();
   $mainMenu->addLink('Contact', '/contact.html', 'envelope');
 // Menu secondaire droite
 $rightMenu = new Menu();
-  $rightMenu->addLink('Feedback', 'mailto:nicolas+fsc@devenet.info', 'bullhorn');
+  $rightMenu->addLink('Préinscriptions', _INSCRIPTION_, 'list-alt');
 // Menu footer
 $footerMenu = new Menu();
   $footerMenu->addLink('Accueil', '/', 'home');
@@ -77,8 +77,7 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     <!-- menu -->
     <div class="navbar navbar-static-top clearfix" id="menu">
       <div class="navbar-inner">
-        <div class="container-fluid">
-          <!--<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>-->
+        <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -94,7 +93,7 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     <!-- /menu -->
     
     <?php if (!$page->option('hide-breadcrumb')) : ?>
-    <div class="container" id="breadcrumb">
+    <div class="container hidden-desktop" id="breadcrumb">
       <?php echo $page->breadcrumb(); ?>
     </div>
     <?php endif; ?>
@@ -113,7 +112,7 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
       <div class="container">
         <div class="clearfix">
           <ul class="nav nav-pills pull-right">
-            <li><a href="#"><i class="icon-arrow-up"></i> Remonter</a></li>
+            <li><a href="#menu"><i class="icon-arrow-up"></i> Remonter</a></li>
           </ul>
           <ul class="nav nav-pills pull-left">
             <?php echo $footerMenu->display(); ?>

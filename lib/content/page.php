@@ -10,6 +10,7 @@ class Page {
   protected $breadcrumb;
   private $search_engine;
   private $options;
+  private $parameters;
   
   public function __construct($name, $url, $breadcrumb) {
     $this->name = $name;
@@ -30,7 +31,8 @@ class Page {
     return $this->url;
   }
   
-  public function breadcrumb() {
+  public function breadcrumb($home = 'Accueil') {
+    $this->breadcrumb->changeNameLink(0, $home);
     return $this->breadcrumb->breadcrumb($this->url);
   }
   
@@ -64,10 +66,17 @@ class Page {
   public function addOption($option, $bool = true) {
     $this->options[$option] = $bool;
   }
-  
   public function option($option) {
     return isset($this->options[$option]) && $this->options[$option]; 
   }
+  
+  public function addParameter($param, $data) {
+    $this->parameters[$param] = $data;
+  }
+  public function parameter($param) {
+    return isset($this->parameters[$param]) ? $this->parameters[$param] : null;
+  }
+  
   
 }
 

@@ -25,7 +25,7 @@ $mainMenu = new Menu();
 	$mainMenu->addLink('Membres', '/?page=members', 'user');
 // Menu secondaire droite
 $rightMenu = new Menu();
-	$rightMenu->addLink('Feedback', 'mailto:nicolas+fsc@devenet.info', 'bullhorn');
+	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'share-alt', true, true);
 
 
 // Contenu de la page
@@ -72,17 +72,20 @@ $scripts = '';
 		<!-- menu -->
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
-				<div class="container-fluid">
-				<!--<a class="brand" href="/"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>-->
+				<div class="container">
 				<ul class="nav"><?php echo $mainMenu->display($page->url()); ?></ul>
-				<!-- user -->
+				<!-- settings -->
 				<ul class="nav pull-right">
 					<li class="divider-vertical"></li>
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $_SESSION['user_name']; ?>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="/?page=account"><?php echo $_SESSION['user']->name(); ?>
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="<?php echo _FSC_; ?>" target="_blank">FSC <i class="icon-share-alt"></i></a></li>
+						<li><a href="/?page=account"><i class="icon-user"></i> Mon compte</a></li>
+						<li class="divider"></li>
+						<li><a href="/?page=history"><i class="icon-list"></i> Historique</a></li>
+						<li><a href="/?page=settings"><i class="icon-cog"></i> Configuration</a></li>
+						<li><a href="mailto:nicolas+fsc@devenet.info" target="_blank"><i class="icon-bullhorn"></i> Feedback</a></li>
 						<li class="divider"></li>
 						<li><a href="/login.php?logout"><i class="icon-off"></i> Déconnexion</a></li>
 					</ul>
@@ -95,7 +98,7 @@ $scripts = '';
 		<!-- /menu -->
 		
 		<header class="container">
-			<?php echo $page->breadcrumb(); ?>
+			<?php echo $page->breadcrumb('Gestion'); ?>
 		</header>
 		
 		<!-- container -->

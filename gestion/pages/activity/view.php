@@ -3,18 +3,18 @@
     <div class="page-header">
       <h2 style="margin-bottom:0;"><?php echo $act->name(); ?>
       <div class="btn-group pull-right">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-cog"></i>
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="/?page=edit-activity&amp;id=<?php echo $act->id(); ?>"><i class="icon-cog"></i>
         <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
           <li><a href="/?page=edit-activity&amp;id=<?php echo $act->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
           <li class="divider"></li>
           <li class="dropdown-submenu">
-            <a tabindex="-1" href="#"><i class="icon-plus"></i> Ajouter</a>
+            <a tabindex="-1" href=""><i class="icon-plus"></i> Ajouter</a>
             <ul class="dropdown-menu">
               <li><a href="/?page=new-schedule&amp;activity=<?php echo $act->id(); ?>"><i class="icon-time"></i> Horaire</a></li>
               <li><a href="/?page=new-referent&amp;activity=<?php echo $act->id(); ?>"><i class="icon-lock"></i> Référent</a></li>
-              <?php if ($act->active()) echo '<li><a href="/?page=new-participant&amp;activity=<?php echo $act->id(); ?>"><i class="icon-user"></i> Participant</a></li>'; ?>
+              <?php if ($act->active()) echo '<li><a href="/?page=new-participant&amp;activity='. $act->id() .'"><i class="icon-user"></i> Participant</a></li>'; ?>
             </ul>
           </li>
           <li class="divider"></li>

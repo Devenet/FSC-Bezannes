@@ -15,8 +15,7 @@ require '../config/config.php';
 if (isset($_GET['logout'])) {
 	$_SESSION['authentificated'] = false;
 	unset($_SESSION['authentificated']);
-	unset($_SESSION['user_name']);
-	unset($_SESSION['user_privilege']);
+	unset($_SESSION['user']);
 	$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
 	header('Location: /login.php');
 	exit;
@@ -28,17 +27,15 @@ elseif (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd'])) {
 	$path = isset($_GET['path']) ? htmlspecialchars($_GET['path']) : '';
 	if (UserAdmin::isAuthorizedUser($_POST['user'], $_POST['pwd'])) {
-		$user = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
-		$_SESSION['user_name'] = $user->name();
-		$_SESSION['user_privilege'] = $user->privilege();
+		$_SESSION['user'] = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
 		//if ($user->privilege() < 9)
-			UserAdmin::history($user->id(), $_SERVER['REMOTE_ADDR']);
+			UserAdmin::historize($_SESSION['user']->id(), $_SERVER['REMOTE_ADDR']);
 		$_SESSION['authentificated'] = true;
 		header('Location: /'. $path);
 		exit;
 	}
 	else {
-		$_SESSION['msg'] = new Message('Mauvais utilisateur et/ou mot de passe', -1, 'Oups... !');
+		$_SESSION['msg'] = new Message('Identifiants incorrects', -1, 'Oups... !');
 		header('Location: /login.php?path='. $path);
 		exit;
 	}
@@ -50,7 +47,7 @@ else {
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<title>Connexion &ndash; Administration &ndash; FSC Bezannes</title>
+		<title>Connexion &ndash; Gestion &ndash; FSC Bezannes</title>
 		<meta name="author" content="FSC Bezannes" />
 		<link rel="canonical" href="/" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
@@ -58,7 +55,7 @@ else {
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 		<style type="text/css">
-      body {
+			body {
         background-color: #f5f5f5;
       }
 			.alert {
@@ -92,7 +89,10 @@ else {
 			.form-signin .btn {
 				margin-top: 10px;
 			}
-    </style>
+			label {
+				font-size: 16px;
+			}
+			</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
 	</head>

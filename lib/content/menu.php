@@ -9,15 +9,15 @@ class Menu {
     
   }
   
-  public function addLink($name, $url, $icon = '', $separator = false) {
-    $this->links[] = array('name' => $name, 'url' => $url, 'icon' => $icon, 'separator' => $separator);
+  public function addLink($name, $url, $icon = '', $external = false, $right = false, $separator = false) {
+    $this->links[] = array('name' => $name, 'url' => $url, 'icon' => $icon, 'external' => $external, 'right' => $right, 'separator' => $separator);
   }
   
   public function display($current = null, $white = false) {
     $return = '';
     $white = $white ? ' icon-white' : null;
     foreach($this->links as $link)
-      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : null) .'<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'">'. ($link['icon'] != null ? '<i class="icon-'. $link['icon'] . $white .'"></i> ' : null) . $link['name'] .'</a></li>';
+      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : null) .'<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'"'. ($link['external'] ? ' target="_blank"' : null) .'>'. ($link['icon'] != null && !$link['right'] ? '<i class="icon-'. $link['icon'] . $white .'"></i> ' : null) . $link['name'] . ($link['icon'] != null && $link['right'] ? ' <i class="icon-'. $link['icon'] . $white .'"></i>' : null) .'</a></li>';
     return $return;
   }
   public function displayWhite($current) {
@@ -38,6 +38,10 @@ class Menu {
   
   public function links() {
     return $this->links;
+  }
+  
+  public function changeNameLink($position, $name) {
+    $this->links[$position]['name'] = $name;
   }
   
 }

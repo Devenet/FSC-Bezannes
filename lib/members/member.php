@@ -267,8 +267,7 @@ class Member {
       $this->email = strtolower(htmlspecialchars($email));
       return true;
     }
-    else
-      return false;
+    return false;
   }
   
   public function phone() {

@@ -84,6 +84,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
     
   }
 }
+// choix d'un participant pour une activité
 elseif (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   $a = new Activity($_GET['activity']+0);
 
@@ -120,7 +121,7 @@ elseif (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
         
         $m = new Member($p->adherent());
         $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> est maintenant inscrit à l’activité :)', 1, 'Ajout réussi !');
-        header ('Location: /?page=activity&id='. $a->id());
+        header ('Location: /?page=activity&id='. $a->id().'#participants');
         exit();
       }
       
