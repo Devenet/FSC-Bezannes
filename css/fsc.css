@@ -62,8 +62,11 @@ header h1 span {
 footer {
   margin-bottom: 20px;
 }
-footer .colophon p {
-  
+footer .colophon p { 
+}
+footer .social a {
+  margin-right: 10px;
+  text-decoration: none;
 }
 
 /*
@@ -71,11 +74,14 @@ footer .colophon p {
  */
 header h1, 
 .page-header h2,
-.h3-imprima h3,
-.page-home h2,
 .page-home .carousel h4 {
   font-family: Imprima, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
+}
+
+.page-home h2,
+.h3-imprima h3 {
+  font-weight: normal;
 }
 
 /*
@@ -111,7 +117,10 @@ header h1,
 /*
  * a-propos
  */
-
+.page-a-propos .nav-a-propos {
+  margin-top: -10px;
+  margin-bottom: 50px;
+}
 
 /*
  * activites

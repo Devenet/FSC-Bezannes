@@ -40,7 +40,7 @@ if (isset($_GET['url']) && Activity::isActiveActivityURL($_GET['url'])) {
     $display_referents .= '<li>Responsable' . ($count_referents_respo > 1 ? 's' : '') . ' <ul>'; 
     foreach (Referent::ReferentsByType($act->id()) as $r) {
       $m = new Member($r->member());
-      $display_referents .= '<li>'. $m->name() . ($r->display_phone() ? ' <abbr title="Vous pouvez contacter '. $m->name() .' au '. Display::Phone($m->phone()) .'"><i class="icon-info-sign"></i></abbr>' : '') .'</li>';
+      $display_referents .= '<li>'. $m->name() . ($r->display_phone() ? ' <br />('. Display::Phone($m->phone()) .')' : '') .'</li>';
     }
     $display_referents .= '</ul></li>';
   }
@@ -48,7 +48,7 @@ if (isset($_GET['url']) && Activity::isActiveActivityURL($_GET['url'])) {
     $display_referents .= '<li>Animateur' . ($count_referents_anim > 1 ? 's' : '') . ' <ul>'; 
     foreach (Referent::ReferentsByType($act->id(), 1) as $r) {
       $m = new Member($r->member());
-      $display_referents .= '<li>'. $m->name() . ($r->display_phone() ? ' ('. Display::Phone($m->phone()) .')' : '') .'</li>';
+      $display_referents .= '<li>'. $m->name() . ($r->display_phone() ? ' <br />('. Display::Phone($m->phone()) .')' : '') .'</li>';
     }
     $display_referents .= '</ul></li>';
   }

@@ -24,6 +24,10 @@ if (isset($_GET['rel']) && $_GET['rel'] == 'first') {
   $page->addOption('bar');
   $page->addParameter('bar', 'danger');
 }
+elseif (isset($_GET['rel'])) {
+  header ('Location: /login.html');
+  exit;
+}
 
 $form = new Form('login', '/login'. (isset($_GET['rel']) && $_GET['rel'] == 'first' ? '-first' : null) .'.html', 'Connexion');
 $inputs = array(
@@ -43,7 +47,7 @@ if (isset($_POST['login']) && isset($_POST['password'])) {
     exit;
   }
   else {
-   	$_SESSION['msg'] = new Message('Mot de passe oublié ? <a href="/recover-password.html">Réninitialisez-le</a> !', -1, 'Oups... Identifiants incorrects');
+   	$_SESSION['msg'] = new Message('Mot de passe oublié ? <a href="/recover-password.html">Réinitialisez-le</a> !', -1, 'Oups... Identifiants incorrects');
   }
 }
 

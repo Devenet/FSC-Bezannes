@@ -30,14 +30,18 @@ class UserAdmin extends User {
       $this->created = true;
     }
     else
-      $created = false;
+      $this->created = false;
   }
   
   public function name() {
     return $this->name;
   }
   public function setName($string) {
-    $this->name = htmlspecialchars($string);
+    if ($string != null) {
+      $this->name = htmlspecialchars($string);
+      return true;
+    }
+    return false;
   }
   
   public function privilege() {
@@ -51,11 +55,39 @@ class UserAdmin extends User {
   }
   
   public function create() {
-    
+    if (! $this->created) {
+      $query = SQL::sql()->prepare('INSERT INTO fsc_users_admin(login, password, name, privilege) VALUES(:login, :password, :name, :privilege)');
+      $prepare = array(
+        'login' => addslashes($this->login),
+        'password' => $this->password,
+        'name' => addslashes($this->name),
+        'privilege' => $this->privilege
+        );
+      $rep = $query->execute($prepare);
+      $query->closeCursor();
+      $query = SQL::sql()->prepare('SELECT id FROM fsc_users_admin WHERE login = ?');
+      $query->execute(array($this->login));
+      $data = $query->fetch();
+      $this->id = $data['id'];
+      $query->closeCursor();
+      $this->created = true;
+      return true;
+    }
+    return false;
+  }
+
+  public function delete($bool = false) {
+    if ($bool && $this->created) {
+      $query = SQL::sql()->prepare('DELETE FROM fsc_users_admin WHERE id = :id');
+      $query->execute(array('id' => $this->id));
+      $query->closeCursor();
+      return true;
+    }
+    return false;
   }
   
   public function lastHistory() {
-    $query = SQL::sql()->prepare('SELECT id, date, ip FROM fsc_history_admin WHERE id_user_admin = ? ORDER BY date DESC');
+    $query = SQL::sql()->prepare('SELECT id, date, ip FROM fsc_history_admin WHERE id_user_admin = ? ORDER BY date DESC LIMIT 1,2');
     $query->execute(array($this->id));
     $data = $query->fetch();
     return $data;
@@ -75,6 +107,9 @@ class UserAdmin extends User {
     $data = $query->fetch();
     $query->closeCursor();
     return User::hash_password($pwd, htmlspecialchars($login)) == $data['password'];
+  }
+  public static function isUser($login) {
+    return in_array(htmlspecialchars($login), UserAdmin::getLogins());
   }
   
   public static function getUsers() {

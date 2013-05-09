@@ -46,6 +46,7 @@ abstract class User {
   public abstract function create();
   //public abstract static function getID($login);
   //public abstract static function isAuthorizedUser($login, $pwd);
+  //public abstract static function isUser($login);
   
 }
 

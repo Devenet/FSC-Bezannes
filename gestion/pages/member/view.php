@@ -7,7 +7,7 @@ use lib\content\Display;
     <div class="page-header">
       <h2 style="margin-bottom:0;"><?php echo $m->name(); ?>
       <div class="btn-group pull-right">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="/?page=edit-member&amp;id=<?php echo $act->id(); ?>"><i class="icon-cog"></i>
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>"><i class="icon-cog"></i>
         <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
@@ -94,16 +94,16 @@ use lib\content\Display;
           <div class="span3 offset1">
             <h4>Contact</h4>
             <p>
-              Tél. : <?php echo Display::Phone($m->phone()); ?>
-              <?php echo ($m->mobile() != null ? '<br />Tél. : '. Display::Phone($m->mobile()) : null); ?>
+              <i class="icon-phone"></i> <?php echo Display::Phone($m->phone()); ?>
+              <?php echo ($m->mobile() != null ? '<br /><i class="icon-phone"></i> '. Display::Phone($m->mobile()) : null); ?>
             </p>
             <p><i class="icon-envelope"></i> <?php echo Display::Email($m->email()); ?></p>
             
             <?php if ($m->minor()): ?>
             <h4>Responsable</h4>
             <p>
-              Tél. : <?php echo Display::Phone($r->phone()); ?>
-              <?php echo ($r->mobile() != null ? '<br />Tél. : '. Display::Phone($r->mobile()) : null); ?>
+              <i class="icon-phone"></i> <?php echo Display::Phone($r->phone()); ?>
+              <?php echo ($r->mobile() != null ? '<br /><i class="icon-phone"></i> '. Display::Phone($r->mobile()) : null); ?>
             </p>
             <p><i class="icon-envelope"></i> <?php echo Display::Email($r->email()); ?></p>
             <?php endif; ?>

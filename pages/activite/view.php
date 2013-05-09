@@ -11,7 +11,7 @@
         if ($act->email() != null)
           echo '<li><i class="icon-envelope"></i> <a href="mailto:', $act->email(), '" title="', $act->email() , '">Courriel</a></li>';
         if ($act->website() != null)
-          echo '<li><i class="icon-globe"></i> <a href="http://', $act->website(), '" title="', $act->website() , '" target="_blank">Site web</a></li>';
+          echo '<li><i class="icon-globe"></i> <a href="http://', $act->website(), '" title="', $act->website() , '" rel="external">Site web</a></li>';
       ?>
     </ul>
     
@@ -34,7 +34,7 @@
     </div>
     
     <div style="padding:10px 12px 0; border:1px solid #dedede; border-radius:3px;">
-      <p><i class="icon-user"></i> Contact</p>
+      <!--<p><i class="icon-user"></i> Contact</p>-->
       <?php echo $display_referents; ?>
     </div>
   </div>

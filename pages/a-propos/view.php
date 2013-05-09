@@ -2,7 +2,7 @@
   <h2><?php echo $page->name(); ?></h2>
 </div>
 
-<ul class="nav nav-pills espace-bottom">
+<ul class="nav nav-pills nav-a-propos">
   <?php echo $pageMenu->display($page->url()); ?>
 </ul>
 
@@ -59,13 +59,6 @@ case 'doc':
 -->
 
 <?php
-  
-  $jquery = "<script>
-    $('a[rel=\"external\"]').click(function() {
-			window.open($(this).attr('href'));
-			return false;
-		});
-  </script>";
   break;
   
 case 'asso':
@@ -212,7 +205,7 @@ default:
     
 <div class="row">
   <div class="span3 center espace-bottom">
-    <img src="/uploads/a-propos/logo-fsc.png" class="img-polaroid"/>
+    <img src="<?php echo _DATA_; ?>/a-propos/logo-fsc.png" class="img-polaroid"/>
   </div>
   <div class="span8">
     <p class="lead">Le Foyer Social et Culturel de Bezannes est une association loi 1901 qui a pour but le développement et l’épanouissement culturel de ses adhérents en favorisant la mise en oeuvre d’activités éducatives, récréatives et sportives.</p>

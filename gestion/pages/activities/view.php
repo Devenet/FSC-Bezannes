@@ -2,28 +2,30 @@
   <a href="/?page=new-activity" class="btn btn-primary"><i class="icon-plus icon-white"></i> Ajouter</a>
 </div>
 
+<div class="clearfix">&nbsp;</div>
+
 <table class="table table-striped">
   <thead>
     <tr>
       <th>#</th>
-      <th>Activité <a href="/?page=activities&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
-      <th>Activée <a href="/?page=activities&amp;sort=active-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'active-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
-      <th>Tarif <a href="/?page=activities&amp;sort=price-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'price-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
+      <th><a href="/?page=activities&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Activité</th>
+      <th><a href="/?page=activities&amp;sort=active-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'active-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Activée</th>
+      <th><a href="/?page=activities&amp;sort=price-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'price-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Tarif</th>
       <th>Tarif jeune</th>
       <th> </th>
     </tr>
   </thead>
   <tbody>
     <?php foreach ($activities as $act): ?>
-    <tr>
-      <td <?php echo $act->active() == 0 ? 'class="muted"' : null; ?>><?php echo $act->id(); ?></td>
+    <tr <?php echo $act->active() == 0 ? 'class="muted"' : null; ?>>
+      <td><?php echo $act->id(); ?></td>
       <td><a href="/?page=activity&amp;id=<?php echo $act->id(); ?>"><?php echo $act->name(); ?></a></td>
-      <td><?php echo ($act->active() == 1) ? '<a href="'. _FSC_ .'/?page=activite&amp;id='. $act->id() .'" target="_blank"><i class="icon-ok"></i></a>' : '<i class="icon-ban-circle"></i>' ; ?></td>
+      <td><?php echo ($act->active() == 1) ? '<i class="icon-ok"></i>' : '' ; ?></td>
       <td><?php echo $act->price(); ?> €</td>
       <td><?php echo ($act->price_young() == -1) ? '&ndash;' : $act->price_young() .' €'; ?></td>
       <td style="width: 80px;">
         <div class="btn-group">
-          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-edit"></i> 
+          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-cog"></i> 
           <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">

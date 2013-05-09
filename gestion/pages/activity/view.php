@@ -13,7 +13,7 @@
             <a tabindex="-1" href=""><i class="icon-plus"></i> Ajouter</a>
             <ul class="dropdown-menu">
               <li><a href="/?page=new-schedule&amp;activity=<?php echo $act->id(); ?>"><i class="icon-time"></i> Horaire</a></li>
-              <li><a href="/?page=new-referent&amp;activity=<?php echo $act->id(); ?>"><i class="icon-lock"></i> Référent</a></li>
+              <li><a href="/?page=new-referent&amp;activity=<?php echo $act->id(); ?>"><i class="icon-legal"></i> Référent</a></li>
               <?php if ($act->active()) echo '<li><a href="/?page=new-participant&amp;activity='. $act->id() .'"><i class="icon-user"></i> Participant</a></li>'; ?>
             </ul>
           </li>
@@ -28,8 +28,8 @@
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab-description" id="link-tab-description" data-toggle="tab"><i class="icon-book"></i> Description</a></li>
         <li><a href="#tab-schedules" id="link-tab-schedules" data-toggle="tab"><i class="icon-time"></i> Horaires</a></li>
-        <li><a href="#tab-referents" id="link-tab-referents" data-toggle="tab"><i class="icon-lock"></i> Référents</a></li>
-        <?php echo $act->active() ? '<li class="pull-right"><a href="#tab-participants" id="link-tab-participants" data-toggle="tab"><i class="icon-user"></i> Participants <span class="label label-info">'.$count_participants.'</span></a></li>' : null; ?>
+        <li><a href="#tab-referents" id="link-tab-referents" data-toggle="tab"><i class="icon-legal"></i> Référents</a></li>
+        <?php echo $act->active() ? '<li class="pull-right"><a href="#tab-participants" id="link-tab-participants" data-toggle="tab"><i class="icon-group"></i> Participants <span class="label label-info">'.$count_participants.'</span></a></li>' : null; ?>
       </ul>
       
       <div class="tab-content">
@@ -86,10 +86,8 @@
     </div>
     
     <div class="alert <?php echo ($act->active() == 1 ? 'alert-success' : ''); ?>">
-      Activité <strong><?php echo ($act->active() == 1) ? 'activée</strong> [<a href="'. _FSC_ .'/activite/'. $act->url() .'.html" target="_blank">voir</a>]' : 'désactivée</strong>' ; ?>
-      <div class="close" style="margin-top:5px;">
-        <a href="?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=status"><i class="icon-refresh"></i></a>
-      </div>
+      Activité <strong><?php echo ($act->active() == 1) ? 'activée</strong> [<a href="'. _FSC_ .'/activite/'. $act->url() .'.html" target="_blank">voir</a>]' : 'désactivée</strong>' ; ?> 
+      <a href="?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=status" class="pull-right" style="margin-right:-15px; color:#aaa;"><i class="icon-refresh"></i></a>
     </div>    
     
     <div class="alert alert-info">

@@ -63,7 +63,7 @@
         <div class="fileupload-new thumbnail" style="width: 175px; height: 115px;"><img src="<?php if (isset($act) && $act->image()) echo _DATA_.'/activities/'.$act->id().'.jpg'; else echo _FSC_.'/img/no-image.jpg'; ?>" /></div>
         <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 175px; max-height: 115px; line-height: 20px;"></div>
         <div>
-          <span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Modifier</span><input type="file" name="image"/></span>
+          <span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Modifier</span><input type="file" name="image" id="image" /></span>
           <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Supprimer</a>
         </div>
       </div>

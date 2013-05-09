@@ -21,19 +21,19 @@ $mainMenu = new Menu();
   $mainMenu->addLink('Contact', '/contact.html', 'envelope');
 // Menu secondaire droite
 $rightMenu = new Menu();
-  $rightMenu->addLink('Préinscriptions', _INSCRIPTION_, 'list-alt');
+  $rightMenu->addLink('Préinscriptions', _INSCRIPTION_, 'bookmark', false, false);
 // Menu footer
 $footerMenu = new Menu();
   $footerMenu->addLink('Accueil', '/', 'home');
   $footerMenu->addLink('Contact', '/contact.html', 'envelope');
-  $footerMenu->addLink('Mentions légales', '/mentions-legales.html', 'asterisk');
-  $footerMenu->addLink('Gestion', _GESTION_, 'lock');
+  $footerMenu->addLink('Mentions légales', '/mentions-legales.html', 'legal');
+  $footerMenu->addLink('', _GESTION_, 'lock', true);
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
 $_GET['page'] = htmlspecialchars($_GET['page']);
-str_replace("\0", '', $_GET['page']);
-str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
+$_GET['page'] = str_replace("\0", '', $_GET['page']);
+$_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
 $controller = 'pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : 'pages/errors/404/controller.php';
@@ -59,6 +59,10 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     <link rel="icon" type="image/png" href="/img/favicon.png" />
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+    <![endif]-->
     <link href="/css/fsc.css" rel="stylesheet" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
@@ -92,11 +96,13 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     </div>
     <!-- /menu -->
     
+    <!--
     <?php if (!$page->option('hide-breadcrumb')) : ?>
     <div class="container hidden-desktop" id="breadcrumb">
       <?php echo $page->breadcrumb(); ?>
     </div>
     <?php endif; ?>
+    -->
     
     <!-- content -->
     <?php
@@ -112,7 +118,7 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
       <div class="container">
         <div class="clearfix">
           <ul class="nav nav-pills pull-right">
-            <li><a href="#menu"><i class="icon-arrow-up"></i> Remonter</a></li>
+            <li><a href="#" id="go_home_you_are_drunk"><i class="icon-arrow-up"></i> Remonter</a></li>
           </ul>
           <ul class="nav nav-pills pull-left">
             <?php echo $footerMenu->display(); ?>
@@ -120,11 +126,19 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
         </div>
         
         <div class="clearfix">
-          <p class="pull-left">&copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes</p>
+          <p class="pull-left">
+            &copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes
+            <br /><small>Developped with love by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a></small>
+          </p>
           <!--<ul class="inline pull-right">
             <li><a href="#" title="Site valide HTML5"><img src="/img/badge-html5.png" alt="HTML5" /></a></li>
             <li><a href="https://nicolabricot.com" title="Site adapté par nicolabricot"><img src="//nicolabricot.com/favicon.png" alt="nicolabricot" /></a></li>
           </ul>-->
+          <p class="pull-right social">
+            <a href=""><i class="icon-facebook-sign"></i></a> 
+            <a href=""><i class="icon-twitter"></i></a> 
+            <a href=""><i class="icon-google-plus"></i></a>
+          </p>
         </div>
       </div>
     </footer>
@@ -132,6 +146,7 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     
     <script src="<?php echo _JQUERY_; ?>"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/fsc.js"></script>
     <?php
       // echo (!$page->option('hide-anchor-menu') ? '<script>$(document).ready(function() { document.location.href = "#menu"; }); </script>' : null);
       echo isset($jquery) ? $jquery : null;

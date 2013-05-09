@@ -4,6 +4,7 @@ use lib\content\Page;
 use lib\content\Form;
 use lib\content\Message;
 use lib\users\UserInscription;
+use lib\mail\Mail;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   header ('Location: /');
@@ -54,6 +55,16 @@ if (isset($_POST) and $_POST != null) {
     
     unset($_SESSION['captcha']);
     $u->create();
+
+    $body = 'Bonjour, 
+
+Ceci est un email automatique pour vous confirmer la création de votre compte sur le site de Préinscriptions du Foyer Social et Culturel de Bezannes. 
+
+Voici un petit rappel des informations utiles : 
+• Votre identifiant : '. $u->login() .'
+• Votre mot de passe : celui défini lors de l’inscription 
+• Page de connexion : '. _INSCRIPTION_ .'/login.html';
+    Mail::text($u->email(), 'Votre compte – Préinscriptions', $body);
     
     $_SESSION['msg'] = new Message('Vous pouvez maintenant vous connecter avec vos identifiants.', 1, 'Votre compte a bien été créé !');
     header ('Location: /login-first.html');

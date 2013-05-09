@@ -24,7 +24,7 @@ class PageChild extends Page {
   
   
   public function name() {
-    return ($this->display_parent_name ? $this->name : $this->child_name);
+    return ($this->display_parent_name ? $this->name . ' &rsaquo; ' . $this->child_name : $this->child_name);
   }
   
   public function url() {

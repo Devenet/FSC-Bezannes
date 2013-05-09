@@ -2,15 +2,17 @@
   <a href="/?page=new-member" class="btn btn-primary"><i class="icon-plus icon-white"></i> Ajouter</a>
 </div>
 
+<div class="clearfix">&nbsp;</div>
+
 <table class="table table-striped">
   <thead>
     <tr class="small">
       <th>#</th>
-      <th>Nom <a href="/?page=members&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
+      <th><a href="/?page=members&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Nom</th>
       <th>Prénom</th>
-      <th style="width:110px; text-align:center;">Adhérent <a href="/?page=members&amp;sort=adherent-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adherent-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
-      <th style="width:110px; text-align:center;">Bezannais <a href="/?page=members&amp;sort=bezannais-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'bezannais-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
-      <th style="width:110px; text-align:center;">Catégorie <a href="/?page=members&amp;sort=adult-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adult-asc' ? 'desc' : 'asc'; ?>"><i class="icon-filter"></i></a></th>
+      <th style="width:110px; text-align:center;"><a href="/?page=members&amp;sort=adherent-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adherent-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Adhérent</th>
+      <th style="width:110px; text-align:center;"><a href="/?page=members&amp;sort=bezannais-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'bezannais-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Bezannais</th>
+      <th style="width:110px; text-align:center;"><a href="/?page=members&amp;sort=adult-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adult-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Catégorie</th>
       <th></th>
       <th> </th>
     </tr>
@@ -21,12 +23,12 @@
       <td<?php echo $m->adherent() == 0 ? ' class="muted"' : null; ?>><?php echo $m->id(); ?></td>
       <td><a href="/?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->last_name(); ?></a></td>
       <td><a href="/?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->first_name(); ?></a></td>
-      <td style="width:110px; text-align:center;"><i class="<?php echo ($m->adherent() ? 'icon-ok' : 'icon-ban-circle'); ?>"></i></td>
-      <td style="width:110px; text-align:center;"><?php echo ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;' ); ?></td>
+      <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->adherent() ? 'ok' : ''); ?>"></i></td>
+      <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->bezannais() ? 'ok' : ''); ?>"></i></td>
       <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : 'A'); ?></td>
       <td style="width: 80px;">
         <div class="btn-group">
-          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="/?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-edit"></i> 
+          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="/?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-cog"></i> 
           <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">

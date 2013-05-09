@@ -13,12 +13,10 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
   
-  $page->addOption('steps');
-  $page->addParameter('step', 3);
-  $page->addParameter('step-width', 15);
-  $page->addOption('bar');
-  $page->addParameter('bar', 'danger');
-  
+  $u = $_SESSION['user'];
+
+//  $view = isset($_GET['rel']) ? htmlspecialchars($_GET['rel']) : home;
+
   
 }
 else {

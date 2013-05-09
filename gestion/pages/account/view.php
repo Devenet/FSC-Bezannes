@@ -7,7 +7,7 @@
       <dt>Identifiant</dt>
       <dd><?php echo $u->login() ?></dd>
       <dt>Mot de passe</dt>
-      <dd><a href="#change-password" role="button" data-toggle="modal"">modifier</a></dd>
+      <dd><a href="#change-password" role="button" data-toggle="modal">modifier</a></dd>
       <dt>Privilège</dt>
       <dd><?php echo $display_privilege; ?></dd>
       <dt>Dernière connexion</dt>
@@ -16,7 +16,8 @@
   </div>
   
   <div class="span7">
-    <h3>Utilisateurs</h3>
+    <h3>Utilisateurs <span class="pull-right" style="font-weight:normal;"><a href="/?page=users&amp;action=new" class="btn btn-small btn-primary"><i class="icon-plus icon-white"></i> Ajouter</a></span></h3>
+    <div class="clearfix">&nbsp;</div>
     <table class="table table-striped table-hover">
       <thead>
         <tr>
@@ -68,6 +69,10 @@
   </form>
   </div>
 </div>
+
+<?php
+  echo $display_users_confirm;
+?>
 
 <style>
   dl dt, dl dd {

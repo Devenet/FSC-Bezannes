@@ -49,10 +49,32 @@ foreach(UserAdmin::getUsers() as $data) {
         <tr>
           <td>'. $data['id'] .'</td>
           <td>'. $data['name'] .'</td>
-          <td>'. ucfirst(Display::Privilege($data['privilege'])) .'</td>
-          <td class="center"><span class="btn-group"><a href="mailto:'. $data['login'] .'" target="_blank" class="btn btn-small"><i class="icon-envelope"></i></a> <a href="/?page=account&amp;action=del&amp;id='. $data['id'] .'" class="btn btn-small"><i class="icon-trash"></i></a></span></td>
+          <td>'. ucfirst(Display::FrenchPrivilege($data['privilege'])) .'</td>
+          <td class="center"><span class="btn-group"><a href="mailto:'. $data['login'] .'" target="_blank" class="btn btn-small"><i class="icon-envelope"></i></a> <!--<a href="/?page=users&amp;action=block&amp;login='. $data['login'] .'" class="btn btn-small"><i class="icon-ban-circle"></i></a>--> <a href="#confirmBox'. $data['id'] .'" class="btn btn-small" role="button" data-toggle="modal"><i class="icon-trash"></i></a></span></td>
         </tr>
   ';
 }
+
+// affichage confirmation suppression
+$display_users_confirm = '';
+foreach (UserAdmin::getUsers() as $data) {
+  $display_users_confirm .= '
+    <div id="confirmBox'. $data['id'] .'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="confirmSuppression" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>'. $data['name'] .'</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-error">Êtes-vous bien sûr de vouloir supprimer cet utilisateur ?</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+        <a class="btn btn-danger" href="/?page=users&amp;action=delete&amp;login='. $data['login'] .'">Supprimer</a>
+      </div>
+    </div>
+  ';
+}
+
+
 
 ?>

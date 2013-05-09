@@ -164,7 +164,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
           <td>'. $r->id() .'</td>
           <td><a href="/?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
           <td>'. ucfirst(Display::Referent($r->type(), $m->gender())) .'</td>
-          <td style="text-align:center;">'. ($r->display_phone() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
+          <td style="text-align:center;">'. ($r->display_phone() ? '<i class="icon-phone"></i>' : '') .'</td>
           <td><a href="#confirmBoxR'. $r->id() .'"  role="button" data-toggle="modal"><i class="icon-trash"></i></a></td>
         </tr>
       ';
@@ -208,7 +208,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
           <tr>
             <td>'. $p->id() .'</td>
             <td><a href="/?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
-            <td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;') .'</td>
+            <td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
             <td style="text-align:center;">'. ($m->minor() ? 'e' : 'A') .'</td>
           </tr>
         ';

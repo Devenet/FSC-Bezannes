@@ -1,7 +1,7 @@
-@import url(http://fonts.googleapis.com/css?family=Imprima);
+@import url(http://fonts.googleapis.com/css?family=Imprima|Open+Sans:400,600);
 
 /*
- * font: Imprima
+ * fonts
  */
 .imprima,
 .navbar .brand,
@@ -9,6 +9,14 @@
   font-family: Imprima, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
+
+body {
+  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*
+ * common
+ */
 .fsc-blue {
   color: #29A1C1;
 }

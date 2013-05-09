@@ -1,5 +1,9 @@
 Options -Indexes
 
+<FilesMatch "\.(ttf|otf|eot|woff)$">
+  Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
 RewriteEngine On
 # pages
 RewriteRule ^([a-z-]+).html$ /?page=$1 [L]

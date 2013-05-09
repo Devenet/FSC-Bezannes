@@ -10,8 +10,8 @@
 						+ "</li>",
 		"lists": 	"<li>" 
 						+ "<div class='btn-group'>" 
-					    	+ "<a class='btn' data-wysihtml5-command='insertUnorderedList' title='Liste non ordonnée'><i class='icon-list'></i></a>" 
-						    + "<a class='btn' data-wysihtml5-command='insertOrderedList' title='Liste ordonnée'><i class='icon-th-list'></i></a>" 
+					    	+ "<a class='btn' data-wysihtml5-command='insertUnorderedList' title='Liste non ordonnée'><i class='icon-list-ul'></i></a>" 
+						    + "<a class='btn' data-wysihtml5-command='insertOrderedList' title='Liste ordonnée'><i class='icon-list-ol'></i></a>" 
 						    //+ "<a class='btn' data-wysihtml5-command='Outdent' title='Diminuer le retrait'><i class='icon-indent-right'></i></a>"  							    
 						    //+ "<a class='btn' data-wysihtml5-command='Indent' title='Augmenter le retrait'><i class='icon-indent-left'></i></a>" 
 						+ "</div>" 

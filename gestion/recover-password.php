@@ -3,6 +3,9 @@
 namespace lib;
 use lib\content\Message;
 use lib\users\UserAdmin;
+use lib\users\RecoverPassword;
+
+error_reporting(E_ERROR);
 
 set_include_path('../');
 spl_autoload_extensions('.php');
@@ -12,43 +15,62 @@ session_start();
 
 require '../config/config.php';
 
-if (isset($_GET['logout'])) {
-	$_SESSION['authentificated'] = false;
-	unset($_SESSION['authentificated']);
-	unset($_SESSION['user']);
-  //unset($_SESSION['to_ban']);
-	$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
-	header('Location: /login.php');
-	exit;
-}
-elseif (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
+if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 	header('Location: /');
 	exit;
 }
-elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd'])) {
-	$path = isset($_GET['path']) ? htmlspecialchars($_GET['path']) : '';
-	if (UserAdmin::isAuthorizedUser($_POST['user'], $_POST['pwd'])) {
-		$_SESSION['user'] = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
-		//if ($user->privilege() < 9)
-			UserAdmin::historize($_SESSION['user']->id(), $_SERVER['REMOTE_ADDR']);
-		$_SESSION['authentificated'] = true;
-		header('Location: /'. $path);
-		exit;
-	}
-	else {
-		$_SESSION['msg'] = new Message('Identifiants incorrects. <a href="/recover-password.php">Mot de passe oublié ?</a>', -1, 'Oups... !');
-		header('Location: /login.php?path='. $path);
-		exit;
-	}
+elseif (isset($_SESSION['to_ban']) && $_SESSION['to_ban'] > 3) {
+  $_SESSION['msg'] = new Message('Trop de tentatives de récupération de mot de passe ont été tentées sans succès. Merci de réessayer plus tard.', -1, 'Oups... !');
+  header ('Location: /login.php');
+  exit();
 }
-else {
-	$path = isset($_GET['path']) ? htmlspecialchars(preg_replace('#/#', '', $_GET['path'])) : '';
+elseif (isset($_POST['user']) && $_POST['user'] != null) {
+  if (UserAdmin::isUser(htmlspecialchars($_POST['user']))) {
+    unset($_SESSION['to_ban']);
+    $u = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
+    try {
+      RecoverPassword::insert($u->id(), $u->login(), 1);
+      $content = '
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Envoyé</h2>
+        <p>Un email contenant un lien pour réinitialiser votre mot de passe a bien été envoyé à <code>'. $u->login() .'</code>.</p>
+        <p>Vérifier vos emails :)</p>
+      </form> 
+      ';
+    }
+    catch (\Exception $e) {
+      $content = '
+      <form class="form-signin">
+        <h3 class="text-error">Oups... !</h3>
+        <p>'. $e->getMessage() .'</p>
+      </form> 
+      ';
+    }
+  }
+  else {
+    $_SESSION['msg'] = new Message('Cet utilisateur est inconnu.', -1, 'Oups... !');
+    $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
+    header ('Location: /recover-password.php');
+    exit();
+  }
+}
+elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) && $_GET['user'] != null) {
+  if (false) {
+    $content = "ok new passwords here";
+  }
+  else {
+    $_SESSION['msg'] = new Message('Autorisation de réinitialisation de votre mot de passe invalide ou expirée.', -1, 'Oups... !');
+    //$_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
+    //header ('Location: /recover-password.php');
+    //exit(); 
+  }
+}
 
 ?><!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
-		<title>Connexion &ndash; Gestion &ndash; FSC Bezannes</title>
+		<title>Récupération de mot de passe &ndash; Gestion &ndash; FSC Bezannes</title>
 		<meta name="author" content="FSC Bezannes" />
 		<link rel="canonical" href="/" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
@@ -102,7 +124,7 @@ else {
 		
 		<header class="container">
 			<div class="page-header">
-				<h1 style="text-align: center;"><a href="<?php echo _FSC_; ?>">Foyer Social et Culturel de Bezannes</a></h1>
+				<h1 style="text-align: center;"><a href="<?php echo _GESTION_; ?>">Gestion &mdash; FSC Bezannes</a></h1>
 			</div>
 		</header>
 		
@@ -114,19 +136,24 @@ else {
 					echo $_SESSION['msg'];
 					unset($_SESSION['msg']);
 				}
-			?>
-			
-      <form class="form-signin" action="login.php?login&amp;path=<?php echo $path; ?>" method="post">
-        <h2 class="form-signin-heading">Connexion</h2>
-				
+
+        if (isset($content))
+          echo $content;
+        else { ?>
+
+      <form class="form-signin" action="recover-password.php" method="post">
+        <h2 class="form-signin-heading">Récupération</h2>
+        <p>Merci d’indiquer votre nom d’utilisateur. Un email contenant un lien pour réinitialiser votre mot de passe vous sera envoyé.</p>
+        
         <!--<label for="user">Utilisateur</label>-->
         <input type="text" class="input-block-level" placeholder="Utilisateur" name="user" id="user" autofocus/>
-				
-        <!--<label for="pwd">Mot de passe</label>-->
-        <input type="password" class="input-block-level" placeholder="Mot de passe" name="pwd" id="pwd" />
 
-        <button class="btn btn-large btn-primary btn-block" type="submit">Se connecter</button>
-      </form>
+        <button class="btn btn-large btn-primary btn-block" type="submit">Envoyer</button>
+      </form> 
+
+      <?php }
+			?>
+			
 		</div>
 		<!-- /container -->
 		
@@ -148,6 +175,3 @@ else {
 		?>
 	</body>
 </html>
-<?php
-	}
-?>

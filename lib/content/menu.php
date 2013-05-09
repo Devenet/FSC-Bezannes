@@ -17,7 +17,7 @@ class Menu {
     $return = '';
     $white = $white ? ' icon-white' : null;
     foreach($this->links as $link)
-      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : null) .'<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'"'. ($link['external'] ? ' target="_blank"' : null) .'>'. ($link['icon'] != null && !$link['right'] ? '<i class="icon-'. $link['icon'] . $white .'"></i> ' : null) . $link['name'] . ($link['icon'] != null && $link['right'] ? ' <i class="icon-'. $link['icon'] . $white .'"></i>' : null) .'</a></li>';
+      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : null) .'<li'. (($link['url'] == $current) ? ' class="active"' : null) .'><a href="'. $link['url'] .'"'. ($link['external'] ? ' rel="external"' : null) .'>'. ($link['icon'] != null && !$link['right'] ? '<i class="icon-'. $link['icon'] . $white .'"></i> ' : null) . $link['name'] . ($link['icon'] != null && $link['right'] ? ' <i class="icon-'. $link['icon'] . $white .'"></i>' : null) .'</a></li>';
     return $return;
   }
   public function displayWhite($current) {

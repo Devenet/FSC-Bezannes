@@ -1,8 +1,8 @@
 <div class="tabbable">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#tab-activities" data-toggle="tab" id="link-tab-activities"><i class="icon-globe"></i> Activités</a></li>
-    <li><a href="#tab-members" data-toggle="tab" id="link-tab-members"><i class="icon-user"></i> Membres</a></li>
-    <li class="pull-right"><a href="#tab-preinscriptions" data-toggle="tab" id="link-tab-preinscriptions"><i class="icon-list-alt"></i> Préinscriptions</a></li>
+    <li><a href="#tab-members" data-toggle="tab" id="link-tab-members"><i class="icon-group"></i> Membres</a></li>
+    <li class="pull-right"><a href="#tab-preinscriptions" data-toggle="tab" id="link-tab-preinscriptions"><i class="icon-bookmark"></i> Préinscriptions</a></li>
   </ul>
   
   <div class="tab-content">

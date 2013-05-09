@@ -14,15 +14,15 @@ require '../config/config.php';
 
 // Menu navigation
 $mainMenu = new Menu();
-	$mainMenu->addLink('Préinscriptions', '/', 'list-alt', false, false, true);
+	$mainMenu->addLink('Préinscriptions', '/', 'bookmark');
 // Menu secondaire
 $rightMenu = new Menu();
-	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'share-alt', true, true, true);
+	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'caret-right', false, true, true);
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
-str_replace("\0", '', $_GET['page']);
-str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
+$_GET['page'] = str_replace("\0", '', $_GET['page']);
+$_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
 $controller = '../'._PATH_INSCRIPTION_.'/pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : '../pages/errors/404/controller.php';
@@ -41,6 +41,10 @@ $scripts = '';
     <link rel="icon" type="image/png" href="/favicon.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css">
+    <![endif]-->
 		<link href="<?php echo _FSC_; ?>/css/common.css" rel="stylesheet" media="screen" />
 		<style>
 			header {
@@ -63,8 +67,9 @@ $scripts = '';
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
-				<a class="brand" href="<?php echo _FSC_; ?>"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
+				<!--<a class="brand" href="<?php echo _FSC_; ?>"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>-->
 				<ul class="nav"><?php echo $mainMenu->display($page->url()); ?></ul>
+				<ul class="nav pull-right"><?php echo $rightMenu->display(); ?></ul>
 				<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?>
 				<!-- settings -->
 				<ul class="nav pull-right">
@@ -75,15 +80,15 @@ $scripts = '';
 						<li><a href="/account.html"><i class="icon-user"></i> Mon compte</a></li>
 						<li><a href="/settings.html"><i class="icon-cog"></i> Préférences</a></li>
 						<li class="divider"></li>
-						<li><a href="/logout.html"><i class="icon-off"></i> Déconnexion</a></li>
+						<li><a href="/logout.html"><i class="icon-signout"></i> Déconnexion</a></li>
 					</ul>
 					</li>
 				</ul>
 				<?php } else { ?>
-				<form class="navbar-form pull-right">
-					<a href="/signup.html" class="btn btn-success btn-small" style="margin-top: 6px;">Se préinscrire</a>
+				<div class="nav pull-right" style="padding-right:8px;">
+					<a href="/signup.html" class="btn btn-success btn-small" style="margin-top: 6px;">Se préinscrire</a> 
 					<a href="/login.html" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
-				</form>
+				</div>
 				<?php } ?>
 				</div>
 			</div>
@@ -144,6 +149,7 @@ $scripts = '';
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
 		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
+		<script src="<?php echo _FSC_; ?>/js/fsc.js"></script>
 		<?php
 			echo (isset($scripts) ? $scripts : null);
 			echo (_ANALYTICS_GESTION_ ? "

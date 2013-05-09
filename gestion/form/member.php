@@ -47,7 +47,7 @@ foreach ($months as $value => $month) {
   ?>
   <!-- /form messages -->
   
-  <h3 class="controls ">Identité</h3>
+  <h3 class="controls">Identité</h3>
   
   <div class="control-group">
     <label class="control-label" for="gender">Civilité</label>
