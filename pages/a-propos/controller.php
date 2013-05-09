@@ -6,14 +6,14 @@ use lib\content\Menu;
 
 $pageInfos = array(
   'name' => 'À propos',
-  'url' => '/a-propos.html'
+  'url' => _FSC_.'/a-propos'
 );
 $page = new Page('À propos', $pageInfos['url'], array($pageInfos));
 
 $pageMenu = new Menu();
-  $pageMenu->addLink('À propos', '/a-propos.html');
-  $pageMenu->addLink('La vie associative', '/a-propos/vie-associative.html');
-  $pageMenu->addLink('Documents', '/a-propos/documents.html');
+  $pageMenu->addLink('À propos', _FSC_.'/a-propos');
+  $pageMenu->addLink('La vie associative', _FSC_.'/a-propos/vie-associative');
+  $pageMenu->addLink('Documents', _FSC_.'/a-propos/documents');
 
 $rel = null;
 $display_parent = true;
@@ -21,22 +21,19 @@ $display_parent = true;
 if (isset($_GET['rel'])) {
   switch (htmlspecialchars($_GET['rel'])) {
     case 'vie-associative':
-      $page = new PageChild($page, 'La vie associative', '/a-propos/vie-associative.html', $display_parent);
+      $page = new PageChild($page, 'La vie associative', _FSC_.'/a-propos/vie-associative', $display_parent);
       $rel = 'asso';
       break;
     
     case 'documents':
-      $page = new PageChild($page, 'Documents', '/a-propos/documents.html', $display_parent);
+      $page = new PageChild($page, 'Documents', _FSC_.'/a-propos/documents', $display_parent);
       $rel = 'doc';
       break;
     
     default:
-      header ('Location: /a-propos.html');
+      header ('Location: /a-propos');
       exit();    
   }
 }
-
-$page->addOption('has-children');
-//$page->addOption('hide-breadcrumb');
 
 ?>

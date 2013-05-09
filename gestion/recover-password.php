@@ -65,9 +65,9 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
   }
   else {
     $_SESSION['msg'] = new Message('Autorisation de réinitialisation de votre mot de passe invalide ou expirée.', -1, 'Oups... !');
-    //$_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
-    //header ('Location: /recover-password.php');
-    //exit(); 
+    $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
+    header ('Location: /login.php');
+    exit(); 
   }
 }
 

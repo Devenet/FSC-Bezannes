@@ -5,7 +5,7 @@ use lib\content\Page;
 
 $pageInfos = array(
   'name' => 'Activités',
-  'url' => '/activites.html'
+  'url' => _FSC_.'/activites'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 

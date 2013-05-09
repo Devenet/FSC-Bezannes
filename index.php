@@ -13,20 +13,20 @@ require 'config/config.php';
 
 // Menu navigation
 $mainMenu = new Menu();
-  $mainMenu->addLink('Accueil', '/', 'home');
-  $mainMenu->addLink('À propos', '/a-propos.html', 'info-sign');
-  $mainMenu->addLink('Activités', '/activites.html', 'globe');
-  $mainMenu->addLink('Actualités', '/actualites.html', 'star');
-  $mainMenu->addLink('Agenda', '/agenda.html', 'calendar');
-  $mainMenu->addLink('Contact', '/contact.html', 'envelope');
+  $mainMenu->addLink('Accueil', _FSC_.'/', 'home');
+  $mainMenu->addLink('À propos', _FSC_.'/a-propos', 'info-sign');
+  $mainMenu->addLink('Activités', _FSC_.'/activites', 'globe');
+  $mainMenu->addLink('Actualités', _FSC_.'/actualites', 'star');
+  $mainMenu->addLink('Agenda', _FSC_.'/agenda', 'calendar');
+  $mainMenu->addLink('Contact', _FSC_.'/contact', 'envelope');
 // Menu secondaire droite
 $rightMenu = new Menu();
   $rightMenu->addLink('Préinscriptions', _INSCRIPTION_, 'bookmark', false, false);
 // Menu footer
 $footerMenu = new Menu();
-  $footerMenu->addLink('Accueil', '/', 'home');
-  $footerMenu->addLink('Contact', '/contact.html', 'envelope');
-  $footerMenu->addLink('Mentions légales', '/mentions-legales.html', 'legal');
+  $footerMenu->addLink('Accueil', _FSC_.'/', 'home');
+  $footerMenu->addLink('Contact', _FSC_.'/contact', 'envelope');
+  $footerMenu->addLink('Mentions légales', _FSC_.'/mentions-legales', 'legal');
   $footerMenu->addLink('', _GESTION_, 'lock', true);
 
 // Contenu de la page
@@ -35,46 +35,40 @@ $_GET['page'] = htmlspecialchars($_GET['page']);
 $_GET['page'] = str_replace("\0", '', $_GET['page']);
 $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
+// Get controller
+$SCRIPT = array();
 $controller = 'pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : 'pages/errors/404/controller.php';
 require_once $controller;
-
-// Redirection enfants
-if (isset($_GET['rel']) && !$page->option('has-children')) {
-  header ('Location: /'.$_GET['page'].'.html');
-  exit();
-}
 
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
-    <title><?php echo $page->title(); ?> &ndash; FSC Bezannes</title>
+    <title><?php echo $page->title() ; ?> &ndash; FSC Bezannes</title>
     <meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant des activit&eacute;s culturelles, sportives et artistiques." />
     <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
     <meta name="author" content="FSC Bezannes" />
-    <link rel="canonical" href="/" />
     <meta name="robots" content="<?php echo $page->search_engine(); ?>" />
-    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico" />
-    <link rel="icon" type="image/png" href="/img/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon.ico" />
+    <link rel="icon" type="image/png" href="<?php echo _FSC_; ?>/img/favicon.png" />
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link rel="stylesheet" href="/css/font-awesome.min.css" />
+    <link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
     <!--[if IE 7]>
     <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
     <![endif]-->
-    <link href="/css/fsc.css" rel="stylesheet" media="screen" />
+    <link href="<?php echo _FSC_; ?>/css/fsc.css" rel="stylesheet" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" rel="stylesheet" />
   </head>
 
 	<body class="page-<?php echo strtolower($_GET['page']); ?>">
 
     <!-- head -->
     <header>
-      <a href="/"><img src="/img/logo-fsc<?php echo $page->url() != '/' ? '-small' : null; ?>.png" alt="FSC Bezannes" /></a>
-    <!--<h1>Foyer Social et Culturel <span class="bezannes">de Bezannes</span></h1>-->
-    <h1><span class="fsc-blue">Foyer</span> <span class="fsc-green">Social</span> et <span class="fsc-orange">Culturel</span> <span class="bezannes">de Bezannes</span></h1>
+      <a href="/"><img src="<?php echo _FSC_; ?>/img/logo-fsc<?php echo $page->url() != _FSC_.'/' ? '-small' : null; ?>.png" alt="FSC Bezannes" /></a>
+      <h1><span class="fsc-blue">Foyer</span> <span class="fsc-green">Social</span> et <span class="fsc-orange">Culturel</span> <span class="bezannes">de Bezannes</span></h1>
     </header>
   <!-- /head -->
     
@@ -95,14 +89,6 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
       </div>
     </div>
     <!-- /menu -->
-    
-    <!--
-    <?php if (!$page->option('hide-breadcrumb')) : ?>
-    <div class="container hidden-desktop" id="breadcrumb">
-      <?php echo $page->breadcrumb(); ?>
-    </div>
-    <?php endif; ?>
-    -->
     
     <!-- content -->
     <?php
@@ -145,11 +131,12 @@ if (isset($_GET['rel']) && !$page->option('has-children')) {
     <!-- /footer -->
     
     <script src="<?php echo _JQUERY_; ?>"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/fsc.js"></script>
+    <script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
+    <script src="<?php echo _FSC_; ?>/js/fsc.js"></script>
     <?php
-      // echo (!$page->option('hide-anchor-menu') ? '<script>$(document).ready(function() { document.location.href = "#menu"; }); </script>' : null);
-      echo isset($jquery) ? $jquery : null;
+      foreach ($SCRIPT as $script) {
+        echo $script;
+      }
       echo (_ANALYTICS_FSC_ ? "
       <script type=\"text/javascript\">
         var _gaq = _gaq || [];

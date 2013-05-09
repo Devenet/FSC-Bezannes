@@ -41,7 +41,7 @@ class Page {
   }
   
   public function title() {
-    if ($this->url != '/') {
+    if ($this->url != _FSC_.'/') {
       $return = '';
       $links = $this->breadcrumb->links();
       unset($links[0]);

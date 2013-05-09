@@ -9,15 +9,15 @@ use lib\members\Referent;
 use lib\content\Message;
 use lib\content\Display;
 
-if (isset($_GET['url']) && Activity::isActiveActivityURL($_GET['url'])) {
+if (isset($_GET['rel']) && Activity::isActiveActivityURL($_GET['rel'])) {
   
-  $act = new Activity(Activity::IDfromURL($_GET['url']));
+  $act = new Activity(Activity::IDfromURL($_GET['rel']));
   
   $pageInfos = array(
    'name' => $act->name(),
-   'url' => '/activites.html'
+   'url' => _FSC_.'/activites'
   );
-  $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '../activites.html'), $pageInfos));
+  $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '../activites'), $pageInfos));
   
   /* preparation affichage schedules */
   $display_schedules = '<ul class="unstyled">';
@@ -58,7 +58,7 @@ if (isset($_GET['url']) && Activity::isActiveActivityURL($_GET['url'])) {
   
 }
 else {
-  header('Location: /activites.html');
+  header('Location: '. _FSC_.'/activites');
   exit();
 }
 

@@ -4,6 +4,6 @@
 
 <ul>
 <?php foreach ($activities as $act): ?>
-<li><a href="/activite/<?php echo $act->url(); ?>.html"><?php echo $act->name(); ?></a></li>
+<li><a href="<?php echo _FSC_; ?>/activite/<?php echo $act->url(); ?>"><?php echo $act->name(); ?></a></li>
 <?php endforeach; ?>
 </ul>

@@ -48,15 +48,6 @@ case 'doc':
   </div>
 </div>
 
-<!--
-<hr />
-<div class="row h3-imprima">
-  <div class="span6">
-    <h3>Loi Informatique et Libertés</h3>
-    <p>Conformément à la loi « informatique et libertés » du 6 janvier 1978 modifiée en 2004, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent, que vous pouvez exercer en vous adressant au secrétariat.</p>
-  </div>
-</div>
--->
 
 <?php
   break;
@@ -220,7 +211,7 @@ default:
   </div>
   <div class="span4">
     <h3>Être adhérent</h3>
-    <p>En devenant <a href="<?php echo _INSCRIPTION_; ?>">adhérent</a>, vous accédez à l’ensemble des <a href="/activites.html">activités</a> proposées mais vous pouvez aussi faire part de vos idées, suggestions et avis pour permettre au Foyer d’évoluer dans votre intérêt et celui de la collectivité.</p>
+    <p>En devenant <a href="<?php echo _INSCRIPTION_; ?>">adhérent</a>, vous accédez à l’ensemble des <a href="<?php echo _FSC_; ?>/activites">activités</a> proposées mais vous pouvez aussi faire part de vos idées, suggestions et avis pour permettre au Foyer d’évoluer dans votre intérêt et celui de la collectivité.</p>
   </div>
   <div class="span4">
     <h3>We want you !</h3>

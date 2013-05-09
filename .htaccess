@@ -6,12 +6,15 @@ Options -Indexes
 
 RewriteEngine On
 # pages
-RewriteRule ^([a-z-]+).html$ /?page=$1 [L]
-RewriteRule ^activite/([a-z0-9-]+)([\-0-9]{0,2}).html$ /?page=activite&url=$1$2 [L]
-RewriteRule ^([a-z-]+)/([a-z-]+).html$ /?page=$1&rel=$2 [L]
+RewriteRule ^([a-z-]+)$ /?page=$1 [L]
+RewriteRule ^([a-z-]+)/([a-z0-9-]+)$ /?page=$1&rel=$2 [L]
+RewriteRule ^([a-z-]+)/$ /$1 [L,R]
+RewriteRule ^([a-z-]+)/([a-z0-9-]+)/$ /$1/$2 [L,R]
 # gestion
 RewriteCond %{HTTP_HOST} ^fsc.localhost.local$
 RewriteRule ^gestion/(.*)$ http://gestion.fsc.localhost.local/$1 [QSA,L,R]
 # inscription
 RewriteCond %{HTTP_HOST} ^fsc.localhost.local$
 RewriteRule ^inscription/(.*)$ http://inscription.fsc.localhost.local/$1 [QSA,L,R]
+
+ErrorDocument 404 /index.php?page=404
