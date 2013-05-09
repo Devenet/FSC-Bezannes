@@ -25,7 +25,7 @@ elseif (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 	header('Location: /');
 	exit;
 }
-elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd'])) {
+elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd']) && $_POST['user'] != null && $_POST['pwd'] != null) {
 	$path = isset($_GET['path']) ? htmlspecialchars($_GET['path']) : '';
 	if (UserAdmin::isAuthorizedUser($_POST['user'], $_POST['pwd'])) {
 		$_SESSION['user'] = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));

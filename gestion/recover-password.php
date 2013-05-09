@@ -24,7 +24,9 @@ elseif (isset($_SESSION['to_ban']) && $_SESSION['to_ban'] > 3) {
   header ('Location: /login.php');
   exit();
 }
+// demande envoie
 elseif (isset($_POST['user']) && $_POST['user'] != null) {
+  // si user est bien dans la BDD, on lui envoie le mail
   if (UserAdmin::isUser(htmlspecialchars($_POST['user']))) {
     unset($_SESSION['to_ban']);
     $u = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
@@ -38,6 +40,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
       </form> 
       ';
     }
+    // s'il a déja fait une demande, il doit attendre pour en faire une autre
     catch (\Exception $e) {
       $content = '
       <form class="form-signin">
@@ -47,6 +50,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
       ';
     }
   }
+  // sinon c'est peut être un hack
   else {
     $_SESSION['msg'] = new Message('Cet utilisateur est inconnu.', -1, 'Oups... !');
     $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
@@ -54,6 +58,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
     exit();
   }
 }
+// accept token
 elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) && $_GET['user'] != null) {
   if (false) {
     $content = "ok new passwords here";

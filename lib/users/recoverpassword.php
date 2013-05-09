@@ -7,7 +7,8 @@ use lib\mail\Mail;
 abstract class RecoverPassword {
   
   static protected $delay = 43200;
-  static protected $type = array('de préinscription', 'de gestion', 'd’administration');
+  static protected $messages = array('de préinscription', 'de gestion', 'd’administration');
+  static protected $links = array(_INSCRIPTION_, _GESTION_, '404');
   
   static public function insert($user, $email, $type = 0) {
     /*
@@ -29,14 +30,14 @@ abstract class RecoverPassword {
       // send email
       $body = 'Bonjour,
 
-Vous avez demandé la réinitialisation de votre mot de passe pour votre compte '. slef::$type[$type] .' sur le site du FSC Bezannes.
+Vous avez demandé la réinitialisation de votre mot de passe pour votre compte '. self::$messages[$type] .' sur le site du FSC Bezannes.
 
 Si cette demande vient bien de vous, merci de vous rendre à l’adresse suivante pour réinitialiser votre mot de passe :
-'. _GESTION_ .'/recover-password.php?token='. $data['token'] .'&user='. $email .'
+'. self::$links[$type] .'/recover-password.php?token='. $data['token'] .'&user='. $email .'
 Attention, le lien est valide pendant '. (self::$delay / 3600) .' heures.
 
 Si vous n’avez pas effectué cette demande, vous pouvez ignorer cet email.
-Pensez cependant à changer régulièrement votre mot de passe, en le mélangeant de caractères spéciaux.';  
+Pensez cependant à changer régulièrement votre mot de passe, en ly insérant des caractères spéciaux.';  
       Mail::text($email, 'Réinitialisation de votre mot de passe', $body);
 
     }
