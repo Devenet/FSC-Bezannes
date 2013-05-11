@@ -16,7 +16,7 @@ $pageMenu = new Menu();
   $pageMenu->addLink('Documents', _FSC_.'/a-propos/documents');
 
 $rel = null;
-$display_parent = true;
+$display_parent = false;
 
 if (isset($_GET['rel'])) {
   switch (htmlspecialchars($_GET['rel'])) {

@@ -53,7 +53,7 @@ class Page {
   }
 
   public function admin_title() {
-    if ($this->url != '/') {
+    if ($this->url != _INSCRIPTION_.'/' || $this->url != _GESTION_.'/') {
       $return = '';
       $links = $this->breadcrumb->links();
       unset($links[0]);

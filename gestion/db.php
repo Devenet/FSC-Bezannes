@@ -27,7 +27,7 @@ else {
 </head>
 <body>
 <?php
-  $bases = array('activities', 'schedules', 'participants', 'members', 'payments_transactions', 'payments_advantages', 'users_admin', 'users_inscription', 'history_admin');
+  $bases = array('activities', 'history_admin', 'inscription_members', 'inscription_participants', 'members', 'participants', 'payments_advantages', 'payments_transactions', 'schedules', 'users_admin', 'users_inscription', 'users_recover_passwords');
   foreach ($bases as $db) {
     echo '<p style="width:250px; display:inline-block; text-align:right; margin-right:15px;">fsc_<strong>', $db ,'</strong></p><p style="display:inline-block;">';
     $query = SQL::sql()->query('SELECT COUNT(id) AS total FROM fsc_'.$db);

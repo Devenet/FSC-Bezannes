@@ -139,5 +139,5 @@
 </div>
 
 <?php
-$scripts .= '<script src="'. _FSC_ .'/js/active-tab.js"></script>';
+$_SCRIPT[] = '<script src="'. _FSC_ .'/js/fsc-active-tab.js"></script>';
 ?>

@@ -72,7 +72,7 @@
 </form>
 
 <?php
- $scripts .= '
+ $_SCRIPT[] = '
 <script>
 $(document).ready(function(){
   function isValidMail(email) {

@@ -7,11 +7,11 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 	unset($_SESSION['authentificated']);
 	unset($_SESSION['user']);
 	$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
-	header('Location: /login.html');
+	header('Location: '. _INSCRIPTION_ .'/login');
 	exit;
 }
 
-header('Location: /');
+header('Location: '. _INSCRIPTION_);
 exit;
 
 ?>

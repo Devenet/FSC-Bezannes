@@ -36,7 +36,7 @@ $_GET['page'] = str_replace("\0", '', $_GET['page']);
 $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
 // Get controller
-$SCRIPT = array();
+$_SCRIPT = array();
 $controller = 'pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : 'pages/errors/404/controller.php';
 require_once $controller;
@@ -46,7 +46,7 @@ require_once $controller;
   <head>
     <meta charset="UTF-8">
     <title><?php echo $page->title() ; ?> &ndash; FSC Bezannes</title>
-    <meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant des activit&eacute;s culturelles, sportives et artistiques." />
+    <meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
     <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
     <meta name="author" content="FSC Bezannes" />
     <meta name="robots" content="<?php echo $page->search_engine(); ?>" />
@@ -92,9 +92,9 @@ require_once $controller;
     
     <!-- content -->
     <?php
-      echo !$page->option('hide-container') ? '<div class="container">' : null;
+      echo !$page->option('no-container') ? '<div class="container">' : null;
       include dirname($controller) . '/view.php';
-      echo !$page->option('hide-container') ? '</div>' : null;
+      echo !$page->option('no-container') ? '</div>' : null;
     ?>
     <!-- /content -->
     
@@ -116,15 +116,17 @@ require_once $controller;
             &copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes
             <br /><small>Developped with love by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a></small>
           </p>
-          <!--<ul class="inline pull-right">
+          <!--
+          <ul class="inline pull-right">
             <li><a href="#" title="Site valide HTML5"><img src="/img/badge-html5.png" alt="HTML5" /></a></li>
             <li><a href="https://nicolabricot.com" title="Site adapté par nicolabricot"><img src="//nicolabricot.com/favicon.png" alt="nicolabricot" /></a></li>
-          </ul>-->
+          </ul>
           <p class="pull-right social">
             <a href=""><i class="icon-facebook-sign"></i></a> 
             <a href=""><i class="icon-twitter"></i></a> 
             <a href=""><i class="icon-google-plus"></i></a>
           </p>
+          -->
         </div>
       </div>
     </footer>
@@ -132,9 +134,9 @@ require_once $controller;
     
     <script src="<?php echo _JQUERY_; ?>"></script>
     <script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo _FSC_; ?>/js/fsc.js"></script>
+    <script src="<?php echo _FSC_; ?>/js/fsc-common.js"></script>
     <?php
-      foreach ($SCRIPT as $script) {
+      foreach ($_SCRIPT as $script) {
         echo $script;
       }
       echo (_ANALYTICS_FSC_ ? "

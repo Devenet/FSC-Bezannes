@@ -228,7 +228,7 @@ foreach ($months as $value => $month) {
 </form>
 
 <?php
-  $scripts .= '
+  $_SCRIPT[] = '
 <script>
   $(document).ready(function() {
   

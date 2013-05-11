@@ -4,14 +4,21 @@
  * fonts
  */
 .imprima,
-.navbar .brand,
 .page-error h2 {
-  font-family: Imprima, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Imprima, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 
 body {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+h3 {
+  line-height: 1.42em;
 }
 
 /*
@@ -49,8 +56,11 @@ body {
   margin-bottom: 25px;
 }
 
+footer {
+  margin-top: 40px;
+}
 footer hr {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 /*

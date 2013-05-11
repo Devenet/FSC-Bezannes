@@ -12,7 +12,7 @@ switch ($rel) {
 case 'doc':
 ?>
 
-<div class="row h3-imprima">
+<div class="row">
   <div class="span8">
     <h3>Préinscriptions</h3>
     <p class="lead">Comme les années précédentes, vous pouvez dès à présent remplir les fiches à présenter pour l’inscription pour l’année à venir.</p>
@@ -24,7 +24,7 @@ case 'doc':
 </div>
 
 <hr />
-<div class="row h3-imprima">
+<div class="row">
   <div class="span4">
     <h3>Réglement intérieur</h3>
     <p><a class="btn" href="<?php echo _DATA_; ?>/pdf/fsc-reglement-interieur.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
@@ -55,7 +55,38 @@ case 'doc':
 case 'asso':
 ?>
 
-<div class="row h3-imprima">
+<div class="row">
+  <div class="span7">
+    <h3>Être adhérent</h3>
+    <p>L’adhésion au Foyer Social et Culturel implique le paiment d’une cotisation annuelle, ainsi que la connaissance et le respect du <a href="<?php echo _FSC_; ?>/a-propos/documents">Règlement intérieur</a>.</p>
+    <p>Les activités sont accessibles aux seuls adhérents. La participation à toute activité autre que la Bibliothèque est conditionnée par le réglement d’une cotisation propre à cette activité.</p>
+    <p>Les renseignements contenus dans la feuille individuelle d’inscription sont destinés à un usage strictement interne. Animateurs, responsables, secretaires et administrateurs ont consigne de ne pas les communiquer. En particulier si des mailings doivent être effectués les adresses êlectroniques seront en copie cachée. </p>
+  </div>
+  <div class="span5">
+    <h3>Cotisations</h3>
+    <table class="table table-striped">
+      <thead>
+        <th></th>
+        <th>Adule</th>
+        <th>Jeune</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Bezannais</td>
+          <td>16 €</td>
+          <td>10 €</td>
+        </tr>
+        <tr>
+          <td>Non-Bezannais</td>
+          <td>20 €</td>
+          <td>14 €</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row espace-top">
   <div class="span4">
     <h3>L’assemblée générale</h3>
     <p>L’assemblée générale est un moment fort dans la vie du FSC. Outre la présentation des bilans et des orientations pour l’année à venir, il est procédé à l’élection des membres du Conseil.
@@ -63,7 +94,7 @@ case 'asso':
   </div>
   <div class="span4">
     <h3>Le conseil d’administration</h3>
-    <p>Le Conseil d’administration coordonne l’ensemble des activités. Il se réunit plusieurs fois par an pour s’assurer du bon fonctionnement de l’association et prendre les décisions de gestion en matière administrative et comptable. Il fait le point du travail effectué par des sous-groupes ou commissions (technique, communication, activités ponctuelles, jeunes, ...).</p>
+    <p>Le conseil d’administration coordonne l’ensemble des activités. Il se réunit plusieurs fois par an pour s’assurer du bon fonctionnement de l’association et prendre les décisions de gestion en matière administrative et comptable. Il fait le point du travail effectué par des sous-groupes ou commissions (technique, communication, activités ponctuelles, jeunes, ...).</p>
   </div>
   <div class="span4">
     <h3>Le bureau</h3>
@@ -203,7 +234,7 @@ default:
   </div>
 </div>
 
-<div class="row h3-imprima">
+<div class="row">
   <div class="span4">
     <h3>Une association</h3>
     <p>Le FSC est administré par un conseil d’administration. Les membres qui le composent sont des adhérents élus parmi ceux-ci, lors de l’assemblée générale qui se tient au mois de novembre.
@@ -217,6 +248,19 @@ default:
     <h3>We want you !</h3>
     <p>Ce n’est pas un club fermé. Animé par des bénévoles, l’équipe a toujours besoin d’accueillir de nouvelles forces vives. À beaucoup, c’est peu de travail chacun.
     <br />Aussi, nous serions contents de vous compter parmi tous ceux qui contribuent à la réussite du Foyer.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="span8">
+    <h3>Où se renseigner et s’inscrire ? </h3>
+    <p>Lors du Forum de rentrée, qui se tient chaque année début septembre au sein de l’Espace de Bezannes au cours duquel vous pourrez rencontrer la plupart des animateurs et responsables d’activités.
+      Vous pouvez naturellement aussi vous renseigner auprès de l’animateur sur les lieux mêmes de l’activité aux heures indiquées dans la rubrique <a href="<?php echo _FSC_; ?>/activites">Activités</a>.</p>
+      <p>Le secrétariat pourra aussi répondre à vos questions. Pour connaître les horaires d’ouverture, consultez la rubrique <a href="<?php echo _FSC_; ?>/contact">Contact</a>. 
+  </div>
+  <div class="span4">
+    <h3>Se préinscrire</h3>
+    <p>Pour faciliter votre inscription, vous pouvez dès à présent vous <a href="<?php echo _INSCRIPTION_; ?>">préinscrire en ligne</a>.</p>
+    <p>Cette préinscription en ligne nous permet, le jour du Forum, de pouvoir vous inscrire plus rapidement !</p>
   </div>
 </div>
 

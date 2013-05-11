@@ -134,7 +134,7 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo _FSC_; ?>/css/bootstrap-wysihtml5.css" />
 <?php
-  $scripts .= '
+  $_SCRIPT[] = '
 <script src="'. _FSC_ .'/js/bootstrap-fileupload.min.js"></script>
 <script src="'. _FSC_ .'/js/wysihtml5.min.js"></script>
 <script src="'. _FSC_ .'/js/bootstrap-wysihtml5.js"></script>

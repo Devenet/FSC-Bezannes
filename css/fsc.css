@@ -73,14 +73,13 @@ footer .social a {
  * font Imprima
  */
 header h1, 
-.page-header h2,
 .page-home .carousel h4 {
-  font-family: Imprima, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Imprima, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 
 .page-home h2,
-.h3-imprima h3 {
+h3 {
   font-weight: normal;
 }
 
@@ -112,6 +111,9 @@ header h1,
 }
 .page-home .carousel img {
   min-width: 100%;
+}
+.page-home .carousel-control {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /*

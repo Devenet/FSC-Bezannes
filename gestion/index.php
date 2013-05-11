@@ -33,11 +33,10 @@ if (empty($_GET['page'])) $_GET['page'] = 'home';
 $_GET['page'] = str_replace("\0", '', $_GET['page']);
 $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
+$_SCRIPT = array();
 $controller = '../gestion/pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : '../pages/errors/404/controller.php';
 require_once 'gestion/'.$controller;
-
-$scripts = '';
 
 ?><!DOCTYPE html>
 <html lang="fr">
@@ -126,16 +125,24 @@ $scripts = '';
 		<footer>
 			<hr />
 			<div class="container">
-				<p class="pull-left">&copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes</p>
+				<p class="pull-left">
+          &copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes
+          <br /><small>Developped with love by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a></small>
+        </p>
+        <ul class="nav nav-pills pull-right">
+          <li><a href="#" id="go_home_you_are_drunk"><i class="icon-arrow-up"></i> Remonter</a></li>
+        </ul>
 			</div>
 		</footer>
 		<!-- /footer -->
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
 		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
-		<script src="<?php echo _FSC_; ?>/js/fsc.js"></script>
+		<script src="<?php echo _FSC_; ?>/js/fsc-common.js"></script>
 		<?php
-			echo (isset($scripts) ? $scripts : null);
+      foreach ($_SCRIPT as $script) {
+        echo $script;
+      }
 			echo (_ANALYTICS_GESTION_ ? "
 				<script type=\"text/javascript\">
 					var _gaq = _gaq || [];

@@ -7,7 +7,7 @@ $pageInfos = array(
   'url' => _FSC_.'/'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array());
-$page->addOption('hide-container');
+$page->addOption('no-container');
 
 $displayMainMenu = $mainMenu->display($page->url());
 $displayRightMenu = $rightMenu->display($page->url());
