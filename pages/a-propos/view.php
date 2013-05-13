@@ -67,22 +67,26 @@ case 'asso':
     <table class="table table-striped">
       <thead>
         <th></th>
-        <th>Adule</th>
-        <th>Jeune</th>
+        <th>Bezannais</th>
+        <th>Extérieur</th>
       </thead>
       <tbody>
         <tr>
-          <td>Bezannais</td>
-          <td>16 €</td>
-          <td>10 €</td>
+          <td><strong>Jeune</strong><sup>*</sup></td>
+          <td>10 €<sup>**</sup></td>
+          <td>14 €<sup>**</sup></td>
         </tr>
         <tr>
-          <td>Non-Bezannais</td>
+          <td><strong>Adulte</strong></td>
           <td>20 €</td>
-          <td>14 €</td>
+          <td>16 €</td>
         </tr>
       </tbody>
     </table>
+    <small class="pull-right" style="text-align: right;">
+      * moins de 18 ans au 1<sup>er</sup> septembre <?php echo _YEAR_; ?> <br />
+      ** offert à partir de la quatrième adhésion dans une famille
+    </small>
   </div>
 </div>
 

@@ -12,7 +12,7 @@
     </div>
     <div class="span4">
       <h2>Inscriptions</h2>
-      <p>Les inscriptions se font généralement en septembre : le forum de rentrée du FSC permet aux futurs adhérents de se renseigner sur les activités auprès des animateurs.<br />Vous pouvez dès à présent vous préinscrire !</p>
+      <p>Les inscriptions se font généralement en septembre : le forum de rentrée du FSC permet aux futurs adhérents de se renseigner sur les activités auprès des animateurs.<br />Préinscrivez-vous dès à présent !</p>
       <p><a href="<?php echo _INSCRIPTION_; ?>" class="btn btn-success"> Se préinscrire </a></p>
     </div>
   </div>
@@ -20,6 +20,7 @@
 
 <div class="container">
   <hr style="margin:30px auto 20px;" />
+
   <div id="homeCarousel" class="carousel slide">
     <div class="carousel-inner">
       <div class="active item">
