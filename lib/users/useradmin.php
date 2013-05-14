@@ -3,6 +3,7 @@
 namespace lib\users;
 use lib\users\User;
 use lib\db\SQL;
+use lib\content\Pagination;
 
 class UserAdmin extends User {
   
@@ -142,8 +143,9 @@ class UserAdmin extends User {
     ));
     $query->closeCursor();
   }
-  public static function getHistory() {
-    $query = SQL::sql()->query('SELECT fsc_users_admin.login, fsc_users_admin.name, fsc_users_admin.privilege, date, ip FROM fsc_history_admin INNER JOIN fsc_users_admin ON fsc_users_admin.id = fsc_history_admin.id_user_admin ORDER BY fsc_history_admin.id DESC');
+  public static function getHistory($start = 0, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
+    $query = SQL::sql()->query('SELECT fsc_users_admin.login, fsc_users_admin.name, fsc_users_admin.privilege, date, ip FROM fsc_history_admin INNER JOIN fsc_users_admin ON fsc_users_admin.id = fsc_history_admin.id_user_admin ORDER BY fsc_history_admin.date DESC LIMIT '. $start .','. $step);
     $return = array();
     while ($data = $query->fetch())
       $return[] = array(
@@ -155,6 +157,13 @@ class UserAdmin extends User {
       );
     $query->closeCursor();
     return $return;
+  }
+
+  public static function countHistory() {
+    $query = SQL::sql()->query('SELECT COUNT(fsc_history_admin.id) AS total FROM fsc_history_admin');
+    $data = $query->fetch();
+    $query->closeCursor();
+    return $data['total'];
   }
   
 }

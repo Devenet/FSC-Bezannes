@@ -4,6 +4,7 @@ namespace lib\activities;
 use lib\db\SQL;
 use lib\laravel\Str;
 use lib\upload\UploadImage;
+use lib\content\Pagination;
  
 class Activity {
   
@@ -391,9 +392,10 @@ class Activity {
     return in_array($url, $urls);
   }
   
-  static public function Activities() {
+  static public function Activities($start = 0, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_activities');
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY id LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Activity($data['id']); 
     $query->closeCursor();
@@ -408,25 +410,28 @@ class Activity {
     return $return;
   }
   
-  static public function ActivitiesByName($sens = true) {
+  static public function ActivitiesByName($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY name '. ($sens ? '' :  'DESC'));
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY name '. ($sens ? '' :  'DESC'). ' LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Activity($data['id']); 
     $query->closeCursor();
     return $return;
   }
-  static public function ActivitiesByActive($sens = true) {
+  static public function ActivitiesByActive($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY active '. ($sens ? 'DESC' :  '') .', name');
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY active '. ($sens ? 'DESC' :  '') .', name LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Activity($data['id']); 
     $query->closeCursor();
     return $return;
   }
-  static public function ActivitiesByPrice($sens = true) {
+  static public function ActivitiesByPrice($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY price '. ($sens ? '' :  'DESC') .', name');
+    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY price '. ($sens ? '' :  'DESC') .', name LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Activity($data['id']); 
     $query->closeCursor();

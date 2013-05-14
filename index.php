@@ -44,23 +44,21 @@ require_once $controller;
 ?><!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title><?php echo $page->title() ; ?> &ndash; FSC Bezannes</title>
     <meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
     <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
-    <meta name="author" content="FSC Bezannes" />
+    <meta name="author" content="Nicolas Devenet" />
     <meta name="robots" content="<?php echo $page->search_engine(); ?>" />
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon.ico" />
-    <link rel="icon" type="image/png" href="<?php echo _FSC_; ?>/img/favicon.png" />
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
-    <![endif]-->
-    <link href="<?php echo _FSC_; ?>/css/fsc.css" rel="stylesheet" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon.ico" />
+    <link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon.png" />
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
+    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/fsc.css" media="screen" />
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
   </head>
 
 	<body class="page-<?php echo strtolower($_GET['page']); ?>">

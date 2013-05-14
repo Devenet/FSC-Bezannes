@@ -8,6 +8,8 @@ spl_autoload_extensions('.php');
 spl_autoload_register();
 error_reporting (0);
 
+session_start();
+
 require '../config/config.php';
 
 header('Content-type: application/json');
@@ -21,7 +23,7 @@ foreach (Activity::ActiveActivities() as $act) {
       "url" => _FSC_ .'/activite/'. $act->url(),
       "place" => $act->place(),
       "description" => $act->description(),
-      "img" => _DATA_ .'/activities/'. ($act->image() ? $act->id() : '0') .'.jpg'
+      "img" => _ASSETS_ .'/activities/'. ($act->image() ? $act->id() : '0') .'.jpg'
     );
   }
   else {

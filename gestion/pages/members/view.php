@@ -1,10 +1,13 @@
-<div class="pull-right" style="margin-bottom:10px;">
-  <a href="/?page=new-member" class="btn btn-primary"><i class="icon-plus icon-white"></i> Ajouter</a>
+<form class="form-search pull-left">
+  <input type="text" class="search-members" placeholder="Accès rapide"/>
+</form>
+<div class="pull-right">
+  <a href="/?page=new-member" class="btn btn-primary pull-right"><i class="icon-plus icon-white"></i> Ajouter</a>
 </div>
 
 <div class="clearfix">&nbsp;</div>
 
-<table class="table table-striped">
+<table class="table table-striped espace-top">
   <thead>
     <tr class="small">
       <th>#</th>
@@ -14,7 +17,6 @@
       <th style="width:110px; text-align:center;"><a href="/?page=members&amp;sort=bezannais-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'bezannais-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Bezannais</th>
       <th style="width:110px; text-align:center;"><a href="/?page=members&amp;sort=adult-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adult-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Catégorie</th>
       <th></th>
-      <th> </th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +30,7 @@
       <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : 'A'); ?></td>
       <td style="width: 80px;">
         <div class="btn-group">
-          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="/?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-cog"></i> 
+          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="/?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-edit"></i> 
           <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
@@ -43,6 +45,12 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<div class="pagination pagination-centered">
+  <ul>
+    <?php echo $display_pagination; ?>
+  </ul>
+</div>
 
 <?php foreach ($members as $m): ?>
 <div id="confirmBox<?php echo $m->id(); ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelMember<?php echo $m->id(); ?>" aria-hidden="true">

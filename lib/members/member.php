@@ -3,6 +3,7 @@
 namespace lib\members;
 use lib\db\SQL;
 use lib\laravel\Str;
+use lib\content\Pagination;
 
 class Member {
   protected $id;
@@ -465,45 +466,50 @@ class Member {
     return in_array($id, $ids);
   }
   
-  static public function Members() {
+  static public function Members($start = 0, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members');
+    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY id LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Member($data['id']); 
     $query->closeCursor();
     return $return;
   }
   
-  static public function MembersByName($sens = true) {
+  static public function MembersByName($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY last_name '. ($sens ? '' :  'DESC') .', first_name');
+    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY last_name '. ($sens ? '' :  'DESC') .', first_name LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Member($data['id']); 
     $query->closeCursor();
     return $return;
   }
   
-  static public function MembersByAdherent($sens = true) {
+  static public function MembersByAdherent($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY adherent '. ($sens ? 'DESC' :  '') .', last_name, first_name');
+    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY adherent '. ($sens ? 'DESC' :  '') .', last_name, first_name LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Member($data['id']); 
     $query->closeCursor();
     return $return;
   }
   
-  static public function MembersByBezannais($sens = true) {
+  static public function MembersByBezannais($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY bezannais '. ($sens ? 'DESC' :  '') .', last_name, first_name');
+    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY bezannais '. ($sens ? 'DESC' :  '') .', last_name, first_name LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Member($data['id']); 
     $query->closeCursor();
     return $return;
   }
   
-  static public function MembersByAdult($sens = true) {
+  static public function MembersByAdult($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY minor '. ($sens ? '' :  'DESC') .', last_name, first_name');
+    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY minor '. ($sens ? '' :  'DESC') .', last_name, first_name LIMIT '. $start .','. $step);
     while ($data = $query->fetch())
       $return[] = new Member($data['id']); 
     $query->closeCursor();

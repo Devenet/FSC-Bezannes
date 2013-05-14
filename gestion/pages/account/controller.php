@@ -40,7 +40,7 @@ $display_privilege = ucfirst(Display::Privilege($u->privilege()));
 
 // affichage dernière connexion
 $data = $u->lastHistory();
-$display_last_history = Display::FullTimestamp($data['date']) .' depuis l’IP '. $data['ip'];
+$display_last_history = Display::FullTimestamp($data['date']) .'<br /> depuis l’IP '. $data['ip'];
 
 // affichage users admin
 $display_users = '';

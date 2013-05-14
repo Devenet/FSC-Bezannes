@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
-    <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
+    <a class="carousel-control left" href="#homeCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a>
+    <a class="carousel-control right" href="#homeCarousel" data-slide="next"><i class="icon-chevron-right"></i></a>
   </div>
 </div>

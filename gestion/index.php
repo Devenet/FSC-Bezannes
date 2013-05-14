@@ -41,20 +41,20 @@ require_once 'gestion/'.$controller;
 ?><!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" />
 		<title><?php echo ($page->url() != '/') ? $page->admin_title() .'&ndash; ' : null; ?>Gestion &ndash; FSC Bezannes</title>
-		<meta name="author" content="FSC Bezannes" />
+		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
-    <!--<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />-->
-    <link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" 					type="image/png" 		href="/favicon.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
-    <!--[if IE 7]>
-    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css">
-    <![endif]-->
-		<link href="<?php echo _FSC_; ?>/css/bootstrap-fileupload.min.css" rel="stylesheet" media="screen" />
-		<link href="<?php echo _FSC_; ?>/css/common.css" rel="stylesheet" media="screen" />
+    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-fileupload.min.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/common.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
 		<style>
 			header {
 				margin: 20px 0 0 0;
@@ -66,8 +66,6 @@ require_once 'gestion/'.$controller;
 				margin-bottom: 10px;
 			}
 		</style>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" rel="stylesheet" />
 	</head>
 
 	<body>

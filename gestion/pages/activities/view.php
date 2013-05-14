@@ -1,10 +1,13 @@
-<div class="pull-right" style="margin-bottom:10px;">
-  <a href="/?page=new-activity" class="btn btn-primary"><i class="icon-plus icon-white"></i> Ajouter</a>
+<form class="form-search pull-left">
+  <input type="text" class="search-activities" placeholder="Accès rapide"/>
+</form>
+<div class="pull-right">
+  <a href="/?page=new-activity" class="btn btn-primary pull-right"><i class="icon-plus icon-white"></i> Ajouter</a>
 </div>
 
 <div class="clearfix">&nbsp;</div>
 
-<table class="table table-striped">
+<table class="table table-striped espace-top">
   <thead>
     <tr>
       <th>#</th>
@@ -25,7 +28,7 @@
       <td><?php echo ($act->price_young() == -1) ? '&ndash;' : $act->price_young() .' €'; ?></td>
       <td style="width: 80px;">
         <div class="btn-group">
-          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-cog"></i> 
+          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-edit"></i> 
           <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
@@ -40,6 +43,12 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<div class="pagination pagination-centered">
+  <ul>
+    <?php echo $display_pagination; ?>
+  </ul>
+</div>
 
 <?php foreach ($activities as $act): ?>
 <div id="confirmBox<?php echo $act->id(); ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelActivity<?php echo $act->id(); ?>" aria-hidden="true">

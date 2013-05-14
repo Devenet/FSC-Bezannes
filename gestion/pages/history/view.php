@@ -20,3 +20,9 @@
   </table>
   </div>
 </div>
+
+<div class="pagination pagination-centered">
+  <ul>
+    <?php echo $display_pagination; ?>
+  </ul>
+</div>
