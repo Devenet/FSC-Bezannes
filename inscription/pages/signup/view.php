@@ -2,7 +2,7 @@
   <div class="span4 espace-top pull-right">
     <div class="well center">
       <p>Vous avez déjà votre compte ?</p>
-      <a href="/login.html" class="btn btn-success">Connexion</a>
+      <a href="/login" class="btn btn-success">Connexion</a>
     </div>
   </div>
   
