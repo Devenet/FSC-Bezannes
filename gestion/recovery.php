@@ -74,14 +74,15 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
 ?><!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="UTF-8">
-		<title>Récupération de mot de passe &ndash; Gestion &ndash; FSC Bezannes</title>
-		<meta name="author" content="FSC Bezannes" />
-		<link rel="canonical" href="/" />
-		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
-		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <meta charset="UTF-8" />
+    <title>Connexion &ndash; Gestion &ndash; FSC Bezannes</title>
+    <meta name="author" content="Nicolas Devenet" />
+    <meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" />
 		<style type="text/css">
 			body {
         background-color: #f5f5f5;
@@ -121,8 +122,6 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
 				font-size: 16px;
 			}
 			</style>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
 	</head>
 
 	<body>

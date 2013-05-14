@@ -33,7 +33,7 @@ abstract class RecoverPassword {
 Vous avez demandé la réinitialisation de votre mot de passe pour votre compte '. self::$messages[$type] .' sur le site du FSC Bezannes.
 
 Si cette demande vient bien de vous, merci de vous rendre à l’adresse suivante pour réinitialiser votre mot de passe :
-http:'. self::$links[$type] .'/recover-password.php?token='. $data['token'] .'&user='. $email .'
+http:'. self::$links[$type] .'/recovery.php?token='. $data['token'] .'&user='. $email .'
 Attention, le lien est valide pendant '. (self::$delay / 3600) .' heures.
 
 Si vous n’avez pas effectué cette demande, vous pouvez ignorer cet email.

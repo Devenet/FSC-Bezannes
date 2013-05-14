@@ -10,6 +10,10 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   header ('Location: '. _INSCRIPTION_);
   exit();
 }
+else if (isset($_GET['rel'])) {
+  header ('Location: '. _INSCRIPTION_.'/signup');
+  exit(); 
+}
 
 $pageInfos = array(
   'name' => 'Création du compte',
@@ -22,7 +26,7 @@ $page->addParameter('step-width', 2);
 $page->addOption('bar');
 $page->addParameter('bar', 'danger');
 
-$form = new Form('signup', _INSCRIPTION_.'/signup', 'Créer mon compte');
+$form = new Form('signup', _INSCRIPTION_.'/signup/', 'Créer mon compte');
 
 // controle formulaire
 if (isset($_POST) and $_POST != null) {
@@ -40,7 +44,7 @@ if (isset($_POST) and $_POST != null) {
   try {
     
     if(!$u->acceptLogin(stripslashes($_POST['login'])))
-      throw new \Exception('Mince, cette adresse e-mail est déjà utilisée !<br />Voulez-vous <a href="/login.html">vous connecter</a> ou avez-vous <a href="/recover-password.html">oublié votre mot de passe</a> ?');
+      throw new \Exception('Mince, cette adresse e-mail est déjà utilisée !<br />Voulez-vous <a href="/login">vous connecter</a> ou avez-vous <a href="/recovery">oublié votre mot de passe</a> ?');
     if (!$u->setLogin(stripslashes($_POST['login'])))
       throw new \Exception('Merci d’indiquer un courriel valide !');
     

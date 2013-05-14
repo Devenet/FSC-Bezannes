@@ -8,7 +8,7 @@
     <div class="span8">
       <h2>Se préinscrire</h2>
       <p></p>
-      <p><a href="<?php echo _FSC_; ?>/activites" class="btn btn-success">Se préinscrire</a></p>
+      <p><a href="<?php echo _INSCRIPTION_; ?>/signup" class="btn btn-success">Se préinscrire</a></p>
     </div>
   </div>
 </div>

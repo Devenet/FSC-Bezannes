@@ -5,10 +5,13 @@ use lib\content\Form;
 use lib\content\Message;
 use lib\users\UserInscription;
 
-// login
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
- 	header('Location: '._INSCRIPTION_);
- 	exit;
+  header ('Location: '. _INSCRIPTION_);
+  exit();
+}
+else if (isset($_GET['rel'])) {
+  header ('Location: '. _INSCRIPTION_.'/login');
+  exit(); 
 }
 
 $pageInfos = array(
@@ -27,7 +30,7 @@ if (isset($_SESSION['login-next-step'])) {
   unset($_SESSION['login-next-step']);
 }
 
-$form = new Form('login', _INSCRIPTION_.'/login'. (isset($_GET['rel']) && $_GET['rel'] == 'first' ? '-first' : null), 'Connexion');
+$form = new Form('login', _INSCRIPTION_.'/login/', 'Connexion');
 $inputs = array(
     'login',
     'password'
@@ -45,7 +48,7 @@ if (isset($_POST['login']) && isset($_POST['password']) && $_POST['login'] != nu
     exit;
   }
   else {
-   	$_SESSION['msg'] = new Message('Mot de passe oublié ? <a href="'. _INSCRIPTION_ .'/recover-password">Réinitialisez-le</a> !', -1, 'Oups... Identifiants incorrects');
+   	$_SESSION['msg'] = new Message('Mot de passe oublié ? <a href="'. _INSCRIPTION_ .'/recovery">Réinitialisez-le</a> !', -1, 'Oups... Identifiants incorrects');
   }
 }
 

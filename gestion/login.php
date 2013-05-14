@@ -36,7 +36,7 @@ elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd']) &
 		exit;
 	}
 	else {
-		$_SESSION['msg'] = new Message('Identifiants incorrects. <a href="/recover-password.php">Mot de passe oublié ?</a>', -1, 'Oups... !');
+		$_SESSION['msg'] = new Message('Identifiants incorrects. <a href="/recovery.php">Mot de passe oublié ?</a>', -1, 'Oups... !');
 		header('Location: /login.php?path='. $path);
 		exit;
 	}
@@ -47,14 +47,15 @@ else {
 ?><!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" />
 		<title>Connexion &ndash; Gestion &ndash; FSC Bezannes</title>
-		<meta name="author" content="FSC Bezannes" />
-		<link rel="canonical" href="/" />
+		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link href="<?php echo _FSC_; ?>/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" />
 		<style type="text/css">
 			body {
         background-color: #f5f5f5;
@@ -94,8 +95,6 @@ else {
 				font-size: 16px;
 			}
 			</style>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" rel="stylesheet" />
 	</head>
 
 	<body>
