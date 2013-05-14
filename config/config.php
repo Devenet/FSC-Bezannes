@@ -34,6 +34,7 @@
   }
   
   define('_ASSETS_', _FSC_.'/'._PATH_UPLOADS_);
-  define('_API_', _FSC_.'/'._PATH_API_);
+  define('_PUBLIC_API_', _FSC_.'/'._PATH_API_);
+  define('_PRIVATE_API_', _GESTION_.'/'._PATH_API_);
 
 ?>

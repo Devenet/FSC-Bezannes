@@ -86,12 +86,11 @@
     </div>
     
     <div class="alert <?php echo ($act->active() == 1 ? 'alert-success' : ''); ?>">
-      Activité <strong><?php echo ($act->active() == 1) ? 'activée</strong> [<a href="'. _FSC_ .'/activite/'. $act->url() .'.html" target="_blank">voir</a>]' : 'désactivée</strong>' ; ?> 
+      Activité <strong><?php echo ($act->active() == 1) ? 'activée</strong> [<a href="'. _FSC_ .'/activite/'. $act->url() .'" rel="external">voir</a>]' : 'désactivée</strong>' ; ?> 
       <a href="?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=status" class="pull-right" style="margin-right:-15px; color:#aaa;"><i class="icon-refresh"></i></a>
     </div>    
     
     <div class="alert alert-info">
-      <!--<a class="close" href="#"><i class="icon-pencil"></i></a>-->
       <strong>Tarif</strong> : <?php echo $act->price(); ?> €
       <?php echo ($act->price_young() != -1 ? '<br /><strong>Tarif jeune</strong> : '. $act->price_young() .' €' : null); ?>
     </div>

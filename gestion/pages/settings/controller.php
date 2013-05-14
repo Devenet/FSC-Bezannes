@@ -11,21 +11,26 @@ $pageInfos = array(
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 $configs = array (
+  '_PATH_GESTION_',
+  '_PATH_ADMIN_',
+  '_PATH_INSCRIPTION_',
+  '_PATH_UPLOADS_',
+  '_PATH_API_',
+  '_SEARCH_ENGINE_',
+  '_YEAR_',
+  '_PHONE_SEC_',
+  '_EMAIL_',
   '_FSC_',
   '_GESTION_',
   '_ADMIN_',
   '_INSCRIPTION_',
-  '_DATA_',
-  '_JQUERY_',
-  '_PATH_GESTION_',
-  '_PATH_INSCRIPTION_',
-  '_PATH_UPLOADS_',
   '_ANALYTICS_FSC_',
   '_ANALYTICS_GESTION_',
   '_ANALYTICS_INSCRIPTION_',
-  '_YEAR_',
-  '_SEARCH_ENGINE_',
-  '_PHONE_SEC_'
+  '_JQUERY_',
+  '_ASSETS_',
+  '_PUBLIC_API_',
+  '_PRIVATE_API_',
 );
 $display_constants = '';
 foreach ($configs as $c)

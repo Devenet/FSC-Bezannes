@@ -37,7 +37,7 @@ http:'. self::$links[$type] .'/recover-password.php?token='. $data['token'] .'&u
 Attention, le lien est valide pendant '. (self::$delay / 3600) .' heures.
 
 Si vous n’avez pas effectué cette demande, vous pouvez ignorer cet email.
-Pensez cependant à changer régulièrement votre mot de passe, en ly insérant des caractères spéciaux.';
+Pensez cependant à changer régulièrement votre mot de passe, en y insérant des caractères spéciaux.';
 
       Mail::text($email, 'Réinitialisation de votre mot de passe', $body);
     }

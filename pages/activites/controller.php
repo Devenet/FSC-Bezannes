@@ -21,7 +21,7 @@ $_SCRIPT[] = "
         $('input.search-activities').typeahead({
           name: 'activities',
           valueKey: 'activity',
-          prefetch: '/api/activities.json',
+          prefetch: 'http:". _PUBLIC_API_ ."/activities.json',
           template: '<a href=\"{{url}}\">{{activity}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
           engine: Hogan
         });
