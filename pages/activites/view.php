@@ -9,64 +9,64 @@
   <div class="span4">
     <form class="form-search" style="text-align: center;">
       <p>Trouver une activité</p>
-      <input type="text" class="input-xlarge search-activities" placeholder="Bibliothèque"/>
+      <input type="text" class="search-activities" placeholder="Bibliothèque"/>
     </form>
   </div>
 </div>
 
-<div>
+<div class="all">
   <h3>Toutes les activités</h3>
-  <ul>
+  <ul class="inline">
     <?php foreach ($activities as $act): ?>
-    <li><a href="<?php echo _FSC_; ?>/activite/<?php echo $act->url(); ?>"><?php echo $act->name(); ?></a></li>
+    <li>
+      <a href="<?php echo _FSC_; ?>/activite/<?php echo $act->url(); ?>" title="<?php echo $act->name(); ?>">
+        <img src="<?php echo $act->image(); ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
+        <h4><?php echo $act->name(); ?></h4>
+      </a>
+    </li>
     <?php endforeach; ?>
   </ul>
 </div>
 
 
-
-<div style="margin-top:200px;">
-  <p>&nsbp;</p>
-</div>
-
 <style>
-.tt-dropdown-menu {
-  margin-top: 2px;
-  padding: 5px 0;
-  text-align: left;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  -webkit-border-radius: 4px;
-     -moz-border-radius: 4px;
-          border-radius: 4px;
-  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-     -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-          box-shadow: 0 5px 10px rgba(0,0,0,.2);
+.all {
+  margin-top: 30px;
 }
-
-.tt-suggestion {
-  padding: 3px 20px;
-  font-size: 16px;
-  line-height: 22px;
+.all li {
+  position: relative;
+  line-height: 135px;
+  margin-bottom: 20px;
 }
-
-.tt-suggestion.tt-is-under-cursor {
+.all img {
+  -webkit-transition: all 0.6s ;
+  -moz-transition: all 0.6s ;
+  -ms-transition: all 0.6s ;
+  -o-transition: all 0.6s ;
+  transition: all 0.6s ;
+  opacity: .8;
+}
+.all h4 {
+  line-height: 1;
+  font-size: 14px;
+  font-weight: normal;
   color: #fff;
-  background-color: #0081c2;
-  background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
-  background-image: -o-linear-gradient(top, #0088cc, #0077b3);
-  background-image: linear-gradient(to bottom, #0088cc, #0077b3);
-  background-repeat: repeat-x;
+  position: absolute;
+  right: 5px;
+  bottom: -10px;
+  left: 5px;
+  padding: 8px;
+  background: none repeat scroll 0% 0% rgba(0, 0, 0, .5);
+  -webkit-transition: background 0.6s ;
+  -moz-transition: background 0.6s ;
+  -ms-transition: background 0.6s ;
+  -o-transition: background 0.6s ;
+  transition: background 0.6s ;
+  }
+.all a:hover h4 {
+  background: none repeat scroll 0% 0% rgba(0, 0, 0, .9);
 }
-.tt-suggestion.tt-is-under-cursor a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.tt-suggestion p {
-  margin: 0;
+.all a:hover img {
+  opacity: 1;
 }
 </style>

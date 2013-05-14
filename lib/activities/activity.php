@@ -93,6 +93,9 @@ class Activity {
   }
   
   private function accept_url($url) {
+    // avoid to rewrite default image...
+    if ($url == 'default')
+      return false;
     $query = SQL::sql()->query('SELECT url FROM fsc_activities'); 
     $urls = array();
     while ($data = $query->fetch())
@@ -187,12 +190,15 @@ class Activity {
   public function setImage($image) {
     $img = new UploadImage($image);
     $img->save(($this->created ? $this->id : 'temp') . '.jpg', Activity::$path_image);
-    $img->resize(175, 115);
+    $img->resize(210, 135);
     $this->image = 1;
     if (! $this->created)
       $this->image_temp = $img->file();
   }
   public function image()  {
+    return _ASSETS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. ($this->image ? $this->id : 'default') . '.jpg';
+  }
+  public function hasImage() {
     return $this->image;
   }
   

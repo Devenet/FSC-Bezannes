@@ -33,7 +33,7 @@
     define('_JQUERY_', '//api.localhost.local/jquery/jquery-1.9.1.min.js');
   }
   
-  define('_DATA_', _FSC_.'/'._PATH_UPLOADS_);
+  define('_ASSETS_', _FSC_.'/'._PATH_UPLOADS_);
   define('_API_', _FSC_.'/'._PATH_API_);
 
 ?>

@@ -17,11 +17,18 @@ $_SCRIPT[] = "\t" . '<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';
 $_SCRIPT[] = "
     <script>
       $(document).ready(function() {
-        $('.search-activities').typeahead({
+        $('input.search-activities').typeahead('destroy');
+        $('input.search-activities').typeahead({
           name: 'activities',
-          prefetch: '/api/activities.php',
-          template: '<p><a href=\"{{link}}\">{{value}}</a></p>',
+          valueKey: 'activity',
+          prefetch: '/api/activities.json',
+          template: '<a href=\"{{url}}\">{{activity}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
           engine: Hogan
+        });
+
+        $('input.search-activities').on(['typeahead:autocompleted', 'typeahead:selected'].join(' '), function (e) {
+          var v = [].slice.call(arguments, 1);
+          document.location.href = v[0].url;
         });
       });
     </script>

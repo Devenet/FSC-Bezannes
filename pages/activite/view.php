@@ -19,7 +19,7 @@
   
   <div class="span3 hidden-phone">
     <div class="center">
-      <img src="<?php echo _DATA_; ?>/activities/<?php echo $act->image() ? $act->id() : '0'; ?>.jpg" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
+      <img src="<?php echo $act->image(); ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
     </div>
   </div>
   
@@ -33,13 +33,12 @@
       <?php echo $display_schedules; ?>
     </div>
     
-    <div style="padding:10px 12px 0; border:1px solid #dedede; border-radius:3px;">
-      <!--<p><i class="icon-user"></i> Contact</p>-->
+    <div class="referents">
       <?php echo $display_referents; ?>
     </div>
   </div>
   
-    <div class="span8 pull-left">
+  <div class="span8 pull-left">
     <div class="description">
       <?php echo stripslashes($act->description()); ?>
     </div>
