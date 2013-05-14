@@ -61,11 +61,14 @@ $_SCRIPT[] = "\t" . '<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';
 $_SCRIPT[] = "
     <script>
       $(document).ready(function() {
-        $('input.search-members').typeahead('destroy');
+        //$('input.search-members').typeahead('destroy');
         $('input.search-members').typeahead({
           name: 'members',
           valueKey: 'name',
-          prefetch: 'http:". _PRIVATE_API_ ."/members.php',
+          prefetch: {
+            'url': 'http:". _PRIVATE_API_ ."/members.php',
+            'ttl': 5000
+            },
           template: '<a href=\"{{url}}\">{{name}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
           engine: Hogan
         });

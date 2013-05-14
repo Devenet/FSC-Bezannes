@@ -132,13 +132,57 @@ h3 {
 /*
  * activites
  */
-.page-activite .container .well ul {
-  margin-bottom: 0;
+.page-activites input.search-activities {
+  width: 250px;
+}
+
+.page-activites .all {
+  margin-top: 30px;
+}
+.page-activites .all li {
+  position: relative;
+  line-height: 135px;
+  margin-bottom: 20px;
+}
+.page-activites .all img {
+  -webkit-transition: all 0.6s ;
+  -moz-transition: all 0.6s ;
+  -ms-transition: all 0.6s ;
+  -o-transition: all 0.6s ;
+  transition: all 0.6s ;
+  opacity: .8;
+}
+.page-activites .all h4 {
+  line-height: 1;
+  font-size: 14px;
+  font-weight: normal;
+  color: #fff;
+  position: absolute;
+  right: 5px;
+  bottom: -10px;
+  left: 5px;
+  padding: 8px;
+  background: none repeat scroll 0% 0% rgba(0, 0, 0, .5);
+  -webkit-transition: background 0.6s ;
+  -moz-transition: background 0.6s ;
+  -ms-transition: background 0.6s ;
+  -o-transition: background 0.6s ;
+  transition: background 0.6s ;
+  }
+.page-activites .all a:hover h4 {
+  background: none repeat scroll 0% 0% rgba(0, 0, 0, .9);
+}
+.page-activites .all a:hover img {
+  opacity: 1;
 }
 
 /*
  * activite
  */
+.page-activite .container .well ul {
+  margin-bottom: 0;
+}
+
 .page-activite .referents {
   padding:10px 12px 0;
   margin-bottom: 20px;
@@ -150,9 +194,16 @@ h3 {
   margin-top: -10px;
 }
 
+
 /*
  * mediqueries
  */
+@media (min-width: 980px) {
+  .page-activite .container .infos {
+    margin-top: 15px;
+  }
+}
+
 @media (max-width: 979px) {
   header img {
     max-width: 150px;
@@ -174,6 +225,9 @@ h3 {
   .page-activite .container img {
     max-width: 90%;
   }
+  .page-activites input.search-activities {
+    width: 100%;
+  } 
 
   .carousel .item {
     height: 500px !important;
@@ -181,12 +235,6 @@ h3 {
   .carousel img {
     width: auto;
     height: 500px;
-  }
-}
-
-@media (min-width: 980px) {
-  .page-activite .container .infos {
-    margin-top: 15px;
   }
 }
 

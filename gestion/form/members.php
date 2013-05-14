@@ -50,3 +50,19 @@
   </div>
   
 </form>
+
+
+<?php
+$_SCRIPT[] = '
+  <script src="'. _FSC_ .'/js/select2.js"></script>
+  <script src="'. _FSC_ .'/js/select2_locale_fr.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#member").select2({
+        placeholder: "Sélectionnez un membre",
+        allowClear: true
+      });
+    });
+  </script>
+';
+?>

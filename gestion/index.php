@@ -46,15 +46,17 @@ require_once 'gestion/'.$controller;
 		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" 					type="image/png" 		href="/favicon.png" />
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="icon"          type="image/png"    href="/favicon.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
-    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-fileupload.min.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/common.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-wysihtml5.css" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/select2.css" />
 		<style>
 			header {
 				margin: 20px 0 0 0;

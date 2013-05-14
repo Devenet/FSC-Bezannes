@@ -22,7 +22,7 @@
   <div class="control-group">
     <label class="control-label" for="description"><i class="icon-book"></i> Description</label>
     <div class="controls">
-      <textarea name="description" id="description" rows="10" placeholder="Description de l’activité" class="input-xxlarge"><?php echo $form->input('description'); ?></textarea>
+      <textarea name="description" id="description" rows="15" placeholder="Description de l’activité" class="input-xxlarge"><?php echo $form->input('description'); ?></textarea>
     </div>
   </div>
   
@@ -132,7 +132,6 @@
   
 </form>
 
-<link rel="stylesheet" type="text/css" href="<?php echo _FSC_; ?>/css/bootstrap-wysihtml5.css" />
 <?php
   $_SCRIPT[] = '
 <script src="'. _FSC_ .'/js/bootstrap-fileupload.min.js"></script>

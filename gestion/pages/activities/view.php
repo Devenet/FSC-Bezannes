@@ -1,5 +1,5 @@
 <form class="form-search pull-left">
-  <input type="text" class="search-activities" placeholder="Accès rapide"/>
+  <input type="text" class="search-activities" placeholder="Accès rapide" autofocus/>
 </form>
 <div class="pull-right">
   <a href="/?page=new-activity" class="btn btn-primary pull-right"><i class="icon-plus icon-white"></i> Ajouter</a>

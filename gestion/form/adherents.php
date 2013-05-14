@@ -14,7 +14,7 @@
   <div class="control-group">
     <label class="control-label" for="adherent">Adhérent</label>
     <div class="controls">
-      <select class="input-xlarge" name="adherent" id="adherent">
+      <select class="input-xlarge" name="adherent" id="adherent" autofocus>
         <?php echo $form->select('adherent', $form->input('adherent')); ?>
       </select>
     </div>
@@ -26,3 +26,19 @@
   </div>
   
 </form>
+
+
+<?php
+$_SCRIPT[] = '
+  <script src="'. _FSC_ .'/js/select2.js"></script>
+  <script src="'. _FSC_ .'/js/select2_locale_fr.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#adherent").select2({
+        placeholder: "Sélectionnez un adhérent",
+        allowClear: true
+      });
+    });
+  </script>
+';
+?>

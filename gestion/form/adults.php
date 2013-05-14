@@ -14,7 +14,7 @@
   <div class="control-group">
     <label class="control-label" for="adulte">Adulte</label>
     <div class="controls">
-      <select class="input-xlarge" name="adulte" id="adulte">
+      <select class="input-xlarge" name="adulte" id="adulte" autofocus>
         <?php echo $form->select('adulte', $form->input('adulte')); ?>
       </select>
     </div>
@@ -26,3 +26,16 @@
   </div>
   
 </form>
+
+
+<?php
+$_SCRIPT[] = '
+  <script src="'. _FSC_ .'/js/select2.js"></script>
+  <script src="'. _FSC_ .'/js/select2_locale_fr.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#adulte").select2();
+    });
+  </script>
+';
+?>
