@@ -8,8 +8,6 @@ spl_autoload_extensions('.php');
 spl_autoload_register();
 error_reporting (0);
 
-session_start();
-
 require '../config/config.php';
 
 header('Content-type: application/json');
