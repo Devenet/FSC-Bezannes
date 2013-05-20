@@ -77,6 +77,18 @@ class UserAdmin extends User {
     return false;
   }
 
+  private function update_sql($field, $data) {
+    $demande = 'UPDATE fsc_users_admin SET '. $field .' = \''. $data .'\' WHERE id = '. $this->id .'';
+    $query = SQL::sql()->query($demande);
+    $query->closeCursor();
+  }
+  
+  public function update() {
+    if ($this->created) {
+      $this->update_sql('password', $this->password);
+    }
+  }
+
   public function delete($bool = false) {
     if ($bool && $this->created) {
       $query = SQL::sql()->prepare('DELETE FROM fsc_users_admin WHERE id = :id');

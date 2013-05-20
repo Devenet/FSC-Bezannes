@@ -11,6 +11,7 @@ abstract class RecoverPassword {
   static protected $links = array(_INSCRIPTION_, _GESTION_, '404');
   
   static public function insert($user, $email, $type = 0) {
+    self::clear();
     /*
     * type
     * 0: inscription, 1: gestion, 2: admin
@@ -48,15 +49,6 @@ Pensez cependant à changer régulièrement votre mot de passe, en y insérant d
     }
   }
 
-  static protected function exists($token) {
-    $tokens = array();
-    $query = SQL::sql()->query('SELECT token FROM fsc_users_recover_passwords');
-    while ($data = $query->fetch())
-      $tokens[] = $data['token'];
-    $query->closeCursor();
-
-    return in_array($token, $tokens);
-  }
 
   static protected function asked($user) {
     $users = array();
@@ -69,11 +61,32 @@ Pensez cependant à changer régulièrement votre mot de passe, en y insérant d
   }
 
   static protected function clear() {
-    
+    $query = SQL::sql()->prepare('DELETE FROM fsc_users_recover_passwords WHERE date < :date');
+    $query->execute(array(
+      'date' => time()
+      ));
+    $query->closeCursor();
   }
 
-  static public function getAcces($hash) {
+  static public function accept($token, $user) {
+    self::clear();
+    $auth = array();
+    $query = SQL::sql()->query('SELECT token, id_user FROM fsc_users_recover_passwords');
+    while ($data = $query->fetch())
+      $auth[] = array(
+          'token' => $data['token'],
+          'user' => $data['id_user']
+        );
+    $query->closeCursor();
 
+    return in_array(array('token' => $token, 'user' => $user), $auth);
+  }
+
+  static public function remove($user) {
+    $query = SQL::sql()->prepare('DELETE FROM fsc_users_recover_passwords WHERE id_user = :id');
+    $query->execute(array('id' => $user));
+    $query->closeCursor();
+    self::clear();
   }
 
 }

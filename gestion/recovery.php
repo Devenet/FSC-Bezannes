@@ -54,14 +54,58 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
   else {
     $_SESSION['msg'] = new Message('Cet utilisateur est inconnu.', -1, 'Oups... !');
     $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
-    header ('Location: /recover-password.php');
+    header ('Location: /recovery.php');
     exit();
   }
 }
 // accept token
 elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) && $_GET['user'] != null) {
-  if (false) {
-    $content = "ok new passwords here";
+
+  if (RecoverPassword::accept(htmlspecialchars($_GET['token']), UserAdmin::getID(htmlspecialchars($_GET['user'])))) {
+    if (isset($_POST['new-password']) && $_POST['new-password'] != null && isset($_POST['confirm-new-password']) && $_POST['confirm-new-password'] != null) {
+      $u = new UserAdmin(UserAdmin::getID(htmlspecialchars($_GET['user'])));
+      try {
+        if ($_POST['new-password'] != $_POST['confirm-new-password'])
+          throw new \Exception('Les mots de passes ne correspondent pas.');
+        if (! $u->setPassword($_POST['new-password'], 8))
+          throw new \Exception('Votre mot de passe n’est pas valide. Il doit comporter au minimum 8 caractères.');
+
+        $u->update();
+        RecoverPassword::remove(UserAdmin::getID(htmlspecialchars($_GET['user'])));
+
+
+        $_SESSION['msg'] = new Message('Votre mot de passe a bien été réinitialisé. Vous pouvez maintenant vous connecter :)', 1, 'Réinitialisation réussie !');
+        header ('Location: /login.php');
+        exit(); 
+      }
+      catch (\Exception $e) {
+        $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !');
+        header ('Location: /recovery.php?token='. htmlspecialchars($_GET['token']) .'&user='. htmlspecialchars($_GET['user']));
+        exit(); 
+      }
+    }
+    else {
+      $content = '
+      <form class="form-signin form" action="recovery.php?token='. htmlspecialchars($_GET['token']) .'&amp;user='. htmlspecialchars($_GET['user']) .'" method="post">
+          <h2 class="form-signin-heading">Réinitialisation</h2>
+          <p class="alert alert-info"><strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 8 caractères !</p>
+          <div class="control-group">
+            <label class="control-label" for="new-password">Nouveau mot de passe</label>
+            <div class="controls">
+              <input type="password" id="new-password" name="new-password" />
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="confirm-new-password">Confirmation</label>
+            <div class="controls">
+              <input type="password" id="confirm-new-password" name="confirm-new-password" />
+            </div>
+          </div>
+            <input type="submit" class="btn btn-primary btn-large" value="Réinitialiser" />
+
+      </form> 
+      ';
+    }
   }
   else {
     $_SESSION['msg'] = new Message('Autorisation de réinitialisation de votre mot de passe invalide ou expirée.', -1, 'Oups... !');
@@ -75,7 +119,7 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
 <html lang="fr">
 	<head>
     <meta charset="UTF-8" />
-    <title>Connexion &ndash; Gestion &ndash; FSC Bezannes</title>
+    <title>Récupération de mot de passe &ndash; Gestion &ndash; FSC Bezannes</title>
     <meta name="author" content="Nicolas Devenet" />
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -145,7 +189,7 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
           echo $content;
         else { ?>
 
-      <form class="form-signin" action="recover-password.php" method="post">
+      <form class="form-signin" action="recovery.php" method="post">
         <h2 class="form-signin-heading">Récupération</h2>
         <p>Merci d’indiquer votre nom d’utilisateur. Un email contenant un lien pour réinitialiser votre mot de passe vous sera envoyé.</p>
         
