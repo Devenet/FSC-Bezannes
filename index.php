@@ -37,7 +37,7 @@ $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
 // Get controller
 $_SCRIPT = array();
-$controller = 'pages/'.$_GET['page'].'/controller.php';
+$controller = ($_GET['page'] == 404 || $_GET['page'] == 403) ? 'pages/errors/'.$_GET['page'].'/controller.php' : 'pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : 'pages/errors/404/controller.php';
 require_once $controller;
 

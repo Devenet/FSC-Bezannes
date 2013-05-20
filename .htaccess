@@ -20,3 +20,4 @@ RewriteRule ^uploads/activities/default.jpg$ /img/logo/fsc-210x135.png
 RewriteRule ^api/([a-z-]+)\.json$ /api/$1.php
 
 ErrorDocument 404 /index.php?page=404
+ErrorDocument 403 /index.php?page=403
