@@ -6,9 +6,13 @@ Options -Indexes
 
 RewriteEngine On
 # pages
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)$ /?page=$1
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/([a-z0-9-]+)$ /?page=$1&rel=$2
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/$ /$1 [R,L]
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/([a-z0-9-]+)/$ /$1/$2 [R,L]
 # img
 RewriteRule ^uploads/activities/default.jpg$ /img/logo/fsc-210x135.png

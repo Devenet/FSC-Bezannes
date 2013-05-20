@@ -1,9 +1,14 @@
 RewriteEngine On
 
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)$ /?page=$1
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/([a-z0-9-]+)$ /?page=$1&rel=$2
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/(.+)/([a-zA-Z0-9-]+)$ /?page=$1&rel=$2&data=$3
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/$ /$1 [R,L]
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/([a-z0-9-]+)/$ /$1/$2 [R,L]
 
 RewriteCond %{HTTP_HOST} ^fsc.localhost.local$
