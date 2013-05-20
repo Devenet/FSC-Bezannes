@@ -111,7 +111,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   
 }
 else {
-  header ('Location: /signin');
+  header ('Location: /login');
   exit();
 }
 
