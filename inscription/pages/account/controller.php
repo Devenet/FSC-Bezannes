@@ -3,7 +3,9 @@
 use lib\content\Page;
 use lib\content\Form;
 use lib\content\Message;
+use lib\content\Display;
 use lib\users\UserInscription;
+use lib\inscription\Member;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
@@ -36,6 +38,9 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     }
   }
 
+
+  $tmp = Member::countMembers($u->id());
+  $display_count_members = $tmp . ' personne'. Display::Plural($tmp) .' préinscrite'. Display::Plural($tmp);
 
   
 }

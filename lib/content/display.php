@@ -72,6 +72,10 @@ class Display {
   static public function Double($double) {
     return $double;
   }
+
+  static public function Plural($int) {
+    return $int > 1 ? 's' : '';
+  }
   
 }
 ?>

@@ -47,6 +47,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
     <!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/inscription.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
+		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/select2.css" /><?php } ?>
 	</head>
 
 	<body>
