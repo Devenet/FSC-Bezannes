@@ -56,13 +56,13 @@ case 'asso':
 ?>
 
 <div class="row">
-  <div class="span7">
+  <div class="span8">
     <h3>Être adhérent</h3>
     <p>L’adhésion au Foyer Social et Culturel implique le paiment d’une cotisation annuelle, ainsi que la connaissance et le respect du <a href="<?php echo _FSC_; ?>/a-propos/documents">Règlement intérieur</a>.</p>
     <p>Les activités sont accessibles aux seuls adhérents. La participation à toute activité autre que la Bibliothèque est conditionnée par le réglement d’une cotisation propre à cette activité.</p>
     <p>Les renseignements contenus dans la feuille individuelle d’inscription sont destinés à un usage strictement interne. Animateurs, responsables, secretaires et administrateurs ont consigne de ne pas les communiquer. En particulier si des mailings doivent être effectués les adresses êlectroniques seront en copie cachée. </p>
   </div>
-  <div class="span5">
+  <div class="span4">
     <h3>Cotisations</h3>
     <table class="table table-striped">
       <thead>
@@ -90,6 +90,7 @@ case 'asso':
   </div>
 </div>
 
+<hr />
 <div class="row espace-top">
   <div class="span4">
     <h3>L’assemblée générale</h3>
@@ -238,6 +239,7 @@ default:
   </div>
 </div>
 
+<hr />
 <div class="row">
   <div class="span4">
     <h3>Une association</h3>
@@ -254,6 +256,8 @@ default:
     <br />Aussi, nous serions contents de vous compter parmi tous ceux qui contribuent à la réussite du Foyer.</p>
   </div>
 </div>
+
+<hr />
 <div class="row">
   <div class="span8">
     <h3>Où se renseigner et s’inscrire ? </h3>
