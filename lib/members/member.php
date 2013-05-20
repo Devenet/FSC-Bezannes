@@ -204,7 +204,7 @@ class Member {
     return $this->address_further;
   }
   public function setAddressFurther($further = null) {
-    $this->address_further = htmlspecialchars($further);
+    $this->address_further = ucwords(mb_strtolower(htmlspecialchars($further), 'UTF-8'));;
     return true;
   }
   
