@@ -21,7 +21,7 @@ class UserInscription extends User {
       $query->closeCursor();
       $this->created = true;
     }
-    else
+    else 
       $created = false;
   }
   
@@ -45,8 +45,31 @@ class UserInscription extends User {
     }
     return false;
   }
+
+  private function update_sql($field, $data) {
+    $demande = 'UPDATE fsc_users_inscription SET '. $field .' = \''. $data .'\' WHERE id = '. $this->id .'';
+    $query = SQL::sql()->query($demande);
+    $query->closeCursor();
+  }
   
-    public static function getID($login) {
+  public function update() {
+    if ($this->created) {
+      $this->update_sql('password', $this->password);
+    }
+  }
+  
+  public function historize($ip) {
+    if ($this->created) {
+      $query = SQL::sql()->prepare('UPDATE fsc_users_inscription SET ip = :ip, date = NOW() WHERE id = :id');
+      $query->execute(array(
+        'ip' => $ip,
+        'id' => $this->id
+      ));
+      $query->closeCursor();
+    }
+  }
+
+  public static function getID($login) {
     $query = SQL::sql()->prepare('SELECT id FROM fsc_users_inscription WHERE login = ?');
     $query->execute(array(htmlspecialchars($login)));
     $data = $query->fetch();
@@ -64,6 +87,9 @@ class UserInscription extends User {
     $query->closeCursor();
     return in_array(htmlspecialchars($login), $logins) && in_array(User::hash_password($pwd, htmlspecialchars($login)), $passwords);
   }
+  public static function isUser($login) {
+    return in_array(htmlspecialchars($login), self::getLogins());
+  }
   
   protected function getLogins() {
     $query = SQL::sql()->query('SELECT login FROM fsc_users_inscription');
@@ -71,17 +97,6 @@ class UserInscription extends User {
     while ($data = $query->fetch())
       $logins[] = $data['login'];
     return $logins;
-  }
-  
-  public function historize($ip) {
-    if ($this->created) {
-      $query = SQL::sql()->prepare('UPDATE fsc_users_inscription SET ip = :ip, date = NOW() WHERE id = :id');
-      $query->execute(array(
-        'ip' => $ip,
-        'id' => $this->id
-      ));
-      $query->closeCursor();
-    }
   }
   
 }
