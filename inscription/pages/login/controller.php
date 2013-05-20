@@ -30,7 +30,7 @@ if (isset($_SESSION['login-next-step'])) {
   unset($_SESSION['login-next-step']);
 }
 
-$form = new Form('login', _INSCRIPTION_.'/login/', 'Connexion');
+$form = new Form('login', _INSCRIPTION_.'/login', 'Connexion');
 $inputs = array(
     'login',
     'password'

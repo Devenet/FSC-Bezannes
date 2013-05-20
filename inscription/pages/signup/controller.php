@@ -26,7 +26,7 @@ $page->addParameter('step-width', 2);
 $page->addOption('bar');
 $page->addParameter('bar', 'danger');
 
-$form = new Form('signup', _INSCRIPTION_.'/signup/', 'Créer mon compte');
+$form = new Form('signup', _INSCRIPTION_.'/signup', 'Créer mon compte');
 
 // controle formulaire
 if (isset($_POST) and $_POST != null) {
