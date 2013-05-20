@@ -44,7 +44,6 @@ Si vous n’avez pas effectué cette demande, vous pouvez ignorer cet email.
 Pensez cependant à changer régulièrement votre mot de passe, en y insérant des caractères spéciaux.';
 
       Mail::text($email, 'Réinitialisation de votre mot de passe', $body);
-      echo $body;
     }
     else {
       throw new \Exception('Une demande de réinitialisation de mot de passe pour ce compte a déjà été envoyée.
