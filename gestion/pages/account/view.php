@@ -42,32 +42,32 @@
     <h3 id="modalChangePassword">Changer mon mot de passe</h3>
   </div>
   <form method="post" action="/?page=account" class="form form-horizontal" style="margin-bottom:0;">
-  <div class="modal-body">
-    <div class="control-group">
-      <label class="control-label" for="password">Mot de passe actuel</label>
-      <div class="controls">
-        <input type="password" id="password" name="password" autofocus />
+    <div class="modal-body">
+      <div class="control-group">
+        <label class="control-label" for="password">Mot de passe actuel</label>
+        <div class="controls">
+          <input type="password" id="password" name="password" autofocus />
+        </div>
+      </div>
+      <p class="alert alert-info"><strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 8 caractères !</p>
+      <div class="control-group">
+        <label class="control-label" for="new-password">Nouveau mot de passe</label>
+        <div class="controls">
+          <input type="password" id="new-password" name="new-password" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label" for="confirm-new-password">Confirmation</label>
+        <div class="controls">
+          <input type="password" id="confirm-new-password" name="confirm-new-password" />
+        </div>
       </div>
     </div>
-    <p class="alert alert-info"><strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 8 caractères !</p>
-    <div class="control-group">
-      <label class="control-label" for="new-password">Nouveau mot de passe</label>
-      <div class="controls">
-        <input type="password" id="new-password" name="new-password" />
-      </div>
+    <div class="modal-footer">
+      <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+      <input type="submit" class="btn btn-primary" value="Modifier" />
     </div>
-    <div class="control-group">
-      <label class="control-label" for="confirm-new-password">Confirmation</label>
-      <div class="controls">
-        <input type="password" id="confirm-new-password" name="confirm-new-password" />
-      </div>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-    <input type="submit" class="btn btn-primary" value="Modifier" />
   </form>
-  </div>
 </div>
 
 <?php
