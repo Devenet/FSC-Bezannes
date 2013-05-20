@@ -8,7 +8,6 @@
       unset($_SESSION['form_msg']);
     }
   ?>
-  <!-- /form messages -->
   
   <h3 class="controls">Identifiants</h3>
   

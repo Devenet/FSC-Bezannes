@@ -68,7 +68,7 @@ Voici un petit rappel des informations utiles :
 • Votre identifiant : '. $u->login() .'
 • Votre mot de passe : celui défini lors de l’inscription 
 • Page de connexion : http:'. _INSCRIPTION_ .'/login';
-    Mail::text($u->email(), 'Votre compte – Préinscriptions', $body);
+    Mail::text($u->email(), 'Préinscriptions', $body);
     
     $_SESSION['msg'] = new Message('Vous pouvez maintenant vous connecter avec vos identifiants.', 1, 'Votre compte a bien été créé !');
     $_SESSION['login-next-step'] = true;

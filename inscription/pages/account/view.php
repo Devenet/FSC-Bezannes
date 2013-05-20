@@ -1,11 +1,15 @@
 <div class="row">
   <div class="span8">
+    <ul>
+      <li>Préinscrire une nouvelle personne <a href="/new-preinscription">ajouter</a></li>
+    </ul>
   </div>
 
   <div class="span4">
     <div class="well well-small">
       <ul style="margin-bottom: 0;">
-        <li>Changer mon <a href="#change-password" role="button" data-toggle="modal">mot de passe</a></li>
+        <li><?php echo $display_count_members; ?> pour ce compte</li>
+        <li><a href="#change-password" role="button" data-toggle="modal">mot de passe</a></li>
       </ul>
     </div>
   </div>
