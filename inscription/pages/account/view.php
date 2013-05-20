@@ -18,7 +18,7 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
     <h3 id="modalChangePassword">Changer mon mot de passe</h3>
   </div>
-  <form method="post" action="/?page=account" class="form form-horizontal" style="margin-bottom:0;">
+  <form method="post" action="/account" class="form form-horizontal" style="margin-bottom:0;">
     <div class="modal-body">
       <div class="control-group">
         <label class="control-label" for="password">Mot de passe actuel</label>

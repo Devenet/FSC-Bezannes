@@ -6,8 +6,8 @@ Options -Indexes
 
 RewriteEngine On
 # pages
-RewriteRule ^([a-z-]+)/?$ /?page=$1
-RewriteRule ^([a-z-]+)/([a-z0-9-]+)/?$ /?page=$1&rel=$
+RewriteRule ^([a-z-]+)$ /?page=$1
+RewriteRule ^([a-z-]+)/([a-z0-9-]+)$ /?page=$1&rel=$2
 RewriteRule ^([a-z-]+)/$ /$1 [R,L]
 RewriteRule ^([a-z-]+)/([a-z0-9-]+)/$ /$1/$2 [R,L]
 # img
