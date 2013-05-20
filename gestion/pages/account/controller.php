@@ -24,9 +24,10 @@ if (isset($_POST) && isset($_POST['password']) && $_POST['password'] != null) {
     
     if (!$u->setPassword(stripslashes($_POST['new-password']), 8))
       throw new \Exception('Votre mot de passe n’est pas valide. Il doit comporter au minimum 8 caractères.');
+
+    $u->update();
     
-    // $_SESSION['msg'] = new Message('Vous voilà avec un nouveau mot de passe :)', 1, 'Mot de passe changé !');
-    $_SESSION['msg'] = new Message('Passons à la suite !', 1, 'OK');
+    $_SESSION['msg'] = new Message('Vous voilà avec un nouveau mot de passe :)', 1, 'Mot de passe changé !');
   }
   catch (\Exception $e) {
     $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Impossible de changer le mot de passe !');
@@ -40,7 +41,7 @@ $display_privilege = ucfirst(Display::Privilege($u->privilege()));
 
 // affichage dernière connexion
 $data = $u->lastHistory();
-$display_last_history = Display::FullTimestamp($data['date']) .'<br /> depuis l’IP '. $data['ip'];
+$display_last_history = ($data != null) ? Display::FullTimestamp($data['date']) .'<br /> depuis l’IP '. $data['ip'] : 'Première connexion';
 
 // affichage users admin
 $display_users = '';
