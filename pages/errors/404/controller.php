@@ -10,6 +10,6 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 // URL not found : $_SERVER['REQUEST_URI'];
 
-header('HTTP/1.0 404 Not Found', true, 404);
+header('HTTP/1.1 404 Not Found', true, 404);
 
 ?>
