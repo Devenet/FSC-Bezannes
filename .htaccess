@@ -18,6 +18,11 @@ RewriteRule ^([a-z-]+)/([a-z0-9-]+)/$ /$1/$2 [R,L]
 RewriteRule ^uploads/activities/default.jpg$ /img/logo/fsc-210x135.png
 # api
 RewriteRule ^api/([a-z-]+)\.json$ /api/$1.php
+# favicon
+RewriteRule ^favicon.ico$ /img/favicon/round_16.ico
+RewriteRule ^favicon.png$ /img/favicon/round_32.png
+RewriteRule ^apple-touch-icon.png$ /img/logo/fsc-128x128.png
 
+# Document errors
 ErrorDocument 404 /index.php?page=404
 ErrorDocument 403 /index.php?page=403
