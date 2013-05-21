@@ -25,7 +25,7 @@ $mainMenu = new Menu();
 	$mainMenu->addLink('Membres', '/?page=members', 'group');
 // Menu secondaire droite
 $rightMenu = new Menu();
-	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'caret-right', true, true, true);
+	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'share-alt', true, true, true);
 
 
 // Contenu de la page
@@ -34,9 +34,9 @@ $_GET['page'] = str_replace("\0", '', $_GET['page']);
 $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
 $_SCRIPT = array();
-$controller = '../gestion/pages/'.$_GET['page'].'/controller.php';
+$controller = ($_GET['page'] == 404 || $_GET['page'] == 403) ? '../pages/errors/'.$_GET['page'].'/controller.php' : '../'._PATH_GESTION_.'/pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : '../pages/errors/404/controller.php';
-require_once 'gestion/'.$controller;
+require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 
 ?><!DOCTYPE html>
 <html lang="fr">
@@ -46,8 +46,9 @@ require_once 'gestion/'.$controller;
 		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-		<link rel="icon"          type="image/png"    href="/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_diago_16.ico" />
+    <link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_diago_32.png" />
+    <link rel="apple-touch-icon" href="<?php echo _FSC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
