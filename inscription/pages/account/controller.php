@@ -54,7 +54,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
           <th style="text-align:right;"><i class="icon-user"></i></th>
           <th> Identité</th>
           <th style="width:120px; text-align:center;"><i class="icon-map-marker"></i> Bezannais</th>
-          <th style="width:120px; text-align:center;"><i class="icon-bookmark-empty"></i> Pré-adhérent</th>
+          <th style="width:120px; text-align:center;">Pré-adhérent</th>
           <th style="text-align:center;"><i class="icon-globe"></i> Activités</th>
           <th style="text-align:center;"></th>
         </tr>

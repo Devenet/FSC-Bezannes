@@ -408,8 +408,13 @@ class Member {
     return false;
   }
   
-  static public function isMember($id) {
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription');
+  static public function isMember($id, $id_user_inscription = 0) {
+    if ($id_user_inscription == 0)
+      $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription');
+    else {
+      $query = SQL::sql()->prepare('SELECT id FROM fsc_members_inscription WHERE id_user_inscription = :id_user_inscription');
+      $query->execute(array('id_user_inscription' => $id_user_inscription));
+    }
     $ids = array();
     while ($data = $query->fetch())
       $ids[] = $data['id'];
