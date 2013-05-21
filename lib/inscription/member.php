@@ -432,61 +432,25 @@ class Member {
     return in_array($id, $ids);
   }
   
-  static public function Members($start = 0, $step = null) {
-    $step = is_null($step) ? Pagination::step() : $step;
+  static public function Members($id = 0) {
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription ORDER BY id LIMIT '. $start .','. $step);
+    if ($id == 0)
+      $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription ORDER BY id ');
+    else {
+      $query = SQL::sql()->prepare('SELECT id FROM fsc_members_inscription WHERE id_user_inscription = :id ORDER BY id');
+      $query->execute(array('id' => $id));
+    }
     while ($data = $query->fetch())
       $return[] = new Member($data['id']); 
     $query->closeCursor();
     return $return;
   }
   
-  static public function MembersByName($start = 0, $sens = true, $step = null) {
-    $step = is_null($step) ? Pagination::step() : $step;
-    $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription ORDER BY last_name '. ($sens ? '' :  'DESC') .', first_name LIMIT '. $start .','. $step);
-    while ($data = $query->fetch())
-      $return[] = new Member($data['id']); 
-    $query->closeCursor();
-    return $return;
-  }
-  
-  static public function MembersByAdherent($start = 0, $sens = true, $step = null) {
-    $step = is_null($step) ? Pagination::step() : $step;
-    $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription ORDER BY adherent '. ($sens ? 'DESC' :  '') .', last_name, first_name LIMIT '. $start .','. $step);
-    while ($data = $query->fetch())
-      $return[] = new Member($data['id']); 
-    $query->closeCursor();
-    return $return;
-  }
-  
-  static public function MembersByBezannais($start = 0, $sens = true, $step = null) {
-    $step = is_null($step) ? Pagination::step() : $step;
-    $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription ORDER BY bezannais '. ($sens ? 'DESC' :  '') .', last_name, first_name LIMIT '. $start .','. $step);
-    while ($data = $query->fetch())
-      $return[] = new Member($data['id']); 
-    $query->closeCursor();
-    return $return;
-  }
-  
-  static public function MembersByAdult($start = 0, $sens = true, $step = null) {
-    $step = is_null($step) ? Pagination::step() : $step;
-    $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription ORDER BY minor '. ($sens ? '' :  'DESC') .', last_name, first_name LIMIT '. $start .','. $step);
-    while ($data = $query->fetch())
-      $return[] = new Member($data['id']); 
-    $query->closeCursor();
-    return $return;
-  }
   
   static public function Adults($id = 0) {
     $return = array();
-    if ($id == 0) {
+    if ($id == 0)
       $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription WHERE minor = 0 ORDER BY last_name, first_name');
-    }
     else {
       $query = SQL::sql()->prepare('SELECT id FROM fsc_members_inscription WHERE minor = 0 AND id_user_inscription = :id ORDER BY last_name, first_name');
       $query->execute(array('id' => $id));
@@ -526,22 +490,24 @@ class Member {
   }
   
   static public function countMembers($id = 0) {
-    if ($id == 0) {
+    if ($id == 0)
       $query = SQL::sql()->query('SELECT COUNT(id) AS total FROM fsc_members_inscription');
-      $data = $query->fetch();
-    }
     else {
       $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_members_inscription WHERE id_user_inscription = :id');
       $query->execute(array('id' => $id));
-      $data = $query->fetch();
     }
-
+    $data = $query->fetch();
     $query->closeCursor();
     return $data['total'];
   }
   
-  static public function countAdults() {
-    $query = SQL::sql()->query('SELECT COUNT(id) AS total FROM fsc_members_inscription WHERE minor = 0');
+  static public function countAdults($id = 0) {
+    if ($id == 0)
+      $query = SQL::sql()->query('SELECT COUNT(id) AS total FROM fsc_members_inscription WHERE minor = 0');
+    else {
+      $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_members_inscription WHERE minor = 0 AND id_user_inscription = :id');
+      $query->execute(array('id' => $id));
+    }
     $data = $query->fetch();
     $query->closeCursor();
     return $data['total'];

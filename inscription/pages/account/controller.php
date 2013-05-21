@@ -6,6 +6,7 @@ use lib\content\Message;
 use lib\content\Display;
 use lib\users\UserInscription;
 use lib\inscription\Member;
+use lib\inscription\Participant;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
@@ -38,10 +39,86 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     }
   }
 
+  $count_members = Member::countMembers($u->id());
+  $display_count_members = 'Il y a actuellement <span class="label">'. $count_members . '</span> personne'. Display::Plural($count_members) .' préinscrite'. Display::Plural($count_members) .' sur votre compte.';
+  $count_activities = 99999;
+  $count_adherents = 0;
+  // affichage des préinscriptions du compte
+  if ($count_members == 0) {
+    $display_members = '<div class="row espace-top"><div class="span8 offset2"><div class="alert">Aucune préinscription n’a encore été enregistrée :/<br />Faire ma <a href="/new-preinscription">première préinscription</a> !</div></div></div>';
+  }
+  else {
+    $display_members = '<table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="text-align:right;"><i class="icon-user"></i></th>
+          <th> Identité</th>
+          <th style="width:120px; text-align:center;"><i class="icon-map-marker"></i> Bezannais</th>
+          <th style="width:120px; text-align:center;"><i class="icon-bookmark-empty"></i> Pré-adhérent</th>
+          <th style="text-align:center;"><i class="icon-globe"></i> Activités</th>
+          <th style="text-align:center;"></th>
+        </tr>
+      </thead>
+      <tbody>';
+    foreach (Member::Members($_SESSION['user']->id()) as $m) {
+      $act = Participant::countActivities($m->id());
+      $count_activities = min($act, $count_activities);
+      if ($m->adherent()) $count_adherents++;
+      $display_members .= '
+        <tr>
+          <td style="text-align:center;">'. Display::HtmlGender($m->gender()) .'</td>
+          <td>'. $m->name() .'</td>
+          <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '') .'</td>
+          <td style="width:120px; text-align:center;">'. ($m->adherent() ? '<i class="icon-ok"></i>' : '') .'</td>
+          <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : '') .'">'. $act .'</span> <a href="#" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
+          <td style="text-align:center;"><a href="/preinscription/'. $m->id() .'" class="btn btn-small">Voir</a></td>
+        </tr>
+      ';
+    }
+    $display_members .= '
+      </tbody>
+    </table>';
+  }
 
-  $tmp = Member::countMembers($u->id());
-  $display_count_members = $tmp . ' personne'. Display::Plural($tmp) .' préinscrite'. Display::Plural($tmp);
-
+  // aucune préinscription
+  if ($count_members == 0) {
+    $page->addOption('steps');
+    $page->addParameter('step', 3);
+    $page->addParameter('step-width', 20);
+    $page->addParameter('step-info', 'Ajouter une préinscription');
+    $page->addOption('bar');
+    $page->addParameter('bar', 'warning');
+  }
+  // préinscription faite avec au moins un adhérent
+  else if ($count_adherents > 0) {
+    // au moins un membres sans aucune activité choisie
+    if ($count_activities == 0) {
+      $page->addOption('steps');
+      $page->addParameter('step', 4);
+      $page->addParameter('step-width', 40);
+      $page->addParameter('step-info', 'Se préinscrire à des activités');
+      $page->addOption('bar');
+      $page->addParameter('bar', 'warning');
+    }
+    // au moins une activité choisie
+    else {
+      $page->addOption('steps');
+      $page->addParameter('step', 5);
+      $page->addParameter('step-width', 80);
+      $page->addParameter('step-info', 'Vérifier ses informations');
+      $page->addOption('bar');
+      $page->addParameter('bar', 'success');
+    }
+  }
+  // préinscription faite, mais aucun adhérent
+  else {
+    $page->addOption('steps');
+      $page->addParameter('step', 3);
+      $page->addParameter('step-width', 30);
+      $page->addParameter('step-info', 'Préinscrire un nouvel adhérent');
+      $page->addOption('bar');
+      $page->addParameter('bar', 'warning');
+  }
   
 }
 else {

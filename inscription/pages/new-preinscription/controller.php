@@ -16,6 +16,15 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
   $form = new Form('new-member', '/?page=new-preinscription', 'Ajouter', 'membre à préinscrire');
 
+  $display_warning_adult = Member::countAdults($_SESSION['user']->id()) > 0 ? '' : '<div class="row">
+  <div class="span10 offset1">
+    <div class="alert">
+      <strong>Aide :</strong> Si vous souhaitez préinscrire un mineur, vous devez d’abord créer une préinscription pour le responsable du mineur.
+      Si le responsable ne veut pas devenir adhérent, il suffit de ne pas cocher la case pré-adhérer.
+    </div>
+  </div>
+</div>';
+
   // controle formulaire
   if (isset($_POST) and $_POST != null) {
     $inputs = array(

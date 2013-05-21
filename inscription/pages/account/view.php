@@ -1,22 +1,25 @@
 <div class="row">
   <div class="span8">
-    <ul>
-      <li>Préinscrire une nouvelle personne <a href="/new-preinscription">ajouter</a></li>
-    </ul>
+    <p><?php echo $display_count_members; ?></p>
   </div>
 
   <div class="span4">
-    <div class="well well-small">
-      <ul style="margin-bottom: 0;">
-        <li><?php echo $display_count_members; ?> pour ce compte</li>
-        <li><a href="#change-password" role="button" data-toggle="modal">mot de passe</a></li>
-      </ul>
+    <div class="pull-right">
+      <a href="/new-preinscription" class="btn btn-primary btn-small">Nouvelle préinscription</a>
     </div>
   </div>
-
 </div>
 
-<!-- Modal -->
+<div class="clearfix espace-top"></div>
+
+
+<h3><i class="icon-hand-right"></i> Mes préinscriptions</h3>
+<?php echo $display_members; ?>
+
+
+<!--
+<a href="#change-password" role="button" data-toggle="modal">mot de passe</a>
+<!-- Modal --
 <div id="change-password" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalChangePassword" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -50,3 +53,4 @@
     </div>
   </form>
 </div>
+-->

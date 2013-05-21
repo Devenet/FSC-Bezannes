@@ -21,6 +21,11 @@ class Display {
     $genders = array ('M.', 'Mme', 'Mlle');
     return $genders[$gender];
   }
+
+  static public function HtmlGender($gender) {
+    $genders = array ('M.', 'M<sup>me</sup>', 'M<sup>lle</sup>');
+    return $genders[$gender];
+  }  
   
   static public function Date($date) {
     $date = explode('-', $date);

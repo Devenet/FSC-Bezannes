@@ -35,16 +35,6 @@ foreach ($months as $value => $month) {
 }
 ?>
 
-<div class="row">
-  <div class="span10 offset1">
-    <div class="alert">
-      <strong>Aide :</strong> Si vous souhaitez préinscrire un mineur, vous devez d’abord créer une préinscription pour le responsable du mineur.
-      Si le responsable ne veut pas devenir adhérent, il suffit de ne pas cocher la case pré-adhérer.
-    </div>
-  </div>
-</div>
-
-
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
   <!--<?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>-->
   
@@ -159,6 +149,7 @@ foreach ($months as $value => $month) {
     <label class="control-label" for="email">Courriel</label>
     <div class="controls">
       <input type="email" name="email" id="email" placeholder="john@smith.com" <?php echo $form->value('email'); ?> class="input-xxlarge"/>
+      <span class="help-block">Pour un mineur ne possédant pas d’adresse email, vous pouvez mettre le courriel du responsable.</span>
     </div>
   </div>
   
