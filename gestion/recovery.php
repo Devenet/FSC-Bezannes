@@ -11,6 +11,7 @@ set_include_path('../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
 
+session_name('gestion');
 session_start();
 
 require '../config/config.php';

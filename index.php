@@ -7,7 +7,7 @@ use lib\content\Menu;
 spl_autoload_extensions('.php');
 spl_autoload_register();
 
-session_start();
+//session_start();
 
 require 'config/config.php';
 
@@ -118,10 +118,6 @@ require_once $controller;
             <br /><small>Developped with love by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a></small>
           </p>
           <!--
-          <ul class="inline pull-right">
-            <li><a href="#" title="Site valide HTML5"><img src="/img/badge-html5.png" alt="HTML5" /></a></li>
-            <li><a href="https://nicolabricot.com" title="Site adapté par nicolabricot"><img src="//nicolabricot.com/favicon.png" alt="nicolabricot" /></a></li>
-          </ul>
           <p class="pull-right social">
             <a href=""><i class="icon-facebook-sign"></i></a> 
             <a href=""><i class="icon-twitter"></i></a> 
