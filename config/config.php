@@ -19,7 +19,7 @@
     define('_ANALYTICS_FSC_', true);
     define('_ANALYTICS_GESTION_', true);
     define('_ANALYTICS_INSCRIPTION_', true);
-    define('_JQUERY_', '//code.jquery.com/jquery-latest.js');
+    define('_JQUERY_', '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
   }
   else
   {
