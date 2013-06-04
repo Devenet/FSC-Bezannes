@@ -91,7 +91,11 @@ class UserAdmin extends User {
 
   public function delete($bool = false) {
     if ($bool && $this->created) {
+      // fsc_users_admin
       $query = SQL::sql()->prepare('DELETE FROM fsc_users_admin WHERE id = :id');
+      $query->execute(array('id' => $this->id));
+      // fsc_history_admin
+      $query = SQL::sql()->prepare('DELETE FROM fsc_history_admin WHERE id_user_admin = :id');
       $query->execute(array('id' => $this->id));
       $query->closeCursor();
       return true;
