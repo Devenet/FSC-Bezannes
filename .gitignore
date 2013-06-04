@@ -6,3 +6,4 @@ uploads/activities/*
 CIMG*
 .ovh
 lib/db/sql.php
+*.sublime-*
