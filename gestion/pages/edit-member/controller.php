@@ -49,6 +49,8 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
     
     try {
+
+      $minor = $m->minor();
       
       if (!$m->setGender($form->input('gender')))
         throw new \Exception('Merci de présicer la civilité du nouveau membre');
@@ -60,6 +62,9 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
         throw new \Exception('Merci de compléter la date de naissance du nouveau membre');
       
       $m->setMinor();
+              // vérifie que l'on a pas changé de catégorie
+        if ($minor != $m->minor())
+          throw new \Exception('Mince, la personne est passée '. ($m->minor() ? 'mineure' : 'majeure') .'. Merci de supprimer le membre et de le créer de nouveau avec la bonne date de naissance.');
       if ($m->minor() != (isset($_POST['minor']) ? 1 : 0))
         throw new \Exception('La date de naissance et l’option mineur ne correspondent pas !');
       

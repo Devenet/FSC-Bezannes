@@ -21,12 +21,12 @@ else {
 	
 // Menu navigation
 $mainMenu = new Menu();
-	$mainMenu->addLink('Dashbord', '/', 'dashboard');
+	$mainMenu->addLink('Dashboard', '/', 'dashboard');
 	$mainMenu->addLink('Activités', '/?page=activities', 'globe');
-	$mainMenu->addLink('Membres', '/?page=members', 'group');
+	$mainMenu->addLink('Membres', '/?page=members', 'male');
 // Menu secondaire droite
 $rightMenu = new Menu();
-	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'share-alt', true, true, true);
+	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'external-link', true, true, true);
 
 
 // Contenu de la page
@@ -69,6 +69,9 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 			footer hr {
 				margin-bottom: 10px;
 			}
+			table thead th a {
+				text-decoration: none !important;
+			}
 		</style>
 	</head>
 
@@ -102,7 +105,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<!-- /menu -->
 		
 		<header class="container">
-			<?php echo $page->breadcrumb('Dashbord'); ?>
+			<?php echo $page->breadcrumb('Dashboard'); ?>
 		</header>
 		
 		<!-- container -->

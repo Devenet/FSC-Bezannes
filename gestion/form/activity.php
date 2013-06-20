@@ -109,7 +109,7 @@
   <h3 class="controls">Contact</h3>
   
   <div class="control-group">
-    <label class="control-label" for="email"><i class="icon-envelope"></i> Courriel</label>
+    <label class="control-label" for="email"><i class="icon-envelope-alt"></i> Courriel</label>
     <div class="controls">
         <input type="email" name="email" id="email" placeholder="monactivite@hebergeur.fr" <?php echo $form->value('email'); ?> class="input-xlarge"/>
     </div>

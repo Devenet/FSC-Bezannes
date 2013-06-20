@@ -4,8 +4,15 @@ use lib\content\Display;
 
 <div class="row">
   <div class="span8">
-    <div class="page-header">
+    <div class="page-header" style="overflow:hidden; padding-bottom:5px;">
       <h2 style="margin-bottom:0;"><?php echo $m->name(); ?>
+      <div class="btn-group pull-right btn-small">
+        <a href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>" class="btn btn-small" title="Modifier le membre"><i class="icon-pencil"></i></a>
+        <?php echo ($m->minor() ? '<a href="/?page=choose-responsible&amp;member='. $m->id() .'"  class="btn btn-small" title="Modifier le responsable"><i class="icon-male"></i> Responsable</a>' : null); ?>
+        <?php echo ($m->adherent() ? '<a href="/?page=new-participant&amp;adherent='. $m->id() .'"  class="btn btn-small" title="Ajouter une activité"><i class="icon-plus"></i> Activité</a>' : null); ?>
+        <a href="#confirmBox<?php echo $m->id(); ?>" class="btn btn-small" role="button" data-toggle="modal" title="Supprimer le membre"><i class="icon-trash"></i></a>
+      </div>
+      <?php /*
       <div class="btn-group pull-right">
         <a class="btn dropdown-toggle" data-toggle="dropdown" href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>"><i class="icon-cog"></i>
         <span class="caret"></span>
@@ -18,6 +25,7 @@ use lib\content\Display;
           <li><a href="#confirmBox<?php echo $m->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
         </ul>
       </div>
+      */ ?>
       </h2>
     </div>
     
@@ -50,7 +58,7 @@ use lib\content\Display;
           <?php if ($m->minor()): ?>
             <div class="span3">
               <h4>Reponsable</h4>
-              <p><?php echo Display::Gender($r->gender()), ' ', $r->name(); ?> <a href="/?page=member&amp;id=<?php echo $r->id(); ?>">#<?php echo $r->id(); ?></a></p>
+              <p><?php echo Display::HtmlGender($r->gender()), ' ', $r->name(); ?> [<a href="/?page=member&amp;id=<?php echo $r->id(); ?>">#<?php echo $r->id(); ?></a>]</p>
             </div>
           <?php endif; ?>
           <?php
@@ -59,7 +67,7 @@ use lib\content\Display;
               $minors = $m->Responsabilities();
               echo '<ul>';
               foreach ($minors as $minor)
-                echo '<li>', Display::Gender($minor->gender()), ' ', $minor->name(), ' [<a href="/?page=member&amp;id=', $minor->id(), '">#', $minor->id(), '</a>]</li>';
+                echo '<li>', Display::HtmlGender($minor->gender()), ' ', $minor->name(), ' [<a href="/?page=member&amp;id=', $minor->id(), '">#', $minor->id(), '</a>]</li>';
               echo '</ul>', '</div>';
             }
           ?>
@@ -97,7 +105,7 @@ use lib\content\Display;
               <i class="icon-phone"></i> <?php echo Display::Phone($m->phone()); ?>
               <?php echo ($m->mobile() != null ? '<br /><i class="icon-phone"></i> '. Display::Phone($m->mobile()) : null); ?>
             </p>
-            <p><i class="icon-envelope"></i> <?php echo Display::Email($m->email()); ?></p>
+            <p><i class="icon-envelope-alt"></i> <?php echo Display::Email($m->email()); ?></p>
             
             <?php if ($m->minor()): ?>
             <h4>Responsable</h4>
@@ -105,7 +113,7 @@ use lib\content\Display;
               <i class="icon-phone"></i> <?php echo Display::Phone($r->phone()); ?>
               <?php echo ($r->mobile() != null ? '<br /><i class="icon-phone"></i> '. Display::Phone($r->mobile()) : null); ?>
             </p>
-            <p><i class="icon-envelope"></i> <?php echo Display::Email($r->email()); ?></p>
+            <p><i class="icon-envelope-alt"></i> <?php echo Display::Email($r->email()); ?></p>
             <?php endif; ?>
           </div>
         </div>
