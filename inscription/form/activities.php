@@ -1,3 +1,4 @@
+
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
   <?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>
   
@@ -8,13 +9,12 @@
       unset($_SESSION['form_msg']);
     }
   ?>
+  <!-- /form messages -->
   
   <div class="control-group">
-    <label class="control-label" for="adulte">Adulte</label>
+    <label class="control-label" for="activity">Activité</label>
     <div class="controls">
-      <select class="input-xlarge" name="adulte" id="adulte" autofocus>
-        <?php echo $form->select('adulte', $form->input('adulte')); ?>
-      </select>
+      <?php echo ($form->radio('activity') != null ? $form->radio('activity', $form->input('activity')) : '<div class="alert alert-error span6">Aucune activité n’est disponible !</div>'); ?>
     </div>
   </div>  
   
@@ -24,16 +24,3 @@
   </div>
   
 </form>
-
-
-<?php
-$_SCRIPT[] = '
-  <script src="'. _FSC_ .'/js/select2.js"></script>
-  <script src="'. _FSC_ .'/js/select2_locale_fr.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#adulte").select2();
-    });
-  </script>
-';
-?>

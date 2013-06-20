@@ -33,7 +33,8 @@ if (isset($_POST) and $_POST != null) {
   $inputs = array(
     'login',
     'password',
-    'confirm-password'
+    'confirm-password',
+    'cnil'
   );
   foreach ($inputs as $input)
     $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
@@ -53,6 +54,9 @@ if (isset($_POST) and $_POST != null) {
     
     if (!$u->setPassword(stripslashes($_POST['password'])))
       throw new \Exception('Votre mot de passe n’est pas valide. Il doit comporter au minimum 7 caractères.');
+
+    if (!isset($_POST['cnil']) || $_POST['cnil'] != 'on')
+      throw new \Exception('Merci de confirmer que vous avez pris connaissance de vos droits.');
     
     if ($_POST['captcha'] != $_SESSION['captcha'][1] + $_SESSION['captcha'][0])
       throw new \Exception('Seriez-vous un robot ?! Merci de compléter correctement l’anti-robots.');

@@ -18,7 +18,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
     $_SESSION['form_msg'] = Member::countAdults($_SESSION['user']->id()) == 0 ? '<div class="alert alert-error">
       <strong>Oups !</strong> Vous tentez de choisir un responsable pour un mineur alors qu’aucune personne majeure n’a précédement été préinscrite.
-      <br />Si le responsable ne souhaite pas devenir adhérant, il suffit de ne pas cocher la case pré-adhérer dans le formulaire <a href="/new-preinscription">de préinscription</a>.
+      <br />Si le responsable ne souhaite pas devenir adhérent, il suffit de ne pas cocher la case pré-adhérer dans le <a href="/new-preinscription">formulaire de préinscription</a>.
     </div>' : '';
     
     $form = new Form('choose-responsible', '/choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');

@@ -48,7 +48,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     $display_members = '<div class="row espace-top"><div class="span8 offset2"><div class="alert">Aucune préinscription n’a encore été enregistrée :/<br />Faire ma <a href="/new-preinscription">première préinscription</a> !</div></div></div>';
   }
   else {
-    $display_members = '<table class="table table-striped">
+    $display_members = '<table class="table table-striped table-hover">
       <thead>
         <tr>
           <th style="text-align:right;"><i class="icon-user"></i></th>
@@ -67,10 +67,10 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       $display_members .= '
         <tr>
           <td style="text-align:center;">'. Display::HtmlGender($m->gender()) .'</td>
-          <td>'. $m->name() .'</td>
-          <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '') .'</td>
-          <td style="width:120px; text-align:center;">'. ($m->adherent() ? '<i class="icon-ok"></i>' : '') .'</td>
-          <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : '') .'">'. $act .'</span> <a href="#" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
+          <td><a href="/preinscription/'. $m->id() .'" style="text-decoration:none; color:#333;">'. $m->name() .'</a><a href="/preinscription/'. $m->id() .'" style="text-decoration:none; padding-left:8px;"><i class="icon-share-alt"></i></a></td>
+          <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
+          <td style="width:120px; text-align:center;">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
+          <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : '') .'">'. $act .'</span> <a href="/add-activity/'. $m->id() .'" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
           <td style="text-align:center;"><a href="/preinscription/'. $m->id() .'" class="btn btn-small">Voir</a></td>
         </tr>
       ';
@@ -84,7 +84,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   if ($count_members == 0) {
     $page->addOption('steps');
     $page->addParameter('step', 3);
-    $page->addParameter('step-width', 20);
+    $page->addParameter('step-width', 25);
     $page->addParameter('step-info', 'Ajouter une préinscription');
     $page->addOption('bar');
     $page->addParameter('bar', 'warning');
@@ -95,7 +95,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     if ($count_activities == 0) {
       $page->addOption('steps');
       $page->addParameter('step', 4);
-      $page->addParameter('step-width', 40);
+      $page->addParameter('step-width', 75);
       $page->addParameter('step-info', 'Se préinscrire à des activités');
       $page->addOption('bar');
       $page->addParameter('bar', 'warning');
@@ -104,8 +104,8 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     else {
       $page->addOption('steps');
       $page->addParameter('step', 5);
-      $page->addParameter('step-width', 80);
-      $page->addParameter('step-info', 'Vérifier ses informations');
+      $page->addParameter('step-width', 100);
+      $page->addParameter('step-info', 'Vérifier vos informations');
       $page->addOption('bar');
       $page->addParameter('bar', 'success');
     }
@@ -114,7 +114,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   else {
     $page->addOption('steps');
       $page->addParameter('step', 3);
-      $page->addParameter('step-width', 30);
+      $page->addParameter('step-width', 50);
       $page->addParameter('step-info', 'Préinscrire un nouvel adhérent');
       $page->addOption('bar');
       $page->addParameter('bar', 'warning');
@@ -125,6 +125,5 @@ else {
   header ('Location: /login');
   exit();
 }
-
 
 ?>

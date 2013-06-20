@@ -421,8 +421,13 @@ class Member {
     return in_array($id, $ids);
   }
   
-  static public function isAdherent($id) {
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription WHERE adherent = 1');
+  static public function isAdherent($id,  $id_user_inscription = 0) {
+    if ($id_user_inscription == 0)
+      $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription WHERE adherent = 1');
+    else {
+      $query = SQL::sql()->prepare('SELECT id FROM fsc_members_inscription WHERE adherent = 1 AND id_user_inscription = :id_user_inscription');
+      $query->execute(array('id_user_inscription' => $id_user_inscription));
+    }
     $ids = array();
     while ($data = $query->fetch())
       $ids[] = $data['id'];

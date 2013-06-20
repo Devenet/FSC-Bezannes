@@ -8,17 +8,17 @@ set_include_path('../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
 
-session_name('inscription');
+session_name('preinscription');
 session_start();
 
 require '../config/config.php';
 
 // Menu navigation
 $mainMenu = new Menu();
-	$mainMenu->addLink('Préinscriptions', _INSCRIPTION_.'/', 'bookmark');
+	$mainMenu->addLink('Préinscriptions', _INSCRIPTION_.'/', 'hand-right');
 // Menu secondaire
 $rightMenu = new Menu();
-	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'share-alt', (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? true : false, true, true);
+	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? 'external-link' : 'share-alt', (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? true : false, true, true);
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
@@ -34,7 +34,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<title><?php echo ($page->url() != _INSCRIPTION_.'/') ? $page->admin_title() .'&ndash; ' : null; ?>Présinscriptions &ndash; FSC Bezannes</title>
+		<title><?php echo ($page->url() != _INSCRIPTION_.'/') ? $page->admin_title() .'&middot; ' : null; ?>Présinscriptions &middot; FSC Bezannes</title>
 		<meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
     <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
 		<meta name="author" content="Nicolas Devenet" />
@@ -48,7 +48,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
     <!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/inscription.css" media="screen" />
-		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
+		<!--<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />-->
 		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/select2.css" /><?php } ?>
 	</head>
 

@@ -63,6 +63,19 @@
       <span class="help-block">Combien font <?php echo $_SESSION['captcha'][0], ' + ', $_SESSION['captcha'][1]; ?> ?</span>
     </div>
   </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <label class="checkbox" for="cnil">
+        <input type="checkbox" name="cnil" id="cnil" <?php echo $form->checkbox('cnil'); ?>/> Je confirme avoir pris connaissance de mes droits.
+      </label>
+      <span class="help-block cnil"><span class="info"></span> <span class="text">Les informations recueillies sont nécessaires pour votre adhésion.<br/>
+        Elles font l’objet d’un traitement informatique et sont destinées au secrétariat de l’association. En application des articles 39 et suivants de la loi du 6 janvier 1978 modifiée, vous bénéficiez d’un droit d’accès et de rectification aux informations qui vous concernent.<br />
+        Si vous souhaitez exercer ce droit et obtenir communication des informations vous concernant, veuillez vous adresser au secrétariat du Foyer Social et Culturel de Bezannes.</span>
+      </span>
+    </div>
+  </div>
+
   
   <div class="form-actions">
     <input type="submit" class="btn btn-primary" value="<?php echo $form->submit(); ?>" /> 
@@ -146,6 +159,18 @@ $(document).ready(function(){
       $("#icon-captcha").removeClass().addClass("icon-plus");
     }
   }
+
+  function toogleCNIL() {
+    if (cnil) {
+      $(".cnil span.text").show();
+      $(".cnil span.info").html("<i class=\"icon-minus-sign-alt\"></i> Réduire mes droits");
+    }
+    else {
+      $(".cnil span.text").hide();
+      $(".cnil span.info").html("<i class=\"icon-plus-sign-alt\"></i> Afficher mes droits");
+    }
+    cnil = !cnil;
+  }
   
   /*
   check_login();
@@ -165,6 +190,14 @@ $(document).ready(function(){
   $("#captcha").keyup(function() {
     check_captcha();
   });
+  
+  // cnil
+  var cnil = false;
+  toogleCNIL();
+  $(".cnil span.info").click(function() {
+    toogleCNIL();
+  });
+
 });
 </script>
  ';

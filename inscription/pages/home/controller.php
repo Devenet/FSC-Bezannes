@@ -15,5 +15,6 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
 $page->addOption('no-breadcrumb');
 $page->addOption('no-container');
+$page->addOption('no-title');
 
 ?>

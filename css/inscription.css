@@ -10,3 +10,17 @@ h1 {
   font-weight: 400;
 }
 
+.cnil {
+  font-size: 13px;
+}
+.cnil span.info {
+  display: block;
+  cursor: pointer;
+}
+
+.page-home .lead {
+  font-size: 25px;
+}
+.page-home h3 {
+  font-size: 18px;
+}
