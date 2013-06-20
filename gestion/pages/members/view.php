@@ -2,7 +2,7 @@
   <input type="text" class="search-members" placeholder="Accès rapide" autofocus />
 </form>
 <div class="pull-right">
-  <a href="/?page=new-member" class="btn btn-primary pull-right"><i class="icon-plus icon-white"></i> Ajouter</a>
+  <a href="/?page=new-member" class="btn btn-primary btn-small pull-right"><i class="icon-plus icon-white"></i> Ajouter</a>
 </div>
 
 <div class="clearfix">&nbsp;</div>
