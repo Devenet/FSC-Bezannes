@@ -9,7 +9,7 @@
       <li><address><i class="icon-map-marker"></i> <?php echo $act->place(); ?></address></li>
       <?php
         if ($act->email() != null)
-          echo '<li><i class="icon-envelope"></i> <a href="mailto:', $act->email(), '" title="', $act->email() , '">Courriel</a></li>';
+          echo '<li><i class="icon-envelope-alt"></i> <a href="mailto:', $act->email(), '" title="', $act->email() , '">Courriel</a></li>';
         if ($act->website() != null)
           echo '<li><i class="icon-globe"></i> <a href="http://', $act->website(), '" title="', $act->website() , '" rel="external">Site web</a></li>';
       ?>
