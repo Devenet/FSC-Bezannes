@@ -3,6 +3,7 @@
 namespace lib;
 use lib\content\Page;
 use lib\content\Menu;
+use lib\content\Lorem;
 
 spl_autoload_extensions('.php');
 spl_autoload_register();
@@ -10,22 +11,25 @@ spl_autoload_register();
 //session_start();
 
 require 'config/config.php';
+$lorem = new Lorem();
 
 // Menu navigation
 $mainMenu = new Menu();
   $mainMenu->addLink('Accueil', _FSC_.'/', 'home');
-  $mainMenu->addLink('À propos', _FSC_.'/a-propos', 'info-sign');
+  //$mainMenu->addLink('À propos', _FSC_.'/a-propos', 'info-sign');
   $mainMenu->addLink('Activités', _FSC_.'/activites', 'globe');
-  $mainMenu->addLink('Actualités', _FSC_.'/actualites', 'star');
-  $mainMenu->addLink('Agenda', _FSC_.'/agenda', 'calendar');
-  $mainMenu->addLink('Contact', _FSC_.'/contact', 'envelope');
+  //$mainMenu->addLink('Actualités', _FSC_.'/actualites', 'star');
+  //$mainMenu->addLink('Agenda', _FSC_.'/agenda', 'calendar');
+  //$mainMenu->addLink('Contact', _FSC_.'/contact', 'envelope');
+  $mainMenu->addLink('Link', '#lorem', 'question-sign');
+  $mainMenu->addLink('Link', '#lorem', 'question-sign');
 // Menu secondaire droite
 $rightMenu = new Menu();
-  $rightMenu->addLink('Préinscriptions', _INSCRIPTION_, 'bookmark', false, false);
+  $rightMenu->addLink('Préinscriptions', _INSCRIPTION_, 'hand-right', false);
 // Menu footer
 $footerMenu = new Menu();
   $footerMenu->addLink('Accueil', _FSC_.'/', 'home');
-  $footerMenu->addLink('Contact', _FSC_.'/contact', 'envelope');
+  $footerMenu->addLink('Contact', _FSC_.'/contact', 'envelope-alt');
   $footerMenu->addLink('Mentions légales', _FSC_.'/mentions-legales', 'legal');
   $footerMenu->addLink('', _GESTION_, 'lock', true);
 
@@ -45,7 +49,7 @@ require_once $controller;
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title><?php echo $page->title() ; ?> &ndash; FSC Bezannes</title>
+    <title><?php echo $page->title() ; ?> &middot; FSC Bezannes</title>
     <meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
     <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
     <meta name="author" content="Nicolas Devenet" />
