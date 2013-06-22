@@ -470,25 +470,7 @@ class Member {
     $query->closeCursor();
     return $return;
   }
-  
-  static public function Teenagers() {
-    $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription WHERE minor = 1');
-    while ($data = $query->fetch())
-      $return[] = new Member($data['id']); 
-    $query->closeCursor();
-    return $return;
-  }
-  
-  static public function Adherents() {
-    $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_members_inscription WHERE adherent = 1 ORDER BY last_name, first_name');
-    while ($data = $query->fetch())
-      $return[] = new Member($data['id']); 
-    $query->closeCursor();
-    return $return;
-  }
-  
+   
   public function Responsabilities() {
     $return = array();
     $query = SQL::sql()->prepare('SELECT id FROM fsc_members_inscription WHERE responsible = :id');
