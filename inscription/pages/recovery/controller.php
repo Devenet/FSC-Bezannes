@@ -79,6 +79,15 @@ elseif (isset($_GET['rel']) && $_GET['rel'] != null && isset($_GET['data']) && $
       </div>
       <form class="form-horizontal espace-top" action="'. _INSCRIPTION_ .'/recovery/'. htmlspecialchars($_GET['rel']) .'/'. htmlspecialchars($_GET['data']) .'" method="post">
           <div class="control-group">
+            <label class="control-label">Compte concerné</label>
+            <div class="controls">
+              <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input type="text" id="email" disabled="disabled" value="'. htmlspecialchars($_GET['rel']) .'" />
+              </div>
+            </div>
+          </div>
+          <div class="control-group">
             <label class="control-label" for="new-password">Nouveau mot de passe</label>
             <div class="controls">
               <div class="input-prepend">
