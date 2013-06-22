@@ -3,7 +3,6 @@
 namespace lib\inscription;
 use lib\db\SQL;
 use lib\laravel\Str;
-use lib\content\Pagination;
 
 class Member {
   protected $id;
