@@ -11,6 +11,7 @@ $pageInfos = array(
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 $configs = array (
+  '_PATH_PUBLIC_',
   '_PATH_GESTION_',
   '_PATH_ADMIN_',
   '_PATH_INSCRIPTION_',
