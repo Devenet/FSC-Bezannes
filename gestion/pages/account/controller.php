@@ -51,7 +51,7 @@ foreach(UserAdmin::getUsers() as $data) {
           <td>'. $data['id'] .'</td>
           <td>'. $data['name'] .'</td>
           <td>'. ucfirst(Display::FrenchPrivilege($data['privilege'])) .'</td>
-          <td class="center"><span class="btn-group"><a href="mailto:'. $data['login'] .'" target="_blank" class="btn btn-small"><i class="icon-envelope"></i></a> <!--<a href="/?page=users&amp;action=block&amp;login='. $data['login'] .'" class="btn btn-small"><i class="icon-ban-circle"></i></a>--> <a href="#confirmBox'. $data['id'] .'" class="btn btn-small" role="button" data-toggle="modal"><i class="icon-trash"></i></a></span></td>
+          <td class="center"><span class="btn-group"><a href="mailto:'. $data['login'] .'" rel="external" class="btn btn-small"><i class="icon-envelope-alt"></i></a> <!--<a href="/?page=users&amp;action=block&amp;login='. $data['login'] .'" class="btn btn-small"><i class="icon-ban-circle"></i></a>--> <a href="#confirmBox'. $data['id'] .'" class="btn btn-small" role="button" data-toggle="modal"><i class="icon-trash"></i></a></span></td>
         </tr>
   ';
 }

@@ -62,8 +62,10 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       <tbody>';
     foreach (Member::Members($_SESSION['user']->id()) as $m) {
       $act = Participant::countActivities($m->id());
-      $count_activities = min($act, $count_activities);
-      if ($m->adherent()) $count_adherents++;
+      if ($m->adherent()) {
+        $count_adherents++;
+        $count_activities = min($act, $count_activities);
+      }
       $display_members .= '
         <tr>
           <td style="text-align:center;">'. Display::HtmlGender($m->gender()) .'</td>
@@ -91,7 +93,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   }
   // préinscription faite avec au moins un adhérent
   else if ($count_adherents > 0) {
-    // au moins un membres sans aucune activité choisie
+    // au moins un adhérent sans aucune activité choisie
     if ($count_activities == 0) {
       $page->addOption('steps');
       $page->addParameter('step', 4);

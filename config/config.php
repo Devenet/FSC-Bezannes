@@ -1,5 +1,6 @@
 <?php
 
+  define('_PATH_PUBLIC_', 'public');
   define('_PATH_GESTION_', 'gestion');
   define('_PATH_ADMIN_', 'admin');
   define('_PATH_INSCRIPTION_', 'inscription');

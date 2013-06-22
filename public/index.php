@@ -5,12 +5,13 @@ use lib\content\Page;
 use lib\content\Menu;
 use lib\content\Lorem;
 
+set_include_path('../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
 
 //session_start();
 
-require 'config/config.php';
+require '../config/config.php';
 $lorem = new Lorem();
 
 // Menu navigation

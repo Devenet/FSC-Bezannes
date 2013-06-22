@@ -3,12 +3,12 @@
 namespace lib;
 use lib\activities\Activity;
 
-set_include_path('../');
+set_include_path('../../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
 error_reporting (0);
 
-require '../config/config.php';
+require '../../config/config.php';
 
 header('Content-type: application/json');
 

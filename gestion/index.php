@@ -43,7 +43,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<title><?php echo ($page->url() != '/') ? $page->admin_title() .'&ndash; ' : null; ?>Gestion &ndash; FSC Bezannes</title>
+		<title><?php echo ($page->url() != '/') ? $page->admin_title() .' &ndash; ' : null; ?>Gestion &ndash; FSC Bezannes</title>
 		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,11 +89,11 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 						<a class="dropdown-toggle" data-toggle="dropdown" href="/?page=account"><?php echo $_SESSION['user']->name(); ?>
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/?page=account"><i class="icon-user"></i> Mon compte</a></li>
+						<li><a href="/?page=account"><i class="icon-user"></i> Utilisateurs</a></li>
 						<li class="divider"></li>
 						<li><a href="/?page=history"><i class="icon-table"></i> Historique</a></li>
 						<li><a href="/?page=settings"><i class="icon-cog"></i> Configuration</a></li>
-						<li><a href="mailto:nicolas+fsc@devenet.info" target="_blank"><i class="icon-bullhorn"></i> Feedback</a></li>
+						<li><a href="mailto:nicolas+fsc@devenet.info" rel="external"><i class="icon-bullhorn"></i> Feedback</a></li>
 						<li class="divider"></li>
 						<li><a href="/login.php?logout"><i class="icon-signout"></i> Déconnexion</a></li>
 					</ul>

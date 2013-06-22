@@ -84,7 +84,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
           <td>'. Display::Date($t->date()) .'</td>
           <td>'. $t->amount() .' &euro;</td>
           <td>'. $t->description() .'</td>
-          <td><a href="#confirmBoxA'. $t->id() .'"  role="button" data-toggle="modal"><i class="icon-trash"></i></a></td>
+          <td><a href="#confirmBoxA'. $t->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
         </tr>
       ';
     }
@@ -139,7 +139,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
           <td>'. $t->amount() .' &euro;</td>
           <td>'. Display::Transaction($t->type()) .'</td>
           <td>'. $t->note() .'</td>
-          <td><a href="#confirmBoxT'. $t->id() .'"  role="button" data-toggle="modal"><i class="icon-trash"></i></a></td>
+          <td><a href="#confirmBoxT'. $t->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
         </tr>
       ';
     }
@@ -199,7 +199,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
           <td>'. $p->id() .'</td>
           <td><a href="/?page=activity&amp;id='. $a->id() .'">'. $a->name() .'</a></td>
           <td>'. $horaire .'</td>
-          <td><a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal"><i class="icon-trash"></i></a></td>
+          <td><a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
         </tr>
       ';
     }

@@ -43,8 +43,8 @@ class Activity {
       $this->price_young = $activity['price_young'];
       $this->created = true;
       $query->closeCursor();
-      
-      if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg'))
+
+      if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_PUBLIC_ . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg'))
         $this->image = 1;
     }
     else

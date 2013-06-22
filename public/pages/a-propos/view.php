@@ -56,19 +56,21 @@ case 'asso':
 ?>
 
 <div class="row">
-  <div class="span8">
+  <div class="span7">
     <h3>Être adhérent</h3>
     <p>L’adhésion au Foyer Social et Culturel implique le paiment d’une cotisation annuelle, ainsi que la connaissance et le respect du <a href="<?php echo _FSC_; ?>/a-propos/documents">Règlement intérieur</a>.</p>
     <p>Les activités sont accessibles aux seuls adhérents. La participation à toute activité autre que la Bibliothèque est conditionnée par le réglement d’une cotisation propre à cette activité.</p>
     <p>Les renseignements contenus dans la feuille individuelle d’inscription sont destinés à un usage strictement interne. Animateurs, responsables, secretaires et administrateurs ont consigne de ne pas les communiquer. En particulier si des mailings doivent être effectués les adresses êlectroniques seront en copie cachée. </p>
   </div>
-  <div class="span4">
+  <div class="span5">
     <h3>Cotisations</h3>
     <table class="table table-striped">
       <thead>
-        <th></th>
-        <th>Bezannais</th>
-        <th>Extérieur</th>
+        <tr>
+          <th></th>
+          <th>Bezannais</th>
+          <th>Extérieur</th>
+        </tr>
       </thead>
       <tbody>
         <tr>

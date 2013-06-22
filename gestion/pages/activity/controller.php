@@ -85,8 +85,8 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
             <td>'. $s->time_begin() .' à '. $s->time_end() .'</td>
             <td>'. $s->more() .'</td>
             <td style="width:45px; text-align:center;">
-              <a href="/?page=edit-schedule&amp;id='. $s->id() .'"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
-              <a href="#confirmBoxS'. $s->id() .'" role="button" data-toggle="modal"><i class="icon-trash"></i></a>
+              <a href="/?page=edit-schedule&amp;id='. $s->id() .'" class="normal"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
+              <a href="#confirmBoxS'. $s->id() .'" role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a>
             </td>
           </tr>
         ';
@@ -111,8 +111,8 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
             <td>'. $s->id() .'</td>
             <td>'. $s->description() .'</td>
             <td style="width:45px; text-align:center;">
-              <a href="/?page=edit-schedule&amp;id='. $s->id() .'"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
-              <a href="#confirmBoxS'. $s->id() .'" role="button" data-toggle="modal"><i class="icon-trash"></i></a>
+              <a href="/?page=edit-schedule&amp;id='. $s->id() .'" class="normal"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
+              <a href="#confirmBoxS'. $s->id() .'" role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a>
             </td>
           </tr>
         ';
@@ -165,7 +165,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
           <td><a href="/?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
           <td>'. ucfirst(Display::Referent($r->type(), $m->gender())) .'</td>
           <td style="text-align:center;">'. ($r->display_phone() ? '<i class="icon-phone"></i>' : '') .'</td>
-          <td><a href="#confirmBoxR'. $r->id() .'"  role="button" data-toggle="modal"><i class="icon-trash"></i></a></td>
+          <td><a href="#confirmBoxR'. $r->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
         </tr>
       ';
     }

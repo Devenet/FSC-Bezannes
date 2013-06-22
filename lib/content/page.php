@@ -11,6 +11,8 @@ class Page {
   private $search_engine;
   private $options;
   private $parameters;
+  private $separator = '&middot;';
+  private $admin_separator = '&ndash;';
   
   public function __construct($name, $url, $breadcrumb) {
     $this->name = $name;
@@ -46,22 +48,22 @@ class Page {
       $links = $this->breadcrumb->links();
       unset($links[0]);
       krsort($links);
-      foreach ($links as $link) $return .= $link['name'] .' &ndash; ';
-      return substr($return, 0, -8);
+      foreach ($links as $link) $return .= $link['name'] .' '. $this->separator .' ';
+      return substr($return, 0, -(2 + strlen($this->separator)));
     }
     return 'Foyer Social et Culturel de Bezannes';
   }
 
   public function admin_title() {
-    if ($this->url != _INSCRIPTION_.'/' || $this->url != _GESTION_.'/') {
-      $return = '';
-      $links = $this->breadcrumb->links();
-      unset($links[0]);
-      krsort($links);
-      foreach ($links as $link) $return .= $link['name'] .' &ndash; ';
-      return substr($return, 0, -8);
-    }
+    $return = '';
+    $links = $this->breadcrumb->links();
+    unset($links[0]);
+    krsort($links);
+    foreach ($links as $link) $return .= $link['name'] .' '. $this->admin_separator .' ';
+    return substr($return, 0, -(2 + strlen($this->admin_separator)));
   }
+
+
   
   public function addOption($option, $bool = true) {
     $this->options[$option] = $bool;
