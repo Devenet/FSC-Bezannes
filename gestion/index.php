@@ -24,6 +24,7 @@ $mainMenu = new Menu();
 	$mainMenu->addLink('Dashboard', '/', 'dashboard');
 	$mainMenu->addLink('Activités', '/?page=activities', 'globe');
 	$mainMenu->addLink('Membres', '/?page=members', 'male');
+	$mainMenu->addLink('Préinscriptions', '/?page=inscriptions', 'hand-right');
 // Menu secondaire droite
 $rightMenu = new Menu();
 	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'external-link', true, true, true);
@@ -36,7 +37,7 @@ $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
 $_SCRIPT = array();
 $controller = ($_GET['page'] == 404 || $_GET['page'] == 403) ? '../pages/errors/'.$_GET['page'].'/controller.php' : '../'._PATH_GESTION_.'/pages/'.$_GET['page'].'/controller.php';
-$controller = file_exists($controller) ? $controller : '../pages/errors/404/controller.php';
+$controller = file_exists($controller) ? $controller : '../'. _PATH_PUBLIC_ .'/pages/errors/404/controller.php';
 require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 
 ?><!DOCTYPE html>
