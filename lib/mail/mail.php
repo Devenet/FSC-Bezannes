@@ -21,7 +21,7 @@ Foyer Social et Culturel de Bezannes
 contact@bezannes-fsc.fr
 http:" . _FSC_ ."
 ";
-    return self::send($to, $subject .' – FSC Bezannes', $body);
+    return self::send($to, $subject .' · FSC Bezannes', $body);
   }
   
   public static function html($to, $subject, $html) {

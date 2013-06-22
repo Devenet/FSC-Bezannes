@@ -66,12 +66,12 @@ if (isset($_POST) and $_POST != null) {
 
     $body = 'Bonjour, 
 
-Ceci est un email automatique pour vous confirmer la création de votre compte sur le site de Préinscriptions du Foyer Social et Culturel de Bezannes. 
+Ceci est un email automatique pour vous confirmer la création de votre compte sur le site des préinscriptions du Foyer Social et Culturel de Bezannes. 
 
 Voici un petit rappel des informations utiles : 
-• Votre identifiant : '. $u->login() .'
-• Votre mot de passe : celui défini lors de l’inscription 
-• Page de connexion : http:'. _INSCRIPTION_ .'/login';
+    • Votre identifiant : '. $u->login() .'
+    • Votre mot de passe : celui défini lors de l’inscription 
+    • Page de connexion : http:'. _INSCRIPTION_ .'/login';
     Mail::text($u->email(), 'Préinscriptions', $body);
     
     $_SESSION['msg'] = new Message('Vous pouvez maintenant vous connecter avec vos identifiants.', 1, 'Votre compte a bien été créé !');
