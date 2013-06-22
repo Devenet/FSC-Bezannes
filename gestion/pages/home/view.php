@@ -8,7 +8,10 @@
       <a href="/?page=new-activity" class="btn"><i class="icon-plus"></i> Ajouter</a>
     </div>
     <div style="margin-top:20px;">
-      <p>Il y a actuellement <span class="label"><?php echo $activities; ?></span> activité<?php echo $plural_activities; ?>, dont <span class="label label-success"><?php echo $active_activities; ?></span> active<?php echo $plural_active_activities; ?>.</p>
+      <ul class="unstyled">
+        <li><span class="label"><?php echo $activities; ?></span> activité<?php echo $plural_activities; ?></li>
+        <li><span class="label label-success"><?php echo $active_activities; ?></span> activité<?php echo $plural_activities; ?> active<?php echo $plural_active_activities; ?></li>
+      </ul>
     </div>
   </div>
   
@@ -20,16 +23,27 @@
       <a href="/?page=new-member" class="btn"><i class="icon-plus"></i> Ajouter</a>
     </div>
     <div style="margin-top:20px;">
-      <p>Il y a actuellement <span class="label"><?php echo $members; ?></span> membre<?php echo $plural_members; ?>, dont <span class="label label-success"><?php echo $adherents; ?></span> adhérent<?php echo $plural_adherents; ?>.</p>
+      <ul class="unstyled">
+        <li><span class="label"><?php echo $members; ?></span> membre<?php echo $plural_members; ?></li>
+        <li><span class="label label-success"><?php echo $adherents; ?></span> membre<?php echo $plural_members; ?> adhérent<?php echo $plural_adherents; ?></li>
+      </ul>
     </div>
   </div>
   
   <!-- preinscriptions -->
   <div class="span4">
     <h3><i class="icon-hand-right"></i> Préinscriptions</h3>
-    <p class="center"><a href="<?php echo _INSCRIPTION_; ?>" class="btn btn-warning">Work in progress</a></p>
+    <div class="btn-group">
+      <a href="<?php echo _INSCRIPTION_; ?>" rel="external" class="btn btn-inverse">Work in progress <i class="icon-spinner icon-spin"></i></a>
+    </div>
+    <div style="margin-top:20px;">
+      <p><span class="label"><?php echo $inscription_accounts; ?></span> compte<?php echo $plural_inscription_accounts; ?></p>
+      <ul class="unstyled">
+        <li><span class="label label-warning"><?php echo $inscriptions; ?></span> préinscription<?php echo $plural_inscriptions; ?></li>
+        <li><span class="label label-success"><?php echo $inscription_adherents; ?></span> pré-adhérent<?php echo $plural_inscription_adherents; ?></li>
+      </ul>
+    </div>
   </div>
-    
 </div>
 
 <style>
