@@ -163,7 +163,7 @@ foreach ($months as $value => $month) {
   
   <h3 class="controls">Inscription</h3>
   
-  <div class="control-group">
+  <div class="control-group info">
     <label class="control-label" for="adherent">Pré-adhérer</label>
     <div class="controls">
       <label class="checkbox" for="adherent">
