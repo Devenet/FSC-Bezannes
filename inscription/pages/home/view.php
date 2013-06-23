@@ -45,7 +45,7 @@
         <ol>
           <li>Vous créez un compte pour gérer vos préinscriptions</li>
           <li>Vous ajoutez autant de personnes que nécessaire</li>
-          <li>Vous les préinscrivez aux activités souhaitez</li>
+          <li>Vous les préinscrivez aux activités souhaitées</li>
           <li>C'est terminé !</li>
         </ol>
         <p>Il suffira au secrétariat du FSC de vérifier et valider vos préinscriptions lors de votre inscription définitive.</p>
