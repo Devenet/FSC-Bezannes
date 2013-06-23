@@ -8,6 +8,9 @@ class UserInscription extends User {
   
   private $ip;
   private $date;
+
+
+
     
   public function __construct($id = null) {
     if ($id != null) {
@@ -67,6 +70,13 @@ class UserInscription extends User {
       ));
       $query->closeCursor();
     }
+  }
+
+  public function lastConnection() {
+    return array(
+      'ip' => $this->ip,
+      'date' => $this->date
+    );
   }
 
   public static function getID($login) {

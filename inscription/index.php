@@ -68,8 +68,8 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _INSCRIPTION_; ?>/account"><?php echo $_SESSION['user']->login(); ?>
 							<span class="caret"></span></a>
 							<ul class="dropdown-menu">
+								<li><a href="<?php echo _INSCRIPTION_; ?>/list"><i class="icon-hand-right"></i> Mes préinscriptions</a></li>
 								<li><a href="<?php echo _INSCRIPTION_; ?>/account"><i class="icon-user"></i> Mon compte</a></li>
-								<li><a href="<?php echo _INSCRIPTION_; ?>/settings"><i class="icon-cog"></i> Préférences</a></li>
 								<li class="divider"></li>
 								<li><a href="<?php echo _INSCRIPTION_; ?>/logout"><i class="icon-signout"></i> Déconnexion</a></li>
 							</ul>
@@ -91,7 +91,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 			<?php if(! $page->option('no-title')) { ?>
 			<div class="row">
 				<div class="span8">
-						<h1><?php echo $pageInfos['name']; ?></h1>
+						<h1><?php echo $page->name(); ?></h1>
 				</div>
 				<?php if ($page->option('steps')) { ?>
 				<div class="span4 hidden-phone">

@@ -10,7 +10,7 @@ use lib\content\Message;
 use lib\content\Display;
 
 function quit() {
-  header('Location: '. _INSCRIPTION_ .'/account');
+  header('Location: '. _INSCRIPTION_ .'/list');
   exit();
 }
 

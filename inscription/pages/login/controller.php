@@ -44,7 +44,7 @@ if (isset($_POST['login']) && isset($_POST['password']) && $_POST['login'] != nu
     $_SESSION['user'] = new UserInscription(UserInscription::getID(htmlspecialchars($_POST['login'])));
     $_SESSION['user']->historize($_SERVER['REMOTE_ADDR']);
     $_SESSION['authentificated'] = true;
-    header('Location: '. _INSCRIPTION_ .'/account');
+    header('Location: '. _INSCRIPTION_ .'/list');
     exit;
   }
   else {

@@ -9,7 +9,7 @@ $pageInfos = array(
 $page = new Page($pageInfos['name'], $pageInfos['url'], array());
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
-  header('Location: '. _INSCRIPTION_ .'/account');
+  header('Location: '. _INSCRIPTION_ .'/list');
   exit();
 }
 

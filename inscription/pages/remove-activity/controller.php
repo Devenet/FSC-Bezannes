@@ -14,7 +14,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     exit();
   }
   else {
-    header ('Location: '. _INSCRIPTION_ .'/account');
+    header ('Location: '. _INSCRIPTION_ .'/list');
     exit();
   }
 

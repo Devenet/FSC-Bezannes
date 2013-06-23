@@ -41,7 +41,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         unset ($_SESSION['member']);
         
         $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été préinscrit :)', 1, 'Ajout réussi !');
-        header ('Location: '. _INSCRIPTION_ .'/account');
+        header ('Location: '. _INSCRIPTION_ .'/list');
         exit();
         
       }
