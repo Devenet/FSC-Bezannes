@@ -49,7 +49,7 @@
           <input type="password" id="password" name="password" autofocus />
         </div>
       </div>
-      <p class="alert alert-info"><strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 8 caractères !</p>
+      <p class="alert alert-info"><strong>Note :</strong> votre mot de passe doit comporter au moins 8 caractères !</p>
       <div class="control-group">
         <label class="control-label" for="new-password">Nouveau mot de passe</label>
         <div class="controls">
