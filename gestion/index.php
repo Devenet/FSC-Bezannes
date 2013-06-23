@@ -106,7 +106,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<!-- /menu -->
 		
 		<header class="container">
-			<?php echo $page->breadcrumb('Dashboard'); ?>
+			<?php echo $page->breadcrumb('Dashboard', _GESTION_); ?>
 		</header>
 		
 		<!-- container -->
