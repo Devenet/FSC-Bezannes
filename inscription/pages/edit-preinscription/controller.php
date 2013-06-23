@@ -13,9 +13,9 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     
     $pageInfos = array(
      'name' => 'Modifier la préinscription',
-     'url' => '/edit-preinscription/'.$m->id()
+     'url' => _INSCRIPTION_.'/edit-preinscription/'.$m->id()
     );
-    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $m->name(), 'url' => '/preinscription/'.$m->id()), $pageInfos));
+    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $m->name(), 'url' => _INSCRIPTION_.'/preinscription/'.$m->id()), $pageInfos));
     
     $form = new Form('edit-member', _INSCRIPTION_.'/edit-preinscription/'.$m->id(), 'Modifier', 'Modifier un membre');
     $inputs = array(

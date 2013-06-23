@@ -12,9 +12,9 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
     $pageInfos = array(
      'name' => 'Choix du responsable',
-     'url' => '/new-preinscription'
+     'url' => _INSCRIPTION_.'/new-preinscription'
     );
-    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Nouvelle préinscription', 'url' => 'new-preinscription'), $pageInfos));
+    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Nouvelle préinscription', 'url' => _INSCRIPTION_.'new-preinscription'), $pageInfos));
 
     $_SESSION['form_msg'] = Member::countAdults($_SESSION['user']->id()) == 0 ? '<div class="alert alert-error">
       <strong>Oups !</strong> Vous tentez de choisir un responsable pour un mineur alors qu’aucune personne majeure n’a précédement été préinscrite.

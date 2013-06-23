@@ -17,9 +17,9 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
     $pageInfos = array(
      'name' => 'Ajout d’une activité',
-     'url' => '/add-activity/'. $a->id()
+     'url' => _INSCRIPTION_.'/add-activity/'. $a->id()
     );
-    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $a->name(), 'url' => '/preinscription/'.$a->id()), $pageInfos));
+    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $a->name(), 'url' => _INSCRIPTION_.'/preinscription/'.$a->id()), $pageInfos));
     
     $form = new Form('add-activity', _INSCRIPTION_ .'/add-activity/'.$a->id(), 'Ajouter', 'Sélection d’une activité pour '.$a->name());
     

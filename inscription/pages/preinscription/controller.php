@@ -43,7 +43,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     
     $pageInfos = array(
      'name' => $m->name(),
-     'url' => '/preinscription'
+     'url' => _INSCRIPTION_.'/preinscription'
     );
     $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
     
@@ -88,7 +88,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
           </div>
           <div class="modal-footer">
             <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-            <a href="./remove-activity/'. $p->id() .'" class="btn btn-danger">Confirmer</a>
+            <a href="'. _INSCRIPTION_ .'/remove-activity/'. $p->id() .'" class="btn btn-danger">Confirmer</a>
           </div>
         </div>
         ';

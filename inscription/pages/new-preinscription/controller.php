@@ -10,7 +10,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
   $pageInfos = array(
    'name' => 'Nouvelle préinscription',
-   'url' => '/new-preinscription'
+   'url' => _INSCRIPTION_.'/new-preinscription'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 

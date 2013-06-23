@@ -12,7 +12,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
   $pageInfos = array(
     'name' => 'Mon compte',
-    'url' => '/account'
+    'url' => _INSCRIPTION_.'/account'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
   
