@@ -1,9 +1,12 @@
+## Security
 Options -Indexes
 
+## Cross-site allowed for webfonts with Firefox
 <FilesMatch "\.(ttf|otf|eot|woff)$">
   Header set Access-Control-Allow-Origin "*"
 </FilesMatch>
 
+## URL rewriting
 RewriteEngine On
 # pages
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -23,6 +26,6 @@ RewriteRule ^favicon.ico$ /img/favicon/round_16.ico
 RewriteRule ^favicon.png$ /img/favicon/round_32.png
 RewriteRule ^apple-touch-icon.png$ /img/logo/fsc-128x128.png
 
-# Document errors
+## Document errors
 ErrorDocument 404 /index.php?page=404
 ErrorDocument 403 /index.php?page=403

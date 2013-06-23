@@ -1,3 +1,11 @@
+## OVH
+SetEnv PHP_VER 5_4
+SetEnv SESSION_USE_TRANS_SID 0
+
+## Security
+Options -Indexes
+
+## URL rewriting
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -11,5 +19,6 @@ RewriteRule ^([a-z-]+)/$ /$1 [R,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/([a-z0-9-]+)/$ /$1/$2 [R,L]
 
-RewriteCond %{HTTP_HOST} ^fsc.localhost.local$
-RewriteRule ^(.*) http://inscription.fsc.localhost.local/$1 [QSA,L,R]
+## Document errors
+ErrorDocument 404 /index.php?page=404
+ErrorDocument 403 /index.php?page=403
