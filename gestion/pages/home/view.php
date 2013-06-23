@@ -4,8 +4,8 @@
   <div class="span4">
     <h3><i class="icon-globe"></i> Activités</h3>
     <div class="btn-group">
-      <a href="/?page=activities" class="btn"><i class="icon-eye-open"></i> Voir</a>
-      <a href="/?page=new-activity" class="btn"><i class="icon-plus"></i> Ajouter</a>
+      <a href="./?page=activities" class="btn"><i class="icon-eye-open"></i> Voir</a>
+      <a href="./?page=new-activity" class="btn"><i class="icon-plus"></i> Ajouter</a>
     </div>
     <div style="margin-top:20px;">
       <ul class="unstyled">
@@ -19,8 +19,8 @@
   <div class="span4">
     <h3><i class="icon-male"></i> Membres</h3>
     <div class="btn-group">
-      <a href="/?page=members" class="btn"><i class="icon-eye-open"></i> Voir</a>
-      <a href="/?page=new-member" class="btn"><i class="icon-plus"></i> Ajouter</a>
+      <a href="./?page=members" class="btn"><i class="icon-eye-open"></i> Voir</a>
+      <a href="./?page=new-member" class="btn"><i class="icon-plus"></i> Ajouter</a>
     </div>
     <div style="margin-top:20px;">
       <ul class="unstyled">

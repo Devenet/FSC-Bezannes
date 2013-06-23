@@ -14,17 +14,17 @@ session_start();
 require '../config/config.php';
 
 if (!isset($_SESSION['authentificated']) || !$_SESSION['authentificated']) {
-	header('Location: /login.php');
+	header('Location: '. _GESTION_ .'/login.php');
 	exit();
 }
 else {
 	
 // Menu navigation
 $mainMenu = new Menu();
-	$mainMenu->addLink('Dashboard', '/', 'dashboard');
-	$mainMenu->addLink('Activités', '/?page=activities', 'globe');
-	$mainMenu->addLink('Membres', '/?page=members', 'male');
-	$mainMenu->addLink('Préinscriptions', '/?page=inscriptions', 'hand-right');
+	$mainMenu->addLink('Dashboard', './', 'dashboard');
+	$mainMenu->addLink('Activités', './?page=activities', 'globe');
+	$mainMenu->addLink('Membres', './?page=members', 'male');
+	$mainMenu->addLink('Préinscriptions', './?page=inscriptions', 'hand-right');
 // Menu secondaire droite
 $rightMenu = new Menu();
 	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'external-link', true, true, true);
@@ -48,9 +48,9 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_diago_16.ico" />
-    <link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_diago_32.png" />
-    <link rel="apple-touch-icon" href="<?php echo _FSC_; ?>/img/logo/fsc-128x128.png" />
+    	<link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_diago_16.ico" />
+    	<link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_diago_32.png" />
+    	<link rel="apple-touch-icon" href="<?php echo _FSC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
@@ -87,16 +87,16 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 				<!-- settings -->
 				<ul class="nav pull-right">
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="/?page=account"><?php echo $_SESSION['user']->name(); ?>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="./?page=account"><?php echo $_SESSION['user']->name(); ?>
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/?page=account"><i class="icon-user"></i> Utilisateurs</a></li>
+						<li><a href="./?page=account"><i class="icon-user"></i> Utilisateurs</a></li>
 						<li class="divider"></li>
-						<li><a href="/?page=history"><i class="icon-table"></i> Historique</a></li>
-						<li><a href="/?page=settings"><i class="icon-cog"></i> Configuration</a></li>
+						<li><a href="./?page=history"><i class="icon-table"></i> Historique</a></li>
+						<li><a href="./?page=settings"><i class="icon-cog"></i> Configuration</a></li>
 						<li><a href="mailto:nicolas+fsc@devenet.info" rel="external"><i class="icon-bullhorn"></i> Feedback</a></li>
 						<li class="divider"></li>
-						<li><a href="/login.php?logout"><i class="icon-signout"></i> Déconnexion</a></li>
+						<li><a href="./login.php?logout"><i class="icon-signout"></i> Déconnexion</a></li>
 					</ul>
 					</li>
 				</ul>

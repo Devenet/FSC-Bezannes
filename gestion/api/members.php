@@ -14,7 +14,7 @@ session_start();
 require '../../config/config.php';
 
 if (!isset($_SESSION['authentificated']) || !$_SESSION['authentificated']) {
-  header('Location: /login.php');
+  header('Location: '. _GESTION_ .'/login.php');
   exit();
 }
 else {

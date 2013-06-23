@@ -10,7 +10,7 @@ use lib\content\Message;
 use lib\content\Display;
 
 function quit() {
-  header('Location: /?page=activities');
+  header('Location: '. _GESTION_ .'/?page=activities');
   exit();
 }
 
@@ -35,19 +35,19 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
     if ($act->active()) {
       $act->changeActive();
       $_SESSION['msg'] = new Message('L’activité a bien été désactivée !', 1, 'Changement effectué');
-      header ('Location: /?page=activity&id='.$act->id());
+      header ('Location: '. _GESTION_ .'/?page=activity&id='.$act->id());
       exit();
     }
     else {
       if (Schedule::countSchedules($act->id())>0 && Referent::countReferents($act->id())>0) {
         $act->changeActive();
         $_SESSION['msg'] = new Message('L’activité a bien été activée !', 1, 'Changement effectué');
-        header ('Location: /?page=activity&id='.$act->id());
+        header ('Location: '. _GESTION_ .'/?page=activity&id='.$act->id());
         exit();
       }
       else {
         $_SESSION['msg'] = new Message('L’activité ne possède aucun horaire ou aucun référent !', -1, 'Impossible d’effectuer le changement');
-        header ('Location: /?page=activity&id='.$act->id());
+        header ('Location: '. _GESTION_ .'/?page=activity&id='.$act->id());
         exit();
       }
     }
@@ -85,7 +85,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
             <td>'. $s->time_begin() .' à '. $s->time_end() .'</td>
             <td>'. $s->more() .'</td>
             <td style="width:45px; text-align:center;">
-              <a href="/?page=edit-schedule&amp;id='. $s->id() .'" class="normal"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
+              <a href="./?page=edit-schedule&amp;id='. $s->id() .'" class="normal"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
               <a href="#confirmBoxS'. $s->id() .'" role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a>
             </td>
           </tr>
@@ -111,7 +111,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
             <td>'. $s->id() .'</td>
             <td>'. $s->description() .'</td>
             <td style="width:45px; text-align:center;">
-              <a href="/?page=edit-schedule&amp;id='. $s->id() .'" class="normal"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
+              <a href="./?page=edit-schedule&amp;id='. $s->id() .'" class="normal"><i class="icon-pencil"></i></a>&nbsp;&nbsp;
               <a href="#confirmBoxS'. $s->id() .'" role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a>
             </td>
           </tr>
@@ -131,7 +131,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
           </div>
           <div class="modal-footer">
             <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-            <a href="/?page=edit-schedule&amp;id='. $s->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
+            <a href="./?page=edit-schedule&amp;id='. $s->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
           </div>
         </div>
       ';
@@ -162,7 +162,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
       $display_referents .= '
         <tr>
           <td>'. $r->id() .'</td>
-          <td><a href="/?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
+          <td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
           <td>'. ucfirst(Display::Referent($r->type(), $m->gender())) .'</td>
           <td style="text-align:center;">'. ($r->display_phone() ? '<i class="icon-phone"></i>' : '') .'</td>
           <td><a href="#confirmBoxR'. $r->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
@@ -182,7 +182,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
         </div>
         <div class="modal-footer">
           <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-          <a href="/?page=edit-referent&amp;id='. $p->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
+          <a href="./?page=edit-referent&amp;id='. $p->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
         </div>
       </div>
       ';
@@ -207,7 +207,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
         $display_participants .= '
           <tr>
             <td>'. $p->id() .'</td>
-            <td><a href="/?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
+            <td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
             <td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
             <td style="text-align:center;">'. ($m->minor() ? 'e' : 'A') .'</td>
           </tr>
@@ -232,7 +232,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
             $display_participants .= '
               <tr>
                 <td>'. $p->id() .'</td>
-                <td><a href="/?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
+                <td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
                 <td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;') .'</td>
                 <td style="text-align:center;">'. ($m->minor() ? 'e' : 'A') .'</td>
               </tr>

@@ -17,12 +17,12 @@ session_start();
 require '../config/config.php';
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
-	header('Location: /');
+	header('Location: '. _GESTION_ .'/');
 	exit;
 }
 elseif (isset($_SESSION['to_ban']) && $_SESSION['to_ban'] > 3) {
   $_SESSION['msg'] = new Message('Trop de tentatives de récupération de mot de passe ont été tentées sans succès. Merci de réessayer plus tard.', -1, 'Oups... !');
-  header ('Location: /login.php');
+  header ('Location: '. _GESTION_ .'/login.php');
   exit();
 }
 // demande envoie
@@ -76,12 +76,12 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
 
 
         $_SESSION['msg'] = new Message('Votre mot de passe a bien été réinitialisé. Vous pouvez maintenant vous connecter :)', 1, 'Réinitialisation réussie !');
-        header ('Location: /login.php');
+        header ('Location: '. _GESTION_ .'/login.php');
         exit(); 
       }
       catch (\Exception $e) {
         $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !');
-        header ('Location: /recovery.php?token='. htmlspecialchars($_GET['token']) .'&user='. htmlspecialchars($_GET['user']));
+        header ('Location: '. _GESTION_ .'/recovery.php?token='. htmlspecialchars($_GET['token']) .'&user='. htmlspecialchars($_GET['user']));
         exit(); 
       }
     }
