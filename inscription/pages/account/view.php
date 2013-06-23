@@ -16,7 +16,7 @@
       <h3 style="margin-top:0;">Sécurité</h3>
       <?php echo $security; ?>
 
-      <p class="espace-top">Votre indentifiant de connexion est :</p>
+      <p class="espace-top">Votre identifiant de connexion est :</p>
       <p class="center"><code><?php echo $u->login(); ?></code></p>
 
       <p class="espace-top" style="margin-bottom:0;"><i class="icon-caret-right"></i> <a href="#change-password" role="button" data-toggle="modal">Modifier mon mot de passe</a></p>
