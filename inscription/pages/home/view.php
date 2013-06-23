@@ -1,13 +1,13 @@
 <div class="page-home">
 
   <div class="container espace-top">
-    <div class="hero-unit center" style="padding:10px 20px; line-height:75px; overflow:hidden;">
+    <div class="hero-unit center">
       <img src="<?php echo _FSC_; ?>/img/logo/fsc-113x75.png" alt="FSC" class="pull-left" />
-      <h1 style="font-size:40px; margin:0; line-height:75px;">Site des préinscriptions du FSC Bezannes</h1>
+      <h1>Site des préinscriptions du FSC Bezannes</h1>
     </div>
   </div>
 
-  <div class="container center">
+  <div class="container center links">
     <div class="row">
       <div class="span8 offset2 lead">Créez votre compte pour ajouter de nouvelles personnes, et préinscrivez-les à des activités !</div>
     </div>

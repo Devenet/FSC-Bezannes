@@ -17,7 +17,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     );
     $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $m->name(), 'url' => '/preinscription/'.$m->id()), $pageInfos));
     
-    $form = new Form('edit-member', '/edit-preinscription/'.$m->id(), 'Modifier', 'Modifier un membre');
+    $form = new Form('edit-member', _INSCRIPTION_.'/edit-preinscription/'.$m->id(), 'Modifier', 'Modifier un membre');
     $inputs = array(
       'last_name',
       'first_name',
@@ -96,7 +96,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $m->setBezannais();      
         $m->update();
         $_SESSION['msg'] = new Message('La préinscription de <em>'. $m->name() .'</em> a bien été modifiée :)', 1, 'Modification réussie !');
-        header ('Location: /preinscription/'.$m->id());
+        header ('Location: '. _INSCRIPTION_ .'/preinscription/'.$m->id());
         exit();
         
       }
@@ -107,13 +107,13 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     }
   }
   else {
-    header('Location: /account');
+    header('Location: '. _INSCRIPTION_ .'/account');
     exit();
   }
 
 }
 else {
-  header ('Location: /login');
+  header ('Location: '. _INSCRIPTION_ .'/login');
   exit();
 }
 

@@ -10,17 +10,17 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     $member = $p->adherent();
     $p->delete(true);
     $_SESSION['msg'] = new Message('Le membre a bien été désinscrit de l’activité', 1, 'Suppression réussie');
-    header ('Location: /preinscription/'.$member);
+    header ('Location: '. _INSCRIPTION_ .'/preinscription/'.$member);
     exit();
   }
   else {
-    header ('Location: /account');
+    header ('Location: '. _INSCRIPTION_ .'/account');
     exit();
   }
 
 }
 else {
-  header ('Location: /login');
+  header ('Location: '. _INSCRIPTION_ .'/login');
   exit();
 }
 ?>

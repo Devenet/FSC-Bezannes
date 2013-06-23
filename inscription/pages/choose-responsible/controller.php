@@ -21,7 +21,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       <br />Si le responsable ne souhaite pas devenir adhérent, il suffit de ne pas cocher la case pré-adhérer dans le <a href="/new-preinscription">formulaire de préinscription</a>.
     </div>' : '';
     
-    $form = new Form('choose-responsible', '/choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');
+    $form = new Form('choose-responsible', _INSCRIPTION_ .'/choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');
     foreach (Member::Adults($_SESSION['user']->id()) as $adult)
       $form->addOption('adulte', $adult->name(), $adult->id());
       
@@ -41,7 +41,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         unset ($_SESSION['member']);
         
         $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été préinscrit :)', 1, 'Ajout réussi !');
-        header ('Location: /account');
+        header ('Location: '. _INSCRIPTION_ .'/account');
         exit();
         
       }
@@ -54,14 +54,14 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   }
 
   else {
-    header('Location: /new-preinscription');
+    header('Location: '. _INSCRIPTION_ .'/new-preinscription');
     exit();
   }
 
 
 }
 else {
-  header ('Location: /login');
+  header ('Location: '. _INSCRIPTION_ .'/login');
   exit();
 }
 ?>

@@ -19,7 +19,7 @@ session_start();
 include '../config/config.php';
 
 if (!isset($_SESSION['authentificated']) || !$_SESSION['authentificated']) {
-	header('Location: /login.php?path='.htmlspecialchars($_SERVER['REQUEST_URI']));
+	header('Location: '. _GESTION_ .'/login.php?path='.htmlspecialchars($_SERVER['REQUEST_URI']));
 	exit();
 }
 elseif ($_SESSION['user']->privilege() != 9) {
@@ -125,7 +125,7 @@ elseif (!Activity::isActivityURL('bibliotheque')) {
 else {
 
 	$_SESSION['msg'] = new Message('Une activité <em>Bibliothèque</em> semble déjà exister...', -1, 'Initialisation impossible !');
-	header('Location: /');
+	header('Location: '. _GESTION_);
 	exit();
 	
 }

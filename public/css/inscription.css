@@ -18,9 +18,38 @@ h1 {
   cursor: pointer;
 }
 
-.page-home .lead {
-  font-size: 25px;
+.page-home .hero-unit {
+	padding: 10px 20px;
+	line-height: 75px;
+	overflow:hidden;
 }
-.page-home h3 {
-  font-size: 18px;
+
+.page-home h1 {
+	font-size: 40px;
+	margin: 0;
+	line-height: 75px;
+}
+
+@media (max-width: 979px) {
+	.page-home .hero-unit h1 {
+		line-height: 40px;
+		font-size: 35px;
+	}
+}
+
+@media (max-width: 767px) {
+	.page-home .hero-unit h1 {
+		line-height: 35px;
+		font-size: 30px;
+	}
+	.page-home .links .span3 + .span3 {
+		margin-top: 30px;
+	}
+}
+
+@media (max-width: 480px) {
+  	.page-home .hero-unit h1 {
+		line-height: 30px;
+		font-size: 25px;
+	}
 }

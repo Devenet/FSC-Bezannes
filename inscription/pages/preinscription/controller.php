@@ -10,7 +10,7 @@ use lib\content\Message;
 use lib\content\Display;
 
 function quit() {
-  header('Location: /account');
+  header('Location: '. _INSCRIPTION_ .'/account');
   exit();
 }
 
@@ -88,7 +88,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
           </div>
           <div class="modal-footer">
             <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-            <a href="/remove-activity/'. $p->id() .'" class="btn btn-danger">Confirmer</a>
+            <a href="./remove-activity/'. $p->id() .'" class="btn btn-danger">Confirmer</a>
           </div>
         </div>
         ';

@@ -45,7 +45,8 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   $count_adherents = 0;
   // affichage des préinscriptions du compte
   if ($count_members == 0) {
-    $display_members = '<div class="row espace-top"><div class="span8 offset2"><div class="alert">Aucune préinscription n’a encore été enregistrée :/<br />Faire ma <a href="/new-preinscription">première préinscription</a> !</div></div></div>';
+    $display_members = '<div class="row espace-top"><div class="span8 offset2"><div class="alert">Aucune préinscription n’a encore été enregistrée :/
+    <br />Faire ma <a href="'. _INSCRIPTION_ .'/new-preinscription">première préinscription</a> !</div></div></div>';
   }
   else {
     $display_members = '<table class="table table-striped table-hover">
@@ -69,11 +70,11 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       $display_members .= '
         <tr>
           <td style="text-align:center;">'. Display::HtmlGender($m->gender()) .'</td>
-          <td><a href="/preinscription/'. $m->id() .'" style="text-decoration:none; color:#333;">'. $m->name() .'</a><a href="/preinscription/'. $m->id() .'" style="text-decoration:none; padding-left:8px;"><i class="icon-share-alt"></i></a></td>
+          <td><a href="/preinscription/'. $m->id() .'" style="text-decoration:none; color:#333;">'. $m->name() .'</a><a href="'. _INSCRIPTION_ .'/preinscription/'. $m->id() .'" style="text-decoration:none; padding-left:8px;"><i class="icon-share-alt"></i></a></td>
           <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
           <td style="width:120px; text-align:center;">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
-          <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : '') .'">'. $act .'</span> <a href="/add-activity/'. $m->id() .'" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
-          <td style="text-align:center;"><a href="/preinscription/'. $m->id() .'" class="btn btn-small">Voir</a></td>
+          <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : '') .'">'. $act .'</span> <a href="'. _INSCRIPTION_ .'/add-activity/'. $m->id() .'" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
+          <td style="text-align:center;"><a href="'. _INSCRIPTION_ .'/preinscription/'. $m->id() .'" class="btn btn-small">Voir</a></td>
         </tr>
       ';
     }
@@ -124,7 +125,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   
 }
 else {
-  header ('Location: /login');
+  header ('Location: '. _INSCRIPTION_ .'/login');
   exit();
 }
 

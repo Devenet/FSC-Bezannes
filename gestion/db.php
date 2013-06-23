@@ -15,7 +15,7 @@ include '../config/config.php';
 
 
 if (!isset($_SESSION['authentificated']) || !$_SESSION['authentificated']) {
-	header('Location: /login.php?path='.htmlspecialchars($_SERVER['REQUEST_URI']));
+	header('Location: '. _GESTION_ .'/login.php?path='.htmlspecialchars($_SERVER['REQUEST_URI']));
 	exit();
 }
 else {

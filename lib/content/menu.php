@@ -43,7 +43,10 @@ class Menu {
   public function changeNameLink($position, $name) {
     $this->links[$position]['name'] = $name;
   }
-  
+  public function changeUrlLink($position, $url) {
+    $this->links[$position]['url'] = $url;
+  }
+
 }
 
 ?>

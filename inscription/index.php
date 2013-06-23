@@ -48,7 +48,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/inscription.css" media="screen" />
-		<!--<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />-->
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
 		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/select2.css" /><?php } ?> 
 	</head>
 
@@ -58,28 +58,30 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
-				<ul class="nav"><?php echo $mainMenu->display(); ?></ul>
-				<ul class="nav pull-right"><?php echo $rightMenu->display(); ?></ul>
-				<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?>
-				<!-- settings -->
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _INSCRIPTION_; ?>/account"><?php echo $_SESSION['user']->login(); ?>
-						<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="<?php echo _INSCRIPTION_; ?>/account"><i class="icon-user"></i> Mon compte</a></li>
-						<li><a href="<?php echo _INSCRIPTION_; ?>/settings"><i class="icon-cog"></i> Préférences</a></li>
-						<li class="divider"></li>
-						<li><a href="<?php echo _INSCRIPTION_; ?>/logout"><i class="icon-signout"></i> Déconnexion</a></li>
+					<ul class="nav"><?php echo $mainMenu->display(); ?></ul>
+
+					<ul class="nav pull-right"><?php echo $rightMenu->display(); ?></ul>
+					<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?>
+					<!-- settings -->
+					<ul class="nav pull-right">
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _INSCRIPTION_; ?>/account"><?php echo $_SESSION['user']->login(); ?>
+							<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="<?php echo _INSCRIPTION_; ?>/account"><i class="icon-user"></i> Mon compte</a></li>
+								<li><a href="<?php echo _INSCRIPTION_; ?>/settings"><i class="icon-cog"></i> Préférences</a></li>
+								<li class="divider"></li>
+								<li><a href="<?php echo _INSCRIPTION_; ?>/logout"><i class="icon-signout"></i> Déconnexion</a></li>
+							</ul>
+						</li>
 					</ul>
-					</li>
-				</ul>
-				<?php } else { ?>
-				<div class="nav pull-right" style="padding-right:8px;">
-					<a href="<?php echo _INSCRIPTION_; ?>/signup" class="btn btn-success btn-small" style="margin-top: 6px;">Se préinscrire</a> 
-					<a href="<?php echo _INSCRIPTION_; ?>/login" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
-				</div>
-				<?php } ?>
+					<?php } else { ?>
+					<div class="nav pull-right" style="padding-right:8px;">
+						<a href="<?php echo _INSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Se préinscrire</a> 
+						<a href="<?php echo _INSCRIPTION_; ?>/login" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
+					</div>
+					<?php } ?>
+	
 				</div>
 			</div>
 		</div>
@@ -92,7 +94,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 						<h1><?php echo $pageInfos['name']; ?></h1>
 				</div>
 				<?php if ($page->option('steps')) { ?>
-				<div class="span4">
+				<div class="span4 hidden-phone">
 					<ul class="unstyled">
 						<li><span class="strong">Étape <?php echo $page->parameter('step'); ?></span> : <?php echo ($page->parameter('step-info') != null ? $page->parameter('step-info') : $pageInfos['name']); ?>
 							<div class="progress progress-important">
@@ -107,7 +109,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 			<?php }
 			
 			if (! $page->option('no-breadcrumb'))
-				echo $page->breadcrumb('Préinscriptions'); ?>
+				echo $page->breadcrumb('Préinscriptions', _INSCRIPTION_); ?>
 		</header>
 		
 

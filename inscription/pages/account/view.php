@@ -5,7 +5,7 @@
 
   <div class="span4">
     <div class="pull-right">
-      <a href="/new-preinscription" class="btn btn-primary btn-small">Nouvelle préinscription</a>
+      <a href="./new-preinscription" class="btn btn-primary btn-small">Nouvelle préinscription</a>
     </div>
   </div>
 </div>

@@ -7,12 +7,12 @@ use lib\users\RecoverPassword;
 
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
-  header('Location: /account');
+  header('Location: '. _INSCRIPTION_ .'/account');
   exit;
 }
 elseif (isset($_SESSION['to_ban']) && $_SESSION['to_ban'] > 3) {
   $_SESSION['msg'] = new Message('Trop de tentatives de récupération de mot de passe ont été tentées sans succès. Merci de réessayer plus tard.', -1, 'Oups... !');
-  header ('Location: /login');
+  header ('Location: '. _INSCRIPTION_ .'/login');
   exit();
 }
 // demande envoie
@@ -41,7 +41,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
   else {
     $_SESSION['msg'] = new Message('Cet utilisateur est inconnu.', -1, 'Oups... !');
     $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
-    header ('Location: /recovery');
+    header ('Location: '. _INSCRIPTION_ .'/recovery');
     exit();
   }
 }
@@ -62,12 +62,12 @@ elseif (isset($_GET['rel']) && $_GET['rel'] != null && isset($_GET['data']) && $
 
 
         $_SESSION['msg'] = new Message('Votre mot de passe a bien été réinitialisé. Vous pouvez maintenant vous connecter :)', 1, 'Réinitialisation réussie !');
-        header ('Location: /login');
+        header ('Location: '. _INSCRIPTION_ .'/login');
         exit(); 
       }
       catch (\Exception $e) {
         $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !');
-        header ('Location: /recovery/'. htmlspecialchars($_GET['rel']) .'/'. htmlspecialchars($_GET['data']));
+        header ('Location: '. _INSCRIPTION_ .'/recovery/'. htmlspecialchars($_GET['rel']) .'/'. htmlspecialchars($_GET['data']));
         exit(); 
       }
     }
@@ -116,7 +116,7 @@ elseif (isset($_GET['rel']) && $_GET['rel'] != null && isset($_GET['data']) && $
   else {
     $_SESSION['msg'] = new Message('Autorisation de réinitialisation de votre mot de passe invalide ou expirée.', -1, 'Oups... !');
     $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
-    header ('Location: /login');
+    header ('Location: '. _INSCRIPTION_ .'/login');
     exit(); 
   }
 }
