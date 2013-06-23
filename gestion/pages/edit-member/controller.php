@@ -15,7 +15,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $m->name(), 'url' => '?page=member&amp;id='.$m->id()), $pageInfos));
   
-  $form = new Form('edit-member', '/?page=edit-member&amp;id='.$m->id(), 'Modifier', 'Modifier un membre');
+  $form = new Form('edit-member', './?page=edit-member&amp;id='.$m->id(), 'Modifier', 'Modifier un membre');
   $inputs = array(
     'last_name',
     'first_name',
@@ -103,7 +103,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       $m->setBezannais();      
       $m->update();
       $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été modifié :)', 1, 'Modification réussie !');
-      header ('Location: /?page=member&id='. $m->id());
+      header ('Location: '. _GESTION_ .'/?page=member&id='. $m->id());
       exit();
       
     }
@@ -114,7 +114,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
   }
 }
 else {
-  header('Location: /?page=members');
+  header('Location: '. _GESTION_ .'/?page=members');
   exit();
 }
 ?>

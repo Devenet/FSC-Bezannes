@@ -12,7 +12,7 @@ $pageInfos = array(
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), $pageInfos));
 
-$form = new Form('new-activity', '/?page=new-activity', 'Ajouter', 'Nouvelle activité');
+$form = new Form('new-activity', './?page=new-activity', 'Ajouter', 'Nouvelle activité');
 
 // controle formulaire
 if (isset($_POST) and $_POST != null) {
@@ -56,7 +56,7 @@ if (isset($_POST) and $_POST != null) {
     $act->create();
     
     $_SESSION['msg'] = new Message('L’activité <em>'. $act->name() .'</em> a bien été créée \o/', 1, 'Ajout réussi !');
-    header ('Location: /?page=activity&id='. $act->id());
+    header ('Location: '. _GESTION_ .'/?page=activity&id='. $act->id());
     exit();
     
   }

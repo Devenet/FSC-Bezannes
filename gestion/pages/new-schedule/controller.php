@@ -16,7 +16,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '?page=activity&id='. $act->id()), $pageInfos));
   
-  $form = new Form('new-schedule', '/?page=new-schedule&amp;activity='. $act->id(), 'Ajouter', 'Nouvel horaire');
+  $form = new Form('new-schedule', './?page=new-schedule&amp;activity='. $act->id(), 'Ajouter', 'Nouvel horaire');
   
   // controle formulaire
   if (isset($_POST) and $_POST != null) {
@@ -63,7 +63,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
       $s->create();
       
       $_SESSION['msg'] = new Message('L’horaire a bien été créé :)', 1, 'Ajout réussi !');
-      header ('Location: /?page=activity&id='. $act->id().'#schedules');
+      header ('Location: '. _GESTION_ .'/?page=activity&id='. $act->id().'#schedules');
       exit();
       
     }
@@ -75,7 +75,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   
 }
 else {
-  header ('Location: /?page=activities');
+  header ('Location: '. _GESTION_ .'/?page=activities');
   exit();
 }
 

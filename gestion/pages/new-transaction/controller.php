@@ -18,7 +18,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $a->name(), 'url' => '/?page=member&amp;id='.$a->id()), $pageInfos));
   
-  $form = new Form('add-transaction', '/?page=new-transaction&amp;adherent='.$a->id(), 'Ajouter', 'Ajouter une transaction pour <em>'. $a->name() .'</em>');
+  $form = new Form('add-transaction', './?page=new-transaction&amp;adherent='.$a->id(), 'Ajouter', 'Ajouter une transaction pour <em>'. $a->name() .'</em>');
   
   
     
@@ -55,7 +55,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
       $t->create();
       
       $_SESSION['msg'] = new Message('La transaction pour <em>'. $a->name() .'</em> a bien été ajoutée :)', 1, 'Ajout réussi !');
-      header ('Location: /?page=member&id='. $a->id().'#payments');
+      header ('Location: '. _GESTION_ .'/?page=member&id='. $a->id().'#payments');
       exit();
       
     }
@@ -66,7 +66,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
   }
 }
 else {
-  header('Location: /?page=members');
+  header('Location: '. _GESTION_ .'/?page=members');
   exit();
 }
 ?>

@@ -11,7 +11,7 @@ $pageInfos = array(
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), $pageInfos));
 
-$form = new Form('new-member', '/?page=new-member', 'Ajouter', 'Nouveau membre');
+$form = new Form('new-member', './?page=new-member', 'Ajouter', 'Nouveau membre');
 
 // controle formulaire
 if (isset($_POST) and $_POST != null) {
@@ -93,12 +93,12 @@ if (isset($_POST) and $_POST != null) {
       $m->setBezannais();      
       $m->create();
       $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été créé :)', 1, 'Ajout réussi !');
-      header ('Location: /?page=member&id='. $m->id());
+      header ('Location: '. _GESTION_ .'/?page=member&id='. $m->id());
       exit();
     }
     else {
       $_SESSION['member'] = $m;
-      header ('Location: /?page=choose-responsible');
+      header ('Location: '. _GESTION_ .'/?page=choose-responsible');
       exit();
     }
     

@@ -16,18 +16,18 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
     if (!$act->active()) {
       $s->delete(true);
       $_SESSION['msg'] = new Message('L’horaire a bien été supprimé !', 1, 'Suppression réussie');
-      header ('Location: /?page=activity&id='.$act->id().'#schedules');
+      header ('Location: '. _GESTION_ .'/?page=activity&id='.$act->id().'#schedules');
       exit();
     }
     elseif (Schedule::countSchedules($act->id()) > 1) {
       $s->delete(true);
       $_SESSION['msg'] = new Message('L’horaire a bien été supprimé !', 1, 'Suppression réussie');
-      header ('Location: /?page=activity&id='.$act->id().'#schedules');
+      header ('Location: '. _GESTION_ .'/?page=activity&id='.$act->id().'#schedules');
       exit();
     }
     else {
       $_SESSION['msg'] = new Message('L’horaire ne peut pas être supprimé car l’activité est activée !', -1, 'Suppression impossible');
-      header ('Location: /?page=activity&id='.$act->id());
+      header ('Location: '. _GESTION_ .'/?page=activity&id='.$act->id());
       exit();
     }
   }
@@ -38,7 +38,7 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '?page=activity&id='. $act->id()), $pageInfos));
   
-  $form = new Form('edit-schedule', '/?page=edit-schedule&amp;id='. $s->id(), 'Modifier', 'Modifier l’horaire');
+  $form = new Form('edit-schedule', './?page=edit-schedule&amp;id='. $s->id(), 'Modifier', 'Modifier l’horaire');
   
   $inputs = array(
     'day',
@@ -88,7 +88,7 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
       $s->update();
       
       $_SESSION['msg'] = new Message('L’horaire a bien été modifié :)', 1, 'Modification réussie !');
-      header ('Location: /?page=activity&id='. $act->id().'#schedules');
+      header ('Location: '. _GESTION_ .'/?page=activity&id='. $act->id().'#schedules');
       exit();
       
     }
@@ -100,7 +100,7 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
   
 }
 else {
-  header ('Location: /?page=activities');
+  header ('Location: '. _GESTION_ .'/?page=activities');
   exit();
 }
 

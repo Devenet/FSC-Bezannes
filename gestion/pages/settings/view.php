@@ -5,6 +5,18 @@
     </div>
   </div>
   
+  <div class="span9 pull-left">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Constante</th>
+          <th>Valeur</th>
+        </tr>
+      </thead>
+      <?php echo $display_constants; ?>
+    </table>
+  </div>
+
   <div class="span3 pull-right">
     <h4>Développement</h4>
     <ul>
@@ -21,16 +33,5 @@
       <li><a href="https://phpmyadmin.ovh.net/" rel="external">phpMyAdmin <i class="icon-external-link"></i></a></li>
     </ul>
   </div>
-  
-  <div class="span9 pull-left">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Constante</th>
-          <th>Valeur</th>
-        </tr>
-      </thead>
-      <?php echo $display_constants; ?>
-    </table>
-  </div>
+
 </div>

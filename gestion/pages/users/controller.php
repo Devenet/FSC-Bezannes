@@ -11,10 +11,10 @@ $pageInfos = array(
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
-$form = new Form('new-user', '/?page=users&amp;action=new', 'Ajouter', 'Nouvel utilisateur');
+$form = new Form('new-user', './?page=users&amp;action=new', 'Ajouter', 'Nouvel utilisateur');
 
 function redirect() {
-  header ('Location: /?page=account');
+  header ('Location: '. _GESTION_ .'/?page=account');
   exit;
 }
 

@@ -24,13 +24,13 @@ foreach ($history as $data)
 $display_history .= '</tbody>';
 
 // pagination
-$display_pagination = '<li '. ($browse == 1 ? ' class="disabled"><span>' : '><a href="/?page=history">') .'<i class="icon-double-angle-left"></i>'. ($browse == 1 ? '</span>' : '</a>') .'</li>' ;
+$display_pagination = '<li '. ($browse == 1 ? ' class="disabled"><span>' : '><a href="./?page=history">') .'<i class="icon-double-angle-left"></i>'. ($browse == 1 ? '</span>' : '</a>') .'</li>' ;
 for ($i = 1; $i <= $pages; $i++) {
   $display_pagination .= '
-  <li '. ($i != $browse ?: ' class="active"') .'><a href="/?page=history'. ($i != 1 ? '&amp;browse='. $i : '') .'">'. $i .'</a></li>
+  <li '. ($i != $browse ?: ' class="active"') .'><a href="./?page=history'. ($i != 1 ? '&amp;browse='. $i : '') .'">'. $i .'</a></li>
   ';
 }
-$display_pagination .= '<li '. ($browse == $pages ? ' class="disabled"><span>' : '><a href="/?page=history&browse='. $pages .'">') .'<i class="icon-double-angle-right"></i>'. ($browse == $pages ? '</span>' : '</a>') .'</li>' ;
+$display_pagination .= '<li '. ($browse == $pages ? ' class="disabled"><span>' : '><a href="./?page=history&browse='. $pages .'">') .'<i class="icon-double-angle-right"></i>'. ($browse == $pages ? '</span>' : '</a>') .'</li>' ;
 
 
 ?>

@@ -18,7 +18,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '/?page=activity&amp;id='. $act->id()), $pageInfos));
   
-  $form = new Form('add-referent', '/?page=new-referent&amp;activity='. $act->id(), 'Choisir', 'Référent pour <em>'. $act->name() .'</em>');
+  $form = new Form('add-referent', './?page=new-referent&amp;activity='. $act->id(), 'Choisir', 'Référent pour <em>'. $act->name() .'</em>');
   foreach (Member::Adults() as $adherent)
     $form->addOption('member', $adherent->name(), $adherent->id());
     
@@ -49,7 +49,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
       $m = new Member($r->member());
       
       $_SESSION['msg'] = new Message('Le référent <em>'. $m->name() .'</em> a bien été ajouté :)', 1, 'Ajout réussi !');
-      header ('Location: /?page=activity&id='. $act->id().'#referents');
+      header ('Location: '. _GESTION_ .'/?page=activity&id='. $act->id().'#referents');
       exit();
       
     }
@@ -61,7 +61,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
 
 }
 else {
-  header('Location: /?page=activities');
+  header('Location: '. _GESTION_ .'/?page=activities');
   exit();
 }
 ?>

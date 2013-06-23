@@ -13,7 +13,7 @@ use lib\content\Message;
 use lib\content\Display;
 
 function quit() {
-  header('Location: /?page=members');
+  header('Location: '. _GESTION_ .'/?page=members');
   exit();
 }
 
@@ -54,7 +54,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
     $display_referent = '';
     foreach (Referent::Responsabilities($m->id()) as $r) {
       $act = new Activity($r->activity());
-      $display_referent .= '<li>'. ucfirst(Display::Referent($r->type(), $m->gender())) .' pour '. $act->name() .' [<a href="/?page=activity&amp;id='. $r->activity() .'">#'. $act->id() .'</a>]</li>';
+      $display_referent .= '<li>'. ucfirst(Display::Referent($r->type(), $m->gender())) .' pour '. $act->name() .' [<a href="./?page=activity&amp;id='. $r->activity() .'">#'. $act->id() .'</a>]</li>';
     }
   }
   
@@ -109,7 +109,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
         </div>
         <div class="modal-footer">
           <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-          <a href="/?page=edit-payment&amp;advantage='. $t->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
+          <a href="./?page=edit-payment&amp;advantage='. $t->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
         </div>
       </div>
       ';
@@ -165,7 +165,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
         </div>
         <div class="modal-footer">
           <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-          <a href="/?page=edit-payment&amp;transaction='. $t->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
+          <a href="./?page=edit-payment&amp;transaction='. $t->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
         </div>
       </div>
       ';
@@ -197,7 +197,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       $activities_participant .= '
         <tr>
           <td>'. $p->id() .'</td>
-          <td><a href="/?page=activity&amp;id='. $a->id() .'">'. $a->name() .'</a></td>
+          <td><a href="./?page=activity&amp;id='. $a->id() .'">'. $a->name() .'</a></td>
           <td>'. $horaire .'</td>
           <td><a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
         </tr>
@@ -216,7 +216,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
         </div>
         <div class="modal-footer">
           <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-          <a href="/?page=edit-participant&amp;id='. $p->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
+          <a href="./?page=edit-participant&amp;id='. $p->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
         </div>
       </div>
       ';

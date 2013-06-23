@@ -20,7 +20,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $a->name(), 'url' => '/?page=member&amp;id='.$a->id()), $pageInfos));
   
-  $form = new Form('add-activity', '/?page=new-participant&amp;adherent='.$a->id(), 'Ajouter', 'Sélection d’une activité pour '.$a->name());
+  $form = new Form('add-activity', './?page=new-participant&amp;adherent='.$a->id(), 'Ajouter', 'Sélection d’une activité pour '.$a->name());
   
   if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
     $act = new Activity($_GET['activity']+0);
@@ -74,7 +74,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
         throw new \Exception('Impossible d’ajouter le participant');
       
       $_SESSION['msg'] = new Message('Le membre <em>'. $a->name() .'</em> est maintenant inscrit à l’activité :)', 1, 'Ajout réussi !');
-      header ('Location: /?page=member&id='. $a->id() .'#activities');
+      header ('Location: '. _GESTION_ .'/?page=member&id='. $a->id() .'#activities');
       exit();
       
     }
@@ -94,7 +94,7 @@ elseif (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $a->name(), 'url' => '/?page=activity&amp;id='.$a->id()), $pageInfos));
   
-  $form = new Form('add-adherent', '/?page=new-participant&amp;activity='.$a->id(), 'Ajouter', 'Sélection d’un participant pour '.$a->name());
+  $form = new Form('add-adherent', './?page=new-participant&amp;activity='.$a->id(), 'Ajouter', 'Sélection d’un participant pour '.$a->name());
   foreach (Member::Adherents() as $m)
     $form->addOption('adherent', $m->name(), $m->id());
     
@@ -121,11 +121,11 @@ elseif (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
         
         $m = new Member($p->adherent());
         $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> est maintenant inscrit à l’activité :)', 1, 'Ajout réussi !');
-        header ('Location: /?page=activity&id='. $a->id().'#participants');
+        header ('Location: '. _GESTION_ .'/?page=activity&id='. $a->id().'#participants');
         exit();
       }
       
-      header ('Location: /?page=new-participant&adherent='. $p->adherent().'&activity='.$a->id());
+      header ('Location: '. _GESTION_ .'/?page=new-participant&adherent='. $p->adherent().'&activity='.$a->id());
       exit();
       
     }
@@ -136,7 +136,7 @@ elseif (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   }
 }
 else {
-  header('Location: /?page=members');
+  header('Location: '. _GESTION_ .'./?page=members');
   exit();
 }
 ?>

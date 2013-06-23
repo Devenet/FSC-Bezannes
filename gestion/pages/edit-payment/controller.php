@@ -10,7 +10,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['transa
   $m = new Member($t->adherent());
   $t->delete(true);
   $_SESSION['msg'] = new Message('La transaction a bien été supprimée', 1, 'Suppression réussie');
-  header ('Location: /?page=member&id='.$m->id().'#payments');
+  header ('Location: '. _GESTION_ .'/?page=member&id='.$m->id().'#payments');
   exit();
 }
 elseif (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['advantage']) && Advantage::isAdvantage($_GET['advantage']+0)) {
@@ -18,11 +18,11 @@ elseif (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['ad
   $m = new Member($t->adherent());
   $t->delete(true);
   $_SESSION['msg'] = new Message('L’avantage a bien été supprimé', 1, 'Suppression réussie');
-  header ('Location: /?page=member&id='.$m->id().'#payments');
+  header ('Location: '. _GESTION_ .'/?page=member&id='.$m->id().'#payments');
   exit();
 }
 else {
-  header ('Location: /?page=members');
+  header ('Location: '. _GESTION_ .'/?page=members');
   exit();
 }
 

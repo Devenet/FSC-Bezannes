@@ -16,7 +16,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '?page=activity&id='. $act->id()), $pageInfos));
   $page->addOption('hide-aggregate');
   
-  $form = new Form('edit-activity', '/?page=edit-activity&id='.$act->id(), 'Modifier', $act->name());
+  $form = new Form('edit-activity', './?page=edit-activity&id='.$act->id(), 'Modifier', $act->name());
   $inputs = array(
     'name',
     'description',
@@ -62,7 +62,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
       $act->update();
       
       $_SESSION['msg'] = new Message('L’activité <em>'. $act->name() .'</em> a bien été modifiée :)', 1, 'Modification réussie !');
-      header ('Location: /?page=activity&id='. $act->id());
+      header ('Location: '. _GESTION_ .'/?page=activity&id='. $act->id());
       exit();
       
     }
@@ -74,7 +74,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 
 }
 else {
-  header('Location: /?page=activities');
+  header('Location: '. _GESTION_ .'/?page=activities');
   exit();
 }
 

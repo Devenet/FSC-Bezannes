@@ -14,7 +14,7 @@ if (isset($_SESSION['member']) && $_SESSION['member']->minor()) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), $pageInfos));
   
-  $form = new Form('choose-responsible', '/?page=choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');
+  $form = new Form('choose-responsible', './?page=choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');
   foreach (Member::Adults() as $adult)
     $form->addOption('adulte', $adult->name(), $adult->id());
     
@@ -34,7 +34,7 @@ if (isset($_SESSION['member']) && $_SESSION['member']->minor()) {
       unset ($_SESSION['member']);
       
       $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été créé :)', 1, 'Ajout réussi !');
-      header ('Location: /?page=member&id='. $m->id().'#referents');
+      header ('Location: '. _GESTION_ .'/?page=member&id='. $m->id().'#referents');
       exit();
       
     }
@@ -55,7 +55,7 @@ elseif(isset($_GET['member']) && !Member::isAdult($_GET['member']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $m->name(), 'url' => '?page=member&amp;id='.$m->id()), $pageInfos));
   
-  $form = new Form('choose-responsible', '/?page=choose-responsible&amp;member='.$m->id(), 'Modifier le représant légal', 'Représentant légal pour <strong>'. $m->name() .'</strong>');
+  $form = new Form('choose-responsible', './?page=choose-responsible&amp;member='.$m->id(), 'Modifier le représant légal', 'Représentant légal pour <strong>'. $m->name() .'</strong>');
   foreach (Member::Adults() as $adult)
     $form->addOption('adulte', $adult->name(), $adult->id());
   $form->add('adulte', $m->responsible());
@@ -73,7 +73,7 @@ elseif(isset($_GET['member']) && !Member::isAdult($_GET['member']+0)) {
       $m->update();
       
       $_SESSION['msg'] = new Message('Le responsable de <em>'. $m->name() .'</em> a bien été modifié :)', 1, 'Modification réussie !');
-      header ('Location: /?page=member&id='. $m->id().'#referents');
+      header ('Location: '. _GESTION_ .'/?page=member&id='. $m->id().'#referents');
       exit();
       
     }
@@ -85,7 +85,7 @@ elseif(isset($_GET['member']) && !Member::isAdult($_GET['member']+0)) {
   
 }
 else {
-  header('Location: /?page=new-member');
+  header('Location: '. _GESTION_ .'/?page=new-member');
   exit();
 }
 ?>

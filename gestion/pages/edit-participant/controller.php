@@ -8,11 +8,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id']) 
   $member = $p->adherent();
   $p->delete(true);
   $_SESSION['msg'] = new Message('Le membre a bien été désinscrit de l’activité', 1, 'Suppression réussie');
-  header ('Location: /?page=member&id='.$member.'#activities');
+  header ('Location: '. _GESTION_ .'/?page=member&id='.$member.'#activities');
   exit();
 }
 else {
-  header ('Location: /?page=members');
+  header ('Location: '. _GESTION_ .'/?page=members');
   exit();
 }
 

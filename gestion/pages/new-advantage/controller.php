@@ -18,7 +18,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $a->name(), 'url' => '/?page=member&amp;id='.$a->id()), $pageInfos));
   
-  $form = new Form('add-advantage', '/?page=new-advantage&amp;adherent='.$a->id(), 'Ajouter', 'Ajouter un avantage pour <em>'. $a->name() .'</em>');
+  $form = new Form('add-advantage', './?page=new-advantage&amp;adherent='.$a->id(), 'Ajouter', 'Ajouter un avantage pour <em>'. $a->name() .'</em>');
   
   
     
@@ -62,7 +62,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
   }
 }
 else {
-  header('Location: /?page=members');
+  header('Location: '. _GESTION_ .'/?page=members');
   exit();
 }
 ?>
