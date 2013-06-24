@@ -5,7 +5,9 @@ use lib\content\Message;
 use lib\users\UserAdmin;
 use lib\users\RecoverPassword;
 
-error_reporting(E_ERROR);
+//error_reporting(E_ERROR);
+//ini_set('display_errors', '0'); 
+error_reporting(E_ALL & ~E_STRICT);
 
 set_include_path('../');
 spl_autoload_extensions('.php');
