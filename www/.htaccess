@@ -1,0 +1,18 @@
+#SetEnv PHP_VER 5
+#SetEnv REGISTER_GLOBALS 0
+
+# Security
+#Option -Indexes
+#ErrorDocument 404 http://fsc-bezannes.fr
+#ErrorDocument 403 http://fsc-bezannes.fr
+ 
+DirectoryIndex default.php
+
+# Rewrite rules
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} !^fsc-bezannes.fr$
+RewriteRule ^(.*)$ http://fsc-bezannes.fr/ [QSA,L,R=302]
+
+#RedirectMatch 302 /(.*) http://bezannes.fr/association/foyer-social-et-culturel-10
+#Redirect temp / http://bezannes.fr/association/foyer-social-et-culturel-10

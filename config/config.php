@@ -13,10 +13,10 @@
 
   if (false)
   {
-    define('_FSC_', '//beta.bezannes-fsc.fr');
-    define('_GESTION_', '//gestion.bezannes-fsc.fr');
-    define('_ADMIN_', '//admin.bezannes-fsc.fr');
-    define('_INSCRIPTION_', '//inscription.bezannes-fsc.fr');
+    define('_FSC_', '//beta.fsc-bezannes.fr');
+    define('_GESTION_', '//gestion.fsc-bezannes.fr');
+    define('_ADMIN_', '//admin.fsc-bezannes.fr');
+    define('_INSCRIPTION_', '//inscription.fsc-bezannes.fr');
     define('_ANALYTICS_FSC_', true);
     define('_ANALYTICS_GESTION_', true);
     define('_ANALYTICS_INSCRIPTION_', true);
