@@ -27,21 +27,21 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       $act = new Activity($_GET['activity']+0);
       foreach (Schedule::Schedules($act->id()) as $schedule) {
         if ($schedule->description() != null)
-          $form->addRadio('activity', $act->name().'&nbsp; &nbsp;<i class="icon-time"></i> '.$schedule->description(), $act->id().'-'.$schedule->id());
+          $form->addRadio('activity', '<strong>'.$act->name().'</strong><br /> '.$schedule->description(), $act->id().'-'.$schedule->id());
         else
-          $form->addRadio('activity', $act->name().'&nbsp; &nbsp;<i class="icon-time"></i> '.Display::Day($schedule->day()).' &rsaquo; '. $schedule->time_begin() .' à '. $schedule->time_end() . ($schedule->more() != null ? '&nbsp; &nbsp;('.$schedule->more().')' : ''), $act->id().'-'.$schedule->id());
+          $form->addRadio('activity', '<strong>'.$act->name().'</strong><br /> '.Display::Day($schedule->day()).' <i class="icon-caret-right"></i> '. $schedule->time_begin() .' à '. $schedule->time_end() . ($schedule->more() != null ? '&nbsp; &nbsp;('.$schedule->more().')' : ''), $act->id().'-'.$schedule->id());
       }
     }
     else {
       foreach (Activity::ActiveActivities() as $act) {
         if ($act->aggregate())
-          $form->addRadio('activity', $act->name(), $act->id());
+          $form->addRadio('activity', '<strong>'.$act->name().'</strong>', $act->id());
         else {
           foreach (Schedule::Schedules($act->id()) as $schedule) {
             if ($schedule->description() != null)
-              $form->addRadio('activity', $act->name().'&nbsp; &nbsp;<i class="icon-time"></i> '.$schedule->description(), $act->id().'-'.$schedule->id());
+              $form->addRadio('activity', '<strong>'.$act->name().'</strong><br /> '.$schedule->description(), $act->id().'-'.$schedule->id());
             else
-              $form->addRadio('activity', $act->name().'&nbsp; &nbsp;<i class="icon-time"></i> '.Display::Day($schedule->day()).' &rsaquo; '. $schedule->time_begin() .' à '. $schedule->time_end() . ($schedule->more() != null ? '&nbsp; &nbsp;('.$schedule->more().')' : ''), $act->id().'-'.$schedule->id());
+              $form->addRadio('activity', '<strong>'.$act->name().'</strong><br /> '.Display::Day($schedule->day()).' <i class="icon-caret-right"></i> '. $schedule->time_begin() .' à '. $schedule->time_end() . ($schedule->more() != null ? '&nbsp; &nbsp;('.$schedule->more().')' : ''), $act->id().'-'.$schedule->id());
           }
         }
       }
