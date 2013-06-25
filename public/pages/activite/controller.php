@@ -20,14 +20,14 @@ if (isset($_GET['rel']) && Activity::isActiveActivityURL($_GET['rel'])) {
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '../activites'), $pageInfos));
   
   /* preparation affichage schedules */
-  $display_schedules = '<ul class="unstyled">';
+  $display_schedules = '<ul class="unstyled" style="padding-top:10px;">';
   if (Schedule::countSchedulesDays($act->id()) > 0) {
     foreach (Schedule::SchedulesDays($act->id()) as $s)
-      $display_schedules .= '<li><i class="icon-time"></i> '. ucfirst(Display::Day($s->day())) .' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != '' ? ' <br /><span style="margin-left:18px; font-style:italic;">'. $s->more() .'</span>' : '') . '</li>' ;
+      $display_schedules .= '<li style="margin-bottom:10px;"><i class="icon-time"></i> <strong>'. ucfirst(Display::Day($s->day())) .'</strong> &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != '' ? ' <span style="display:block; margin-left:18px;">'. $s->more() .'</span>' : '') . '</li>' ;
   }
   if (Schedule::countSchedulesFree($act->id())>0) {
     foreach (Schedule::SchedulesFree($act->id()) as $s)
-      $display_schedules .= '<li><i class="icon-time"></i> '. $s->description() .'</li>';
+      $display_schedules .= '<li style="margin-bottom:10px;"><i class="icon-time"></i> '. $s->description() .'</li>';
   }  
   $display_schedules .= '</ul>';
   
