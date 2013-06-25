@@ -52,7 +52,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
           <td><a href="/preinscription/'. $m->id() .'" style="text-decoration:none; color:#333;">'. $m->name() .'</a><a href="'. _INSCRIPTION_ .'/preinscription/'. $m->id() .'" style="text-decoration:none; padding-left:8px;"><i class="icon-share-alt"></i></a></td>
           <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
           <td style="width:120px; text-align:center;">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
-          <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : '') .'">'. $act .'</span> <a href="'. _INSCRIPTION_ .'/add-activity/'. $m->id() .'" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
+          <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : 'label-success') .'">'. $act .'</span> <a href="'. _INSCRIPTION_ .'/add-activity/'. $m->id() .'" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
           <td style="text-align:center;"><a href="'. _INSCRIPTION_ .'/preinscription/'. $m->id() .'" class="btn btn-small">Voir</a></td>
         </tr>
       ';
