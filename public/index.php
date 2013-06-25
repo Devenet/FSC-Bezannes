@@ -72,8 +72,8 @@ require_once $controller;
     <!-- head -->
     <header>
       <div class="container">
-        <a href="/"><img src="<?php echo _FSC_; ?>/img/logo/fsc-<?php echo $page->url() != _FSC_.'/' ? '150x100' : '225x150'; ?>.png" alt="FSC Bezannes" /></a>
-        <h1><span class="fsc-blue">Foyer</span> <span class="fsc-green">Social</span> et <span class="fsc-orange">Culturel</span> <span class="bezannes">de Bezannes</span></h1>
+        <a href="/"><img src="<?php echo _FSC_; ?>/img/logo/fsc-<?php echo $page->url() != _FSC_.'/' ? '113x75' : '225x150'; ?>.png" alt="FSC Bezannes" /></a>
+        <h1><span class="fsc-blue">Foyer</span> <span class="fsc-green">Social</span> et <span class="fsc-orange">Culturel</span> <?php echo $page->url() != _FSC_.'/' ? '' : '<span class="bezannes">de Bezannes</span>'; ?></h1>
       </div>
     </header>
   <!-- /head -->
