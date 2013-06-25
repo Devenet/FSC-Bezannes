@@ -8,10 +8,7 @@ class UserInscription extends User {
   
   private $ip;
   private $date;
-
-
-
-    
+   
   public function __construct($id = null) {
     if ($id != null) {
       $query = SQL::sql()->prepare('SELECT login, ip, date FROM fsc_users_inscription WHERE id = ?');
@@ -98,7 +95,7 @@ class UserInscription extends User {
     return in_array(htmlspecialchars($login), $logins) && in_array(User::hash_password($pwd, htmlspecialchars($login)), $passwords);
   }
   public static function isUser($login) {
-    return in_array(htmlspecialchars($login), self::getLogins());
+    return in_array(htmlspecialchars($login), UserInscription::getLogins());
   }
   
   protected function getLogins() {
