@@ -219,7 +219,7 @@ class Schedule {
   
   static public function Schedules($activity) {
     $return = array();
-    $query = SQL::sql()->prepare('SELECT id FROM fsc_schedules WHERE activity = :activity');
+    $query = SQL::sql()->prepare('SELECT id FROM fsc_schedules WHERE activity = :activity ORDER BY day, time_begin');
     $query->execute(array('activity' => $activity));
     while ($data = $query->fetch())
       $return[] = new Schedule($data['id']); 
@@ -229,7 +229,7 @@ class Schedule {
   
   static public function SchedulesDays($activity) {
     $return = array();
-    $query = SQL::sql()->prepare('SELECT id FROM fsc_schedules WHERE activity = :activity AND type = 0');
+    $query = SQL::sql()->prepare('SELECT id FROM fsc_schedules WHERE activity = :activity AND type = 0 ORDER BY day, time_begin');
     $query->execute(array('activity' => $activity));
     while ($data = $query->fetch())
       $return[] = new Schedule($data['id']); 
