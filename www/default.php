@@ -53,7 +53,7 @@
     </style>
   </head>
 
-	<body>
+  <body>
 
     <div class="container">
       <img src="fsc.png" alt="FSC Bezannes" />
@@ -70,7 +70,8 @@
         this.css("left", Math.max(0, (($(window).width() - this.outerWidth()) / 2) + $(window).scrollLeft()) + "px");
         return this;
       }
-      $(".container").css("margin-top",0).center();
+      $(".container").css("margin-top",0);
+      $(".container").center();
       $('html').click(function() {
         //window.open('http://bezannes.fr/association/foyer-social-et-culturel-10');
         document.location = 'http://bezannes.fr/association/foyer-social-et-culturel-10';
