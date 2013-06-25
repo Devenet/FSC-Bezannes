@@ -1,9 +1,8 @@
 .DS_Store
 test*
-versions/*
 uploads/activities/*
 *-full.png
 CIMG*
 .ovh
-lib/db/sql.php
+database.json
 *.sublime-*
