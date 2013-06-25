@@ -5,23 +5,23 @@ use PDO;
 class SQL {
     private static $instance;
     private static $access = 0;
-    private static $file = '../config/database.json';
 
     static public function sql(){
-        if (!isset(self::$instance)){
-            
-            if (file_exists(self::$file)) {
-                $db = json_decode(file_get_contents(self::$file));
+       if (!isset(self::$instance)) {
+            $file = '../config/database.json';
+
+            if (file_exists($file)) {
+                $db = json_decode(file_get_contents($file));
                 
-                self::$instance = new PDO($db->dsn, $db->login, $db->foyer);
+                self::$instance = new PDO($db->dsn, $db->login, $db->password);
             
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+                self::$instance->query('SET NAMES UTF8');
             }
             else
-                throw new \Exception('DataBase file configuration not found');
+                throw new \Exception('Database file configuration not found');
         }
-        //self::$instance->query('SET NAMES UTF8');
         self::$access++;
         return self::$instance;
     }
