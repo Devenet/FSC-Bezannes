@@ -5,9 +5,7 @@ use lib\content\Message;
 use lib\users\UserAdmin;
 use lib\users\RecoverPassword;
 
-//error_reporting(E_ERROR);
-//ini_set('display_errors', '0'); 
-error_reporting(E_ALL & ~E_STRICT);
+error_reporting(E_ERROR);
 
 set_include_path('../');
 spl_autoload_extensions('.php');
@@ -63,7 +61,6 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
 }
 // accept token
 elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) && $_GET['user'] != null) {
-
   if (RecoverPassword::accept(htmlspecialchars($_GET['token']), UserAdmin::getID(htmlspecialchars($_GET['user'])))) {
     if (isset($_POST['new-password']) && $_POST['new-password'] != null && isset($_POST['confirm-new-password']) && $_POST['confirm-new-password'] != null) {
       $u = new UserAdmin(UserAdmin::getID(htmlspecialchars($_GET['user'])));
@@ -126,7 +123,9 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
     <meta name="author" content="Nicolas Devenet" />
     <meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_diago_16.ico" />
+    <link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_diago_32.png" />
+    <link rel="apple-touch-icon" href="<?php echo _FSC_; ?>/img/logo/fsc-128x128.png" />
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
     <link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" />
