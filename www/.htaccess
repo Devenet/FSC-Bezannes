@@ -3,8 +3,8 @@
 
 # Security
 #Option -Indexes
-#ErrorDocument 404 http://fsc-bezannes.fr
-#ErrorDocument 403 http://fsc-bezannes.fr
+ErrorDocument 404 http://fsc-bezannes.fr
+ErrorDocument 403 http://fsc-bezannes.fr
  
 DirectoryIndex default.php
 
