@@ -57,7 +57,7 @@ use lib\content\Display;
         $minors = $m->Responsabilities();
         echo '<ul>';
         foreach ($minors as $minor)
-          echo '<li>', $minor->name(), ' <a href="./preinscription/', $minor->id(), '" style="text-decoration:none; padding-left:2px;"><i class="icon-share-alt"></i></a></li>';
+          echo '<li>', $minor->name(), ' <a href="'. _INSCRIPTION_ .'/preinscription/', $minor->id(), '" style="text-decoration:none; padding-left:2px;"><i class="icon-share-alt"></i></a></li>';
         echo '</ul>', '</div>';
       }
       ?>  
@@ -77,7 +77,11 @@ use lib\content\Display;
           <?php echo $activities_participant; ?>
         </div>
       </div>
-      <?php endif; ?>
+      <?php else: ?>
+        <p>Vous avez choisi d’être non-adhérent.
+        <br />Vous ne pouvez donc pas vous préinscrire à des activités.</p>
+        <p>Pour devenir adhérent, il suffit de modifier votre préinscription : cliquez sur le bouton &laquo; Éditer &raquo; situé plus haut.</p>
+    <?php endif; ?>
     </div>
   </div>
 </div><!-- /row -->
