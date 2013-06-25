@@ -48,11 +48,11 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
   }
 }
 // accept token
-elseif (isset($_GET['rel']) && $_GET['rel'] != null && isset($_GET['data']) && $_GET['data'] != null) {
+elseif (isset($_GET['user']) && $_GET['user'] != null && isset($_GET['token']) && $_GET['token'] != null) {
 
-  if (RecoverPassword::accept(htmlspecialchars($_GET['data']), UserInscription::getID(htmlspecialchars($_GET['rel'])))) {
+  if (RecoverPassword::accept(htmlspecialchars($_GET['token']), UserInscription::getID(htmlspecialchars($_GET['user'])))) {
     if (isset($_POST['new-password']) && $_POST['new-password'] != null && isset($_POST['confirm-new-password']) && $_POST['confirm-new-password'] != null) {
-      $u = new UserInscription(UserInscription::getID(htmlspecialchars($_GET['rel'])));
+      $u = new UserInscription(UserInscription::getID(htmlspecialchars($_GET['user'])));
       try {
         if ($_POST['new-password'] != $_POST['confirm-new-password'])
           throw new \Exception('Les mots de passes ne correspondent pas.');
@@ -60,7 +60,7 @@ elseif (isset($_GET['rel']) && $_GET['rel'] != null && isset($_GET['data']) && $
           throw new \Exception('Votre mot de passe n’est pas valide. Il doit comporter au minimum 7 caractères.');
 
         $u->update();
-        RecoverPassword::remove(UserInscription::getID(htmlspecialchars($_GET['rel'])));
+        RecoverPassword::remove(UserInscription::getID(htmlspecialchars($_GET['user'])));
 
 
         $_SESSION['msg'] = new Message('Votre mot de passe a bien été réinitialisé. Vous pouvez maintenant vous connecter :)', 1, 'Réinitialisation réussie !');
@@ -69,7 +69,7 @@ elseif (isset($_GET['rel']) && $_GET['rel'] != null && isset($_GET['data']) && $
       }
       catch (\Exception $e) {
         $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !');
-        header ('Location: '. _INSCRIPTION_ .'/recovery/'. htmlspecialchars($_GET['rel']) .'/'. htmlspecialchars($_GET['data']));
+        header ('Location: '. _INSCRIPTION_ .'/recovery/'. htmlspecialchars($_GET['user']) .'/'. htmlspecialchars($_GET['token']));
         exit(); 
       }
     }
@@ -79,13 +79,13 @@ elseif (isset($_GET['rel']) && $_GET['rel'] != null && isset($_GET['data']) && $
       <div class="alert alert-info">
         <strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 7 caractères !
       </div>
-      <form class="form-horizontal espace-top" action="'. _INSCRIPTION_ .'/recovery/'. htmlspecialchars($_GET['rel']) .'/'. htmlspecialchars($_GET['data']) .'" method="post">
+      <form class="form-horizontal espace-top" action="'. _INSCRIPTION_ .'/recovery/'. htmlspecialchars($_GET['user']) .'/'. htmlspecialchars($_GET['token']) .'" method="post">
           <div class="control-group">
             <label class="control-label">Compte concerné</label>
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"><i class="icon-envelope"></i></span>
-                <input type="text" id="email" disabled="disabled" value="'. htmlspecialchars($_GET['rel']) .'" />
+                <input type="text" id="email" disabled="disabled" value="'. htmlspecialchars($_GET['user']) .'" />
               </div>
             </div>
           </div>
