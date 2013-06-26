@@ -55,6 +55,7 @@ require_once $controller;
     <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
     <meta name="author" content="Nicolas Devenet" />
     <meta name="robots" content="<?php echo $page->search_engine(); ?>" />
+    <meta name="google-site-verification" content="OvBA7LsULbvmZK3bYWaF_m_pDzrnKY9_KIITGB1K4XU" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon"    type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_16.ico" />
     <link rel="icon"             type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_32.png" />
@@ -142,7 +143,7 @@ require_once $controller;
         echo $script;
       }
       echo (_ANALYTICS_FSC_ ? "
-      <script type=\"text/javascript\">
+      <script>
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-37435384-1']);
         _gaq.push(['_trackPageview']);

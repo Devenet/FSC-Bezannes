@@ -38,7 +38,8 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
 		<meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
 		<meta name="author" content="Nicolas Devenet" />
-		<meta name="robots" content="INDEX, FOLLOW, NOARCHIVE" />
+		<meta name="robots" content="index, follow, noarchive" />
+		<meta name="google-site-verification" content="nVrzZ_xZ8UdawohpsECIOvSgTsaU0R0GDWNqxnNpeis" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_16.ico" />
 		<link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_32.png" />
@@ -152,18 +153,16 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
       foreach ($_SCRIPT as $script) {
         echo $script;
       }
-			echo (_ANALYTICS_GESTION_ ? "
-				<script type=\"text/javascript\">
-					var _gaq = _gaq || [];
-					_gaq.push(['_setAccount', 'UA-37435384-2']);
-					_gaq.push(['_trackPageview']);
-				
-					(function() {
-						var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-					})();
-				</script>": null);
+			echo (_ANALYTICS_INSCRIPTION_ ? "
+			<script>
+			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			  ga('create', 'UA-37435384-4', 'fsc-bezannes.fr');
+			  ga('send', 'pageview');
+			</script>": null);
 		?>
 	</body>
 </html>
