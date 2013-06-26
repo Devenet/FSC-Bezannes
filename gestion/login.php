@@ -136,7 +136,7 @@ else {
 		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
 		<?php
 			echo (_ANALYTICS_GESTION_ ? "
-			<script type=\"text/javascript\">
+			<script>
 				var _gaq = _gaq || [];
 				_gaq.push(['_setAccount', 'UA-37435384-2']);
 				_gaq.push(['_trackPageview']);
