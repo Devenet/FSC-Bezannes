@@ -74,7 +74,7 @@ foreach ($months as $value => $month)
   
   <div class="form-actions">
     <input type="submit" class="btn btn-primary" value="<?php echo $form->submit(); ?>" id="submit_btn" />
-    <input type="reset" class="btn" value="Annuler" />
+    <input type="reset" class="btn" value="Effacer" />
   </div>
   
 </form>
