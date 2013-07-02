@@ -80,13 +80,13 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
       }
       catch (\Exception $e) {
         $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !');
-        header ('Location: '. _GESTION_ .'/recovery.php?token='. htmlspecialchars($_GET['token']) .'&user='. htmlspecialchars($_GET['user']));
+        header ('Location: '. _GESTION_ .'/recovery.php?token='. htmlspecialchars($_GET['token']) .'&user='. urlencode(htmlspecialchars($_GET['user'])));
         exit(); 
       }
     }
     else {
       $content = '
-      <form class="form-signin form" action="recovery.php?user='. urldecode((htmlspecialchars($_GET['user'])) .'&amp;token='. htmlspecialchars($_GET['token']) .'" method="post">
+      <form class="form-signin form" action="recovery.php?user='. urldecode(htmlspecialchars($_GET['user'])) .'&amp;token='. htmlspecialchars($_GET['token']) .'" method="post">
           <h2 class="form-signin-heading">Réinitialisation</h2>
           <p class="alert alert-info"><strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 8 caractères !</p>
           <div class="control-group">
