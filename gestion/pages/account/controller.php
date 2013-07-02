@@ -70,7 +70,7 @@ foreach (UserAdmin::getUsers() as $data) {
       </div>
       <div class="modal-footer">
         <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-        <a class="btn btn-danger" href="/?page=users&amp;action=delete&amp;login='. $data['login'] .'">Supprimer</a>
+        <a class="btn btn-danger" href="/?page=users&amp;action=delete&amp;login='. urlencode($data['login']) .'">Supprimer</a>
       </div>
     </div>
   ';
