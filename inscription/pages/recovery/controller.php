@@ -79,13 +79,13 @@ elseif (isset($_GET['user']) && $_GET['user'] != null && isset($_GET['token']) &
       <div class="alert alert-info">
         <strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 7 caractères !
       </div>
-      <form class="form-horizontal espace-top" action="'. _INSCRIPTION_ .'/?page=recovery&user='. urlencode(htmlspecialchars($_GET['user'])) .'&token='. htmlspecialchars($_GET['token']) .'" method="post">
+      <form class="form-horizontal espace-top" action="'. _INSCRIPTION_ .'/?page=recovery&user='. urlencode(htmlspecialchars($_GET['user'])) .'&amp;token='. htmlspecialchars($_GET['token']) .'" method="post">
           <div class="control-group">
             <label class="control-label">Compte concerné</label>
             <div class="controls">
               <div class="input-prepend">
                 <span class="add-on"><i class="icon-envelope"></i></span>
-                <input type="text" id="email" disabled="disabled" value="'. htmlspecialchars($_GET['user']) .'" />
+                <input type="text" disabled="disabled" value="'. htmlspecialchars($_GET['user']) .'" />
               </div>
             </div>
           </div>
