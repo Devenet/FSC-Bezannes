@@ -1,19 +1,26 @@
 <div class="container">
   <div class="row">
     <div class="span4">
-      <h2><?php echo $lorem->getContent(2); ?></h2>
-      <p><?php echo $lorem->getContent(30); ?></p>
-      <p><a href="<?php echo _FSC_; ?>/#lorem" class="btn"><?php echo $lorem->getContent(2); ?></a></p>
+      <h2>Le FSC ?</h2>
+      <p>Le Foyer Social et Culturel de Bezannes (FSC) est une association loi de 1901 qui a pour but de favoriser le développement et l’épanouissement
+        de ses adhérents en leur proposant de début septembre à fin juin des activités culturelles, sportives et artistiques.</p>
+       <p>Le FSC est administré par un conseil d’administration composé d’adhérents élus lors de l’assemblée générale annuelle.
+        Le CA du FSC élit chaque année son bureau auquel il confie la mise en œuvre de la politique générale du FSC.</p>
+      <p><a href="<?php echo _FSC_; ?>/a-propos" class="btn">En savoir plus</a></p>
     </div>
     <div class="span4">
-      <h2><?php echo $lorem->getContent(2); ?></h2>
-      <p><?php echo $lorem->getContent(30); ?></p>
-      <p><a href="<?php echo _FSC_; ?>/#lorem" class="btn btn-primary"><?php echo $lorem->getContent(2); ?></a></p>
+      <h2>Les activités</h2>
+      <p>Le FSC propose à tous ses adhérents un grand choix d’activités &mdash; pour tous les âges et tous les goûts &mdash; de début septembre à fin juin.</p>
+      <p>Que vous souhaitiez vous cultiver, vous distraire, vous relaxer, avoir une activité physique ou artistique, ou tout simplement être acteur bénévole
+       au sein du FSC, consultez notre liste d’activités et venez nous rejoindre.</p>
+       <p>Ouvert à tous, le FSC est situé dans les locaux de l’Espace de Bezannes.</p>
+      <p><a href="<?php echo _FSC_; ?>/activites" class="btn"><i class="icon-globe"></i> Toutes les activitiés</a></p>
     </div>
     <div class="span4">
-      <h2><?php echo $lorem->getContent(2); ?></h2>
-      <p><?php echo $lorem->getContent(30); ?></p>
-      <p><a href="<?php echo _FSC_; ?>/#lorem" class="btn btn-success"><?php echo $lorem->getContent(2); ?></a></p>
+      <h2>Inscriptions</h2>
+      <p>Après avoir navigué sur notre site, vos contacts complémentaires seront le secrétariat et le Forum des associations qui est organisé chaque année début septembre.</p>
+      <p>En utilisant la possibilité de pré-inscription en ligne, vous nous permettrez d’anticiper les besoins des futurs adhérents et contribuerez à faciliter les formalités d’inscription définitive.</p>
+      <p><a href="<?php echo _INSCRIPTION_; ?>" class="btn"><i class="icon-hand-right"></i> Se préinscrire </a></p>
     </div>
   </div>
 </div>
@@ -23,82 +30,17 @@
 
   <div id="homeCarousel" class="carousel slide">
     <ol class="carousel-indicators">
-      <?php
-        for ($i=0; $i<5; $i++) {
-          echo '<li data-target="#homeCarousel" data-slide-to="', $i, '"', ($i==0 ? 'class="active"' : ''), '></li>';
-        }
-        ?>
+      <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
     </ol>
     <div class="carousel-inner">
-      <?php 
-        for ($i=0; $i<5; $i++) {
-          echo '<div class="item'. ($i==0 ? ' active' : '') .'">
-        <img src="//fakeimg.pl/1000x600?text=fake image ', $i+1, '" alt="Fake image ', $i, '">
+      <div class="active item">
+        <img src="http://fakeimg.pl/1000x600/?text=<?php echo urlencode('Photo côté « parvis »'); ?>" alt="FSC Bezannes">
           <div class="carousel-caption">
-            <h4>', ucfirst($lorem->getContent(5, 'plain', false)), '</h4>
-            <p>', ucfirst($lorem->getContent(18, 'plain', false)), '</p>
+            <h4>Légende</h4>
           </div>
-      </div>';
-        }
-      ?>
+      </div>
     </div>
     <a class="carousel-control left" href="#homeCarousel" data-slide="prev"><i class="icon-chevron-left"></i></a>
     <a class="carousel-control right" href="#homeCarousel" data-slide="next"><i class="icon-chevron-right"></i></a>
   </div>
 </div>
-
-<div class="container">
-  <hr style="margin:30px auto 20px;" />
-
-  <div class="row">
-    <div class="span3 center espace-bottom">
-    <img src="//fakeimg.pl/150x100" class="img-polaroid"/>
-  </div>
-  <div class="span8">
-    <p class="lead"><?php echo $lorem->getContent(27); ?></p>
-  </div>
-  </div>
-</div>
-
-<div class="container">
-  <hr style="margin:30px auto 20px;" />
-
-<div class="row">
-  <?php
-    for($i=0; $i<3; $i++) {
-    echo '
-    <div class="span4">
-      <h3>', ucfirst($lorem->getContent(3, 'plain', false)), '</h3>
-      <p>', ucfirst($lorem->getContent(60, 'plain', false)), '</p>
-    </div>';
-  }
-  ?>
-</div>
-
-<hr />
-<div class="row">
-  <div class="span8">
-    <h3><?php echo ucfirst($lorem->getContent(5)); ?></h3>
-    <p><?php echo ucfirst($lorem->getContent(60, 'plain', false)); ?></p> 
-    <p><?php echo ucfirst($lorem->getContent(30, 'plain', false)); ?>
-      <br /><?php echo ucfirst($lorem->getContent(60, 'plain', false)); ?></p> 
-  </div>
-  <div class="span4">
-    <h3><?php echo ucfirst($lorem->getContent(3)); ?></h3>
-    <p><?php echo ucfirst($lorem->getContent(60, 'plain', false)); ?></p> 
-  </div>
-</div>
-
-<hr />
-<div class="row">
-  <div class="span6">
-    <h3><?php echo ucfirst($lorem->getContent(3)); ?></h3>
-    <p><?php echo ucfirst($lorem->getContent(50, 'plain', false)); ?></p> 
-  </div>
-  <div class="span6">
-    <h3><?php echo ucfirst($lorem->getContent(3)); ?></h3>
-    <p><?php echo ucfirst($lorem->getContent(50, 'plain', false)); ?></p> 
-  </div>
-</div>
-
-</div><!-- /container -->
