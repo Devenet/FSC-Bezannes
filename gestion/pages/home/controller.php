@@ -9,7 +9,7 @@ use lib\inscription\Inscription;
 
 $pageInfos = array(
   'name' => 'Administration',
-  'url' => '/'
+  'url' => _GESTION_
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array());
 
