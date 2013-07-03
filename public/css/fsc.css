@@ -206,6 +206,14 @@ h3 {
   .page-activite .container .infos {
     margin-top: 15px;
   }
+
+  .carousel .item {
+    height: 600px !important;
+  }
+  .carousel img {
+    width: auto;
+    height: 600px;
+  }
 }
 
 @media (max-width: 979px) {
