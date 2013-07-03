@@ -18,6 +18,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $m->name(), 'url' => _INSCRIPTION_.'/preinscription/'.$m->id()), $pageInfos));
     
     $form = new Form('edit-member', _INSCRIPTION_.'/edit-preinscription/'.$m->id(), 'Modifier', 'Modifier un membre');
+    $form->reset('Annuler les modifications');
     $inputs = array(
       'last_name',
       'first_name',

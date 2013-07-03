@@ -7,6 +7,7 @@ class Form {
   private $action;
   private $method;
   private $submit;
+  private $reset = 'Effacer';
   private $legend;
   private $inputs;
   private $selects;
@@ -29,13 +30,18 @@ class Form {
   public function submit() {
     return $this->submit;
   }
+  public function reset($value = null) {
+    if ($value != null)
+      $this->reset = $value;
+    return $this->reset;
+  }
   public function legend() {
     return $this->legend;
   }
   public function method() {
     return $this->method;
   }
-  
+
   public function add($input, $value = null) {
     $this->inputs[$input] = $value;
   }
