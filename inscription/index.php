@@ -18,7 +18,7 @@ $mainMenu = new Menu();
 	$mainMenu->addLink('Préinscriptions', _INSCRIPTION_.'/', 'hand-right');
 // Menu secondaire
 $rightMenu = new Menu();
-	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? 'external-link' : 'share-alt', (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? true : false, true, true);
+	$rightMenu->addLink((isset($_SESSION['authentificated']) && $_SESSION['authentificated'] ? 'Accueil' : 'Retour'). ' site <span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? 'external-link' : 'share-alt', (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? true : false, true, true);
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
