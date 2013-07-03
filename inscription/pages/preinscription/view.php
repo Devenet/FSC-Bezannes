@@ -5,7 +5,7 @@ use lib\content\Display;
 <div class="espace-bottom" style="overflow:hidden;">
   <p class="pull-left">Vous trouverez ici toutes les informations concernant la présincription de <?php echo $m->first_name(); ?>.</p>
   <div class="btn-group pull-right">
-    <a href="<?php echo _INSCRIPTION_; ?>/edit-preinscription/<?php echo $m->id(); ?>" class="btn btn-small"><i class="icon-pencil"></i> Éditer</a>
+    <a href="<?php echo _INSCRIPTION_; ?>/edit-preinscription/<?php echo $m->id(); ?>" class="btn btn-small"><i class="icon-pencil"></i> Modifier</a>
     <a href="#confirmBox<?php echo $m->id(); ?>" class="btn btn-small" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a>
   </div>
 </div>
