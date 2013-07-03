@@ -4,7 +4,7 @@
 
 <div class="row-fluid">
   <div class="span8">
-    <p class="lead">Retrouvez toutes les activités éducatives, récréatives et sportives porposées par le Foyer Social et Culturel !</p>
+    <p class="lead">Retrouvez toutes les activités éducatives, récréatives et sportives proposées par le Foyer Social et Culturel !</p>
   </div>
   <div class="span4">
     <form class="form-search" style="text-align: center;">
