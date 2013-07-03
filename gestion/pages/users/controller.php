@@ -1,93 +1,81 @@
 <?php
 
 use lib\content\Page;
-use lib\content\Message;
-use lib\content\Form;
 use lib\users\UserAdmin;
+use lib\content\Display;
+use lib\content\Message;
 
 $pageInfos = array(
- 'name' => 'Nouvel utilisateur',
- 'url' => '/?page=users'
+  'name' => 'Utilisateurs',
+  'url' => '/?page=users'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
-$form = new Form('new-user', './?page=users&amp;action=new', 'Ajouter', 'Nouvel utilisateur');
+$u = $_SESSION['user'];
 
-function redirect() {
-  header ('Location: '. _GESTION_ .'/?page=account');
-  exit;
-}
-
-if (isset($_GET['action'])) {
-  
-  switch (htmlspecialchars($_GET['action'])) {
-    case 'new':
-      if (isset($_POST) and $_POST != null) {
-        $inputs = array(
-          'name',
-          'login',
-          'password',
-          'privilege'
-        );
-        foreach ($inputs as $input)
-          $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
-        $u = new UserAdmin();
-        try {
-          
-          if (! $u->setName(htmlspecialchars($_POST['name'])))
-            throw new \Exception('Nom de l’utilisateur invalide');
-          
-          if (! $u->acceptLogin(htmlspecialchars($_POST['login'])))
-            throw new \Exception('Ce courriel est déjà utilisé comme identifiant');
-          
-          if (! $u->setLogin(htmlspecialchars($_POST['login'])))
-            throw new \Exception('Courriel invalide...');
-          
-          if (! $u->setPassword(htmlspecialchars($_POST['password']), 8))
-            throw new \Exception('Mot de passe invalide (au moins 8 caractères)');
-
-          if (! $u->setPrivilege(htmlspecialchars($_POST['privilege'])))
-            throw new \Exception('Privilège incorrect !');
-          
-          if (! $u->create())
-            throw new \Exception('Impossible d’ajouter le nouvel utilisateur');
-          
-          $u->create();
-          $_SESSION['msg'] = new Message('L’utilisateur <em>'. $u->name() .'</em> a bien été créé :)', 1, 'Ajout réussi !');
-          redirect();
-        }
-        catch (\Exception $e) {
-          $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !');
-        }
-      }
-      break;
+// change password
+if (isset($_POST) && isset($_POST['password']) && $_POST['password'] != null) { 
+  try {
+    if (!UserAdmin::isAuthorizedUser($u->login(), htmlspecialchars($_POST['password'])))
+      throw new \Exception('Mot de passe actuel incorrect');
     
-    case 'delete':
-      if (isset($_GET['login']) && $_GET['login'] != null) {
-        try {
-          if (! UserAdmin::isUser(htmlspecialchars($_GET['login'])))
-            throw new \Exception('L’utilisateur n’existe pas !');
-
-          $u = new UserAdmin(UserAdmin::getID(htmlspecialchars($_GET['login'])));
-          if (! $u->delete(true))
-            throw new \Exception('Impossible de supprimer l’utilisateur de la base.');
-
-          $_SESSION['msg'] = new Message('L’utilisateur a bien été supprimé !', 1, 'Suppression réussie');
-        }
-        catch (\Exception $e) {
-          $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Suppression impossible');
-        }
-      }
-      redirect();
-      break;
+    if ($_POST['new-password'] != $_POST['confirm-new-password'])
+      throw new \Exception('Les deux mots de passes ne correspondent pas !');
     
-    default:
-      redirect();
+    if (!$u->setPassword(stripslashes($_POST['new-password']), 8))
+      throw new \Exception('Votre mot de passe n’est pas valide. Il doit comporter au minimum 8 caractères.');
+
+    $u->update();
+    
+    $_SESSION['msg'] = new Message('Vous voilà avec un nouveau mot de passe :)', 1, 'Mot de passe changé !');
   }
-  
+  catch (\Exception $e) {
+    $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Impossible de changer le mot de passe !');
+  }
 }
-else {
-  redirect();
+
+
+
+// affichage privilege
+$display_privilege = ucfirst(Display::Privilege($u->privilege()));
+
+// affichage dernière connexion
+$data = $u->lastHistory();
+$display_last_history = ($data != null) ? Display::FullTimestamp($data['date']) .'<br /> depuis l’IP '. $data['ip'] : 'Première connexion';
+
+// affichage users admin
+$display_users = '';
+foreach(UserAdmin::getUsers() as $data) {
+  $display_users .= '
+        <tr>
+          <td>'. $data['id'] .'</td>
+          <td>'. $data['name'] .'</td>
+          <td>'. ucfirst(Display::FrenchPrivilege($data['privilege'])) .'</td>
+          <td class="center"><span class="btn-group"><a href="mailto:'. $data['login'] .'" rel="external" class="btn btn-small"><i class="icon-envelope-alt"></i></a> <!--<a href="/?page=users&amp;action=block&amp;login='. $data['login'] .'" class="btn btn-small"><i class="icon-ban-circle"></i></a>--> <a href="#confirmBox'. $data['id'] .'" class="btn btn-small" role="button" data-toggle="modal"><i class="icon-trash"></i></a></span></td>
+        </tr>
+  ';
 }
+
+// affichage confirmation suppression
+$display_users_confirm = '';
+foreach (UserAdmin::getUsers() as $data) {
+  $display_users_confirm .= '
+    <div id="confirmBox'. $data['id'] .'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="confirmSuppression" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>'. $data['name'] .'</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-error">Êtes-vous bien sûr de vouloir supprimer cet utilisateur ?</p>
+      </div>
+      <div class="modal-footer">
+        <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+        <a class="btn btn-danger" href="'. _GESTION_ .'/?page=edit-users&amp;action=delete&amp;login='. urlencode($data['login']) .'">Supprimer</a>
+      </div>
+    </div>
+  ';
+}
+
+
 
 ?>
