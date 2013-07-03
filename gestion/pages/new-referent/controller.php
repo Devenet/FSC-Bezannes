@@ -14,7 +14,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
 
   $pageInfos = array(
    'name' => 'Ajout d’un référent',
-   'url' => '/?page=activities'
+   'url' => _GESTION_.'/?page=activities'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '/?page=activity&amp;id='. $act->id()), $pageInfos));
   

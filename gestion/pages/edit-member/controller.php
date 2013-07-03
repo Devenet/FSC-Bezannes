@@ -11,7 +11,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
   
   $pageInfos = array(
    'name' => 'Modifier le membre',
-   'url' => '/?page=members'
+   'url' => _GESTION_.'/?page=members'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $m->name(), 'url' => '?page=member&amp;id='.$m->id()), $pageInfos));
   

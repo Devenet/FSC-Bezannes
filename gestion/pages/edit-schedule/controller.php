@@ -34,7 +34,7 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
   
   $pageInfos = array(
    'name' => 'Modifier un horaire',
-   'url' => '/?page=activities'
+   'url' => _GESTION_.'/?page=activities'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '?page=activity&id='. $act->id()), $pageInfos));
   

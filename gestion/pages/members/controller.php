@@ -6,7 +6,7 @@ use lib\content\Pagination;
 
 $pageInfos = array(
   'name' => 'Membres',
-  'url' => '/?page=members'
+  'url' => _GESTION_.'/?page=members'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 

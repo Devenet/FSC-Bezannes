@@ -8,7 +8,7 @@ use lib\upload\UploadImage;
 
 $pageInfos = array(
  'name' => 'Nouvelle activité',
- 'url' => '/?page=activities'
+ 'url' => _GESTION_.'/?page=activities'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), $pageInfos));
 

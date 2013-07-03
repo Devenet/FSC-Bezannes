@@ -14,7 +14,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
 
   $pageInfos = array(
    'name' => 'Ajout d’une transaction',
-   'url' => '/?page=members'
+   'url' => _GESTION_.'/?page=members'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $a->name(), 'url' => '/?page=member&amp;id='.$a->id()), $pageInfos));
   

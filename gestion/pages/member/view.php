@@ -7,9 +7,9 @@ use lib\content\Display;
     <div class="page-header" style="overflow:hidden; padding-bottom:5px;">
       <h2 style="margin-bottom:0;"><?php echo $m->name(); ?>
       <div class="btn-group pull-right btn-small">
-        <a href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>" class="btn btn-small" title="Modifier le membre"><i class="icon-pencil"></i></a>
-        <?php echo ($m->minor() ? '<a href="/?page=choose-responsible&amp;member='. $m->id() .'"  class="btn btn-small" title="Modifier le responsable"><i class="icon-male"></i> Responsable</a>' : null); ?>
-        <?php echo ($m->adherent() ? '<a href="/?page=new-participant&amp;adherent='. $m->id() .'"  class="btn btn-small" title="Ajouter une activité"><i class="icon-plus"></i> Activité</a>' : null); ?>
+        <a href="./?page=edit-member&amp;id=<?php echo $m->id(); ?>" class="btn btn-small" title="Modifier le membre"><i class="icon-pencil"></i></a>
+        <?php echo ($m->minor() ? '<a href="./?page=choose-responsible&amp;member='. $m->id() .'"  class="btn btn-small" title="Modifier le responsable"><i class="icon-male"></i> Responsable</a>' : null); ?>
+        <?php echo ($m->adherent() ? '<a href="./?page=new-participant&amp;adherent='. $m->id() .'"  class="btn btn-small" title="Ajouter une activité"><i class="icon-plus"></i> Activité</a>' : null); ?>
         <a href="#confirmBox<?php echo $m->id(); ?>" class="btn btn-small" role="button" data-toggle="modal" title="Supprimer le membre"><i class="icon-trash"></i></a>
       </div>
       <?php /*
@@ -58,7 +58,7 @@ use lib\content\Display;
           <?php if ($m->minor()): ?>
             <div class="span3">
               <h4>Reponsable</h4>
-              <p><?php echo Display::HtmlGender($r->gender()), ' ', $r->name(); ?> [<a href="/?page=member&amp;id=<?php echo $r->id(); ?>">#<?php echo $r->id(); ?></a>]</p>
+              <p><?php echo Display::HtmlGender($r->gender()), ' ', $r->name(); ?> [<a href="./?page=member&amp;id=<?php echo $r->id(); ?>">#<?php echo $r->id(); ?></a>]</p>
             </div>
           <?php endif; ?>
           <?php
@@ -67,7 +67,7 @@ use lib\content\Display;
               $minors = $m->Responsabilities();
               echo '<ul>';
               foreach ($minors as $minor)
-                echo '<li>', Display::HtmlGender($minor->gender()), ' ', $minor->name(), ' [<a href="/?page=member&amp;id=', $minor->id(), '">#', $minor->id(), '</a>]</li>';
+                echo '<li>', Display::HtmlGender($minor->gender()), ' ', $minor->name(), ' [<a href="./?page=member&amp;id=', $minor->id(), '">#', $minor->id(), '</a>]</li>';
               echo '</ul>', '</div>';
             }
           ?>
@@ -139,8 +139,8 @@ use lib\content\Display;
             </div>
             -->
             <div class="btn-group pull-right">
-              <a class="btn btn-small" href="/?page=new-transaction&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-shopping-cart"></i> Transaction</a>
-              <a class="btn btn-small" href="/?page=new-advantage&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-gift"></i> Avantage</a>
+              <a class="btn btn-small" href="./?page=new-transaction&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-shopping-cart"></i> Transaction</a>
+              <a class="btn btn-small" href="./?page=new-advantage&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-gift"></i> Avantage</a>
             </div>
           </div>
           <div style="clear:both; margin-top: 10px;">
@@ -152,7 +152,7 @@ use lib\content\Display;
         <div class="tab-pane" id="tab-activities">
           <div style="overflow: hidden;">
             <p class="pull-left"><?php echo $m->first_name(); ?> participe à <span class="label"><?php echo $count_activites; ?></span> activité<?php echo $plural_count_activities; ?>.</p>
-            <a class="btn btn-small pull-right" href="/?page=new-participant&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
+            <a class="btn btn-small pull-right" href="./?page=new-participant&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
           </div>
           <div style="clear:both; margin-top: 10px;">
             <?php echo $activities_participant; ?>
@@ -194,7 +194,7 @@ use lib\content\Display;
 </div>
 <div class="modal-footer">
 <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-<a href="/?page=member&amp;id=<?php echo $m->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
+<a href="./?page=member&amp;id=<?php echo $m->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
 </div>
 </div>
 

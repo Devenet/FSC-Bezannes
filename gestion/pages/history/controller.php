@@ -7,7 +7,7 @@ use lib\content\Pagination;
 
 $pageInfos = array(
   'name' => 'Historique',
-  'url' => '/?page=history'
+  'url' => _GESTION_.'/?page=history'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 

@@ -16,7 +16,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
 
   $pageInfos = array(
    'name' => 'Ajout d’une activité',
-   'url' => '/?page=members'
+   'url' => _GESTION_.'/?page=members'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Membres', 'url' => '?page=members'), array('name' => $a->name(), 'url' => '/?page=member&amp;id='.$a->id()), $pageInfos));
   
@@ -90,7 +90,7 @@ elseif (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
 
   $pageInfos = array(
    'name' => 'Ajout d’un participant',
-   'url' => '/?page=activities'
+   'url' => _GESTION_.'/?page=activities'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $a->name(), 'url' => '/?page=activity&amp;id='.$a->id()), $pageInfos));
   
