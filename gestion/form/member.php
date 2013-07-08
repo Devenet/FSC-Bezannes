@@ -172,8 +172,8 @@ foreach ($months as $value => $month) {
   <div class="control-group">
     <label class="control-label" for="phone">Téléphone</label>
     <div class="controls controls-row">
-      <input type="text" name="phone" id="phone" placeholder="Fixe (0102030405)" <?php echo $form->value('phone'); ?> class="span3" maxlength="10"/>
-      <input type="text" name="mobile" id="mobile" placeholder="Mobile (0602030405)" <?php echo $form->value('mobile'); ?> class="span3 offset2" maxlength="10"/>
+      <input type="text" name="phone" id="phone" placeholder="Téléphone (0102030405)" <?php echo $form->value('phone'); ?> class="span3" maxlength="10"/>
+      <input type="text" name="mobile" id="mobile" placeholder="Téléphone (0602030405)" <?php echo $form->value('mobile'); ?> class="span3 offset2" maxlength="10"/>
     </div>
   </div>
   
