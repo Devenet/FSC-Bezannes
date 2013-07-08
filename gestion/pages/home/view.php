@@ -1,3 +1,7 @@
+<style>
+  h3 {font-weight: normal; font-size: 20px;}
+</style>
+
 <div class="row">
 
   <!-- activites -->
@@ -46,6 +50,16 @@
   </div>
 </div>
 
-<style>
-  h3 {font-weight: normal; font-size: 20px;}
-</style>
+<div class="row espace-top">
+  <hr />
+
+  <div class="span6">
+    <h3>&Eacute;volutions possibles si le temps le permet...</h3>
+    <p style="font-style:italic;">Il aurait fallu me prévenir plus tôt pour que ce soit pris en compte dès le développement,
+     car ces modifications nécessitent une réorganisation structurelle, notamment de la base de données.</p>
+    <ul>
+      <li>Ajout d'une colonne &laquo; complément &raquo; pour les référents d'une activité</li>
+    </ul>
+  </span>
+
+</div>
