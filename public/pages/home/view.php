@@ -31,12 +31,19 @@
   <div id="homeCarousel" class="carousel slide">
     <ol class="carousel-indicators">
       <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#homeCarousel" data-slide-to="1"></li>
     </ol>
     <div class="carousel-inner">
       <div class="active item">
         <img src="http://fakeimg.pl/1000x600/?text=<?php echo urlencode('Photo côté « parvis »'); ?>" alt="FSC Bezannes">
           <div class="carousel-caption">
             <h4>Légende</h4>
+          </div>
+      </div>
+      <div class="item">
+        <img src="http://fakeimg.pl/1000x600/?text=<?php echo urlencode('Autre belle photo'); ?>" alt="FSC Bezannes">
+          <div class="carousel-caption">
+            <h4>Légende supplémentaire</h4>
           </div>
       </div>
     </div>
