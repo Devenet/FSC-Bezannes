@@ -54,7 +54,7 @@
 
 <?php
 $_SCRIPT[] = '
-  <script src="'. _FSC_ .'/js/select2.js"></script>
+  <script src="'. _FSC_ .'/js/select2.min.js"></script>
   <script src="'. _FSC_ .'/js/select2_locale_fr.js"></script>
   <script>
     $(document).ready(function() {
