@@ -7,6 +7,7 @@ use lib\content\Menu;
 set_include_path('../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
+//error_reporting (0);
 
 session_name('preinscription');
 session_start();
@@ -38,7 +39,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
 		<meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
 		<meta name="author" content="Nicolas Devenet" />
-		<meta name="robots" content="index, follow, noarchive" />
+		<meta name="robots" content="<?php echo $page->search_engine(); ?>" />
 		<meta name="google-site-verification" content="nVrzZ_xZ8UdawohpsECIOvSgTsaU0R0GDWNqxnNpeis" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_16.ico" />
