@@ -10,6 +10,7 @@ error_reporting(E_ERROR);
 set_include_path('../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
+//error_reporting (0);
 
 session_name('gestion');
 session_start();
