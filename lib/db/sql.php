@@ -8,7 +8,7 @@ class SQL {
 
     static public function sql(){
        if (!isset(self::$instance)) {
-            $file = '../config/database.json';
+            $file = dirname(__FILE__) . '/../../config/database.json';
 
             if (file_exists($file)) {
                 $db = json_decode(file_get_contents($file));
