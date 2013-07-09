@@ -60,7 +60,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/common.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
 		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-wysihtml5.css" />
-		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/select2.css" />
+		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-select2.css" />
 		<style>
 			header {
 				margin: 20px 0 0 0;
