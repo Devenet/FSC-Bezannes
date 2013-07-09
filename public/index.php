@@ -7,7 +7,7 @@ use lib\content\Menu;
 set_include_path('../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
-// error_reporting (0);
+//error_reporting (0);
 
 require '../config/config.php';
 
