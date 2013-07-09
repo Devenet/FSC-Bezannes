@@ -47,7 +47,7 @@
     <label class="control-label" for="image"><i class="icon-picture"></i> Image</label>
     <div class="controls">
       <div class="fileupload fileupload-new" data-provides="fileupload">
-        <span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Modifier</span>
+        <span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Remplacer</span>
           <input type="file" name="image" id="image"/></span>
         <span class="fileupload-preview"></span>
         <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
@@ -63,7 +63,7 @@
         <div class="fileupload-new thumbnail" style="width: 175px; height: 115px;"><img src="<?php if (isset($act) && $act->hasImage()) echo _ASSETS_.'/activities/'.$act->id().'.jpg'; else echo _FSC_.'/img/no-image.jpg'; ?>" /></div>
         <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 175px; max-height: 115px; line-height: 20px;"></div>
         <div>
-          <span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Modifier</span><input type="file" name="image" id="image" /></span>
+          <span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Remplacer</span><input type="file" name="image" id="image" /></span>
           <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Supprimer</a>
         </div>
       </div>
