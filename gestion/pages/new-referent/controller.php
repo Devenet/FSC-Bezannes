@@ -16,7 +16,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
    'name' => 'Ajout d’un référent',
    'url' => _GESTION_.'/?page=activities'
   );
-  $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '/?page=activity&amp;id='. $act->id()), $pageInfos));
+  $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '?page=activities'), array('name' => $act->name(), 'url' => '?page=activity&amp;id='. $act->id()), $pageInfos));
   
   $form = new Form('add-referent', './?page=new-referent&amp;activity='. $act->id(), 'Choisir', 'Référent pour <em>'. $act->name() .'</em>');
   foreach (Member::Adults() as $adherent)
