@@ -140,4 +140,23 @@
 <script type="text/javascript">
 	$("#description").wysihtml5();
 </script>
-'; ?>
+<script src="'. _FSC_ .'/js/hogan.js"></script>
+<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';
+$_SCRIPT[] = "
+<script>
+  $(document).ready(function() {
+    //$('input#place').typeahead('destroy');
+    $('input#place').typeahead({
+      name: 'places',
+      valueKey: 'place',
+      prefetch: {
+        'url': 'http:". _PRIVATE_API_ ."/activities_places.php',
+        'ttl': 30000
+        },
+      template: '{{place}}',
+      limit: 8,
+      engine: Hogan
+    });
+  });
+</script>
+"; ?>
