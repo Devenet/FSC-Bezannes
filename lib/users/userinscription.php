@@ -76,6 +76,22 @@ class UserInscription extends User {
     );
   }
 
+  public function countPreinscriptions() {
+    $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_members_inscription WHERE id_user_inscription = ?');
+    $query->execute(array($this->id));
+    $data = $query->fetch();
+    $query->closeCursor();
+    return $data['total'];
+  }
+
+  public function countAdherents() {
+    $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_members_inscription WHERE adherent = 1 AND id_user_inscription = ?');
+    $query->execute(array($this->id));
+    $data = $query->fetch();
+    $query->closeCursor();
+    return $data['total'];
+  }
+
   public static function getID($login) {
     $query = SQL::sql()->prepare('SELECT id FROM fsc_users_inscription WHERE login = ?');
     $query->execute(array(htmlspecialchars($login)));

@@ -5,7 +5,7 @@ use lib\activities\Activity;
 use lib\members\Member;
 use lib\users\UserAdmin;
 use lib\content\Display;
-use lib\inscription\Inscription;
+use lib\preinscriptions\Preinscription;
 
 $pageInfos = array(
   'name' => 'Administration',
@@ -25,13 +25,13 @@ $plural_members = ($members > 1 ? 's' : null);
 $adherents = Member::countAdherents();
 $plural_adherents = ($adherents > 1 ? 's' : null);
 
-$inscription_accounts = Inscription::countAccounts();
+$inscription_accounts = Preinscription::countAccounts();
 $plural_PREINSCRIPTION_accounts = ($inscription_accounts > 1 ? 's' : null);
 
-$inscriptions = Inscription::countInscriptions();
+$inscriptions = Preinscription::countPreinscriptions();
 $plural_inscriptions = ($inscriptions > 1 ? 's' : null);
 
-$inscription_adherents = Inscription::countAdherents();
+$inscription_adherents = Preinscription::countAdherents();
 $plural_PREINSCRIPTION_adherents = ($inscription_adherents > 1 ? 's' : null);
 
 ?>
