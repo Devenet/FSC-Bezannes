@@ -1,7 +1,7 @@
 <?php
 
-namespace lib\inscription;
-use lib\inscription\Member;
+namespace lib\preinscriptions;
+use lib\preinscriptions\Member;
 use lib\activities\Activity;
 use lib\activities\Schedule;
 use lib\db\SQL;

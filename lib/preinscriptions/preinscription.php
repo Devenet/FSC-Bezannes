@@ -1,6 +1,6 @@
 <?php
 
-namespace lib\inscription;
+namespace lib\preinscriptions;
 use lib\db\SQL;
 
 
