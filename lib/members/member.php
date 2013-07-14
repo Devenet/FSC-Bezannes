@@ -7,7 +7,7 @@ use lib\content\Pagination;
 
 class Member {
   protected $id;
-  protected $gender; // 0: M.; 1: Mme; 2: Mlle
+  protected $gender; // 0: M.; 1: Mme; 2: Mlle; 3. PM
   protected $last_name;
   protected $first_name;
   protected $date_birthday;
@@ -67,7 +67,7 @@ class Member {
     return $this->gender;
   }
   public function setGender($gender) {
-    if ($gender != null && $gender >= 0 && $gender <= 2) {
+    if ($gender != null && $gender >= 0 && $gender <= 3) {
       $this->gender = $gender+0;
       return true;
     }

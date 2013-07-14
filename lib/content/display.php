@@ -13,17 +13,17 @@ class Display {
   }
   
   static public function FullGender($gender) {
-    $genders = array ('Monsieur', 'Madame', 'Mademoiselle');
+    $genders = array ('Monsieur', 'Madame', 'Mademoiselle', 'Personne morale');
     return $genders[$gender];
   }
   
   static public function Gender($gender) {
-    $genders = array ('M.', 'Mme', 'Mlle');
+    $genders = array ('M.', 'Mme', 'Mlle', 'PM');
     return $genders[$gender];
   }
 
   static public function HtmlGender($gender) {
-    $genders = array ('M.', 'M<sup>me</sup>', 'M<sup>lle</sup>');
+    $genders = array ('M.', 'M<sup>me</sup>', 'M<sup>lle</sup>', 'Personne morale');
     return $genders[$gender];
   }  
   

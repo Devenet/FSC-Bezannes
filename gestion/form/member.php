@@ -1,5 +1,7 @@
 <?php
 
+use lib\content\Display;
+
 $form->addOption('date_birthday_day', '', NULL);
 for ($i = 1; $i <= 31; $i++) {
   $form->addOption('date_birthday_day', $i, $i);
@@ -53,13 +55,16 @@ foreach ($months as $value => $month) {
     <label class="control-label" for="gender">Civilité</label>
     <div class="controls">
       <label class="radio inline">
-        <input type="radio" id="gender" value="0" name="gender" <?php echo ($form->input('gender') == '0' ? 'checked="checked"' : null); ?> /> Monsieur
+        <input type="radio" id="gender" value="0" name="gender" <?php echo ($form->input('gender') == '0' ? 'checked="checked"' : null); ?> /> <?php echo Display::FullGender(0); ?>
       </label>
       <label class="radio inline">
-        <input type="radio" value="1" name="gender" <?php echo ($form->input('gender') == '1' ? 'checked="checked"' : null); ?> /> Madame
+        <input type="radio" value="1" name="gender" <?php echo ($form->input('gender') == '1' ? 'checked="checked"' : null); ?> /> <?php echo Display::FullGender(1); ?>
       </label>
       <label class="radio inline">
-        <input type="radio" value="2" name="gender" <?php echo ($form->input('gender') == '2' ? 'checked="checked"' : null); ?> /> Mademoiselle
+        <input type="radio" value="2" name="gender" <?php echo ($form->input('gender') == '2' ? 'checked="checked"' : null); ?> /> <?php echo Display::FullGender(2); ?>
+      </label>
+      <label class="radio inline">
+        <input type="radio" value="3" name="gender" <?php echo ($form->input('gender') == '3' ? 'checked="checked"' : null); ?> /> <?php echo Display::FullGender(3); ?>
       </label>
     </div>
   </div>
