@@ -10,7 +10,7 @@
 <table class="table table-striped espace-top">
   <thead>
     <tr class="small">
-      <th>#</th>
+      <th><a href="./?page=members&amp;sort=id-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'id-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> #</th>
       <th><a href="./?page=members&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Nom</th>
       <th>Prénom</th>
       <th style="width:110px; text-align:center;"><a href="./?page=members&amp;sort=adherent-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adherent-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Adhérent</th>

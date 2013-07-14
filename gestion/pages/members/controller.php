@@ -26,6 +26,10 @@ if (isset($_GET['sort'])) {
 }
 
 switch($type) {
+  case 'id':
+    $members = Member::MembersById(($browse-1) * Pagination::step(), $sens);
+    $url = '&amp;sort=id-' . ($sens ? 'asc' : 'desc');
+    break;
   case 'name':
     $members = Member::MembersByName(($browse-1) * Pagination::step(), $sens);
     $url = '&amp;sort=name-' . ($sens ? 'asc' : 'desc');

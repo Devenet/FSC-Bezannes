@@ -476,6 +476,16 @@ class Member {
     return $return;
   }
   
+  static public function MembersById($start = 0, $sens = true, $step = null) {
+    $step = is_null($step) ? Pagination::step() : $step;
+    $return = array();
+    $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY id '. ($sens ? '' :  'DESC') .' LIMIT '. $start .','. $step);
+    while ($data = $query->fetch())
+      $return[] = new Member($data['id']); 
+    $query->closeCursor();
+    return $return;
+  }
+
   static public function MembersByName($start = 0, $sens = true, $step = null) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
