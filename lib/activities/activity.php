@@ -267,11 +267,13 @@ class Activity {
   
   public function setPriceYoung($float = null) {
     $float = preg_replace('#,#', '.', $float) + 0;
+    // if not specified, same price as the "normal" price
     if ($float == null) {
       $this->price_young = -1;
       return true;
     }
-    elseif ((is_float($float) or is_int($float)) and $float >= 0) {
+    // if specified, must be > 0 and < than the "normal" price
+    elseif ((is_float($float) or is_int($float)) and $float >= 0 and $float < $this->price) {
       $this->price_young = $float;
       return true;
     }
