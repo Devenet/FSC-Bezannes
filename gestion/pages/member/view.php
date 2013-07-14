@@ -57,7 +57,7 @@ use lib\content\Display;
           
           <?php if ($m->minor()): ?>
             <div class="span3">
-              <h4>Reponsable</h4>
+              <h4>Responsable</h4>
               <p><?php echo Display::HtmlGender($r->gender()), ' ', $r->name(); ?> [<a href="./?page=member&amp;id=<?php echo $r->id(); ?>">#<?php echo $r->id(); ?></a>]</p>
             </div>
           <?php endif; ?>
