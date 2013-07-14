@@ -3,7 +3,7 @@
   define('_PATH_PUBLIC_', 'public');
   define('_PATH_GESTION_', 'gestion');
   define('_PATH_ADMIN_', 'admin');
-  define('_PATH_INSCRIPTION_', 'inscription');
+  define('_PATH_INSCRIPTION_', 'preinscription');
   define('_PATH_UPLOADS_', 'uploads');
   define('_PATH_API_', 'api');
   define('_SEARCH_ENGINE_', false);
@@ -16,7 +16,7 @@
     define('_FSC_', '//beta.fsc-bezannes.fr');
     define('_GESTION_', '//gestion.fsc-bezannes.fr');
     define('_ADMIN_', '//admin.fsc-bezannes.fr');
-    define('_INSCRIPTION_', '//inscription.fsc-bezannes.fr');
+    define('_INSCRIPTION_', '//preinscription.fsc-bezannes.fr');
     define('_ANALYTICS_FSC_', true);
     define('_ANALYTICS_GESTION_', true);
     define('_ANALYTICS_INSCRIPTION_', true);
