@@ -21,7 +21,7 @@ foreach (Activity::ActiveActivities() as $act) {
       "url" => _FSC_ .'/activite/'. $act->url(),
       "place" => $act->place(),
       "description" => $act->description(),
-      "img" => _STATIC_ .'/activities/'. ($act->image() ? $act->id() : '0') .'.jpg'
+      "img" => _UPLOADS_ .'/activities/'. ($act->image() ? $act->id() : '0') .'.jpg'
     );
   }
   else {

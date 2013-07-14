@@ -110,7 +110,7 @@
     <div class="center">
       <?php
         if ($act->hasImage())
-          echo '<img src="', _STATIC_, '/activities/', $act->id(), '.jpg" alt="', $act->name(), '" class="img-polaroid" />';
+          echo '<img src="', _UPLOADS_, '/activities/', $act->id(), '.jpg" alt="', $act->name(), '" class="img-polaroid" />';
         else
           echo '<p><a href="./?page=edit-activity&amp;id=', $act->id(), '#image"><i class="icon-picture"></i></a> Aucune image associée</p>';
       ?>

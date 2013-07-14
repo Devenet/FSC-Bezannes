@@ -60,7 +60,7 @@
     <label class="control-label" for="image"><i class="icon-picture"></i> Image</label>
     <div class="controls">
       <div class="fileupload fileupload-new pull-left" data-provides="fileupload">
-        <div class="fileupload-new thumbnail" style="width: 175px; height: 115px;"><img src="<?php if (isset($act) && $act->hasImage()) echo _STATIC_.'/activities/'.$act->id().'.jpg'; else echo _FSC_.'/img/no-image.jpg'; ?>" /></div>
+        <div class="fileupload-new thumbnail" style="width: 175px; height: 115px;"><img src="<?php if (isset($act) && $act->hasImage()) echo _UPLOADS_.'/activities/'.$act->id().'.jpg'; else echo _STATIC_.'/img/no-image.jpg'; ?>" /></div>
         <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 175px; max-height: 115px; line-height: 20px;"></div>
         <div>
           <span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Remplacer</span><input type="file" name="image" id="image" /></span>

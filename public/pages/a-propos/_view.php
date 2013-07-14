@@ -27,23 +27,23 @@ case 'doc':
 <div class="row">
   <div class="span4">
     <h3>Réglement intérieur</h3>
-    <p><a class="btn" href="<?php echo _STATIC_; ?>/pdf/fsc-reglement-interieur.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
+    <p><a class="btn" href="<?php echo _UPLOADS_; ?>/pdf/fsc-reglement-interieur.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Le réglement intérieur est là pour rappeler les règles à respecter et les droits et devoirs que chaque adhérent ou membre possède et peut faire valoir.</p>
     <p>Vous le trouverez affiché dans le hall de l'Espace de Bezannes.</p>
   </div>
   <div class="span4">
     <h3>Statuts de l’association</h3>
-    <p><a class="btn" href="<?php echo _STATIC_; ?>/pdf/fsc-statuts.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
+    <p><a class="btn" href="<?php echo _UPLOADS_; ?>/pdf/fsc-statuts.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Les statuts définissent l’association, sa raison et ses objectifs généraux. Il présice les règles exactes du fonctionnement. À chaque modification validée par un vote, il est envoyé à la Préfecture.</p>
   </div>
   <div class="span4">
     <h3>Assemblée générale</h3>
-    <p><a class="btn" href="<?php echo _STATIC_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
+    <p><a class="btn" href="<?php echo _UPLOADS_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Tous les ans en décembre, l’AG permet de faire un bilan de l’année écoulée et de voter les prochaines désicions et actions de la vie l’association.</p>
     <p style="margin-bottom:0;">Années précédentes :</p>
     <ul class="unstyled" style="margin-left:15px;">
-      <!--<li><i class="icon-file"></i> <a href="<?php echo _STATIC_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external">Compte-rendu de 2011</a></li>-->
-      <li><i class="icon-file"></i> <a href="<?php echo _STATIC_; ?>/pdf/fsc-assemblee-generale-2010.pdf" rel="external">Compte-rendu de 2010</a></li>
+      <!--<li><i class="icon-file"></i> <a href="<?php echo _UPLOADS_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external">Compte-rendu de 2011</a></li>-->
+      <li><i class="icon-file"></i> <a href="<?php echo _UPLOADS_; ?>/pdf/fsc-assemblee-generale-2010.pdf" rel="external">Compte-rendu de 2010</a></li>
     </ul>
   </div>
 </div>

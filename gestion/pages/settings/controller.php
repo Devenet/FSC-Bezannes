@@ -16,6 +16,7 @@ $configs = array (
   '_PATH_ADMIN_',
   '_PATH_PREINSCRIPTION_',
   '_PATH_UPLOADS_',
+  '_PATH_UPLOADS_FULL_',
   '_PATH_API_',
   '_SEARCH_ENGINE_',
   '_YEAR_',
@@ -30,6 +31,7 @@ $configs = array (
   '_ANALYTICS_PREINSCRIPTION_',
   '_JQUERY_',
   '_STATIC_',
+  '_UPLOADS_',
   '_PUBLIC_API_',
   '_PRIVATE_API_',
 );

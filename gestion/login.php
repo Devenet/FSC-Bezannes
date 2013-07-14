@@ -54,12 +54,12 @@ else {
 		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
     	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   		<link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_diago_16.ico" />
-    	<link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_diago_32.png" />
-    	<link rel="apple-touch-icon" href="<?php echo _FSC_; ?>/img/logo/fsc-128x128.png" />
+   		<link rel="shortcut icon" type="image/x-icon" href="<?php echo _STATIC_; ?>/img/favicon/round_diago_16.ico" />
+    	<link rel="icon"          type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_diago_32.png" />
+    	<link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
-    	<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" media="screen" />
+    	<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.css" />
 		<style type="text/css">
 			body {
         	background-color: #f5f5f5;
@@ -134,7 +134,7 @@ else {
 		<!-- /container -->
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
-		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
+		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
 		<?php
 			echo (_ANALYTICS_GESTION_ ? "
 			<script>

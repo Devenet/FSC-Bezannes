@@ -44,7 +44,7 @@ class Activity {
       $this->created = true;
       $query->closeCursor();
 
-      if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg'))
+      if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_FULL_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg'))
         $this->image = 1;
     }
     else
@@ -197,7 +197,7 @@ class Activity {
       $this->image_temp = $img->file();
   }
   public function image()  {
-    return _STATIC_ . '/' . Activity::$path_image .'/'. ($this->image ? $this->id : 'default') . '.jpg';
+    return _UPLOADS_ . '/' . Activity::$path_image .'/'. ($this->image ? $this->id : 'default') . '.jpg';;
   }
   public function hasImage() {
     return $this->image;
@@ -331,7 +331,7 @@ class Activity {
       if ($this->image) {
         $src = imagecreatefromjpeg($this->image_temp);
         imagejpeg($src, dirname($this->image_temp). DIRECTORY_SEPARATOR .$this->id.'.jpg');
-        unlink(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. 'temp.jpg');
+        unlink(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_FULL_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. 'temp.jpg');
         unset($this->image_temp);
       }
       $this->created = true;
@@ -354,7 +354,7 @@ class Activity {
       $query->closeCursor();
       // supression image
       if ($this->image)
-        unlink(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg');
+        unlink(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_FULL_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg');
       // suppression activité
       $query = SQL::sql()->prepare('DELETE FROM fsc_activities WHERE id = :id');
       $query->execute(array('id' => $this->id));

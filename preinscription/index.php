@@ -42,16 +42,16 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<meta name="robots" content="<?php echo $page->search_engine(); ?>" />
 		<meta name="google-site-verification" content="nVrzZ_xZ8UdawohpsECIOvSgTsaU0R0GDWNqxnNpeis" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" type="image/x-icon" href="<?php echo _FSC_; ?>/img/favicon/round_16.ico" />
-		<link rel="icon"          type="image/png"    href="<?php echo _FSC_; ?>/img/favicon/round_32.png" />
-		<link rel="apple-touch-icon" href="<?php echo _FSC_; ?>/img/logo/fsc-128x128.png" />
+		<link rel="shortcut icon" type="image/x-icon" href="<?php echo _STATIC_; ?>/img/favicon/round_16.ico" />
+		<link rel="icon"          type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_32.png" />
+		<link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap.min.css" media="screen" />
-		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome.min.css" />
-		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/inscription.css" media="screen" />
-		<link rel="stylesheet" href="<?php echo _FSC_; ?>/css/bootstrap-responsive.min.css" />
-		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _FSC_; ?>/css/select2.css" /><?php } ?> 
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
+		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/inscription.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.min.css" />
+		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/select2.css" /><?php } ?> 
 	</head>
 
 	<body>
@@ -148,8 +148,8 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<!-- /footer -->
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
-		<script src="<?php echo _FSC_; ?>/js/bootstrap.min.js"></script>
-		<script src="<?php echo _FSC_; ?>/js/fsc-common.js"></script>
+		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
+		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
 		<?php
       foreach ($_SCRIPT as $script) {
         echo $script;

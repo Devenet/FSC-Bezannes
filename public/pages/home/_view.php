@@ -28,13 +28,13 @@
     </ol>
     <div class="carousel-inner">
       <div class="active item">
-        <img src="<?php echo _STATIC_; ?>/home/slide-fsc-bibliotheque.jpg" alt="FSC Bezannes">
+        <img src="<?php echo _UPLOADS_; ?>/home/slide-fsc-bibliotheque.jpg" alt="FSC Bezannes">
           <div class="carousel-caption">
             <h4>Foyer Social et Culturel de Bezannes</h4>
           </div>
       </div>
       <div class="item">
-        <img src="<?php echo _STATIC_; ?>/home/slide-animation-bibliotheque.jpg" alt="Bibliothèque">
+        <img src="<?php echo _UPLOADS_; ?>/home/slide-animation-bibliotheque.jpg" alt="Bibliothèque">
         <div class="carousel-caption">
           <h4>Animation à la bibliothèque</h4>
           <p>Cette année encore, la cotisation à la bibliothèque est gratuite pour toute adhésion !</p>
