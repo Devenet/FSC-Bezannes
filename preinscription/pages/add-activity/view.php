@@ -1,3 +1,3 @@
 <?php
-  require _PATH_INSCRIPTION_.'/form/activities.php';
+  require _PATH_PREINSCRIPTION_.'/form/activities.php';
 ?>

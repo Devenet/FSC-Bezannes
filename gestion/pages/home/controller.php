@@ -26,12 +26,12 @@ $adherents = Member::countAdherents();
 $plural_adherents = ($adherents > 1 ? 's' : null);
 
 $inscription_accounts = Inscription::countAccounts();
-$plural_inscription_accounts = ($inscription_accounts > 1 ? 's' : null);
+$plural_PREINSCRIPTION_accounts = ($inscription_accounts > 1 ? 's' : null);
 
 $inscriptions = Inscription::countInscriptions();
 $plural_inscriptions = ($inscriptions > 1 ? 's' : null);
 
 $inscription_adherents = Inscription::countAdherents();
-$plural_inscription_adherents = ($inscription_adherents > 1 ? 's' : null);
+$plural_PREINSCRIPTION_adherents = ($inscription_adherents > 1 ? 's' : null);
 
 ?>

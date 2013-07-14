@@ -20,7 +20,7 @@
       <h2>Inscriptions</h2>
       <p>Après avoir navigué sur notre site, vos contacts complémentaires seront le secrétariat et le Forum des associations qui est organisé chaque année début septembre.</p>
       <p>En utilisant la possibilité de pré-inscription en ligne, vous nous permettrez d’anticiper les besoins des futurs adhérents et contribuerez à faciliter les formalités d’inscription définitive.</p>
-      <p><a href="<?php echo _INSCRIPTION_; ?>" class="btn"><i class="icon-hand-right"></i> Se préinscrire </a></p>
+      <p><a href="<?php echo _PREINSCRIPTION_; ?>" class="btn"><i class="icon-hand-right"></i> Se préinscrire </a></p>
     </div>
   </div>
 </div>

@@ -13,7 +13,7 @@
     <div class="span4">
       <h2>Inscriptions</h2>
       <p>Les inscriptions se font généralement en septembre : le forum de rentrée du FSC permet aux futurs adhérents de se renseigner sur les activités auprès des animateurs.<br />Préinscrivez-vous dès à présent !</p>
-      <p><a href="<?php echo _INSCRIPTION_; ?>" class="btn btn-success"> Se préinscrire </a></p>
+      <p><a href="<?php echo _PREINSCRIPTION_; ?>" class="btn btn-success"> Se préinscrire </a></p>
     </div>
   </div>
 </div>
@@ -28,13 +28,13 @@
     </ol>
     <div class="carousel-inner">
       <div class="active item">
-        <img src="<?php echo _ASSETS_; ?>/home/slide-fsc-bibliotheque.jpg" alt="FSC Bezannes">
+        <img src="<?php echo _STATIC_; ?>/home/slide-fsc-bibliotheque.jpg" alt="FSC Bezannes">
           <div class="carousel-caption">
             <h4>Foyer Social et Culturel de Bezannes</h4>
           </div>
       </div>
       <div class="item">
-        <img src="<?php echo _ASSETS_; ?>/home/slide-animation-bibliotheque.jpg" alt="Bibliothèque">
+        <img src="<?php echo _STATIC_; ?>/home/slide-animation-bibliotheque.jpg" alt="Bibliothèque">
         <div class="carousel-caption">
           <h4>Animation à la bibliothèque</h4>
           <p>Cette année encore, la cotisation à la bibliothèque est gratuite pour toute adhésion !</p>

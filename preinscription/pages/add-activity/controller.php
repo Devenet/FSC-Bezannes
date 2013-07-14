@@ -17,11 +17,11 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
     $pageInfos = array(
      'name' => 'Ajout d’une activité',
-     'url' => _INSCRIPTION_.'/add-activity/'. $a->id()
+     'url' => _PREINSCRIPTION_.'/add-activity/'. $a->id()
     );
-    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $a->name(), 'url' => _INSCRIPTION_.'/preinscription/'.$a->id()), $pageInfos));
+    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $a->name(), 'url' => _PREINSCRIPTION_.'/preinscription/'.$a->id()), $pageInfos));
     
-    $form = new Form('add-activity', _INSCRIPTION_ .'/add-activity/'.$a->id(), 'Ajouter', 'Sélection d’une activité pour '.$a->name());
+    $form = new Form('add-activity', _PREINSCRIPTION_ .'/add-activity/'.$a->id(), 'Ajouter', 'Sélection d’une activité pour '.$a->name());
     
     if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
       $act = new Activity($_GET['activity']+0);
@@ -75,7 +75,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
           throw new \Exception('Impossible d’ajouter le participant');
         
         $_SESSION['msg'] = new Message('Le membre <em>'. $a->name() .'</em> est maintenant inscrit à l’activité :)', 1, 'Ajout réussi !');
-        header ('Location: '. _INSCRIPTION_ .'/preinscription/'. $a->id());
+        header ('Location: '. _PREINSCRIPTION_ .'/preinscription/'. $a->id());
         exit();
         
       }
@@ -86,13 +86,13 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     }
   }
   else {
-    header('Location: '. _INSCRIPTION_ .'/list');
+    header('Location: '. _PREINSCRIPTION_ .'/list');
     exit();
   }
 
 }
 else {
-  header ('Location: '. _INSCRIPTION_ .'/login');
+  header ('Location: '. _PREINSCRIPTION_ .'/login');
   exit();
 }
 

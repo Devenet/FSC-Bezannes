@@ -9,12 +9,12 @@ error_reporting(E_ERROR);
 
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
-  header('Location: '. _INSCRIPTION_ .'/account');
+  header('Location: '. _PREINSCRIPTION_ .'/account');
   exit;
 }
 elseif (isset($_SESSION['to_ban']) && $_SESSION['to_ban'] > 3) {
   $_SESSION['msg'] = new Message('Trop de tentatives de récupération de mot de passe ont été tentées sans succès. Merci de réessayer plus tard.', -1, 'Oups... !');
-  header ('Location: '. _INSCRIPTION_ .'/login');
+  header ('Location: '. _PREINSCRIPTION_ .'/login');
   exit();
 }
 // demande envoie
@@ -43,7 +43,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
   else {
     $_SESSION['msg'] = new Message('Cet utilisateur est inconnu.', -1, 'Oups... !');
     $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
-    header ('Location: '. _INSCRIPTION_ .'/recovery');
+    header ('Location: '. _PREINSCRIPTION_ .'/recovery');
     exit();
   }
 }
@@ -64,12 +64,12 @@ elseif (isset($_GET['user']) && $_GET['user'] != null && isset($_GET['token']) &
 
 
         $_SESSION['msg'] = new Message('Votre mot de passe a bien été réinitialisé. Vous pouvez maintenant vous connecter :)', 1, 'Réinitialisation réussie !');
-        header ('Location: '. _INSCRIPTION_ .'/login');
+        header ('Location: '. _PREINSCRIPTION_ .'/login');
         exit(); 
       }
       catch (\Exception $e) {
         $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !');
-        header ('Location: '. _INSCRIPTION_ .'/?page=precovery&user='. urlencode(htmlspecialchars($_GET['user'])) .'&token='. htmlspecialchars($_GET['token']));
+        header ('Location: '. _PREINSCRIPTION_ .'/?page=precovery&user='. urlencode(htmlspecialchars($_GET['user'])) .'&token='. htmlspecialchars($_GET['token']));
         exit(); 
       }
     }
@@ -79,7 +79,7 @@ elseif (isset($_GET['user']) && $_GET['user'] != null && isset($_GET['token']) &
       <div class="alert alert-info">
         <strong>Note :</strong> votre nouveau mot de passe doit comporter au moins 7 caractères !
       </div>
-      <form class="form-horizontal espace-top" action="'. _INSCRIPTION_ .'/?page=recovery&user='. urlencode(htmlspecialchars($_GET['user'])) .'&amp;token='. htmlspecialchars($_GET['token']) .'" method="post">
+      <form class="form-horizontal espace-top" action="'. _PREINSCRIPTION_ .'/?page=recovery&user='. urlencode(htmlspecialchars($_GET['user'])) .'&amp;token='. htmlspecialchars($_GET['token']) .'" method="post">
           <div class="control-group">
             <label class="control-label">Compte concerné</label>
             <div class="controls">
@@ -118,14 +118,14 @@ elseif (isset($_GET['user']) && $_GET['user'] != null && isset($_GET['token']) &
   else {
     $_SESSION['msg'] = new Message('Autorisation de réinitialisation de votre mot de passe invalide ou expirée.', -1, 'Oups... !');
     $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
-    header ('Location: '. _INSCRIPTION_ .'/login');
+    header ('Location: '. _PREINSCRIPTION_ .'/login');
     exit(); 
   }
 }
 
 $pageInfos = array(
   'name' => 'Récupération de mot de passe',
-  'url' => _INSCRIPTION_.'/recovery'
+  'url' => _PREINSCRIPTION_.'/recovery'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 

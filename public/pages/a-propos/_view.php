@@ -19,7 +19,7 @@ case 'doc':
   </div>
   <div class="span4">
     <p class="text-success espace-top">Nouveauté : plus besoin d’imprimer un document, tout se fait en ligne :) !</p>
-    <p class="espace-top"><a class="btn btn-success" href="<?php echo _INSCRIPTION_; ?>">Se préinscrire</a></p>
+    <p class="espace-top"><a class="btn btn-success" href="<?php echo _PREINSCRIPTION_; ?>">Se préinscrire</a></p>
   </div>
 </div>
 
@@ -27,23 +27,23 @@ case 'doc':
 <div class="row">
   <div class="span4">
     <h3>Réglement intérieur</h3>
-    <p><a class="btn" href="<?php echo _ASSETS_; ?>/pdf/fsc-reglement-interieur.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
+    <p><a class="btn" href="<?php echo _STATIC_; ?>/pdf/fsc-reglement-interieur.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Le réglement intérieur est là pour rappeler les règles à respecter et les droits et devoirs que chaque adhérent ou membre possède et peut faire valoir.</p>
     <p>Vous le trouverez affiché dans le hall de l'Espace de Bezannes.</p>
   </div>
   <div class="span4">
     <h3>Statuts de l’association</h3>
-    <p><a class="btn" href="<?php echo _ASSETS_; ?>/pdf/fsc-statuts.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
+    <p><a class="btn" href="<?php echo _STATIC_; ?>/pdf/fsc-statuts.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Les statuts définissent l’association, sa raison et ses objectifs généraux. Il présice les règles exactes du fonctionnement. À chaque modification validée par un vote, il est envoyé à la Préfecture.</p>
   </div>
   <div class="span4">
     <h3>Assemblée générale</h3>
-    <p><a class="btn" href="<?php echo _ASSETS_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
+    <p><a class="btn" href="<?php echo _STATIC_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external"><i class="icon-file"></i> Télécharger</a></p>
     <p class="espace-top">Tous les ans en décembre, l’AG permet de faire un bilan de l’année écoulée et de voter les prochaines désicions et actions de la vie l’association.</p>
     <p style="margin-bottom:0;">Années précédentes :</p>
     <ul class="unstyled" style="margin-left:15px;">
-      <!--<li><i class="icon-file"></i> <a href="<?php echo _ASSETS_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external">Compte-rendu de 2011</a></li>-->
-      <li><i class="icon-file"></i> <a href="<?php echo _ASSETS_; ?>/pdf/fsc-assemblee-generale-2010.pdf" rel="external">Compte-rendu de 2010</a></li>
+      <!--<li><i class="icon-file"></i> <a href="<?php echo _STATIC_; ?>/pdf/fsc-assemblee-generale-2011.pdf" rel="external">Compte-rendu de 2011</a></li>-->
+      <li><i class="icon-file"></i> <a href="<?php echo _STATIC_; ?>/pdf/fsc-assemblee-generale-2010.pdf" rel="external">Compte-rendu de 2010</a></li>
     </ul>
   </div>
 </div>
@@ -250,7 +250,7 @@ default:
   </div>
   <div class="span4">
     <h3>Être adhérent</h3>
-    <p>En devenant <a href="<?php echo _INSCRIPTION_; ?>">adhérent</a>, vous accédez à l’ensemble des <a href="<?php echo _FSC_; ?>/activites">activités</a> proposées mais vous pouvez aussi faire part de vos idées, suggestions et avis pour permettre au Foyer d’évoluer dans votre intérêt et celui de la collectivité.</p>
+    <p>En devenant <a href="<?php echo _PREINSCRIPTION_; ?>">adhérent</a>, vous accédez à l’ensemble des <a href="<?php echo _FSC_; ?>/activites">activités</a> proposées mais vous pouvez aussi faire part de vos idées, suggestions et avis pour permettre au Foyer d’évoluer dans votre intérêt et celui de la collectivité.</p>
   </div>
   <div class="span4">
     <h3>We want you !</h3>
@@ -269,7 +269,7 @@ default:
   </div>
   <div class="span4">
     <h3>Se préinscrire</h3>
-    <p>Pour faciliter votre inscription, vous pouvez dès à présent vous <a href="<?php echo _INSCRIPTION_; ?>">préinscrire en ligne</a>.</p>
+    <p>Pour faciliter votre inscription, vous pouvez dès à présent vous <a href="<?php echo _PREINSCRIPTION_; ?>">préinscrire en ligne</a>.</p>
     <p>Cette préinscription en ligne nous permet, le jour du Forum, de pouvoir vous inscrire plus rapidement !</p>
   </div>
 </div>

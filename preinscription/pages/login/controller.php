@@ -6,17 +6,17 @@ use lib\content\Message;
 use lib\users\UserInscription;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
-  header ('Location: '. _INSCRIPTION_);
+  header ('Location: '. _PREINSCRIPTION_);
   exit();
 }
 else if (isset($_GET['rel'])) {
-  header ('Location: '. _INSCRIPTION_.'/login');
+  header ('Location: '. _PREINSCRIPTION_.'/login');
   exit(); 
 }
 
 $pageInfos = array(
   'name' => 'Connexion',
-  'url' => _INSCRIPTION_.'/login'
+  'url' => _PREINSCRIPTION_.'/login'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
@@ -30,7 +30,7 @@ if (isset($_SESSION['login-next-step'])) {
   unset($_SESSION['login-next-step']);
 }
 
-$form = new Form('login', _INSCRIPTION_.'/login', 'Connexion');
+$form = new Form('login', _PREINSCRIPTION_.'/login', 'Connexion');
 $inputs = array(
     'login',
     'password'
@@ -44,11 +44,11 @@ if (isset($_POST['login']) && isset($_POST['password']) && $_POST['login'] != nu
     $_SESSION['user'] = new UserInscription(UserInscription::getID(htmlspecialchars($_POST['login'])));
     $_SESSION['user']->historize($_SERVER['REMOTE_ADDR']);
     $_SESSION['authentificated'] = true;
-    header('Location: '. _INSCRIPTION_ .'/list');
+    header('Location: '. _PREINSCRIPTION_ .'/list');
     exit;
   }
   else {
-   	$_SESSION['msg'] = new Message('Mot de passe oublié ? <a href="'. _INSCRIPTION_ .'/recovery">Réinitialisez-le</a> !', -1, 'Oups... Identifiants incorrects');
+   	$_SESSION['msg'] = new Message('Mot de passe oublié ? <a href="'. _PREINSCRIPTION_ .'/recovery">Réinitialisez-le</a> !', -1, 'Oups... Identifiants incorrects');
   }
 }
 

@@ -1,6 +1,6 @@
 <div class="row">  
   <div class="span8">
-    <?php require _PATH_INSCRIPTION_.'/form/signup.php'; ?>
+    <?php require _PATH_PREINSCRIPTION_.'/form/signup.php'; ?>
   </div>
 
   <div class="span4 espace-top hidden-phone">

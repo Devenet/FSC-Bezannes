@@ -44,7 +44,7 @@ class Activity {
       $this->created = true;
       $query->closeCursor();
 
-      if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_PUBLIC_ . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg'))
+      if (file_exists(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_ . DIRECTORY_SEPARATOR . Activity::$path_image .DIRECTORY_SEPARATOR. $this->id . '.jpg'))
         $this->image = 1;
     }
     else
@@ -197,7 +197,7 @@ class Activity {
       $this->image_temp = $img->file();
   }
   public function image()  {
-    return _ASSETS_ . '/' . Activity::$path_image .'/'. ($this->image ? $this->id : 'default') . '.jpg';
+    return _STATIC_ . '/' . Activity::$path_image .'/'. ($this->image ? $this->id : 'default') . '.jpg';
   }
   public function hasImage() {
     return $this->image;

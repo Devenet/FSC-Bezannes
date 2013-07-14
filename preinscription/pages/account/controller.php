@@ -12,7 +12,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
   $pageInfos = array(
     'name' => 'Mon compte',
-    'url' => _INSCRIPTION_.'/settings'
+    'url' => _PREINSCRIPTION_.'/settings'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
   
@@ -51,7 +51,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   
 }
 else {
-  header ('Location: '. _INSCRIPTION_ .'/login');
+  header ('Location: '. _PREINSCRIPTION_ .'/login');
   exit();
 }
 

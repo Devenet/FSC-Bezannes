@@ -13,11 +13,11 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     
     $pageInfos = array(
      'name' => 'Modifier la préinscription',
-     'url' => _INSCRIPTION_.'/edit-preinscription/'.$m->id()
+     'url' => _PREINSCRIPTION_.'/edit-preinscription/'.$m->id()
     );
-    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $m->name(), 'url' => _INSCRIPTION_.'/preinscription/'.$m->id()), $pageInfos));
+    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => $m->name(), 'url' => _PREINSCRIPTION_.'/preinscription/'.$m->id()), $pageInfos));
     
-    $form = new Form('edit-member', _INSCRIPTION_.'/edit-preinscription/'.$m->id(), 'Modifier', 'Modifier un membre');
+    $form = new Form('edit-member', _PREINSCRIPTION_.'/edit-preinscription/'.$m->id(), 'Modifier', 'Modifier un membre');
     $form->reset('Annuler les modifications');
     $inputs = array(
       'last_name',
@@ -97,7 +97,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $m->setBezannais();      
         $m->update();
         $_SESSION['msg'] = new Message('La préinscription de <em>'. $m->name() .'</em> a bien été modifiée :)', 1, 'Modification réussie !');
-        header ('Location: '. _INSCRIPTION_ .'/preinscription/'.$m->id());
+        header ('Location: '. _PREINSCRIPTION_ .'/preinscription/'.$m->id());
         exit();
         
       }
@@ -108,13 +108,13 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     }
   }
   else {
-    header('Location: '. _INSCRIPTION_ .'/list');
+    header('Location: '. _PREINSCRIPTION_ .'/list');
     exit();
   }
 
 }
 else {
-  header ('Location: '. _INSCRIPTION_ .'/login');
+  header ('Location: '. _PREINSCRIPTION_ .'/login');
   exit();
 }
 

@@ -23,7 +23,7 @@ $mainMenu = new Menu();
   $mainMenu->addLink('Link', '#lorem', 'question-sign');
 // Menu secondaire droite
 $rightMenu = new Menu();
-  $rightMenu->addLink('Préinscriptions', _INSCRIPTION_, 'hand-right', false);
+  $rightMenu->addLink('Préinscriptions', _PREINSCRIPTION_, 'hand-right', false);
 // Menu footer
 $footerMenu = new Menu();
   $footerMenu->addLink('Accueil', _FSC_.'/', 'home');

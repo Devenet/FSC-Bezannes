@@ -10,11 +10,11 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
   $pageInfos = array(
    'name' => 'Nouvelle préinscription',
-   'url' => _INSCRIPTION_.'/new-preinscription'
+   'url' => _PREINSCRIPTION_.'/new-preinscription'
   );
   $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
-  $form = new Form('new-member', _INSCRIPTION_ .'/new-preinscription', 'Ajouter', 'membre à préinscrire');
+  $form = new Form('new-member', _PREINSCRIPTION_ .'/new-preinscription', 'Ajouter', 'membre à préinscrire');
 
   $display_warning_adult = Member::countAdults($_SESSION['user']->id()) > 0 ? '' : '<div class="row">
   <div class="span10 offset1">
@@ -102,12 +102,12 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $m->setBezannais();      
         $m->create();
         $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été préinscrit :)', 1, 'Ajout réussi !');
-        header ('Location: '. _INSCRIPTION_ .'/list');
+        header ('Location: '. _PREINSCRIPTION_ .'/list');
         exit();
       }
       else {
         $_SESSION['member'] = $m;
-        header ('Location: '. _INSCRIPTION_ .'/choose-responsible');
+        header ('Location: '. _PREINSCRIPTION_ .'/choose-responsible');
         exit();
       }
       
@@ -120,7 +120,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   
 }
 else {
-  header ('Location: '. _INSCRIPTION_ .'/login');
+  header ('Location: '. _PREINSCRIPTION_ .'/login');
   exit();
 }
 

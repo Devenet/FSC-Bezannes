@@ -38,13 +38,13 @@
   <div class="span4">
     <h3><i class="icon-hand-right"></i> Préinscriptions</h3>
     <div class="btn-group">
-      <a href="<?php echo _INSCRIPTION_; ?>" rel="external" class="btn btn-inverse">Work in progress <i class="icon-spinner icon-spin"></i></a>
+      <a href="<?php echo _PREINSCRIPTION_; ?>" rel="external" class="btn btn-inverse">Work in progress <i class="icon-spinner icon-spin"></i></a>
     </div>
     <div style="margin-top:20px;">
-      <p><span class="label"><?php echo $inscription_accounts; ?></span> compte<?php echo $plural_inscription_accounts; ?></p>
+      <p><span class="label"><?php echo $inscription_accounts; ?></span> compte<?php echo $plural_PREINSCRIPTION_accounts; ?></p>
       <ul class="unstyled">
         <li><span class="label label-warning"><?php echo $inscriptions; ?></span> préinscription<?php echo $plural_inscriptions; ?></li>
-        <li><span class="label label-success"><?php echo $inscription_adherents; ?></span> pré-adhérent<?php echo $plural_inscription_adherents; ?></li>
+        <li><span class="label label-success"><?php echo $inscription_adherents; ?></span> pré-adhérent<?php echo $plural_PREINSCRIPTION_adherents; ?></li>
       </ul>
     </div>
   </div>

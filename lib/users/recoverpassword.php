@@ -8,7 +8,7 @@ abstract class RecoverPassword {
   
   static protected $delay = 43200;
   static protected $messages = array('des préinscriptions', 'de gestion', 'd’administration');
-  static protected $links = array(_INSCRIPTION_, _GESTION_, '404');
+  static protected $links = array(_PREINSCRIPTION_, _GESTION_, '404');
   static protected $syntax_recovery = array('?page=recovery', 'recovery.php', '404');
   static protected $syntax_token = array('&token=', '&token=', '404');
   static protected $syntax_user = array('&user=', '?user=', '404');

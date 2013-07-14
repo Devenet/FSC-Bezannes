@@ -12,16 +12,16 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
     $pageInfos = array(
      'name' => 'Choix du responsable',
-     'url' => _INSCRIPTION_.'/new-preinscription'
+     'url' => _PREINSCRIPTION_.'/new-preinscription'
     );
-    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Nouvelle préinscription', 'url' => _INSCRIPTION_.'new-preinscription'), $pageInfos));
+    $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Nouvelle préinscription', 'url' => _PREINSCRIPTION_.'new-preinscription'), $pageInfos));
 
     $_SESSION['form_msg'] = Member::countAdults($_SESSION['user']->id()) == 0 ? '<div class="alert alert-error">
       <strong>Oups !</strong> Vous tentez de choisir un responsable pour un mineur alors qu’aucune personne majeure n’a précédement été préinscrite.
       <br />Si le responsable ne souhaite pas devenir adhérent, il suffit de ne pas cocher la case pré-adhérer dans le <a href="/new-preinscription">formulaire de préinscription</a>.
     </div>' : '';
     
-    $form = new Form('choose-responsible', _INSCRIPTION_ .'/choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');
+    $form = new Form('choose-responsible', _PREINSCRIPTION_ .'/choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');
     foreach (Member::Adults($_SESSION['user']->id()) as $adult)
       $form->addOption('adulte', $adult->name(), $adult->id());
       
@@ -41,7 +41,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         unset ($_SESSION['member']);
         
         $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été préinscrit :)', 1, 'Ajout réussi !');
-        header ('Location: '. _INSCRIPTION_ .'/list');
+        header ('Location: '. _PREINSCRIPTION_ .'/list');
         exit();
         
       }
@@ -54,14 +54,14 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   }
 
   else {
-    header('Location: '. _INSCRIPTION_ .'/new-preinscription');
+    header('Location: '. _PREINSCRIPTION_ .'/new-preinscription');
     exit();
   }
 
 
 }
 else {
-  header ('Location: '. _INSCRIPTION_ .'/login');
+  header ('Location: '. _PREINSCRIPTION_ .'/login');
   exit();
 }
 ?>

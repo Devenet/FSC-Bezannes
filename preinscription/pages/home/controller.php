@@ -4,12 +4,12 @@ use lib\content\Page;
 
 $pageInfos = array(
   'name' => 'Préinscriptions',
-  'url' => _INSCRIPTION_.'/'
+  'url' => _PREINSCRIPTION_.'/'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array());
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
-  header('Location: '. _INSCRIPTION_ .'/list');
+  header('Location: '. _PREINSCRIPTION_ .'/list');
   exit();
 }
 

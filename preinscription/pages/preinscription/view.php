@@ -5,7 +5,7 @@ use lib\content\Display;
 <div class="espace-bottom" style="overflow:hidden;">
   <p class="pull-left">Vous trouverez ici toutes les informations concernant la présincription de <?php echo $m->first_name(); ?>.</p>
   <div class="btn-group pull-right">
-    <a href="<?php echo _INSCRIPTION_; ?>/edit-preinscription/<?php echo $m->id(); ?>" class="btn btn-small"><i class="icon-pencil"></i> Modifier</a>
+    <a href="<?php echo _PREINSCRIPTION_; ?>/edit-preinscription/<?php echo $m->id(); ?>" class="btn btn-small"><i class="icon-pencil"></i> Modifier</a>
     <a href="#confirmBox<?php echo $m->id(); ?>" class="btn btn-small" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a>
   </div>
 </div>
@@ -48,7 +48,7 @@ use lib\content\Display;
       <?php if ($m->minor()): ?>
         <div class="span4">
           <h4>Reponsable</h4>
-          <p><?php echo Display::HtmlGender($r->gender()), ' ', $r->name(); ?> <a href="<?php echo _INSCRIPTION_; ?>/preinscription/<?php echo $r->id(); ?>" style="text-decoration:none; padding-left:2px;"><i class="icon-share-alt"></i></a></p>
+          <p><?php echo Display::HtmlGender($r->gender()), ' ', $r->name(); ?> <a href="<?php echo _PREINSCRIPTION_; ?>/preinscription/<?php echo $r->id(); ?>" style="text-decoration:none; padding-left:2px;"><i class="icon-share-alt"></i></a></p>
         </div>
       <?php
       endif;
@@ -57,7 +57,7 @@ use lib\content\Display;
         $minors = $m->Responsabilities();
         echo '<ul>';
         foreach ($minors as $minor)
-          echo '<li>', $minor->name(), ' <a href="'. _INSCRIPTION_ .'/preinscription/', $minor->id(), '" style="text-decoration:none; padding-left:2px;"><i class="icon-share-alt"></i></a></li>';
+          echo '<li>', $minor->name(), ' <a href="'. _PREINSCRIPTION_ .'/preinscription/', $minor->id(), '" style="text-decoration:none; padding-left:2px;"><i class="icon-share-alt"></i></a></li>';
         echo '</ul>', '</div>';
       }
       ?>  
@@ -71,7 +71,7 @@ use lib\content\Display;
       <div class="tab-pane" id="tab-activities">
         <div style="overflow: hidden;">
           <p class="pull-left"><?php echo $m->first_name(); ?> participe à <span class="label"><?php echo $count_activites; ?></span> activité<?php echo $plural_count_activities; ?>.</p>
-          <a class="btn btn-small pull-right" href="<?php echo _INSCRIPTION_; ?>/add-activity/<?php echo $m->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
+          <a class="btn btn-small pull-right" href="<?php echo _PREINSCRIPTION_; ?>/add-activity/<?php echo $m->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
         </div>
         <div style="clear:both; margin-top: 10px;">
           <?php echo $activities_participant; ?>
@@ -97,6 +97,6 @@ use lib\content\Display;
 </div>
 <div class="modal-footer">
 <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-<a href="<?php echo _INSCRIPTION_; ?>/preinscription/<?php echo $m->id(); ?>/delete" class="btn btn-danger">Confirmer</a>
+<a href="<?php echo _PREINSCRIPTION_; ?>/preinscription/<?php echo $m->id(); ?>/delete" class="btn btn-danger">Confirmer</a>
 </div>
 </div>

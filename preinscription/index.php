@@ -16,7 +16,7 @@ require '../config/config.php';
 
 // Menu navigation
 $mainMenu = new Menu();
-	$mainMenu->addLink('Préinscriptions', _INSCRIPTION_.'/', 'hand-right');
+	$mainMenu->addLink('Préinscriptions', _PREINSCRIPTION_.'/', 'hand-right');
 // Menu secondaire
 $rightMenu = new Menu();
 	$rightMenu->addLink((isset($_SESSION['authentificated']) && $_SESSION['authentificated'] ? 'Accueil' : 'Retour'). ' site <span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? 'external-link' : 'share-alt', (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? true : false, true, true);
@@ -27,15 +27,15 @@ $_GET['page'] = str_replace("\0", '', $_GET['page']);
 $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
 $_SCRIPT = array();
-$controller = ($_GET['page'] == 404 || $_GET['page'] == 403) ? '../'. _PATH_PUBLIC_ .'/pages/errors/'.$_GET['page'].'/controller.php' : '../'._PATH_INSCRIPTION_.'/pages/'.$_GET['page'].'/controller.php';
+$controller = ($_GET['page'] == 404 || $_GET['page'] == 403) ? '../'. _PATH_PUBLIC_ .'/pages/errors/'.$_GET['page'].'/controller.php' : '../'._PATH_PREINSCRIPTION_.'/pages/'.$_GET['page'].'/controller.php';
 $controller = file_exists($controller) ? $controller : '../'. _PATH_PUBLIC_ .'/pages/errors/404/controller.php';
-require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
+require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 
 ?><!DOCTYPE html>
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<title><?php echo ($page->url() != _INSCRIPTION_.'/') ? $page->title() .' &middot; ' : null; ?>Présinscriptions &middot; FSC Bezannes</title>
+		<title><?php echo ($page->url() != _PREINSCRIPTION_.'/') ? $page->title() .' &middot; ' : null; ?>Présinscriptions &middot; FSC Bezannes</title>
 		<meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
 		<meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
 		<meta name="author" content="Nicolas Devenet" />
@@ -67,20 +67,20 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 					<!-- settings -->
 					<ul class="nav pull-right">
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _INSCRIPTION_; ?>/account"><?php echo $_SESSION['user']->login(); ?>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _PREINSCRIPTION_; ?>/account"><?php echo $_SESSION['user']->login(); ?>
 							<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="<?php echo _INSCRIPTION_; ?>/list"><i class="icon-hand-right"></i> Mes préinscriptions</a></li>
-								<li><a href="<?php echo _INSCRIPTION_; ?>/account"><i class="icon-user"></i> Mon compte</a></li>
+								<li><a href="<?php echo _PREINSCRIPTION_; ?>/list"><i class="icon-hand-right"></i> Mes préinscriptions</a></li>
+								<li><a href="<?php echo _PREINSCRIPTION_; ?>/account"><i class="icon-user"></i> Mon compte</a></li>
 								<li class="divider"></li>
-								<li><a href="<?php echo _INSCRIPTION_; ?>/logout"><i class="icon-signout"></i> Déconnexion</a></li>
+								<li><a href="<?php echo _PREINSCRIPTION_; ?>/logout"><i class="icon-signout"></i> Déconnexion</a></li>
 							</ul>
 						</li>
 					</ul>
 					<?php } else { ?>
 					<div class="nav pull-right" style="padding-right:8px;">
-						<a href="<?php echo _INSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Se préinscrire</a> 
-						<a href="<?php echo _INSCRIPTION_; ?>/login" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
+						<a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Se préinscrire</a> 
+						<a href="<?php echo _PREINSCRIPTION_; ?>/login" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
 					</div>
 					<?php } ?>
 	
@@ -111,7 +111,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 			<?php }
 			
 			if (! $page->option('no-breadcrumb'))
-				echo $page->breadcrumb('Préinscriptions', _INSCRIPTION_); ?>
+				echo $page->breadcrumb('Préinscriptions', _PREINSCRIPTION_); ?>
 		</header>
 		
 
@@ -154,7 +154,7 @@ require_once _PATH_INSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
       foreach ($_SCRIPT as $script) {
         echo $script;
       }
-			echo (_ANALYTICS_INSCRIPTION_ ? "
+			echo (_ANALYTICS_PREINSCRIPTION_ ? "
 			<script>
 			  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

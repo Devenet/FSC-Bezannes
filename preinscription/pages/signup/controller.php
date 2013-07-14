@@ -7,17 +7,17 @@ use lib\users\UserInscription;
 use lib\mail\Mail;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
-  header ('Location: '. _INSCRIPTION_);
+  header ('Location: '. _PREINSCRIPTION_);
   exit();
 }
 else if (isset($_GET['rel'])) {
-  header ('Location: '. _INSCRIPTION_.'/signup');
+  header ('Location: '. _PREINSCRIPTION_.'/signup');
   exit(); 
 }
 
 $pageInfos = array(
   'name' => 'Création du compte',
-  'url' => _INSCRIPTION_.'/signup'
+  'url' => _PREINSCRIPTION_.'/signup'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 $page->addOption('steps');
@@ -26,7 +26,7 @@ $page->addParameter('step-width', 2);
 $page->addOption('bar');
 $page->addParameter('bar', 'danger');
 
-$form = new Form('signup', _INSCRIPTION_.'/signup', 'Créer mon compte');
+$form = new Form('signup', _PREINSCRIPTION_.'/signup', 'Créer mon compte');
 
 // controle formulaire
 if (isset($_POST) and $_POST != null) {
@@ -71,12 +71,12 @@ Ceci est un email automatique pour vous confirmer la création de votre compte s
 Voici un petit rappel des informations utiles : 
     • Votre identifiant : '. $u->login() .'
     • Votre mot de passe : celui défini lors de l’inscription 
-    • Page de connexion : http:'. _INSCRIPTION_ .'/login';
+    • Page de connexion : http:'. _PREINSCRIPTION_ .'/login';
     Mail::text($u->email(), 'Préinscriptions', $body);
     
     $_SESSION['msg'] = new Message('Vous pouvez maintenant vous connecter avec vos identifiants.', 1, 'Votre compte a bien été créé !');
     $_SESSION['login-next-step'] = true;
-    header ('Location: '. _INSCRIPTION_ .'/login');
+    header ('Location: '. _PREINSCRIPTION_ .'/login');
     exit();
     
   }
