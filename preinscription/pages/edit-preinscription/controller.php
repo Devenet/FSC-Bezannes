@@ -1,7 +1,7 @@
 <?php
 
 use lib\content\Page;
-use lib\inscription\Member;
+use lib\preinscriptions\Member;
 use lib\content\Message;
 use lib\content\Form;
 

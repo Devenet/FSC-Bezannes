@@ -1,8 +1,8 @@
 <?php
 
 use lib\content\Page;
-use lib\inscription\Member;
-use lib\inscription\Participant;
+use lib\preinscriptions\Member;
+use lib\preinscriptions\Participant;
 use lib\payments\Price;
 use lib\activities\Activity;
 use lib\activities\Schedule;

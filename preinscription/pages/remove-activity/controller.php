@@ -1,6 +1,6 @@
 <?php
 
-use lib\inscription\Participant;
+use lib\preinscriptions\Participant;
 use lib\content\Message;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {

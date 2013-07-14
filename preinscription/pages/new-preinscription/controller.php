@@ -4,7 +4,7 @@ use lib\content\Page;
 use lib\content\Form;
 use lib\content\Message;
 use lib\users\UserInscription;
-use lib\inscription\Member;
+use lib\preinscriptions\Member;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
