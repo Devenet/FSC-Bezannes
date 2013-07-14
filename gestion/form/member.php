@@ -166,6 +166,7 @@ foreach ($months as $value => $month) {
     <label class="control-label" for="email">Courriel</label>
     <div class="controls">
       <input type="email" name="email" id="email" placeholder="john@smith.com" <?php echo $form->value('email'); ?> class="input-xxlarge"/>
+      <!--<span class="help-block">Si la personne ne possède pas d'adresse email, insérer celui du secrétariat : <?php echo _EMAIL_; ?>.</span>-->
     </div>
   </div>
   
@@ -174,6 +175,9 @@ foreach ($months as $value => $month) {
     <div class="controls controls-row">
       <input type="text" name="phone" id="phone" placeholder="Téléphone (0102030405)" <?php echo $form->value('phone'); ?> class="span3" maxlength="10"/>
       <input type="text" name="mobile" id="mobile" placeholder="Téléphone (0602030405)" <?php echo $form->value('mobile'); ?> class="span3 offset2" maxlength="10"/>
+    </div>
+    <div class="controls espace-small-top">
+      <span class="help-block">Si la personne ne possède aucun numéro de téléphone, insérer celui du secrétariat : <?php echo _PHONE_SEC_; ?>.</span>
     </div>
   </div>
   
