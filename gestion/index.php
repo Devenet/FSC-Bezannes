@@ -25,7 +25,7 @@ $mainMenu = new Menu();
 	$mainMenu->addLink('Dashboard', _GESTION_, 'dashboard');
 	$mainMenu->addLink('Activités', _GESTION_.'/?page=activities', 'globe');
 	$mainMenu->addLink('Membres', _GESTION_.'/?page=members', 'male');
-	$mainMenu->addLink('Préinscriptions', _GESTION_.'/?page=inscriptions', 'hand-right');
+	$mainMenu->addLink('Préinscriptions', _GESTION_.'/?page=preinscriptions', 'hand-right');
 // Menu secondaire droite
 $rightMenu = new Menu();
 	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'external-link', true, true, true);
