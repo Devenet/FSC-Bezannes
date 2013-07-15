@@ -17,7 +17,7 @@ require '../config/config.php';
 // Menu navigation
 $mainMenu = new Menu();
 	$mainMenu->addLink('Préinscriptions', _PREINSCRIPTION_.'/', 'hand-right');
-// Menu secondaire
+// Menu retour FSC
 $rightMenu = new Menu();
 	$rightMenu->addLink((isset($_SESSION['authentificated']) && $_SESSION['authentificated'] ? 'Accueil' : 'Retour'). ' site <span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? 'external-link' : 'share-alt', (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? true : false, true, true);
 
@@ -49,7 +49,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/inscription.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.min.css" />
 		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/select2.css" /><?php } ?> 
 	</head>
@@ -62,12 +62,14 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 				<div class="container">
 					<ul class="nav"><?php echo $mainMenu->display(); ?></ul>
 
-					<ul class="nav pull-right"><?php echo $rightMenu->display(); ?></ul>
+					<ul class="nav pull-right<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) echo ' hidden-phone'; ?>"><?php echo $rightMenu->display(); ?></ul>
 					<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?>
 					<!-- settings -->
 					<ul class="nav pull-right">
 						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _PREINSCRIPTION_; ?>/account"><?php echo $_SESSION['user']->login(); ?>
+							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _PREINSCRIPTION_; ?>/account">
+								<img src="<?php echo $_SESSION['user']->gravatar(20, 'mm'); ?>" alt="gravatar" class="gravatar" />
+								<?php echo $_SESSION['user']->login(); ?>
 							<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="<?php echo _PREINSCRIPTION_; ?>/list"><i class="icon-hand-right"></i> Mes préinscriptions</a></li>

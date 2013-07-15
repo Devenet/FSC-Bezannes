@@ -42,6 +42,10 @@ abstract class User {
     return false;
   }
   
+  public function gravatar($size = 50, $type = 'retro') {
+    return '//gravatar.com/avatar/' . md5(strtolower(trim($this->login()))) . '?size=' . $size . '&amp;default=' . $type;
+  }
+
   protected abstract function getLogins();
   public abstract function create();
   //public abstract static function getID($login);
