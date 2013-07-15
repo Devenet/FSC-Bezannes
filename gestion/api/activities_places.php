@@ -24,7 +24,8 @@ else {
   $data = array();
 
   foreach (Activity::Activities(0, 200) as $act) {
-    if (! in_array($act->place(), $data))
+
+    if (! in_array(array('place' => $act->place()), $data))
       $data[] = array(
         'place' => $act->place()
       );
