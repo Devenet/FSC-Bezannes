@@ -80,7 +80,7 @@ use lib\content\Display;
       <?php else: ?>
         <p>Vous avez choisi d’être non-adhérent.
         <br />Vous ne pouvez donc pas vous préinscrire à des activités.</p>
-        <p>Pour devenir adhérent, il suffit de modifier votre préinscription : cliquez sur le bouton &laquo; Éditer &raquo; situé plus haut.</p>
+        <p>Pour devenir adhérent, il suffit de modifier votre préinscription : cliquez sur le bouton &laquo; Modifier &raquo; plus haut.</p>
     <?php endif; ?>
     </div>
   </div>
