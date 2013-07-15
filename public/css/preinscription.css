@@ -18,6 +18,11 @@ h1 {
   cursor: pointer;
 }
 
+img.gravatar {
+  margin-right: 5px;
+  opacity: 0.8;
+}
+
 .page-home .hero-unit {
 	padding: 10px 20px;
 	line-height: 75px;
@@ -28,6 +33,12 @@ h1 {
 	font-size: 40px;
 	margin: 0;
 	line-height: 75px;
+}
+
+@media (min-width: 980px) {
+  .container {
+    max-width: 940px;
+  }
 }
 
 @media (max-width: 979px) {
