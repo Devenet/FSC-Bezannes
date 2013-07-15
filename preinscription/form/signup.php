@@ -117,7 +117,7 @@ $(document).ready(function(){
     if (length >= 7) {
       $("#parent-password").addClass("success");
       $("#icon-password").removeClass().addClass("icon-ok");
-      $("#parent-password span.help-block").text("Super ! N’hésitez pas à mettre des caractères spéciaux ;)");
+      $("#parent-password span.help-block").text("Bien ! N’hésitez pas à mettre des caractères spéciaux ;)");
     }
     else {
       $("#parent-password").removeClass("success");
