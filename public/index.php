@@ -63,6 +63,7 @@ require_once $controller;
     <!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
     <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc.css" media="screen" />
     <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.min.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc.ie.css" />v<![endif]-->
   </head>
 
 	<body class="page-<?php echo strtolower($_GET['page']); ?>">

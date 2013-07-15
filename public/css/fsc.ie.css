@@ -1,0 +1,11 @@
+/* public */
+
+.page-activites .all img {
+  background: #333;
+}
+
+/* gestion */
+
+textarea#description {
+  clear: both;
+}
