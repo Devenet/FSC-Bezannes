@@ -8,7 +8,7 @@
   </div>
   <div class="span4">
     <form class="form-search" style="text-align: center;">
-      <p>Trouver une activité</p>
+      <p>Accès rapide</p>
       <input type="text" class="search-activities" placeholder="Bibliothèque"/>
     </form>
   </div>

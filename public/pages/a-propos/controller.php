@@ -36,4 +36,12 @@ if (isset($_GET['rel'])) {
   }
 }
 
+$_SCRIPT[] = '
+  <script>
+    $(function(){
+      alert("Ces pages sont vouées à disparaître ! \n(remplacées par celles fournies par JCL) \n\n voir la rubrique « En savoir plus »");
+    });
+  </script>
+';
+
 ?>
