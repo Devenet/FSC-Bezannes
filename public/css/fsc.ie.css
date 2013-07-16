@@ -1,11 +1,7 @@
-/* public */
+/*
+ * IE, you bastard!
+ */
 
-.page-activites .all img {
+.page-activites .all h4 {
   background: #333;
-}
-
-/* gestion */
-
-textarea#description {
-  clear: both;
 }
