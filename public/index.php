@@ -14,13 +14,12 @@ require '../config/config.php';
 // Menu navigation
 $mainMenu = new Menu();
   $mainMenu->addLink('Accueil', _FSC_.'/', 'home');
-  //$mainMenu->addLink('À propos', _FSC_.'/a-propos', 'info-sign');
+  $mainMenu->addLink('<!--À propos-->', _FSC_.'/a-propos', 'ban-circle');
+  $mainMenu->addLink('En savoir plus', _FSC_.'/en-savoir-plus', 'info-sign');
   $mainMenu->addLink('Activités', _FSC_.'/activites', 'globe');
   //$mainMenu->addLink('Actualités', _FSC_.'/actualites', 'star');
   //$mainMenu->addLink('Agenda', _FSC_.'/agenda', 'calendar');
   //$mainMenu->addLink('Contact', _FSC_.'/contact', 'envelope');
-  $mainMenu->addLink('Link', '#lorem', 'question-sign');
-  $mainMenu->addLink('Link', '#lorem', 'question-sign');
 // Menu secondaire droite
 $rightMenu = new Menu();
   $rightMenu->addLink('Préinscriptions', _PREINSCRIPTION_, 'hand-right', false);
@@ -138,7 +137,7 @@ require_once $controller;
     <script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
     <?php
       foreach ($_SCRIPT as $script) {
-        echo $script;
+        echo $script, PHP_EOL;
       }
       echo (_ANALYTICS_FSC_ ? "
       <script>
