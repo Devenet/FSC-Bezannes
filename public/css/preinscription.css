@@ -35,16 +35,17 @@ img.gravatar {
 	line-height: 75px;
 }
 
-@media (min-width: 980px) {
-  .container {
-    max-width: 940px;
-  }
+.page-home .lead span {
+	display: block;
 }
 
 @media (max-width: 979px) {
 	.page-home .hero-unit h1 {
 		line-height: 40px;
 		font-size: 35px;
+	}
+	.page-home .lead span {
+		display: inline !important;
 	}
 }
 

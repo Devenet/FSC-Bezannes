@@ -9,7 +9,7 @@
 
   <div class="container center links">
     <div class="row">
-      <div class="span8 offset2 lead">Créez votre compte pour ajouter de nouvelles personnes, et préinscrivez-les à des activités !</div>
+      <div class="span8 offset2 lead">Créez votre compte pour ajouter de nouvelles personnes, <span></span> et préinscrivez-les à des activités !</div>
     </div>
     <div class="row espace-top">
       <div class="span3 offset3">
