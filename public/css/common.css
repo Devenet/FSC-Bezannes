@@ -34,7 +34,8 @@ h3 {
   color: #E45238;
 }
 
-.center {
+.center,
+td.center {
   text-align: center;
 }
 
@@ -58,6 +59,11 @@ h3 {
 
 a.normal {
   text-decoration: none;
+}
+
+img.gravatar {
+  margin-right: 5px;
+  opacity: 0.8;
 }
 
 /* typeahead */

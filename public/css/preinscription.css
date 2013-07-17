@@ -18,11 +18,6 @@ h1 {
   cursor: pointer;
 }
 
-img.gravatar {
-  margin-right: 5px;
-  opacity: 0.8;
-}
-
 .page-home .hero-unit {
 	padding: 10px 20px;
 	line-height: 75px;
