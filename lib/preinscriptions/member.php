@@ -110,7 +110,7 @@ class Member {
     return $this->date_birthday;
   }
   public function setDateBirthday($year, $month, $day) {
-    if ($year != null && $month != null && $day != null && $year >= 1920 && $year <= date('Y')-1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
+    if ($year != null && $month != null && $day != null && $year >= date('Y')-100 && $year <= date('Y')-1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
       if ($month == 2) {
         // bissextile (et 29 days max) ou 28 days max
         if ((date("L", mktime(0, 0, 0, 1, 1, $year)) == 1 && $day <= 29) || $day <= 28) {
