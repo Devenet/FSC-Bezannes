@@ -7,15 +7,15 @@
 
 <div class="clearfix">&nbsp;</div>
 
-<table class="table table-striped espace-top">
+<table class="table table-striped table-go espace-top">
   <thead>
     <tr class="small">
-      <th><a href="./?page=members&amp;sort=id-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'id-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> #</th>
-      <th><a href="./?page=members&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Nom</th>
+      <th><a href="./?page=members&amp;sort=id-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'id-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['id']->icon(); ?></a> #</th>
+      <th><a href="./?page=members&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['name']->icon(); ?></a> Nom</th>
       <th>Prénom</th>
-      <th style="width:110px; text-align:center;"><a href="./?page=members&amp;sort=adherent-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adherent-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Adhérent</th>
-      <th style="width:110px; text-align:center;"><a href="./?page=members&amp;sort=bezannais-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'bezannais-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Bezannais</th>
-      <th style="width:110px; text-align:center;"><a href="./?page=members&amp;sort=adult-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adult-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Catégorie</th>
+      <th style="width:110px; text-align:center;"><a href="./?page=members&amp;sort=adherent-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adherent-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['adherent']->icon(); ?></a> Adhérent</th>
+      <th style="width:110px; text-align:center;"><a href="./?page=members&amp;sort=bezannais-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'bezannais-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['bezannais']->icon(); ?></a> Bezannais</th>
+      <th style="width:110px; text-align:center;"><a href="./?page=members&amp;sort=adult-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'adult-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['adult']->icon(); ?></a> Catégorie</th>
       <th></th>
     </tr>
   </thead>
@@ -23,12 +23,12 @@
     <?php foreach ($members as $m): ?>
     <tr>
       <td<?php echo $m->adherent() == 0 ? ' class="muted"' : null; ?>><?php echo $m->id(); ?></td>
-      <td><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->last_name(); ?></a></td>
-      <td><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->first_name(); ?></a></td>
+      <td class="go"><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->last_name(); ?></a></td>
+      <td class="go"><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->first_name(); ?></a></td>
       <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->adherent() ? 'ok' : ''); ?>"></i></td>
       <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->bezannais() ? 'ok' : ''); ?>"></i></td>
       <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : 'A'); ?></td>
-      <td style="width: 80px;">
+      <!--<td style="width: 80px;">
         <div class="btn-group">
           <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="./?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-edit"></i> 
           <span class="caret"></span>
@@ -40,6 +40,13 @@
             <li><a href="#confirmBox<?php echo $m->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
           </ul>
         </div>
+      </td>-->
+      <td style="padding-left:0; padding-right:0;" class="center">
+        <div class="btn-group">
+          <a href="./?page=member&amp;id=<?php echo $m->id(); ?>" class="btn btn-small" title="Voir"><i class="icon-eye-open"></i></a>
+          <a href="./?page=edit-member&amp;id=<?php echo $m->id(); ?>" class="btn btn-small" title="Modifier"><i class="icon-pencil"></i></a>
+        </div>
+          <a href="#confirmBox<?php echo $m->id(); ?>" role="button" data-toggle="modal" class="btn btn-small" title="Supprimer"><i class="icon-trash"></i></a>
       </td>
     </tr>
     <?php endforeach; ?>

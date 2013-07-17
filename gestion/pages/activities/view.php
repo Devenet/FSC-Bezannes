@@ -7,13 +7,13 @@
 
 <div class="clearfix">&nbsp;</div>
 
-<table class="table table-striped espace-top">
+<table class="table table-striped table-go espace-top">
   <thead>
     <tr>
       <th>#</th>
-      <th><a href="./?page=activities&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Activité</th>
-      <th><a href="./?page=activities&amp;sort=active-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'active-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Activée</th>
-      <th><a href="./?page=activities&amp;sort=price-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'price-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Tarif</th>
+      <th><a href="./?page=activities&amp;sort=name-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'name-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['name']->icon(); ?></a> Activité </th>
+      <th><a href="./?page=activities&amp;sort=active-<?php echo isset($_GET['sort']) && $_GET['sort'] ==  'active-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['active']->icon(); ?></a> Activée</th>
+      <th><a href="./?page=activities&amp;sort=price-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'price-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['price']->icon(); ?></a> Tarif</th>
       <th>Tarif jeune</th>
       <th> </th>
     </tr>
@@ -22,11 +22,11 @@
     <?php foreach ($activities as $act): ?>
     <tr <?php echo $act->active() == 0 ? 'class="muted"' : null; ?>>
       <td><?php echo $act->id(); ?></td>
-      <td><a href="./?page=activity&amp;id=<?php echo $act->id(); ?>"><?php echo $act->name(); ?></a></td>
+      <td class="go"><a href="./?page=activity&amp;id=<?php echo $act->id(); ?>"><?php echo $act->name(); ?></a></td>
       <td><?php echo ($act->active() == 1) ? '<i class="icon-ok"></i>' : '' ; ?></td>
       <td><?php echo $act->price(); ?> €</td>
       <td><?php echo ($act->price_young() == -1) ? '&ndash;' : $act->price_young() .' €'; ?></td>
-      <td style="width: 80px;">
+      <!--<td style="width: 80px;">
         <div class="btn-group">
           <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-edit"></i> 
           <span class="caret"></span>
@@ -38,6 +38,13 @@
             <li><a href="#confirmBox<?php echo $act->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
           </ul>
         </div>
+      </td>-->
+      <td style="padding-right:0; padding-left:0;" class="center">
+        <div class="btn-group">
+          <a href="./?page=activity&amp;id=<?php echo $act->id(); ?>" class="btn btn-small" title="Voir"><i class="icon-eye-open"></i></a>
+          <a href="./?page=edit-activity&amp;id=<?php echo $act->id(); ?>" class="btn btn-small" title="Modifier"><i class="icon-pencil"></i></a>
+        </div>
+          <a href="#confirmBox<?php echo $act->id(); ?>" role="button" data-toggle="modal" class="btn btn-small" title="Supprimer"><i class="icon-trash"></i></a>
       </td>
     </tr>
     <?php endforeach; ?>
@@ -65,3 +72,4 @@
   </div>
 </div>
 <?php endforeach; ?>
+

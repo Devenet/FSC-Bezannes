@@ -3,6 +3,7 @@
 use lib\members\Member;
 use lib\content\Page;
 use lib\content\Pagination;
+use lib\content\Sort;
 
 $pageInfos = array(
   'name' => 'Membres',
@@ -25,6 +26,14 @@ if (isset($_GET['sort'])) {
   $sens = isset($data[1]) && $data[1] == 'desc' ? false : true;
 }
 
+$sort = array(
+  'id' => new Sort(),
+  'name' => new Sort(),
+  'adherent' => new Sort(),
+  'bezannais' => new Sort(),
+  'adult' => new Sort()
+);
+
 switch($type) {
   case 'id':
     $members = Member::MembersById(($browse-1) * Pagination::step(), $sens);
@@ -43,12 +52,13 @@ switch($type) {
     $url = '&amp;sort=bezannais-' . ($sens ? 'asc' : 'desc');
     break;
   case 'adult':
-    $members = Member::MembersByAdult(($browse-1) * Pagination::step(), $sens);
+    $members = Member::MembersByAdult(($browse-1) * Pagination::step(), !$sens);
     $url = '&amp;sort=adult-' . ($sens ? 'asc' : 'desc');
     break;
   default:
     $members = Member::Members(($browse-1) * Pagination::step());
 }
+if ($type != null) $sort[$type]->sens($sens ? 'asc' : 'desc');
 
 // pagination
 $display_pagination = '<li '. ($browse == 1 ? ' class="disabled"><span>' : '><a href="./?page=members'. $url .'">') .'<i class="icon-double-angle-left"></i>'. ($browse == 1 ? '</span>' : '</a>') .'</li>' ;
