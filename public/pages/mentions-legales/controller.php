@@ -6,7 +6,7 @@ $pageInfos = array(
   'name' => 'Mentions légales',
   'url' => _FSC_.'/mentions-legales'
 );
-$page = new Page($pageInfos['name'], $pageInfos['url'], array());
+$page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 
 ?>
