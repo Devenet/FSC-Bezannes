@@ -98,6 +98,12 @@ class UserInscription extends User {
     $data = $query->fetch();
     return $data['id'];
   }
+  public static function getLogin($id) {
+    $query = SQL::sql()->prepare('SELECT login FROM fsc_users_inscription WHERE id = ?');
+    $query->execute(array($id+0));
+    $data = $query->fetch();
+    return $data['login'];
+  }
   
   public static function isAuthorizedUser($login, $pwd) {
     $query = SQL::sql()->query('SELECT login, password FROM fsc_users_inscription');
