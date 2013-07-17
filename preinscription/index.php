@@ -51,7 +51,8 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.min.css" />
-		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/select2.css" /><?php } ?> 
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
+		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" /><?php } ?> 
 	</head>
 
 	<body>
@@ -68,7 +69,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 					<ul class="nav pull-right">
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _PREINSCRIPTION_; ?>/account">
-								<img src="<?php echo $_SESSION['user']->gravatar(20, 'mm'); ?>" alt="gravatar" class="gravatar" />
+								<img src="<?php echo $_SESSION['user']->gravatar(20, 'mm'); ?>" alt="\o/" class="gravatar" />
 								<?php echo $_SESSION['user']->login(); ?>
 							<span class="caret"></span></a>
 							<ul class="dropdown-menu">
@@ -120,7 +121,8 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<!-- message -->
 		<?php 
 			if (isset($_SESSION['msg'])) {
-				echo '<div class="container"><div class="row"><div class="span8 offset2">', $_SESSION['msg'], '</div></div></div>';
+				//echo '<div class="container"><div class="row"><div class="span8 offset2">', $_SESSION['msg'], '</div></div></div>';
+				echo '<div class="notifications top-right">', $_SESSION['msg'], '</div>';
 				unset($_SESSION['msg']);
 			}
 		?>
@@ -151,10 +153,11 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
 		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
+		<script src="<?php echo _STATIC_; ?>/js/bootstrap-select2.js"></script>
 		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
 		<?php
       foreach ($_SCRIPT as $script) {
-        echo $script;
+        echo $script, PHP_EOL;
       }
 			echo (_ANALYTICS_PREINSCRIPTION_ ? "
 			<script>

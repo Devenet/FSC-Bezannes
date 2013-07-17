@@ -61,6 +61,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.min.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-wysihtml5.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
 		<style>
 			header {
 				margin: 20px 0 0 0;
@@ -88,7 +89,9 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 				<!-- settings -->
 				<ul class="nav pull-right">
 					<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="./?page=users"><?php echo $_SESSION['user']->name(); ?>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="./?page=users">
+							<!--<img src="<?php echo $_SESSION['user']->gravatar(20, 'mm'); ?>" alt="\o/" class="gravatar" />-->
+							<?php echo $_SESSION['user']->name(); ?>
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="./?page=users"><i class="icon-user"></i> Utilisateurs</a></li>
@@ -116,7 +119,8 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 			<!-- messages -->
 			<?php
 				if (isset($_SESSION['msg'])) {
-					echo '<div class="row"><div class="span8 offset2">', $_SESSION['msg'], '</div></div>';
+					//echo '<div class="row"><div class="span8 offset2">', $_SESSION['msg'], '</div></div>';
+					echo '<div class="notifications top-right">', $_SESSION['msg'], '</div>';
 					unset($_SESSION['msg']);
 				}
 			?>
@@ -145,10 +149,11 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
 		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
+		<script src="<?php echo _STATIC_; ?>/js/bootstrap-notify.js"></script>
 		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
 		<?php
       foreach ($_SCRIPT as $script) {
-        echo $script;
+        echo $script, PHP_EOL;
       }
 			echo (_ANALYTICS_GESTION_ ? "
 				<script>
@@ -161,7 +166,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 					})();
-				</script>": null);
+				</script>": null), PHP_EOL;
 		?>
 	</body>
 </html>
