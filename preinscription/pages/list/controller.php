@@ -48,7 +48,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       }
       $display_members .= '
         <tr>
-          <td style="text-align:center;">'. Display::HtmlGender($m->gender()) .'</td>
+          <td style="text-align:right;">'. Display::HtmlGender($m->gender()) .'</td>
           <td><a href="'. _PREINSCRIPTION_ .'/preinscription/'. $m->id() .'" style="text-decoration:none; color:#333;">'. $m->name() .'</a><a href="'. _PREINSCRIPTION_ .'/preinscription/'. $m->id() .'" style="text-decoration:none; padding-left:8px;"><i class="icon-share-alt"></i></a></td>
           <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
           <td style="width:120px; text-align:center;">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>

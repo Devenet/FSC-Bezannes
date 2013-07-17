@@ -45,7 +45,7 @@ if (isset($_POST) and $_POST != null) {
   try {
     
     if(!$u->acceptLogin(stripslashes($_POST['login'])))
-      throw new \Exception('Mince, cette adresse e-mail est déjà utilisée !<br />Voulez-vous <a href="./login">vous connecter</a> ou avez-vous <a href="/recovery">oublié votre mot de passe</a> ?');
+      throw new \Exception('Cette adresse e-mail est déjà utilisée !<br />Voulez-vous <a href="./login">vous connecter</a> ou avez-vous <a href="/recovery">oublié votre mot de passe</a> ?');
     if (!$u->setLogin(stripslashes($_POST['login'])))
       throw new \Exception('Merci d’indiquer un courriel valide !');
     
@@ -81,7 +81,7 @@ Voici un petit rappel des informations utiles :
     
   }
   catch (\Exception $e) {
-    $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Oups... !');
+    $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Oups... !', null);
   }
 }
 
