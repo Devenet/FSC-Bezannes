@@ -4,6 +4,7 @@ use lib\users\UserInscription;
 use lib\preinscriptions\Preinscription;
 use lib\content\Page;
 use lib\content\Pagination;
+use lib\content\Sort;
 
 $pageInfos = array(
   'name' => 'Préinscriptions',
@@ -12,7 +13,6 @@ $pageInfos = array(
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 // set actual page
-/*
 $pages = ceil(Preinscription::countAccounts() / Pagination::step());
 $browse = 1;
 if (isset($_GET['browse']) && $_GET['browse'] != null)
@@ -27,6 +27,12 @@ if (isset($_GET['sort'])) {
   $sens = isset($data[1]) && $data[1] == 'desc' ? false : true;
 }
 
+$sort = array(
+  'id' => new Sort(),
+  'login' => new Sort()
+);
+
+/*
 switch($type) {
   case 'id':
     $preinscriptions = Preinscription::PreinscriptionsById(($browse-1) * Pagination::step(), $sens);
@@ -39,6 +45,7 @@ switch($type) {
   default:
     $preinscriptions = Preinscription::Preinscriptions(($browse-1) * Pagination::step());
 }
+if ($type != null) $sort[$type]->sens($sens ? 'asc' : 'desc');
 */
 
 $preinscriptions = Preinscription::Preinscriptions();

@@ -5,11 +5,11 @@
 
 <div class="clearfix">&nbsp;</div>
 
-<table class="table table-striped espace-top">
+<table class="table table-striped table-go espace-top">
   <thead>
     <tr class="small">
-      <th><a href="./?page=preinscriptions&amp;sort=id-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'id-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> #</th>
-      <th><a href="./?page=preinscriptions&amp;sort=login-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'login-asc' ? 'desc' : 'asc'; ?>"><i class="icon-sort"></i></a> Compte</th>
+      <th><a href="./?page=preinscriptions&amp;sort=id-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'id-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['id']->icon(); ?></a> #</th>
+      <th><a href="./?page=preinscriptions&amp;sort=login-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'login-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['login']->icon(); ?></a> Compte</th>
       <th>Préinscriptions</th>
       <th>Pré-adhérents</th>
       <th></th>
@@ -19,10 +19,10 @@
     <?php foreach ($preinscriptions as $p): ?>
     <tr>
       <td><?php echo $p->id(); ?></td>
-      <td><a href="./?page=preinscription&amp;id=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
+      <td class="go"><a href="./?page=preinscription&amp;id=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
       <td><span class="label"><?php echo $p->countPreinscriptions(); ?></span></td>
       <td><span class="label label-success"><?php echo $p->countAdherents(); ?></span></td>
-      <td style="width: 80px;"><a class="btn btn-small" href="./?page=preinscription&amp;id=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></td>
+      <td style="padding-left:0; padding-right:0;" class="center"><a class="btn btn-small" href="./?page=preinscription&amp;id=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
