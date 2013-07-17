@@ -104,7 +104,7 @@ if (isset($_POST) and $_POST != null) {
     
   }
   catch (\Exception $e) {
-    $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !');
+    $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !', false);
   }
   
 }
