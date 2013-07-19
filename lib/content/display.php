@@ -9,7 +9,7 @@ class Display {
   }
   
   static public function Email($email) {
-    return '<a href="mailto:'. $email .'" title="'. $email .'">'. $email .'</a>';
+    return '<a href="mailto:'. $email .'" title="'. $email .'" rel="external">'. $email .'</a>';
   }
   
   static public function FullGender($gender) {
