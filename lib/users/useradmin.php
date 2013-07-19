@@ -4,6 +4,7 @@ namespace lib\users;
 use lib\users\User;
 use lib\db\SQL;
 use lib\content\Pagination;
+use lib\laravel\Str;
 
 class UserAdmin extends User {
   
@@ -39,7 +40,7 @@ class UserAdmin extends User {
   }
   public function setName($string) {
     if ($string != null) {
-      $this->name = htmlspecialchars($string);
+      $this->name = Str::title(htmlspecialchars($string));
       return true;
     }
     return false;
@@ -65,11 +66,7 @@ class UserAdmin extends User {
         'privilege' => $this->privilege
         );
       $rep = $query->execute($prepare);
-      $query->closeCursor();
-      $query = SQL::sql()->prepare('SELECT id FROM fsc_users_admin WHERE login = ?');
-      $query->execute(array($this->login));
-      $data = $query->fetch();
-      $this->id = $data['id'];
+      $this->id = SQL::sql()->lastInsertId();
       $query->closeCursor();
       $this->created = true;
       return true;
