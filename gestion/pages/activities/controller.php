@@ -51,14 +51,16 @@ switch($type) {
 if ($type != null) $sort[$type]->sens($sens ? 'asc' : 'desc');
 
 // pagination
-$display_pagination = '<li '. ($browse == 1 ? ' class="disabled"><span>' : '><a href="/?page=activities'. $url .'">') .'<i class="icon-double-angle-left"></i>'. ($browse == 1 ? '</span>' : '</a>') .'</li>' ;
-for ($i = 1; $i <= $pages; $i++) {
-  $display_pagination .= '
-  <li '. ($i != $browse ?: ' class="active"') .'><a href="/?page=activities'. $url . ($i != 1 ? '&amp;browse='. $i : '') .'">'. $i .'</a></li>
-  ';
+$display_pagination = '';
+if ($pages > 0) {
+  $display_pagination = '<li '. ($browse == 1 ? ' class="disabled"><span>' : '><a href="/?page=activities'. $url .'">') .'<i class="icon-double-angle-left"></i>'. ($browse == 1 ? '</span>' : '</a>') .'</li>' ;
+  for ($i = 1; $i <= $pages; $i++) {
+    $display_pagination .= '
+    <li '. ($i != $browse ?: ' class="active"') .'><a href="/?page=activities'. $url . ($i != 1 ? '&amp;browse='. $i : '') .'">'. $i .'</a></li>
+    ';
+  }
+  $display_pagination .= '<li '. ($browse == $pages ? ' class="disabled"><span>' : '><a href="/?page=activities'. $url .'&browse='. $pages .'">') .'<i class="icon-double-angle-right"></i>'. ($browse == $pages ? '</span>' : '</a>') .'</li>' ;
 }
-$display_pagination .= '<li '. ($browse == $pages ? ' class="disabled"><span>' : '><a href="/?page=activities'. $url .'&browse='. $pages .'">') .'<i class="icon-double-angle-right"></i>'. ($browse == $pages ? '</span>' : '</a>') .'</li>' ;
-
 
 $_SCRIPT[] = '<script src="'. _FSC_ .'/js/hogan.js"></script>';
 $_SCRIPT[] = '<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';
