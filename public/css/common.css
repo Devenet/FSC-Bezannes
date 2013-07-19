@@ -33,9 +33,13 @@ h3 {
 .fsc-orange {
   color: #E45238;
 }
+a:hover .fsc-hover-white {
+  color: #fff;
+}
 
 .center,
-td.center {
+td.center,
+th.center {
   text-align: center;
 }
 
@@ -60,10 +64,19 @@ td.center {
 a.normal {
   text-decoration: none;
 }
+span.external-link,
+a.external-link {
+  font-size: 11px;
+}
 
-img.gravatar {
+.navbar img.gravatar {
+  margin-top: -4px;
   margin-right: 5px;
   opacity: 0.8;
+}
+
+.alert h4 {
+  margin-bottom: 5px;
 }
 
 /* typeahead */

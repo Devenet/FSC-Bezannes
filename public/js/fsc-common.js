@@ -15,7 +15,11 @@ $(function(){
 
   // table cell with link
   $('table.table-go td.go').click(function() {
-    document.location.href = $(this).children('a').attr('href');
+    var url = $(this).children('a').attr('href');
+      if ($(this).children('a').attr('rel') == 'external')
+        window.open(url);
+      else
+        document.location.href = url;
   });
   $('table.table-go td.go').css('cursor', 'pointer');
 
