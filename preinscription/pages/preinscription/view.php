@@ -65,7 +65,7 @@ use lib\content\Display;
 
     <hr />
 
-    <div class="row-fluid">
+    <div class="row-fluid espace-top">
       <?php if ($m->adherent()) : ?>
       <!-- activites -->
       <div class="tab-pane" id="tab-activities">

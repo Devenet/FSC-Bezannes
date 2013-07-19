@@ -28,7 +28,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
       $content = '
         <h2 class="form-signin-heading">Envoyé</h2>
         <p>Un email contenant un lien pour réinitialiser votre mot de passe a bien été envoyé à <code>'. $u->login() .'</code>.</p>
-        <p>Vérifier vos emails :)</p>
+        <p>Vérifier vos emails <i class="icon-smile"></i></p>
       ';
     }
     // s'il a déja fait une demande, il doit attendre pour en faire une autre
@@ -41,7 +41,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
   }
   // sinon c'est peut être un hack
   else {
-    $_SESSION['msg'] = new Message('Cet utilisateur est inconnu.', -1, 'Oups... !');
+    $_SESSION['msg'] = new Message('Cet utilisateur est inconnu.', -1, 'Oups... !', false);
     $_SESSION['to_ban'] = (isset($_SESSION['to_ban']) ? $_SESSION['to_ban']+1 : 1);
     header ('Location: '. _PREINSCRIPTION_ .'/recovery');
     exit();
@@ -68,7 +68,7 @@ elseif (isset($_GET['user']) && $_GET['user'] != null && isset($_GET['token']) &
         exit(); 
       }
       catch (\Exception $e) {
-        $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !');
+        $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Oups... !', false);
         header ('Location: '. _PREINSCRIPTION_ .'/?page=precovery&user='. urlencode(htmlspecialchars($_GET['user'])) .'&token='. htmlspecialchars($_GET['token']));
         exit(); 
       }
