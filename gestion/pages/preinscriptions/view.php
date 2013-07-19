@@ -1,3 +1,27 @@
+<?php
+
+use lib\content\Display;
+
+if ($required_view == 'details') {
+?>
+
+<div class="row">
+  <div class="span8">
+    <div class="page-header" style="overflow:hidden; padding-bottom:5px;">
+      <h2 style="margin-bottom:0;"><?php echo $u->login(); ?>
+      <div class="btn-group pull-right btn-small">
+        <a href="./?page=edit-member&amp;id=<?php echo $u->id(); ?>" class="btn btn-small" title="Modifier le membre"><i class="icon-pencil"></i></a>
+      </div>
+      </h2>
+    </div>
+  </div>
+</div>
+
+<?php
+} else {
+  // accounts list
+?>
+
 <form class="form-search pull-left">
   <input type="text" class="search-preinscriptions span4" placeholder="Accès rapide compte" autofocus />
 </form>
@@ -8,7 +32,7 @@
 <table class="table table-striped table-go espace-top">
   <thead>
     <tr class="small">
-      <th><a href="./?page=preinscriptions&amp;sort=id-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'id-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['id']->icon(); ?></a> #</th>
+      <th>#</th>
       <th><a href="./?page=preinscriptions&amp;sort=login-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'login-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['login']->icon(); ?></a> Compte</th>
       <th>Préinscriptions</th>
       <th>Pré-adhérents</th>
@@ -19,10 +43,10 @@
     <?php foreach ($preinscriptions as $p): ?>
     <tr>
       <td><?php echo $p->id(); ?></td>
-      <td class="go"><a href="./?page=preinscription&amp;id=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
+      <td class="go"><a href="./?page=preinscriptions&amp;detail=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
       <td><span class="label"><?php echo $p->countPreinscriptions(); ?></span></td>
       <td><span class="label label-success"><?php echo $p->countAdherents(); ?></span></td>
-      <td style="padding-left:0; padding-right:0;" class="center"><a class="btn btn-small" href="./?page=preinscription&amp;id=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></td>
+      <td style="padding-left:0; padding-right:0;" class="center"><a class="btn btn-small" href="./?page=preinscriptions&amp;detail=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></td>
     </tr>
     <?php endforeach; ?>
   </tbody>
@@ -49,3 +73,8 @@
   </div>
 </div>
 <?php endforeach; ?>
+
+
+<?php
+}
+?>
