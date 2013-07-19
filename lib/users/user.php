@@ -9,6 +9,10 @@ abstract class User {
   protected $login; // email = login
   protected $password;
   protected $created;
+
+  private $token = null;
+  private $token_expire = null;
+  const EXPIRATION = 180;
   
   public function id() {
     return $this->id;
@@ -44,6 +48,20 @@ abstract class User {
   
   public function gravatar($size = 50, $type = 'retro') {
     return '//gravatar.com/avatar/' . md5(strtolower(trim($this->login()))) . '?size=' . $size . '&amp;default=' . $type;
+  }
+
+  public function token() {
+    $this->token = md5(rand());
+    $this->token_expire = time() + self::EXPIRATION;
+    return $this->token;
+  }
+  public function acceptToken($token) {
+    if (time() <= $this->token_expire && $this->token == $token) {
+      $this->token = null;
+      $this->token_expire = null;
+      return true;
+    }
+    return false;
   }
 
   protected abstract function getLogins();
