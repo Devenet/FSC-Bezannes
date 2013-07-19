@@ -9,7 +9,7 @@ spl_autoload_extensions('.php');
 spl_autoload_register();
 //error_reporting (0);
 
-session_name('gestion');
+session_name('fsc_gestion');
 session_start();
 
 require '../config/config.php';
@@ -26,10 +26,6 @@ $mainMenu = new Menu();
 	$mainMenu->addLink('Activités', _GESTION_.'/?page=activities', 'globe');
 	$mainMenu->addLink('Membres', _GESTION_.'/?page=members', 'male');
 	$mainMenu->addLink('Préinscriptions', _GESTION_.'/?page=preinscriptions', 'hand-right');
-// Menu secondaire droite
-$rightMenu = new Menu();
-	$rightMenu->addLink('<span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, 'external-link', true, true, true);
-
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
@@ -84,21 +80,25 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
+				<a class="brand" href="<?php echo _FSC_; ?>" rel="external"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
 				<ul class="nav"><?php echo $mainMenu->display($page->url()); ?></ul>
-				<ul class="nav pull-right"><?php echo $rightMenu->display($page->url()); ?></ul>
 				<!-- settings -->
 				<ul class="nav pull-right">
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="./?page=users">
-							<!--<img src="<?php echo $_SESSION['user']->gravatar(20, 'mm'); ?>" alt="\o/" class="gravatar" />-->
+							<img src="<?php echo $_SESSION['user']->gravatar(20); ?>" alt="\o/" class="gravatar" />
 							<?php echo $_SESSION['user']->name(); ?>
 						<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="./?page=users"><i class="icon-user"></i> Utilisateurs</a></li>
+						<li><a href="./?page=account"><i class="icon-user"></i> Mon compte</a></li>
+						<li><a href="./?page=users"><i class="icon-group"></i> Utilisateurs</a></li>
 						<li class="divider"></li>
 						<li><a href="./?page=history"><i class="icon-table"></i> Historique</a></li>
 						<li><a href="./?page=settings"><i class="icon-cog"></i> Configuration</a></li>
 						<li><a href="mailto:nicolas+fsc@devenet.info" rel="external"><i class="icon-bullhorn"></i> Feedback</a></li>
+						<li class="divider"></li>
+						<li><a href="<?php echo _FSC_; ?>" rel="external"><i class="icon-home"></i> Accueil <span class="fsc-blue fsc-hover-white">F</span><span class="fsc-green fsc-hover-white">S</span><span class="fsc-orange fsc-hover-white">C</span> <span class="normal external-link"><i class="icon-external-link"></i></span></a></li>
+						<li><a href="<?php echo _PREINSCRIPTION_; ?>" rel="external"><i class="icon-hand-right"></i> Présincriptions <span class="normal external-link"><i class="icon-external-link"></i></span></a></li>
 						<li class="divider"></li>
 						<li><a href="./login.php?logout"><i class="icon-signout"></i> Déconnexion</a></li>
 					</ul>
@@ -110,7 +110,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<!-- /menu -->
 		
 		<header class="container">
-			<?php echo $page->breadcrumb('Dashboard', _GESTION_); ?>
+			<?php echo $page->breadcrumb('Gestion', _GESTION_.'?'); ?>
 		</header>
 		
 		<!-- container -->
@@ -149,7 +149,6 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
 		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
-		<script src="<?php echo _STATIC_; ?>/js/bootstrap-notify.js"></script>
 		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
 		<?php
       foreach ($_SCRIPT as $script) {
