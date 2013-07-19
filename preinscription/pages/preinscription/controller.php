@@ -54,7 +54,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     
     $activities_participant = '';
     if ($count_activites >= 1) {
-      $activities_participant = '<table class="table table-striped"><thead>
+      $activities_participant = '<table class="table table-striped table-go"><thead>
         <tr>
           <th>Activité</th>
           <th>Horaire</th>
@@ -65,13 +65,13 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $a = new Activity($p->activity());
         if (!$a->aggregate())
           $s = new Schedule($p->schedule());
-        $horaire = isset($s) ? Display::Day($s->day()).' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != null ? '&nbsp; &nbsp;('.$s->more().')' : '') : '<em>Pratique libre</em>';
+        $horaire = isset($s) && $a->aggregate() == 0 ? Display::Day($s->day()).' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != null ? '&nbsp; &nbsp;('.$s->more().')' : '') : '<em>Pratique libre</em>';
         $horaire = isset($s) && $s->description() != null ? $s->description() : $horaire;
         $activities_participant .= '
           <tr>
-            <td><a href="'. _FSC_ .'/activite/'. $a->url() .'" rel="external">'. $a->name() .'</a> <i class="icon-external-link" style="font-size:12px;"></i></td>
+            <td class="go"><a href="'. _FSC_ .'/activite/'. $a->url() .'" rel="external">'. $a->name() .'</a> <span class="external-link"><i class="icon-external-link"></i></span></td>
             <td>'. $horaire .'</td>
-            <td><a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" style="text-decoration:none;"><i class="icon-trash"></i></a></td>
+            <td><a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
           </tr>
         ';
       }
