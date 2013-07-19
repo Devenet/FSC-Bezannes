@@ -358,7 +358,7 @@ class Member {
   public function create() {
     if (!$this->created) {
       $fake_id = time()-rand(1000, 100000);      
-      $query = SQL::sql()->prepare('INSERT INTO fsc_members_inscription(gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_creation, id_user_inscription, fake_id) VALUES(:gender, :last_name, :first_name, :date_birthday, :address_number, :address_street, :address_further, :address_zip_code, :address_town, :phone, :email, :mobile, :bezannais, :minor, :responsible, :address_different, :adherent, :date_creation, :id_user_inscription, :fake_id)');
+      $query = SQL::sql()->prepare('INSERT INTO fsc_members_inscription(gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_creation, id_user_inscription) VALUES(:gender, :last_name, :first_name, :date_birthday, :address_number, :address_street, :address_further, :address_zip_code, :address_town, :phone, :email, :mobile, :bezannais, :minor, :responsible, :address_different, :adherent, :date_creation, :id_user_inscription)');
       $prepare = array(
         'gender' => $this->gender,
         'last_name' => addslashes($this->last_name),
@@ -378,17 +378,11 @@ class Member {
         'address_different' => $this->address_different,
         'adherent' => $this->adherent,
         'date_creation' => date('Y').':'.date('m').':'.date('d'),
-        'id_user_inscription' => $this->id_user_inscription,
-        'fake_id' => $fake_id
+        'id_user_inscription' => $this->id_user_inscription
         );
       $query->execute($prepare);
+      $this->id = SQL::sql()->lastInsertId();
       $query->closeCursor();
-      $query = SQL::sql()->prepare('SELECT id FROM fsc_members_inscription WHERE fake_id = ?');
-      $query->execute(array($fake_id));
-      $data = $query->fetch();
-      $this->id = $data['id'];
-      $query->closeCursor();
-      $this->update_sql('fake_id', '');
       $this->created = true;
     }
   }

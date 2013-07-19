@@ -384,7 +384,7 @@ class Member {
   public function create() {
     if (!$this->created) {
       $fake_id = time()-rand(1000, 100000);      
-      $query = SQL::sql()->prepare('INSERT INTO fsc_members(gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_registration, date_creation, fake_id) VALUES(:gender, :last_name, :first_name, :date_birthday, :address_number, :address_street, :address_further, :address_zip_code, :address_town, :phone, :email, :mobile, :bezannais, :minor, :responsible, :address_different, :adherent, :date_registration, :date_creation, :fake_id)');
+      $query = SQL::sql()->prepare('INSERT INTO fsc_members(gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_registration, date_creation) VALUES(:gender, :last_name, :first_name, :date_birthday, :address_number, :address_street, :address_further, :address_zip_code, :address_town, :phone, :email, :mobile, :bezannais, :minor, :responsible, :address_different, :adherent, :date_registration, :date_creation)');
       $prepare = array(
         'gender' => $this->gender,
         'last_name' => addslashes($this->last_name),
@@ -404,17 +404,11 @@ class Member {
         'address_different' => $this->address_different,
         'adherent' => $this->adherent,
         'date_registration' => $this->date_registration,
-        'date_creation' => date('Y').':'.date('m').':'.date('d'),
-        'fake_id' => $fake_id
+        'date_creation' => date('Y').':'.date('m').':'.date('d')
         );
       $query->execute($prepare);
+      $this->id = SQL::sql()->lastInsertId();
       $query->closeCursor();
-      $query = SQL::sql()->prepare('SELECT id FROM fsc_members WHERE fake_id = ?');
-      $query->execute(array($fake_id));
-      $data = $query->fetch();
-      $this->id = $data['id'];
-      $query->closeCursor();
-      $this->update_sql('fake_id', '');
       $this->created = true;
     }
   }

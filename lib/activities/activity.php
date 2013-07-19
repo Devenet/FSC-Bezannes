@@ -322,11 +322,7 @@ class Activity {
         'price_young' => ($this->price_young == null) ? -1 : $this->price_young
         );
       $rep = $query->execute($prepare);
-      $query->closeCursor();
-      $query = SQL::sql()->prepare('SELECT id FROM fsc_activities WHERE url = ?');
-      $query->execute(array($this->url));
-      $data = $query->fetch();
-      $this->id = $data['id'];
+      $this->id = SQL::sql()->lastInsertId();
       $query->closeCursor();
       if ($this->image) {
         $src = imagecreatefromjpeg($this->image_temp);
