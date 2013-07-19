@@ -14,7 +14,7 @@ spl_autoload_extensions('.php');
 spl_autoload_register();
 //error_reporting (0);
 
-session_name('gestion');
+session_name('fsc_gestion');
 session_start();
 
 include '../config/config.php';
