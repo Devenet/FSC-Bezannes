@@ -8,10 +8,10 @@ use lib\content\Display;
 use lib\preinscriptions\Preinscription;
 
 $pageInfos = array(
-  'name' => 'Administration',
+  'name' => 'Dashboard',
   'url' => _GESTION_
 );
-$page = new Page($pageInfos['name'], $pageInfos['url'], array());
+$page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 $activities = Activity::countActivities();
 $plural_activities = ($activities > 1 ? 's' : null);
