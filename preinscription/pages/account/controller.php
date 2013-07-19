@@ -40,14 +40,14 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   }
 
   $count_members = Member::countMembers($u->id());
-  $display_count_members = 'Il y a actuellement <span class="label">'. $count_members . '</span> personne'. Display::Plural($count_members) .' préinscrite'. Display::Plural($count_members) .' sur votre compte.';
+  $display_count_members = 'Il y a actuellement <span class="label label-info">'. $count_members . '</span> personne'. Display::Plural($count_members) .' préinscrite'. Display::Plural($count_members) .' sur votre compte.';
   
   $lastConnection = $u->lastConnection();
   $security = '';
   if ($lastConnection['ip'] != '0.0.0.0')
-    $security = '<p>Votre dernière connexion a eu lieu :</p><ul><li>le '. Display::FullTimestamp($lastConnection['date']) .'</li><li>depuis lʼadresse <abbr title="Internet Protocol">IP</abbr> '. $lastConnection['ip'] .'</li></ul>';
+    $security = '<p>Votre dernière connexion a eu lieu :</p><ul class="unstyled"><li><i class="icon-calendar"></i> le '. Display::FullTimestamp($lastConnection['date']) .'</li><li><i class="icon-laptop"></i> depuis lʼadresse <abbr title="Internet Protocol">IP</abbr> '. $lastConnection['ip'] .'</li></ul>';
   else
-    $security = '<div class="alert">Cʼest votre première connexion.</div>';
+    $security = 'Il s’agit de votre première connexion <i class="icon-smile"></i> ';
   
 }
 else {
