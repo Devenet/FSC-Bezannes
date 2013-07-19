@@ -31,7 +31,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
     }
   }
   // changement activé <-> pas activé
-  if (isset($_GET['action']) && $_GET['action'] == 'status') {
+  if (isset($_GET['action']) && $_GET['action'] == 'change-status') {
     if ($act->active()) {
       $act->changeActive();
       $_SESSION['msg'] = new Message('L’activité a bien été désactivée !', 1, 'Changement effectué');
@@ -164,7 +164,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
           <td>'. $r->id() .'</td>
           <td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
           <td>'. ucfirst(Display::Referent($r->type(), $m->gender())) .'</td>
-          <td style="text-align:center;">'. ($r->display_phone() ? '<i class="icon-phone"></i>' : '') .'</td>
+          <td style="text-align:center;">'. ($r->display_phone() ? $m->phone() : '<small>non affiché</small>') .'</td>
           <td><a href="#confirmBoxR'. $r->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
         </tr>
       ';

@@ -83,8 +83,12 @@
     </div>
     
     <div class="alert <?php echo ($act->active() == 1 ? 'alert-success' : ''); ?>">
-      Activité <strong><?php echo ($act->active() == 1) ? 'activée</strong> <a href="'. _FSC_ .'/activite/'. $act->url() .'" rel="external" style="text-decoration:none; padding-left:4px;"><i class="icon-external-link"></i></a>' : 'désactivée</strong>' ; ?> 
-      <a href="?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=status" class="pull-right" style="margin-right:-15px; color:#aaa;"><i class="icon-refresh"></i></a>
+      <?php echo ($act->active() == 1) ? '<a href="'. _FSC_ .'/activite/'. $act->url() .'" rel="external" class="normal text-success">' : ''; ?>
+      Activité <strong><?php echo ($act->active() == 1) ? 'activée' : 'désactivée' ; ?></strong>
+      <?php echo ($act->active() == 1) ? ' <span class="external-link"><i class="icon-external-link"></i></a>' : ''; ?>
+      <a href="?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=change-status" class="pull-right normal" id="change-status" style="margin-right:0px;" data-toggle="tooltip" 
+        title="<?php echo ($act->active() == 1) ? 'En désactivant l’activité, tous les participants seront supprimés !' : 'Vous pouvez l’activer si elle possède au moins un horaire et un référent.'; ?>" 
+        data-placement="left"><i class="icon-retweet" style="margin-left:10px;"></i></a>
     </div>    
     
     <div class="alert alert-info">
@@ -112,7 +116,8 @@
         if ($act->hasImage())
           echo '<img src="', _UPLOADS_, '/activities/', $act->id(), '.jpg" alt="', $act->name(), '" class="img-polaroid" />';
         else
-          echo '<p><a href="./?page=edit-activity&amp;id=', $act->id(), '#image"><i class="icon-picture"></i></a> Aucune image associée</p>';
+          echo '<p><a href="./?page=edit-activity&amp;id=', $act->id(), '#image" class="normal img-polaroid" data-toggle="tooltip" 
+                title="L’image sert de miniature pour l’activité." data-placement="bottom"><i class="icon-picture"></i> aucune image associée</a></p>';
       ?>
     </div>
     
@@ -137,4 +142,8 @@
 
 <?php
 $_SCRIPT[] = '<script src="'. _FSC_ .'/js/fsc-active-tab.js"></script>';
+$_SCRIPT[] = '<script>$(function(){ 
+  $("a#change-status").tooltip();
+  $("a.img-polaroid").tooltip();
+});</script>'
 ?>
