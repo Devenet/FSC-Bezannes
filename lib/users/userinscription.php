@@ -3,6 +3,7 @@
 namespace lib\users;
 use lib\users\User;
 use lib\db\SQL;
+use lib\preinscriptions\Member;
 
 class UserInscription extends User {
   
@@ -58,6 +59,20 @@ class UserInscription extends User {
     }
   }
   
+  public function delete($bool = false) {
+    if ($bool && $this->created) {
+      // delete each presinscription and participation
+      foreach(Member::Members($this->id) as $m)
+        $m->delete(true);
+      // delete user account
+      $query = SQL::sql()->prepare('DELETE FROM fsc_users_inscription WHERE id = :id');
+      $query->execute(array('id' => $this->id));
+      $query->closeCursor();
+      return true;
+    }
+    return false;
+  }
+
   public function historize($ip) {
     if ($this->created) {
       $query = SQL::sql()->prepare('UPDATE fsc_users_inscription SET ip = :ip, date = NOW() WHERE id = :id');
@@ -106,6 +121,7 @@ class UserInscription extends User {
   }
   
   public static function isAuthorizedUser($login, $pwd) {
+    /*
     $query = SQL::sql()->query('SELECT login, password FROM fsc_users_inscription');
     $logins = array();
     $passwords = array();
@@ -115,6 +131,13 @@ class UserInscription extends User {
     }
     $query->closeCursor();
     return in_array(htmlspecialchars($login), $logins) && in_array(User::hash_password($pwd, htmlspecialchars($login)), $passwords);
+    */
+    if (! in_array(htmlspecialchars($login), self::getLogins())) return false;
+    $query = SQL::sql()->prepare('SELECT password FROM fsc_users_inscription WHERE login = ?');
+    $query->execute(array(htmlspecialchars($login)));
+    $data = $query->fetch();
+    $query->closeCursor();
+    return User::hash_password($pwd, htmlspecialchars($login)) == $data['password'];
   }
   public static function isUser($login) {
     return in_array(htmlspecialchars($login), UserInscription::getLogins());
