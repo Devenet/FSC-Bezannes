@@ -16,10 +16,8 @@ require '../config/config.php';
 
 // Menu navigation
 $mainMenu = new Menu();
+	//$mainMenu->addLink('', _FSC_.'/', 'home');
 	$mainMenu->addLink('Préinscriptions', _PREINSCRIPTION_.'/', 'hand-right');
-// Menu retour FSC
-$rightMenu = new Menu();
-	$rightMenu->addLink((isset($_SESSION['authentificated']) && $_SESSION['authentificated'] ? 'Accueil' : 'Retour'). ' site <span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span>', _FSC_, (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? 'external-link' : 'share-alt', (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) ? true : false, true, true);
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
@@ -61,20 +59,22 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
+					<a class="brand" href="<?php echo _FSC_; ?>"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
 					<ul class="nav"><?php echo $mainMenu->display(); ?></ul>
 
-					<ul class="nav pull-right<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) echo ' hidden-phone'; ?>"><?php echo $rightMenu->display(); ?></ul>
 					<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?>
 					<!-- settings -->
 					<ul class="nav pull-right">
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown" href="<?php echo _PREINSCRIPTION_; ?>/account">
-								<img src="<?php echo $_SESSION['user']->gravatar(20, 'mm'); ?>" alt="\o/" class="gravatar" />
+								<img alt="\o/" class="gravatar" src="<?php echo $_SESSION['user']->gravatar(20); ?>"/>
 								<?php echo $_SESSION['user']->login(); ?>
 							<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="<?php echo _PREINSCRIPTION_; ?>/list"><i class="icon-hand-right"></i> Mes préinscriptions</a></li>
 								<li><a href="<?php echo _PREINSCRIPTION_; ?>/account"><i class="icon-user"></i> Mon compte</a></li>
+								<li class="divider"></li>
+								<li><a href="<?php echo _FSC_; ?>" rel="external"><i class="icon-home"></i> Accueil <span class="fsc-blue fsc-hover-white">F</span><span class="fsc-green fsc-hover-white">S</span><span class="fsc-orange fsc-hover-white">C</span> <span class="normal external-link"><i class="icon-external-link"></i></span></a></li>
 								<li class="divider"></li>
 								<li><a href="<?php echo _PREINSCRIPTION_; ?>/logout"><i class="icon-signout"></i> Déconnexion</a></li>
 							</ul>
@@ -82,8 +82,8 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 					</ul>
 					<?php } else { ?>
 					<div class="nav pull-right" style="padding-right:8px;">
-						<a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Se préinscrire</a> 
 						<a href="<?php echo _PREINSCRIPTION_; ?>/login" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
+						<a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Se préinscrire</a> 
 					</div>
 					<?php } ?>
 	
@@ -121,8 +121,10 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<!-- message -->
 		<?php 
 			if (isset($_SESSION['msg'])) {
-				//echo '<div class="container"><div class="row"><div class="span8 offset2">', $_SESSION['msg'], '</div></div></div>';
-				echo '<div class="notifications top-right">', $_SESSION['msg'], '</div>';
+				if (isset($_SESSION['authentificated']) && $_SESSION['authentificated'])
+					echo '<div class="notifications top-right">', $_SESSION['msg'], '</div>';
+				else
+					echo '<div class="container"><div class="row"><div class="span8 offset2">', $_SESSION['msg'], '</div></div></div>';
 				unset($_SESSION['msg']);
 			}
 		?>
@@ -153,7 +155,6 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		
 		<script src="<?php echo _JQUERY_; ?>"></script>
 		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
-		<script src="<?php echo _STATIC_; ?>/js/bootstrap-select2.js"></script>
 		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
 		<?php
       foreach ($_SCRIPT as $script) {
