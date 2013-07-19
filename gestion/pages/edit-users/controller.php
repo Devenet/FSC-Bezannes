@@ -64,15 +64,24 @@ if (isset($_GET['action'])) {
     
     case 'delete':
       if (isset($_GET['login']) && $_GET['login'] != null) {
+        $actual = $_SESSION['user']->id();
+
         try {
           if (! UserAdmin::isUser(htmlspecialchars($_GET['login'])))
             throw new \Exception('L’utilisateur n’existe pas !');
 
           $u = new UserAdmin(UserAdmin::getID(htmlspecialchars($_GET['login'])));
+          $old = $u->id();
           if (! $u->delete(true))
             throw new \Exception('Impossible de supprimer l’utilisateur de la base.');
 
           $_SESSION['msg'] = new Message('L’utilisateur a bien été supprimé !', 1, 'Suppression réussie');
+
+          if ($actual == $old) {
+            $_SESSION['msg'] = new Message('Votre compte a bien été supprimé !', 1, 'Suppression réussie');
+            header('Location: '. _GESTION_.'/login.php?logout&deleted');
+            exit();
+          }
         }
         catch (\Exception $e) {
           $_SESSION['msg'] = new Message($e->getMessage(), -1, 'Suppression impossible');

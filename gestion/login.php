@@ -9,7 +9,7 @@ spl_autoload_extensions('.php');
 spl_autoload_register();
 //error_reporting (0);
 
-session_name('gestion');
+session_name('fsc_gestion');
 session_start();
 
 require '../config/config.php';
@@ -19,7 +19,8 @@ if (isset($_GET['logout'])) {
 	unset($_SESSION['authentificated']);
 	unset($_SESSION['user']);
   //unset($_SESSION['to_ban']);
-	$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
+  if (!isset($_GET['deleted']))
+		$_SESSION['msg'] = new Message('Vous avez bien été déconnecté', 1, 'À bientôt !');
 	header('Location: '. _GESTION_ .'/login.php');
 	exit;
 }
