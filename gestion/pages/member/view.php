@@ -167,7 +167,7 @@ use lib\content\Display;
   
   <div class="span3 offset1" style="margin-top:20px;">
     <div class="well well-small">
-      <strong>Identifiant</strong> : <span class="">#<?php echo $m->id(); ?></span>
+      <strong>Membre</strong> : <span class="">#<?php echo $m->id(); ?></span>
     </div>
     
     <div class="alert <?php echo ($m->adherent() ? 'alert-success' : ''); ?>">

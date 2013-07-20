@@ -10,11 +10,20 @@ if ($required_view == 'details') {
     <div class="page-header" style="overflow:hidden; padding-bottom:5px;">
       <h2 style="margin-bottom:0;"><?php echo $u->login(); ?>
       <div class="btn-group pull-right btn-small">
-        <a href="./?page=edit-member&amp;id=<?php echo $u->id(); ?>" class="btn btn-small" title="Modifier le membre"><i class="icon-pencil"></i></a>
+        <a href="#" class="btn btn-small" title="Supprimer ce compte"><i class="icon-trash"></i></a>
       </div>
       </h2>
     </div>
   </div>
+
+
+  <div class="span3 offset1" style="margin-top:20px;">
+    <div class="well well-small">
+      <strong>Compte :</strong> #<?php echo $u->id(); ?>
+    </div>
+  </div>
+
+
 </div>
 
 <?php

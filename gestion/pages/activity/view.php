@@ -79,7 +79,7 @@
   
   <div class="span3 offset1" style="margin-top:20px;">
     <div class="well well-small">
-      <strong>Identifiant</strong> : <span class="">#<?php echo $act->id(); ?></span>
+      <strong>Activité</strong> : <span class="">#<?php echo $act->id(); ?></span>
     </div>
     
     <div class="alert <?php echo ($act->active() == 1 ? 'alert-success' : ''); ?>">
