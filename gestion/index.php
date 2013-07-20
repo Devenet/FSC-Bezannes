@@ -49,11 +49,11 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="icon"          type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_diago_32.png" />
 		<link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-fileupload.min.css" media="screen" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/common.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-fileupload.min.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/common.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-wysihtml5.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />

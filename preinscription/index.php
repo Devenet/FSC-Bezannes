@@ -44,10 +44,10 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="icon"          type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_32.png" />
 		<link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" media="screen" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
 		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" /><?php } ?> 
 	</head>
