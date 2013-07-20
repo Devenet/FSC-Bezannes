@@ -144,3 +144,11 @@ footer hr {
 .page-error .img-error {
   margin-top: 50px;
 }
+.page-error .muted .span3:hover {
+  color: #333;
+  -webkit-transition: all 0.4s ;
+  -moz-transition: all 0.4s ;
+  -ms-transition: all 0.4s ;
+  -o-transition: all 0.4s ;
+  transition: all 0.4s ;
+}

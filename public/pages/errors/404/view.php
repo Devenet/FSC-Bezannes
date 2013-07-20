@@ -12,25 +12,25 @@
     </div>
   </div>
   <div class="span2 hidden-phone">
-    <img src="<?php echo _FSC_; ?>/img/errors/hole.png" alt="Oups" class="img-error" />
+    <img src="<?php echo _FSC_; ?>/img/error.png" alt="Oups" class="img-error" />
   </div>
 </div>
   
-<div class="row espace">
+<div class="row espace muted">
   <div class="span3">
-    <p class="center"><img src="<?php echo _FSC_; ?>/img/errors/hand-writing.png" alt="url"/></p>
+    <p class="center"><i class="icon-keyboard icon-4x"></i></p>
     <p>Êtes-vous sûr(e) d’avoir correctement orthographié l’<abbr title="adresse web">URL</abbr> de la page que vous souhaitez consulter ?</p>
   </div>
   <div class="span3">
-    <p class="center"><img src="<?php echo _FSC_; ?>/img/errors/map-home.png" alt="map-home" class="center"/></p>
+    <p class="center"><i class="icon-map-marker icon-4x"></i></p>
     <p>Vous pouvez vous rendre sur la <a href="/">page d’accueil</a> du site, vous y trouverez peut-être votre bonheur, qui sait !</p>
   </div>
   <div class="span3">
-    <p class="center"><img src="<?php echo _FSC_; ?>/img/errors/candle.png" alt="candle" class="center"/></p>
+    <p class="center"><i class="icon-lightbulb icon-4x"></i></p>
     <p>Vous pouvez allumer un cierge et attendre pour que le saint protecteur du ouaib exauce votre prière.</p>
   </div>
   <div class="span3">
-    <p class="center"><img src="<?php echo _FSC_; ?>/img/errors/developper.png" alt="developper" class="center"/></p>
+    <p class="center"><i class="icon-bullhorn icon-4x"></i></p>
     <p>Si vous n’en dormez plus, vous pouvez nous <a href="<?php echo _FSC_; ?>/contact">contacter</a>, on transmettra le problème au développeur...</p>
   </div>
 </div>
