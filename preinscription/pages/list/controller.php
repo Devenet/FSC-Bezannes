@@ -33,9 +33,9 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         <tr>
           <th style="text-align:right;"><i class="icon-user"></i></th>
           <th> Identité</th>
-          <th style="width:120px; text-align:center;"><i class="icon-map-marker"></i> Bezannais</th>
           <th style="width:120px; text-align:center;">Pré-adhérent</th>
           <th style="text-align:center;"><i class="icon-globe"></i> Activités</th>
+          <th style="width:120px; text-align:center;"><i class="icon-map-marker"></i> Bezannais</th>
           <th style="text-align:center;"></th>
         </tr>
       </thead>
@@ -50,9 +50,9 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         <tr>
           <td style="text-align:right; padding-left:0;">'. Display::HtmlGender($m->gender()) .'</td>
           <td class="go"><a href="'. _PREINSCRIPTION_ .'/preinscription/'. $m->id() .'" >'. $m->name() .' <span class="normal" style="margin-left:5px;"><i class="icon-share-alt"></i></span></a></td>
-          <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
           <td style="width:120px; text-align:center;">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
           <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : 'label-success') .'">'. $act .'</span> <a href="'. _PREINSCRIPTION_ .'/add-activity/'. $m->id() .'" style="color: black; text-decoration: none; margin-left: 5px;"><i class="icon-plus-sign"></i></a>' : '') .'</td>
+          <td style="width:120px; text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
           <td class="center" style="padding-left:0; padding-right:0;"><a href="'. _PREINSCRIPTION_ .'/preinscription/'. $m->id() .'" class="btn btn-small">Voir</a></td>
         </tr>
       ';

@@ -78,7 +78,7 @@ use lib\content\Display;
         </div>
       </div>
       <?php else: ?>
-        <p>Vous avez choisi d’être non-adhérent.
+        <p><i class="icon-info-sign pull-left icon-3x muted"></i> Vous avez choisi d’être non-adhérent.
         <br />Vous ne pouvez donc pas vous préinscrire à des activités.</p>
         <p>Pour devenir adhérent, il suffit de modifier votre préinscription : cliquez sur le bouton &laquo; Modifier &raquo; plus haut.</p>
     <?php endif; ?>

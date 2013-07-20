@@ -80,7 +80,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         
       }
       catch (\Exception $e) {
-        $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Erreur !');
+        $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Erreur !', false);
       }
       
     }

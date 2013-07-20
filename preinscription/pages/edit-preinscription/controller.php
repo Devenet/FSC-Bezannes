@@ -96,7 +96,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         
         $m->setBezannais();      
         $m->update();
-        $_SESSION['msg'] = new Message('La préinscription de <em>'. $m->name() .'</em> a bien été modifiée :)', 1, 'Modification réussie !');
+        $_SESSION['msg'] = new Message('La préinscription de <em>'. $m->name() .'</em> a bien été modifiée <i class="icon-smile"></i>', 1, 'Modification réussie !');
         header ('Location: '. _PREINSCRIPTION_ .'/preinscription/'.$m->id());
         exit();
         
