@@ -1,0 +1,35 @@
+/* humanstxt.org */
+
+
+$$$$$$$$\  $$$$$$\   $$$$$$\        $$$$$$$\                                                                       
+$$  _____|$$  __$$\ $$  __$$\       $$  __$$\                                                                      
+$$ |      $$ /  \__|$$ /  \__|      $$ |  $$ | $$$$$$\  $$$$$$$$\ $$$$$$\  $$$$$$$\  $$$$$$$\   $$$$$$\   $$$$$$$\ 
+$$$$$\    \$$$$$$\  $$ |            $$$$$$$\ |$$  __$$\ \____$$  |\____$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|
+$$  __|    \____$$\ $$ |            $$  __$$\ $$$$$$$$ |  $$$$ _/ $$$$$$$ |$$ |  $$ |$$ |  $$ |$$$$$$$$ |\$$$$$$\  
+$$ |      $$\   $$ |$$ |  $$\       $$ |  $$ |$$   ____| $$  _/  $$  __$$ |$$ |  $$ |$$ |  $$ |$$   ____| \____$$\ 
+$$ |      \$$$$$$  |\$$$$$$  |      $$$$$$$  |\$$$$$$$\ $$$$$$$$\\$$$$$$$ |$$ |  $$ |$$ |  $$ |\$$$$$$$\ $$$$$$$  |
+\__|       \______/  \______/       \_______/  \_______|\________|\_______|\__|  \__|\__|  \__| \_______|\_______/ 
+
+
+
+/* TEAM */
+
+Developper: Nicolas Devenet
+Contact: nicolas+fsc [at] devenet.info
+Site: nicolas.devenet.info
+Blog: nicolabricot.com
+Twitter: @nicolabricot
+Location: Reims, France.
+
+
+/* THANKS */
+
+
+
+/* SITE */
+
+Version: bêta
+Standards: HTML5, CSS3, PHP5
+Components: Bootstrap, Font Awesome, jQuery, Laravel
+IDE: Sublime Text, MAMP, Fireworks, FileZila, Brain
+Source code: hosted on Github.com

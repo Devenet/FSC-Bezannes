@@ -47,20 +47,38 @@ require_once $controller;
   <head>
     <meta charset="UTF-8" />
     <title><?php echo $page->title() ; ?> &middot; FSC Bezannes</title>
+    
+    <!--
+    $$$$$$$$\  $$$$$$\   $$$$$$\        $$$$$$$\                                                                       
+    $$  _____|$$  __$$\ $$  __$$\       $$  __$$\                                                                      
+    $$ |      $$ /  \__|$$ /  \__|      $$ |  $$ | $$$$$$\  $$$$$$$$\ $$$$$$\  $$$$$$$\  $$$$$$$\   $$$$$$\   $$$$$$$\ 
+    $$$$$\    \$$$$$$\  $$ |            $$$$$$$\ |$$  __$$\ \____$$  |\____$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|
+    $$  __|    \____$$\ $$ |            $$  __$$\ $$$$$$$$ |  $$$$ _/ $$$$$$$ |$$ |  $$ |$$ |  $$ |$$$$$$$$ |\$$$$$$\  
+    $$ |      $$\   $$ |$$ |  $$\       $$ |  $$ |$$   ____| $$  _/  $$  __$$ |$$ |  $$ |$$ |  $$ |$$   ____| \____$$\ 
+    $$ |      \$$$$$$  |\$$$$$$  |      $$$$$$$  |\$$$$$$$\ $$$$$$$$\\$$$$$$$ |$$ |  $$ |$$ |  $$ |\$$$$$$$\ $$$$$$$  |
+    \__|       \______/  \______/       \_______/  \_______|\________|\_______|\__|  \__|\__|  \__| \_______|\_______/ 
+    -->
+    
     <meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
     <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
+    
+    <!-- Parce qu’il y a toujours un peu d’humain derrière un site... -->
     <meta name="author" content="Nicolas Devenet" />
+    <link rel="author" href="<?php echo _FSC_; ?>/humans.txt" />
+    
     <meta name="robots" content="<?php echo $page->search_engine(); ?>" />
     <meta name="google-site-verification" content="OvBA7LsULbvmZK3bYWaF_m_pDzrnKY9_KIITGB1K4XU" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon"    type="image/x-icon" href="<?php echo _STATIC_; ?>/img/favicon/round_16.ico" />
     <link rel="icon"             type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_32.png" />
     <link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
+    
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" media="screen" />
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
     <!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc.css" media="screen" />
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc.css" />
     <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc.ie.css" /><![endif]-->
   </head>
 
@@ -119,13 +137,6 @@ require_once $controller;
             &copy; 2012-<?php echo date('Y'); ?> &mdash; Foyer Social et Culturel de Bezannes
             <br /><small>Developped with love by <a href="http://nicolas.devenet.info" rel="external">Nicolas Devenet</a></small>
           </p>
-          <!--
-          <p class="pull-right social">
-            <a href=""><i class="icon-facebook-sign"></i></a> 
-            <a href=""><i class="icon-twitter"></i></a> 
-            <a href=""><i class="icon-google-plus"></i></a>
-          </p>
-          -->
         </div>
       </div>
     </footer>
