@@ -54,7 +54,6 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-fileupload.min.css" media="screen" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/common.css" media="screen" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.min.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-wysihtml5.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />

@@ -48,7 +48,6 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" media="screen" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-responsive.min.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
 		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" /><?php } ?> 
 	</head>
