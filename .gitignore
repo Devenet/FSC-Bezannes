@@ -1,6 +1,6 @@
 .DS_Store
 test*
-*uploads/activities/*
+*/uploads/activities/*.jpg
 *-full.png
 CIMG*
 .ovh
