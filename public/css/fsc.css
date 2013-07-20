@@ -69,15 +69,9 @@ header h1 span {
 footer {
   margin-bottom: 20px;
 }
-footer .colophon p { 
-}
-footer .social a {
-  margin-right: 10px;
-  text-decoration: none;
-}
 
 /*
- * font Imprima
+ * fonts
  */
 header h1, 
 .page-home .carousel h4 {
