@@ -45,7 +45,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
       $count_members = Member::countMembers($u->id());
       if ($count_members == 1)
-        $display_count_members = 'votre préinscriptiona sera aussi supprimée !' ;
+        $display_count_members = 'votre préinscription sera aussi supprimée !' ;
       else if ($count_members > 1) {
         $display_count_members = 'vos <span class="label label-important">'. $count_members .'</span> préinscriptions seront aussi supprimées !' ; 
       }
