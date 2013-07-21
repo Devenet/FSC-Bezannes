@@ -6,18 +6,27 @@ use lib\DB\SQL;
 
 class Price {
   
-  public static $adult = array(20, 16);
-  public static $teen = array(14, 10);
+  public static function price($age, $bezannais) {
+    $file = dirname(__FILE__).'/../../config/price.json';
+    if (file_exists($file)) {
+      $price = json_decode(file_get_contents($file));
+      
+      if ($age == 1)
+        return $price->teen[$bezannais];
+      return $price->adult[$bezannais];
+    }
+    else {
+      echo 'Price file not found';
+      exit();
+    }
+  }
   
   public static function Cost($adherent) {
     $return = 0.0;
     $a = new Member($adherent);
     
     // cotisation adhérent
-    if ($a->minor())
-      $return += Price::$teen[$a->bezannais()];
-    else
-      $return += Price::$adult[$a->bezannais()];
+    $return += self::price($a->minor(), $a->bezannais());
       
     // activites
     $query = SQL::sql()->prepare('SELECT price, price_young FROM fsc_activities INNER JOIN fsc_participants ON fsc_participants.activity = fsc_activities.id WHERE fsc_participants.adherent = ?');
