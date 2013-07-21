@@ -14,8 +14,8 @@ if ($required_view == 'details') {
       </div>
       </h2>
     </div>
+    <p style="margin-top:-20px;" class="muted"><i class="icon-calendar"></i> <span style="font-size:12px;">dernière connexion le <?php echo Display::FullTimestampDate($u->date()); ?></span></p>
   </div>
-
   <div class="span3 offset1" style="margin-top:20px;">
     <div class="well well-small">
       <strong>Compte :</strong> #<?php echo $u->id(); ?>
@@ -23,7 +23,7 @@ if ($required_view == 'details') {
   </div>
 </div>
 
-<div class="row">
+<div class="row espace-top">
   <?php echo $display_members; ?>
 </div>
 
@@ -33,7 +33,10 @@ if ($required_view == 'details') {
 ?>
 
 <form class="form-search pull-left">
-  <input type="text" class="search-preinscriptions span4" placeholder="Accès rapide compte" autofocus />
+  <input type="text" class="search-accounts span4" placeholder="Accès rapide compte" autofocus />
+</form>
+<form class="form-search pull-right">
+  <input type="text" class="search-preinscriptions span4" placeholder="Accès rapide préinscription" />
 </form>
 
 <div class="clearfix">&nbsp;</div>
@@ -55,7 +58,7 @@ if ($required_view == 'details') {
       <td><?php echo $p->id(); ?></td>
       <td class="go"><a href="./?page=preinscriptions&amp;detail=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
       <td><span class="label"><?php echo $p->countPreinscriptions(); ?></span></td>
-      <td><span class="label label-success"><?php echo $p->countAdherents(); ?></span></td>
+      <td><span class="label label-info"><?php echo $p->countAdherents(); ?></span></td>
       <td>?</td>
       <td style="padding-left:0; padding-right:0;" class="center"><a class="btn btn-small" href="./?page=preinscriptions&amp;detail=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></td>
     </tr>

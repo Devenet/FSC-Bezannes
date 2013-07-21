@@ -67,14 +67,14 @@ if (isset($_GET['detail'])) {
             <td class="go"><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->last_name() .'</a></td>
             <td class="go"><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->first_name() .'</a></td>
             <td style="width:120px;" class="center">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
-            <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : 'label-info') .'">'. $act .'</span>' : '') .'</td>
+            <td style="text-align:center;">'. ($m->adherent() ? '<span class="label label-'. Preinscription::StatusColor($m->status()) .'">'. $act .'</span>' : '') .'</td>
             <td class="center minor-info">'. ($m->minor() ? '<span data-toggle="tooltip" data-title="Responsable : '. $resp->name() .'" data-placement="bottom" class="cursor-default">e</span>' : 'A') .'</td>
             <td class="status center">'. Preinscription::StatusTooltip($m->status()) .'</td>
             <td class="center" style="padding-left:0; padding-right:0;">
               <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'"' :'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
               <div class="btn-group">
                 <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-eye-open"></i></a>
-                <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-pencil"></i></a>
+                <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-pencil"></i></a>
               </div>
               <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-trash"></i></a>
             </td>
@@ -89,6 +89,7 @@ if (isset($_GET['detail'])) {
       $_SCRIPT[] = '<script>$(function(){ 
         $(\'table td.status span\').tooltip();
         $(\'table td.minor-info span\').tooltip();
+        $(\'p span.last_connexion\').tooltip();
       });</script>';
     }
 
@@ -158,15 +159,30 @@ if (isset($_GET['detail'])) {
   $_SCRIPT[] = "
       <script>
         $(document).ready(function() {
-          //$('input.search-preinscriptions').typeahead('destroy');
+          $('input.search-accounts').typeahead({
+            name: 'accounts',
+            valueKey: 'login',
+            prefetch: {
+              'url': 'http:". _PRIVATE_API_ ."/accounts.php',
+              'ttl': 5000
+              },
+            template: '<a href=\"{{url}}\">{{login}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
+            engine: Hogan
+          });
+
+          $('input.search-accounts').on(['typeahead:autocompleted', 'typeahead:selected'].join(' '), function (e) {
+            var v = [].slice.call(arguments, 1);
+            document.location.href = v[0].url;
+          });
+
           $('input.search-preinscriptions').typeahead({
             name: 'preinscriptions',
-            valueKey: 'login',
+            valueKey: 'name',
             prefetch: {
               'url': 'http:". _PRIVATE_API_ ."/preinscriptions.php',
               'ttl': 5000
               },
-            template: '<a href=\"{{url}}\">{{login}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
+            template: '<a href=\"{{url}}\">{{name}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
             engine: Hogan
           });
 
