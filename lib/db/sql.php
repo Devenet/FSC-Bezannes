@@ -19,8 +19,10 @@ class SQL {
                 self::$instance->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
                 self::$instance->query('SET NAMES UTF8');
             }
-            else
-                throw new \Exception('Database file configuration not found');
+            else {
+                echo 'Database configuration file not found';
+                exit();
+            }
         }
         self::$access++;
         return self::$instance;
