@@ -62,18 +62,11 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
 		<style>
-			header {
-				margin: 20px 0 0 0;
-			}
-			.page-header {
-				margin-top: 0;
-			}
-			footer hr {
-				margin-bottom: 10px;
-			}
-			table thead th a {
-				text-decoration: none !important;
-			}
+			header {margin: 20px 0 0 0;}
+			.page-header {margin-top: 0;}
+			footer hr {margin-bottom: 10px;}
+			table thead th a {text-decoration: none !important;}
+			h5 {margin-left: 5px;}
 		</style>
 	</head>
 
