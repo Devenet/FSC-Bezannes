@@ -16,12 +16,13 @@ class Participant {
   
   public function __construct($id = null) {
     if (is_int($id+0) && $this->isParticipant($id+0)) {
-      $query = SQL::sql()->query('SELECT id, activity, adherent, schedule FROM fsc_participants_inscription WHERE id = '. $id);
+      $query = SQL::sql()->query('SELECT id, activity, adherent, schedule, status FROM fsc_participants_inscription WHERE id = '. $id);
       $member = $query->fetch();
       $this->id = $id+0;
       $this->activity = $member['activity'];
       $this->adherent = $member['adherent'];
       $this->schedule = $member['schedule'];
+      $this->status = $member['status'];
       $this->created = true;
       $query->closeCursor();
     }
@@ -31,6 +32,22 @@ class Participant {
   
   public function id() {
     return $this->id;
+  }
+
+  public function status() {
+    return $this->status;
+  }
+  public function setStatus($status) {
+    $this->status = $status;
+    $this->updateStatus();
+  }
+  private function updateStatus() {
+    $query = SQL::sql()->prepare('UPDATE fsc_participants_inscription SET status = :status WHERE id = :id');
+    $query->execute(array(
+      'status' => $this->status,
+      'id' => $this->id
+    ));
+    $query->closeCursor();
   }
   
   public function activity() {

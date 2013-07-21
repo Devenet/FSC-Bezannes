@@ -76,8 +76,9 @@ class Member {
   }
   public function setStatus($status) {
     $this->status = $status;
+    $this->updateStatus();
   }
-  public function updateStatus($status) {
+  private function updateStatus() {
     update_sql('status', $this->status);
   }
 
