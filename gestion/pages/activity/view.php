@@ -116,8 +116,8 @@
         if ($act->hasImage())
           echo '<img src="', _UPLOADS_, '/activities/', $act->id(), '.jpg" alt="', $act->name(), '" class="img-polaroid" />';
         else
-          echo '<p><a href="./?page=edit-activity&amp;id=', $act->id(), '#image" class="normal img-polaroid" data-toggle="tooltip" 
-                title="L’image sert de miniature pour l’activité." data-placement="bottom"><i class="icon-picture"></i> aucune image associée</a></p>';
+          echo '<p class="espace-top"><a href="./?page=edit-activity&amp;id=', $act->id(), '#image" class="normal img-polaroid" data-toggle="tooltip" 
+                title="L’image sert de miniature pour l’activité." data-placement="bottom"><i class="icon-picture"></i> aucune image</a></p>';
       ?>
     </div>
     

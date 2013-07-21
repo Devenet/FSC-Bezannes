@@ -102,7 +102,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       
       $m->setBezannais();      
       $m->update();
-      $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été modifié :)', 1, 'Modification réussie !');
+      $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été modifié <i class="icon-smile"></i>', 1, 'Modification réussie !');
       header ('Location: '. _GESTION_ .'/?page=member&id='. $m->id());
       exit();
       

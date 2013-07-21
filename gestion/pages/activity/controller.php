@@ -22,7 +22,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
   if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     $name = $act->name();
     if ($act->delete(true)) {
-      $_SESSION['msg'] = new Message('L’activité <em>'. $name .'</em> a bien été supprimée :/', 1, 'Suppression réussie !');
+      $_SESSION['msg'] = new Message('L’activité <em>'. $name .'</em> a bien été supprimée <i class="icon-meh"></i>', 1, 'Suppression réussie !');
       quit();
     }
     else {

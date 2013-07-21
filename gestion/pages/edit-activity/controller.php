@@ -61,7 +61,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
       
       $act->update();
       
-      $_SESSION['msg'] = new Message('L’activité <em>'. $act->name() .'</em> a bien été modifiée :)', 1, 'Modification réussie !');
+      $_SESSION['msg'] = new Message('L’activité <em>'. $act->name() .'</em> a bien été modifiée <i class="icon-smile"></i>', 1, 'Modification réussie !');
       header ('Location: '. _GESTION_ .'/?page=activity&id='. $act->id());
       exit();
       

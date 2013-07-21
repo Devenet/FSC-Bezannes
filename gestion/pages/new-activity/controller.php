@@ -55,7 +55,7 @@ if (isset($_POST) and $_POST != null) {
     
     $act->create();
     
-    $_SESSION['msg'] = new Message('L’activité <em>'. $act->name() .'</em> a bien été créée \o/', 1, 'Ajout réussi !');
+    $_SESSION['msg'] = new Message('L’activité <em>'. $act->name() .'</em> a bien été créée <i class="icon-smile"></i>', 1, 'Ajout réussi !');
     header ('Location: '. _GESTION_ .'/?page=activity&id='. $act->id());
     exit();
     
