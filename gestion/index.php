@@ -3,6 +3,9 @@
 namespace lib;
 use lib\content\Page;
 use lib\content\Menu;
+use lib\db\SQL;
+
+$timestart=microtime(true);
 
 set_include_path('../');
 spl_autoload_extensions('.php');
@@ -166,6 +169,10 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 					})();
 				</script>": null), PHP_EOL;
+
+			$timeend=microtime(true);
+      $page_time = number_format(($timeend-$timestart)*1000, 2);
+      echo '<div class="execution">', $page_time, ' ms<br />', SQL::access(),' db</div>';
 		?>
 	</body>
 </html>

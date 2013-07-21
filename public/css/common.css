@@ -89,6 +89,19 @@ a.external-link {
   margin-bottom: 5px;
 }
 
+/* time execution */
+div.execution {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 5px 10px;
+  font-size: 11px;
+  color: #fff;
+  line-height: 12px;
+  text-align: right;
+  background: rgba(0, 0, 0, .7);
+}
+
 /* typeahead */
 .tt-dropdown-menu {
   margin-top: 2px;
