@@ -2,6 +2,8 @@
 
 use lib\users\UserInscription;
 use lib\preinscriptions\Preinscription;
+use lib\preinscriptions\Member;
+use lib\preinscriptions\Participant;
 use lib\content\Page;
 use lib\content\Pagination;
 use lib\content\Sort;
@@ -27,6 +29,69 @@ if (isset($_GET['detail'])) {
     $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Préinscriptions', 'url' => '?page=preinscriptions'), $pageInfos));
 
     $required_view = 'details';
+
+    $count_members = Member::countMembers($u->id());
+    $count_activities = 99999;
+    $count_adherents = 0;
+    // affichage des préinscriptions du compte
+    if ($count_members == 0) {
+      $display_members = '<div class="span8"><div class="alert">Aucune préinscription enregistrée</div></div>';
+    }
+    else {
+      $display_members = '<div class="span12">
+      <table class="table table-striped table-hover table-go">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th style="width:120px;" class="center">Adhérent</th>
+            <th class="center"><i class="icon-globe"></i> Activités</th>
+            <th class="center">Cat.</th>
+            <th class="center">Statut</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>';
+      foreach (Member::Members($u->id()) as $m) {
+        $act = Participant::countActivities($m->id());
+        if ($m->adherent()) {
+          $count_adherents++;
+          $count_activities = min($act, $count_activities);
+        }
+        if ($m->minor())
+          $resp = new Member($m->responsible());
+        $display_members .= '
+          <tr>
+            <td>'. $m->id() .'</td>
+            <td class="go"><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->last_name() .'</a></td>
+            <td class="go"><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->first_name() .'</a></td>
+            <td style="width:120px;" class="center">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
+            <td style="text-align:center;">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-warning' : 'label-info') .'">'. $act .'</span>' : '') .'</td>
+            <td class="center minor-info">'. ($m->minor() ? '<span data-toggle="tooltip" data-title="Responsable : '. $resp->name() .'" data-placement="bottom" class="cursor-default">e</span>' : 'A') .'</td>
+            <td class="status center">'. Preinscription::StatusTooltip($m->status()) .'</td>
+            <td class="center" style="padding-left:0; padding-right:0;">
+              <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'"' :'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
+              <div class="btn-group">
+                <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-eye-open"></i></a>
+                <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-pencil"></i></a>
+              </div>
+              <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-trash"></i></a>
+            </td>
+          </tr>
+        ';
+      }
+      $display_members .= '
+        </tbody>
+      </table>
+      </div>';
+
+      $_SCRIPT[] = '<script>$(function(){ 
+        $(\'table td.status span\').tooltip();
+        $(\'table td.minor-info span\').tooltip();
+      });</script>';
+    }
+
     
   }
   else {
@@ -58,24 +123,24 @@ if (isset($_GET['detail'])) {
   }
 
   $sort = array(
-    'login' => new Sort()
+    'login' => new Sort(),
+    'status' => new Sort()
   );
 
-  /*
   switch($type) {
     case 'login':
       $preinscriptions = Preinscription::PreinscriptionsByLogin(($browse-1) * Pagination::step(), $sens);
-      $url = '&amp;sort=name-' . ($sens ? 'asc' : 'desc');
+      $url = '&amp;sort=login-' . ($sens ? 'asc' : 'desc');
+      break;
+    case 'status':
+      $preinscriptions = Preinscription::PreinscriptionsByStatus(($browse-1) * Pagination::step(), $sens);
+      $url = '&amp;sort=status-' . ($sens ? 'asc' : 'desc');
       break;
     default:
       $preinscriptions = Preinscription::Preinscriptions(($browse-1) * Pagination::step());
   }
   if ($type != null) $sort[$type]->sens($sens ? 'asc' : 'desc');
-  */
 
-  $preinscriptions = Preinscription::Preinscriptions();
-
-  /*
   // pagination
   $display_pagination = '';
   if ($pages > 0) {
@@ -87,7 +152,6 @@ if (isset($_GET['detail'])) {
     }
     $display_pagination .= '<li '. ($browse == $pages ? ' class="disabled"><span>' : '><a href="./?page=preinscriptions'. $url .'&browse='. $pages .'">') .'<i class="icon-double-angle-right"></i>'. ($browse == $pages ? '</span>' : '</a>') .'</li>' ;
   }
-  */
 
   $_SCRIPT[] = '<script src="'. _FSC_ .'/js/hogan.js"></script>' . "\n";
   $_SCRIPT[] = "\t" . '<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';

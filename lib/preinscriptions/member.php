@@ -25,11 +25,12 @@ class Member {
   protected $adherent;
   protected $date_creation;
   protected $id_user_inscription;
+  protected $status;
   private $created;
   
   public function __construct($id = null) {
     if (is_int($id+0) && $this->isMember($id+0)) {
-      $query = SQL::sql()->query('SELECT gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_creation, id_user_inscription FROM fsc_members_inscription WHERE id = '. $id);
+      $query = SQL::sql()->query('SELECT gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_creation, id_user_inscription, status FROM fsc_members_inscription WHERE id = '. $id);
       $member = $query->fetch();
       $this->id = $id+0;
       $this->gender = $member['gender'];
@@ -51,6 +52,7 @@ class Member {
       $this->adherent = $member['adherent'];
       $this->date_creation = $member['date_creation'];
       $this->id_user_inscription = $member['id_user_inscription'];
+      $this->status = $member['status'];
       $this->created = true;
       $query->closeCursor();
     }
@@ -69,6 +71,16 @@ class Member {
     $this->id_user_inscription = $id;
   }
   
+  public function status() {
+    return $this->status;
+  }
+  public function setStatus($status) {
+    $this->status = $status;
+  }
+  public function updateStatus($status) {
+    update_sql('status', $this->status);
+  }
+
   public function gender() {
     return $this->gender;
   }

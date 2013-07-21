@@ -7,10 +7,11 @@ use lib\activities\Schedule;
 use lib\db\SQL;
 
 class Participant {
-  private $id;
-  private $activity;
-  private $adherent;
-  private $schedule;
+  protected $id;
+  protected $activity;
+  protected $adherent;
+  protected $schedule;
+  protected $status; 
   private $created;
   
   public function __construct($id = null) {
