@@ -47,6 +47,10 @@ class UserInscription extends User {
     return false;
   }
 
+  public function date() {
+    return $this->date;
+  }
+
   private function update_sql($field, $data) {
     $demande = 'UPDATE fsc_users_inscription SET '. $field .' = \''. $data .'\' WHERE id = '. $this->id .'';
     $query = SQL::sql()->query($demande);
