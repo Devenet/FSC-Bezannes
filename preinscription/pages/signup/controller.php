@@ -74,7 +74,7 @@ Voici un petit rappel des informations utiles :
     • Page de connexion : http:'. _PREINSCRIPTION_ .'/login';
     Mail::text($u->email(), 'Préinscriptions', $body);
     
-    $_SESSION['msg'] = new Message('Vous pouvez maintenant vous connecter avec vos identifiants.', 1, 'Votre compte a bien été créé !');
+    $_SESSION['msg'] = new Message('Vous pouvez maintenant vous connecter avec vos identifiants.', 1, 'Votre compte a bien été créé !', false);
     $_SESSION['login-next-step'] = true;
     header ('Location: '. _PREINSCRIPTION_ .'/login');
     exit();

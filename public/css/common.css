@@ -69,6 +69,16 @@ a.external-link {
   font-size: 11px;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-help {
+  cursor: help;
+}
+.cursor-default {
+  cursor: default;
+}
+
 .navbar img.gravatar {
   margin-top: -4px;
   margin-right: 5px;
