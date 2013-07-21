@@ -4,5 +4,6 @@ test*
 *-full.png
 CIMG*
 .ovh
+config/configuration.*
 database.json
 *.sublime-*

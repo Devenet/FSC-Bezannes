@@ -1,54 +1,39 @@
 <?php
-
-  define('_PATH_PUBLIC_', 'public');
-  define('_PATH_GESTION_', 'gestion');
-  define('_PATH_ADMIN_', 'admin');
-  define('_PATH_PREINSCRIPTION_', 'preinscription');
-  define('_PATH_UPLOADS_', 'uploads');
-  define('_PATH_UPLOADS_FULL_', _PATH_PUBLIC_.DIRECTORY_SEPARATOR.'uploads');
-  define('_PATH_API_', 'api');
-  define('_SEARCH_ENGINE_', false);
-  define('_YEAR_', 2012);
-  define('_PHONE_SEC_', '0326362384');
-  define('_EMAIL_', 'contact@fsc-bezannes.fr');
-
-  if (false)
-  {
-    define('_FSC_', '//beta.fsc-bezannes.fr');
-    define('_GESTION_', '//gestion.fsc-bezannes.fr');
-    define('_ADMIN_', '//admin.fsc-bezannes.fr');
-    define('_PREINSCRIPTION_', '//preinscription.fsc-bezannes.fr');
-    define('_ANALYTICS_FSC_', true);
-    define('_ANALYTICS_GESTION_', true);
-    define('_ANALYTICS_PREINSCRIPTION_', true);
-    define('_JQUERY_', '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-  }
-  else if (false)
-  {
-    define('_FSC_', '//localhost/public');
-    define('_GESTION_', '//localhost/gestion');
-    define('_ADMIN_', '//admin.fsc.localhost.local');
-    define('_PREINSCRIPTION_', '//localhost/preinscription');
-    define('_ANALYTICS_FSC_', false);
-    define('_ANALYTICS_GESTION_', false);
-    define('_ANALYTICS_PREINSCRIPTION_', false);
-    define('_JQUERY_', '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
-  }
-  else
-  {
-    define('_FSC_', '//fsc.localhost.local');
-    define('_GESTION_', '//gestion.fsc.localhost.local');
-    define('_ADMIN_', '//admin.fsc.localhost.local');
-    define('_PREINSCRIPTION_', '//inscription.fsc.localhost.local');
-    define('_ANALYTICS_FSC_', false);
-    define('_ANALYTICS_GESTION_', false);
-    define('_ANALYTICS_PREINSCRIPTION_', false);
-    define('_JQUERY_', '//api.localhost.local/jquery/jquery-1.9.1.min.js');
-  }
   
-  define('_STATIC_', _FSC_);
-  define('_UPLOADS_', _FSC_.'/'._PATH_UPLOADS_);
-  define('_PUBLIC_API_', _FSC_.'/'._PATH_API_);
-  define('_PRIVATE_API_', _GESTION_.'/'._PATH_API_);
+  $dir = dirname(__FILE__) . '/';
+
+  if (file_exists($dir.'configuration.json')) {
+    $fsc = json_decode(file_get_contents($dir.'configuration.json'));
+
+    define('_SEARCH_ENGINE_', $fsc->search_engine);
+    define('_YEAR_', $fsc->year);
+    define('_PHONE_SEC_', $fsc->phone);
+    define('_EMAIL_', $fsc->email);
+
+    define('_FSC_', $fsc->fsc);
+    define('_GESTION_', $fsc->gestion);
+    define('_PREINSCRIPTION_', $fsc->preinscription);
+    define('_ANALYTICS_FSC_', $fsc->analytics_fsc);
+    define('_ANALYTICS_GESTION_', $fsc->analytics_gestion);
+    define('_ANALYTICS_PREINSCRIPTION_', $fsc->analytics_preinscription);
+    define('_JQUERY_', $fsc->jquery);
+
+    define('_PATH_PUBLIC_', $fsc->path_public);
+    define('_PATH_GESTION_', $fsc->path_gestion);
+    define('_PATH_PREINSCRIPTION_', $fsc->path_preinscription);
+    define('_PATH_UPLOADS_', $fsc->path_uploads);
+    define('_PATH_UPLOADS_FULL_', $fsc->path_uploads_full);
+    define('_PATH_API_', 'api');
+    
+    define('_STATIC_', $fsc->static);
+    define('_UPLOADS_', $fsc->uploads);
+    define('_PUBLIC_API_', $fsc->public_api);
+    define('_PRIVATE_API_', $fsc->private_api);
+
+  }
+  else {
+    echo 'Configuration files not found';
+    exit();
+  }
 
 ?>
