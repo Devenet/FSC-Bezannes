@@ -30,11 +30,11 @@ class Preinscription {
   }
   static public function StatusColor($status) {
     $display = array('muted', 'success', 'warning','error');
-    return 'text-'. $display[$status];
+    return $display[$status];
   }
   static public function StatusTooltip($status, $placement = 'bottom') {
     return '<span data-toggle="tooltip" data-placement="bottom" data-title="'. self::StatusDescription($status) .'" 
-      class="normal cursor-help '. self::StatusColor($status) .'">'. self::StatusIcon($status) .'</span>';
+      class="normal cursor-default text-'. self::StatusColor($status) .'">'. self::StatusIcon($status) .'</span>';
   }
 
   static public function Preinscriptions($start = 0, $step = null) {

@@ -1,5 +1,6 @@
 <?php
 use lib\content\Display;
+use lib\preinscriptions\Preinscription;
 ?>
 
 <div class="espace-bottom" style="overflow:hidden;">
@@ -71,7 +72,9 @@ use lib\content\Display;
       <div class="tab-pane" id="tab-activities">
         <div style="overflow: hidden;">
           <p class="pull-left"><?php echo $m->first_name(); ?> participe à <span class="label"><?php echo $count_activites; ?></span> activité<?php echo $plural_count_activities; ?>.</p>
-          <a class="btn btn-small pull-right" href="<?php echo _PREINSCRIPTION_; ?>/add-activity/<?php echo $m->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
+          <?php if ($m->status() == Preinscription::AWAITING) : ?>
+            <a class="btn btn-small pull-right" href="<?php echo _PREINSCRIPTION_; ?>/add-activity/<?php echo $m->id(); ?>"><i class="icon-plus"></i> Ajouter</a>
+          <?php endif; ?>
         </div>
         <div style="clear:both; margin-top: 10px;">
           <?php echo $activities_participant; ?>

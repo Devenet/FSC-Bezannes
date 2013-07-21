@@ -3,6 +3,7 @@
 use lib\content\Page;
 use lib\activities\Activity;
 use lib\activities\Schedule;
+use lib\preinscriptions\Preinscription;
 use lib\preinscriptions\Member;
 use lib\preinscriptions\Participant;
 use lib\content\Message;
@@ -14,6 +15,14 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   if (isset($_GET['rel']) && Member::isAdherent($_GET['rel']+0, $_SESSION['user']->id())) {
     
     $a = new Member($_GET['rel']+0);
+
+    // check status of the preinscription
+    if ($a->status() != Preinscription::AWAITING) {
+      $_SESSION['msg'] = new Message('Une préinscription validée ne permet plus d’y ajouter de nouvelles activités', -1, 'Opération impossible');
+      header('Location: '. _PREINSCRIPTION_ .'/list');
+      exit();
+    }
+
 
     $pageInfos = array(
      'name' => 'Ajout d’une activité',
@@ -74,7 +83,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         if(!$p->create())
           throw new \Exception('Impossible d’ajouter le participant');
         
-        $_SESSION['msg'] = new Message('Le membre <em>'. $a->name() .'</em> est maintenant inscrit à l’activité :)', 1, 'Ajout réussi !');
+        $_SESSION['msg'] = new Message('<em>'. $a->name() .'</em> est maintenant inscrit à l’activité :)', 1, 'Ajout réussi !');
         header ('Location: '. _PREINSCRIPTION_ .'/preinscription/'. $a->id());
         exit();
         
