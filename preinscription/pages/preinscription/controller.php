@@ -3,6 +3,7 @@
 use lib\content\Page;
 use lib\preinscriptions\Member;
 use lib\preinscriptions\Participant;
+use lib\preinscriptions\Preinscription;
 use lib\payments\Price;
 use lib\activities\Activity;
 use lib\activities\Schedule;
@@ -24,6 +25,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     
     // suppression membre
     if (isset($_GET['data']) && $_GET['data'] == 'delete') {
+
       $name = $m->name();
       if ($m->countResponsabilities() <= 0) {
         if ($m->delete(true)) {
@@ -58,6 +60,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         <tr>
           <th>Activité</th>
           <th>Horaire</th>
+          <th class="center">Statut</th>
         </tr>
         </thead><tbody>
       ';
@@ -65,17 +68,20 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $a = new Activity($p->activity());
         if (!$a->aggregate())
           $s = new Schedule($p->schedule());
-        $horaire = isset($s) && $a->aggregate() == 0 ? Display::Day($s->day()).' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != null ? '&nbsp; &nbsp;('.$s->more().')' : '') : '<em>Pratique libre</em>';
-        $horaire = isset($s) && $s->description() != null ? $s->description() : $horaire;
+        $horaire = isset($s) && $a->aggregate() == 0 ? Display::Day($s->day()).' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != NULL ? '&nbsp; &nbsp;('.$s->more().')' : '') : '<em>Pratique libre</em>';
+        $horaire = isset($s) && $s->description() != NULL ? $s->description() : $horaire;
         $activities_participant .= '
           <tr>
             <td class="go"><a href="'. _FSC_ .'/activite/'. $a->url() .'" rel="external">'. $a->name() .'</a> <span class="external-link"><i class="icon-external-link"></i></span></td>
             <td>'. $horaire .'</td>
-            <td><a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a></td>
+            <td class="center status">'. Preinscription::StatusTooltip($p->status()) .'</td>
+            <td class="center">'. ($p->status() == Preinscription::AWAITING ? '<a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a>' : NULL) .'</td>
           </tr>
         ';
       }
       $activities_participant .= '</tbody></table>';
+      $_SCRIPT[] = '<script>$(function(){ $(\'table td.status span\').tooltip(); });</script>';
+
       foreach (Participant::Activities($m->id()) as $p)
         $activities_participant .= '
         <div id="confirmBoxP'. $p->id() .'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelParticipant'. $p->id() .'" aria-hidden="true">
@@ -93,6 +99,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         </div>
         ';
     }
+
 
     
   }
