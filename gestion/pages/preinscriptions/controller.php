@@ -7,6 +7,7 @@ use lib\preinscriptions\Participant;
 use lib\content\Page;
 use lib\content\Pagination;
 use lib\content\Sort;
+use lib\content\Display;
 
 
 function quit() {
@@ -68,10 +69,10 @@ if (isset($_GET['detail'])) {
             <td class="go"><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->first_name() .'</a></td>
             <td style="width:120px;" class="center">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
             <td style="text-align:center;">'. ($m->adherent() ? '<span class="label label-'. Preinscription::StatusColor($m->status()) .'">'. $act .'</span>' : '') .'</td>
-            <td class="center minor-info">'. ($m->minor() ? '<span data-toggle="tooltip" data-title="Responsable : '. $resp->name() .'" data-placement="bottom" class="cursor-default">e</span>' : 'A') .'</td>
+            <td class="center">'. ($m->minor() ? 'e' : ($m->countResponsabilities() > 0 ? 'A <span style="position:absolute; padding-left:5px; color:#333;">&bull;</span>' : 'A')) .'</td>
             <td class="status center">'. Preinscription::StatusTooltip($m->status()) .'</td>
             <td class="center" style="padding-left:0; padding-right:0;">
-              <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'"' :'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
+              <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $m->id() .'"' :'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
               <div class="btn-group">
                 <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-eye-open"></i></a>
                 <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-pencil"></i></a>
@@ -88,8 +89,6 @@ if (isset($_GET['detail'])) {
 
       $_SCRIPT[] = '<script>$(function(){ 
         $(\'table td.status span\').tooltip();
-        $(\'table td.minor-info span\').tooltip();
-        $(\'p span.last_connexion\').tooltip();
       });</script>';
     }
 
@@ -111,12 +110,12 @@ if (isset($_GET['detail'])) {
   // set actual page
   $pages = ceil(Preinscription::countAccounts() / Pagination::step());
   $browse = 1;
-  if (isset($_GET['browse']) && $_GET['browse'] != null)
+  if (isset($_GET['browse']) && $_GET['browse'] != NULL)
     $browse = min($pages, max(1, $_GET['browse']+0));
 
-  $type = null;
+  $type = NULL;
   $sens = true;
-  $url = null;
+  $url = NULL;
   if (isset($_GET['sort'])) {
     $data = explode('-', htmlspecialchars($_GET['sort']));
     $type = $data[0];
@@ -140,7 +139,7 @@ if (isset($_GET['detail'])) {
     default:
       $preinscriptions = Preinscription::Preinscriptions(($browse-1) * Pagination::step());
   }
-  if ($type != null) $sort[$type]->sens($sens ? 'asc' : 'desc');
+  if ($type != NULL) $sort[$type]->sens($sens ? 'asc' : 'desc');
 
   // pagination
   $display_pagination = '';
