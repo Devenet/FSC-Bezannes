@@ -13,7 +13,6 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 $configs = array (
   '_PATH_PUBLIC_',
   '_PATH_GESTION_',
-  '_PATH_ADMIN_',
   '_PATH_PREINSCRIPTION_',
   '_PATH_UPLOADS_',
   '_PATH_UPLOADS_FULL_',
@@ -24,7 +23,6 @@ $configs = array (
   '_EMAIL_',
   '_FSC_',
   '_GESTION_',
-  '_ADMIN_',
   '_PREINSCRIPTION_',
   '_ANALYTICS_FSC_',
   '_ANALYTICS_GESTION_',
