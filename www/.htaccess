@@ -2,7 +2,7 @@
 #SetEnv REGISTER_GLOBALS 0
 
 # Security
-#Option -Indexes
+Options -Indexes
 ErrorDocument 404 http://fsc-bezannes.fr
 ErrorDocument 403 http://fsc-bezannes.fr
  
