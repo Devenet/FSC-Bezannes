@@ -20,7 +20,7 @@
   </thead>
   <tbody>
     <?php foreach ($activities as $act): ?>
-    <tr <?php echo $act->active() == 0 ? 'class="muted"' : null; ?>>
+    <tr <?php echo $act->active() == 0 ? 'class="muted"' : NULL; ?>>
       <td><?php echo $act->id(); ?></td>
       <td class="go"><a href="./?page=activity&amp;id=<?php echo $act->id(); ?>"><?php echo $act->name(); ?></a></td>
       <td><?php echo ($act->active() == 1) ? '<i class="icon-ok"></i>' : '' ; ?></td>

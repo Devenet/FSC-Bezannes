@@ -22,7 +22,7 @@ if (isset($_GET['action'])) {
   
   switch (htmlspecialchars($_GET['action'])) {
     case 'new':
-      if (isset($_POST) and $_POST != null) {
+      if (isset($_POST) and $_POST != NULL) {
         $inputs = array(
           'name',
           'login',
@@ -30,7 +30,7 @@ if (isset($_GET['action'])) {
           'privilege'
         );
         foreach ($inputs as $input)
-          $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+          $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
         $u = new UserAdmin();
         try {
           
@@ -63,7 +63,7 @@ if (isset($_GET['action'])) {
       break;
     
     case 'delete':
-      if (isset($_GET['login']) && $_GET['login'] != null) {
+      if (isset($_GET['login']) && $_GET['login'] != NULL) {
         $actual = $_SESSION['user']->id();
 
         try {

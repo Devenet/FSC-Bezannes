@@ -14,7 +14,7 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'M
 $form = new Form('new-member', './?page=new-member', 'Ajouter', 'Nouveau membre');
 
 // controle formulaire
-if (isset($_POST) and $_POST != null) {
+if (isset($_POST) and $_POST != NULL) {
   $inputs = array(
     'last_name',
     'first_name',
@@ -38,7 +38,7 @@ if (isset($_POST) and $_POST != null) {
     'date_registration_year'
   );
   foreach ($inputs as $input)
-    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
   
   $m = new Member();
   

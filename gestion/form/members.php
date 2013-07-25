@@ -1,6 +1,6 @@
 
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
-  <?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>
+  <?php echo ($form->legend() != NULL ? '<legend>'. $form->legend() .'</legend>' : NULL); ?>
   
   <!-- form messages -->
   <?php
@@ -25,10 +25,10 @@
     <label class="control-label" for="type">Référent</label>
     <div class="controls">
       <label class="radio inline">
-        <input type="radio" id="type" value="0" name="type" <?php echo ($form->input('type') == '0' ? 'checked="checked"' : null); ?> /> Responsable
+        <input type="radio" id="type" value="0" name="type" <?php echo ($form->input('type') == '0' ? 'checked="checked"' : NULL); ?> /> Responsable
       </label>
       <label class="radio inline">
-        <input type="radio" value="1" name="type" <?php echo ($form->input('type') == '1' ? 'checked="checked"' : null); ?> /> Animateur
+        <input type="radio" value="1" name="type" <?php echo ($form->input('type') == '1' ? 'checked="checked"' : NULL); ?> /> Animateur
       </label>
     </div>
   </div>

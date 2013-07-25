@@ -14,8 +14,8 @@ class Transaction {
   private $note;
   private $created;
   
-  public function __construct($id = null) {
-    if ($id != null && Transaction::isTransaction($id+0)) {
+  public function __construct($id = NULL) {
+    if ($id != NULL && Transaction::isTransaction($id+0)) {
       $query = SQL::sql()->prepare('SELECT id, adherent, amount, date, type, note FROM fsc_payments_transactions WHERE id = ?');
       $query->execute(array($id+0));
       $data = $query->fetch();
@@ -40,7 +40,7 @@ class Transaction {
     return $this->adherent;
   }
   public function setAdherent($id) {
-    if ($id != null && Member::isAdherent($id+0)) {
+    if ($id != NULL && Member::isAdherent($id+0)) {
       $this->adherent = $id+0;
       return true;
     }
@@ -52,7 +52,7 @@ class Transaction {
   }
   public function setAmount($amount) {
     $amount = preg_replace('#,#', '.', $amount) + 0;
-    if ($amount != null && $amount >= 0) {
+    if ($amount != NULL && $amount >= 0) {
       $this->amount = $amount;
       return true;
     }
@@ -63,7 +63,7 @@ class Transaction {
     return $this->date;
   }
   public function setDate($year, $month, $day) {
-    if ($year != null && $month != null && $day != null && $year >= _YEAR_ && $year <= _YEAR_+1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
+    if ($year != NULL && $month != NULL && $day != NULL && $year >= _YEAR_ && $year <= _YEAR_+1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
       $this->date = $year.'-'.$month.'-'.$day;
       return true;
     }
@@ -86,7 +86,7 @@ class Transaction {
     return $this->type;
   }
   public function setType($type) {
-    if ($type != null && $type+0 >= 0 && $type <= 3) {
+    if ($type != NULL && $type+0 >= 0 && $type <= 3) {
       $this->type = $type+0;
       return true;
     }
@@ -97,7 +97,7 @@ class Transaction {
     return htmlspecialchars_decode($this->note);
   }
   public function setNote($string) {
-    if ($string != null) {
+    if ($string != NULL) {
       $this->note = htmlspecialchars($string);
       return true;
     }

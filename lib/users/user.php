@@ -10,8 +10,8 @@ abstract class User {
   protected $password;
   protected $created;
 
-  private $token = null;
-  private $token_expire = null;
+  private $token = NULL;
+  private $token_expire = NULL;
   const EXPIRATION = 180;
   
   public function id() {
@@ -25,7 +25,7 @@ abstract class User {
     return $this->login;
   }
   public function setLogin($login) {
-    if ($login != null && $this->acceptLogin($login) && preg_match('#^[a-z0-9._\+-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', strtolower(htmlspecialchars($login)))) {
+    if ($login != NULL && $this->acceptLogin($login) && preg_match('#^[a-z0-9._\+-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', strtolower(htmlspecialchars($login)))) {
       $this->login = strtolower(htmlspecialchars($login));
       return true;
     }
@@ -39,7 +39,7 @@ abstract class User {
     return sha1($login . $password . $login);
   }
   public function setPassword($password, $length = 7) {
-    if ($password != null && strlen($password) >= $length && $this->login != null) {
+    if ($password != NULL && strlen($password) >= $length && $this->login != NULL) {
       $this->password = self::hash_password($password, $this->login);
       return true;
     }
@@ -57,8 +57,8 @@ abstract class User {
   }
   public function acceptToken($token) {
     if (time() <= $this->token_expire && $this->token == $token) {
-      $this->token = null;
-      $this->token_expire = null;
+      $this->token = NULL;
+      $this->token_expire = NULL;
       return true;
     }
     return false;

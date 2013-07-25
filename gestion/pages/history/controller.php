@@ -14,7 +14,7 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 // set actual page
 $pages = ceil(UserAdmin::countHistory() / Pagination::step());
 $browse = 1;
-if (isset($_GET['browse']) && $_GET['browse'] != null)
+if (isset($_GET['browse']) && $_GET['browse'] != NULL)
   $browse = min($pages, max(1, $_GET['browse']+0));
 
 $history = UserAdmin::getHistory(($browse-1) * Pagination::step());

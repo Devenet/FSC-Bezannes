@@ -15,7 +15,7 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'A
 $form = new Form('new-activity', './?page=new-activity', 'Ajouter', 'Nouvelle activité');
 
 // controle formulaire
-if (isset($_POST) and $_POST != null) {
+if (isset($_POST) and $_POST != NULL) {
   $inputs = array(
     'name',
     'description',
@@ -27,7 +27,7 @@ if (isset($_POST) and $_POST != null) {
     'website'
   );
   foreach ($inputs as $input)
-    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
 
   
   $act = new Activity();
@@ -40,9 +40,9 @@ if (isset($_POST) and $_POST != null) {
       throw new \Exception('Merci de compléter la description de l’activité');
     if (!$act->setPlace(stripslashes($_POST['place'])))
       throw new \Exception('Merci de compléter le lieu de l’activité');
-    if (isset($_FILES['image']) && $_FILES['image']['name'] != null)
+    if (isset($_FILES['image']) && $_FILES['image']['name'] != NULL)
       $act->setImage($_FILES['image']);
-    if (!$act->setAggregate(isset($_POST['aggregate']) ? $_POST['aggregate'] : null))
+    if (!$act->setAggregate(isset($_POST['aggregate']) ? $_POST['aggregate'] : NULL))
       throw new \Exception('Merci de préciser s’il s’agit d’une activité à créneaux libres');
     if (!$act->setPrice($_POST['price']))
       throw new \Exception('Merci de compléter le tarif de l’activité');

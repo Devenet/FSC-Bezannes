@@ -14,12 +14,12 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 // set actual page
 $pages = ceil(Member::countMembers() / Pagination::step());
 $browse = 1;
-if (isset($_GET['browse']) && $_GET['browse'] != null)
+if (isset($_GET['browse']) && $_GET['browse'] != NULL)
   $browse = min($pages, max(1, $_GET['browse']+0));
 
-$type = null;
+$type = NULL;
 $sens = true;
-$url = null;
+$url = NULL;
 if (isset($_GET['sort'])) {
   $data = explode('-', htmlspecialchars($_GET['sort']));
   $type = $data[0];
@@ -58,7 +58,7 @@ switch($type) {
   default:
     $members = Member::Members(($browse-1) * Pagination::step());
 }
-if ($type != null) $sort[$type]->sens($sens ? 'asc' : 'desc');
+if ($type != NULL) $sort[$type]->sens($sens ? 'asc' : 'desc');
 
 // pagination
 $display_pagination = '';
@@ -76,8 +76,7 @@ $_SCRIPT[] = '<script src="'. _FSC_ .'/js/hogan.js"></script>' . "\n";
 $_SCRIPT[] = "\t" . '<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';
 $_SCRIPT[] = "
     <script>
-      $(document).ready(function() {
-        //$('input.search-members').typeahead('destroy');
+      $(function() {
         $('input.search-members').typeahead({
           name: 'members',
           valueKey: 'name',
@@ -93,6 +92,8 @@ $_SCRIPT[] = "
           var v = [].slice.call(arguments, 1);
           document.location.href = v[0].url;
         });
+
+        $('td.tooltiped span').tooltip();
       });
     </script>
 ";

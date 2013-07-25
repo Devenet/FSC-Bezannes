@@ -23,7 +23,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
   
     
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
     $inputs = array(
       'amount',
       'date_year',
@@ -32,7 +32,7 @@ if (isset($_GET['adherent']) && Member::isAdherent($_GET['adherent']+0)) {
       'description'
     );
     foreach ($inputs as $input)
-      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
     
     $t = new Advantage();
     $t->setAdherent($a->id());

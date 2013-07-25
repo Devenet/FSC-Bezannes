@@ -15,7 +15,7 @@ $pageMenu = new Menu();
   $pageMenu->addLink('La vie associative', _FSC_.'/a-propos/vie-associative');
   $pageMenu->addLink('Documents', _FSC_.'/a-propos/documents');
 
-$rel = null;
+$rel = NULL;
 $display_parent = false;
 
 if (isset($_GET['rel'])) {

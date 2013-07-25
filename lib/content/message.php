@@ -10,7 +10,7 @@ class Message {
   private $message;
   private $close;
   
-  public function __construct($message, $type = 0, $header = null, $close = true) {
+  public function __construct($message, $type = 0, $header = NULL, $close = true) {
     $this->type = $type;
     $this->header = $header;
     $this->message = $message;
@@ -18,26 +18,26 @@ class Message {
   }
   
   private function addClose() {
-      return ($this->close ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' . "\n" : null);
+      return ($this->close ? '<a href="#" class="close" data-dismiss="alert">&times;</a>' . "\n" : NULL);
     }
   
   public function __toString() {
     $return = '<div class="alert ';
     switch ($this->type) {
       case 0:
-        $return .= '">'. $this->addClose() . ($this->header != null ? '<h4>' : null);
+        $return .= '">'. $this->addClose() . ($this->header != NULL ? '<h4>' : NULL);
         break;
       case -1:
-        $return .= 'alert-error">'. $this->addClose() . ($this->header != null ? '<h4>' : null);
+        $return .= 'alert-error">'. $this->addClose() . ($this->header != NULL ? '<h4>' : NULL);
         break;
       case 1:
-        $return .= 'alert-success">'. $this->addClose() . ($this->header != null ? '<h4>' : null);
+        $return .= 'alert-success">'. $this->addClose() . ($this->header != NULL ? '<h4>' : NULL);
         break;
       default:
-        $return .= 'alert-info">'. $this->addClose() . ($this->header != null ? '<h4>' : null);
+        $return .= 'alert-info">'. $this->addClose() . ($this->header != NULL ? '<h4>' : NULL);
         break;
     }
-    $return .= ($this->header != null ? $this->header .'</h4>' : null). $this->message .'</div>';
+    $return .= ($this->header != NULL ? $this->header .'</h4>' : NULL). $this->message .'</div>';
     return $return;
   }
   

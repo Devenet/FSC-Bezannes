@@ -14,7 +14,7 @@ class Participant {
   protected $status; 
   private $created;
   
-  public function __construct($id = null) {
+  public function __construct($id = NULL) {
     if (is_int($id+0) && $this->isParticipant($id+0)) {
       $query = SQL::sql()->query('SELECT id, activity, adherent, schedule, status FROM fsc_participants_inscription WHERE id = '. $id);
       $member = $query->fetch();
@@ -84,7 +84,7 @@ class Participant {
   }
   
   public function couldCreated() {
-    if ($this->schedule != null) {
+    if ($this->schedule != NULL) {
       $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_participants_inscription WHERE activity = :activity AND adherent = :adherent AND schedule = :schedule');
       $prepare = array(
         'activity' => $this->activity,
@@ -153,9 +153,9 @@ class Participant {
     return $return;
   }
   
-  static public function Adherents($activity, $schedule = null) {
+  static public function Adherents($activity, $schedule = NULL) {
     $return = array();
-    if ($schedule != null) {
+    if ($schedule != NULL) {
       $query = SQL::sql()->prepare('SELECT id FROM fsc_participants_inscription WHERE activity = :activity AND schedule = :schedule');
       $query->execute(array('activity' => $activity, 'schedule' => $schedule));
     }
@@ -183,8 +183,8 @@ class Participant {
     return $data['total'];
   }
   
-  static public function countAdherents($activity, $schedule = null) {
-    if ($schedule != null) {
+  static public function countAdherents($activity, $schedule = NULL) {
+    if ($schedule != NULL) {
       $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_participants_inscription WHERE activity = :activity AND schedule = :schedule');
       $query->execute(array('activity' => $activity+0, 'schedule' => $schedule+0));
     }

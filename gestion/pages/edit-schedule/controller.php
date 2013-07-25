@@ -54,16 +54,16 @@ if (isset($_GET['id']) && Schedule::isSchedule($_GET['id']+0)) {
     $form->add($input, $s->$input());
   
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
     foreach ($inputs as $input)
-      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
     
     $s->setActivity($act->id());
     
     try {
       
       // horaire journalier
-      if ($_POST['description'] == null) {
+      if ($_POST['description'] == NULL) {
         $s->setType();
         
         if (!$s->setDay($_POST['day']))

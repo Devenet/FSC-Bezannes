@@ -26,7 +26,7 @@ class Activity {
   
   private $created;
   
-  public function __construct($id = null) {
+  public function __construct($id = NULL) {
     if (is_int($id+0) && $this->isActivity($id+0)) {
       $query = SQL::sql()->query('SELECT name, active, url, description, place, email, website, price, price_young, aggregate FROM fsc_activities WHERE id = '. $id);
       $activity = $query->fetch();
@@ -61,7 +61,7 @@ class Activity {
   }
   
   public function setName($name) {
-    if (!is_string($name) OR $name == null)
+    if (!is_string($name) OR $name == NULL)
       return false;
     else {
       $this->name = htmlspecialchars($name);
@@ -141,7 +141,7 @@ class Activity {
   }
   
   public function setDescription($description) {
-    if ($description != null) {
+    if ($description != NULL) {
       /*
       $description = preg_replace('#^[^(<p>)](.*)#', '<p>$0', htmlspecialchars_decode($description));
       $description = preg_replace('#(.*)[^(</p>)]$#', '$0</p>', $description);
@@ -178,7 +178,7 @@ class Activity {
   }
   
   public function setPlace($place) {
-    if($place != null) {
+    if($place != NULL) {
       $this->place = htmlspecialchars($place);
       return true;
     }
@@ -204,7 +204,7 @@ class Activity {
   }
   
   public function setEmail($email) {
-    if ($email != null) {
+    if ($email != NULL) {
       if (!preg_match('#^[a-z0-9._\+-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', strtolower(htmlspecialchars($email))))
         return false;
       else {
@@ -222,7 +222,7 @@ class Activity {
   }
   
   public function setWebsite($website) {
-    if ($website != null) {
+    if ($website != NULL) {
       // oui je ne prends pas en compte les nouveaux NDD avec accents, mais hein bon quoi keur.
       if (!preg_match('#^(http://)?[a-z0-9._-]{2,}\.[a-z]{2,4}$#', strtolower(htmlspecialchars($website))))
         return false;
@@ -249,9 +249,9 @@ class Activity {
     return $this->aggregate;
   }
   
-  public function setPrice($float = null) {
+  public function setPrice($float = NULL) {
     $float = preg_replace('#,#', '.', $float) + 0;
-    if ($float == null) {
+    if ($float == NULL) {
       $this->price = 0;
       return true;
     }
@@ -265,10 +265,10 @@ class Activity {
     return preg_replace('#\.#', ',', $this->price);
   }
   
-  public function setPriceYoung($float = null) {
+  public function setPriceYoung($float = NULL) {
     $float = preg_replace('#,#', '.', $float) + 0;
     // if not specified, same price as the "normal" price
-    if ($float == null) {
+    if ($float == NULL) {
       $this->price_young = -1;
       return true;
     }
@@ -307,19 +307,19 @@ class Activity {
   
   public function create() {
     if (!$this->created) {
-      if ($this->url == null) $this->setUrl($this->name);
+      if ($this->url == NULL) $this->setUrl($this->name);
       $query = SQL::sql()->prepare('INSERT INTO fsc_activities(name, active, url, description, place, aggregate, email, website, price, price_young) VALUES(:name, :active, :url, :description, :place, :aggregate, :email, :website, :price, :price_young)');
       $prepare = array(
         'name' => addslashes($this->name),
-        'active' => ($this->active == null) ? 0 : $this->active,
+        'active' => ($this->active == NULL) ? 0 : $this->active,
         'url' => $this->url,
         'description' => addslashes($this->description),
         'place' => addslashes($this->place),
         'aggregate' => $this->aggregate,
-        'email' => ($this->email == null) ? '' : $this->email,
-        'website' => ($this->website == null) ? '' : $this->website,
-        'price' => ($this->price == null) ? 0 : $this->price,
-        'price_young' => ($this->price_young == null) ? -1 : $this->price_young
+        'email' => ($this->email == NULL) ? '' : $this->email,
+        'website' => ($this->website == NULL) ? '' : $this->website,
+        'price' => ($this->price == NULL) ? 0 : $this->price,
+        'price_young' => ($this->price_young == NULL) ? -1 : $this->price_young
         );
       $rep = $query->execute($prepare);
       $this->id = SQL::sql()->lastInsertId();
@@ -390,7 +390,7 @@ class Activity {
     return in_array($url, $urls);
   }
   
-  static public function Activities($start = 0, $step = null) {
+  static public function Activities($start = 0, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY id LIMIT '. $start .','. $step);
@@ -408,7 +408,7 @@ class Activity {
     return $return;
   }
   
-  static public function ActivitiesByName($start = 0, $sens = true, $step = null) {
+  static public function ActivitiesByName($start = 0, $sens = true, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY name '. ($sens ? '' :  'DESC'). ' LIMIT '. $start .','. $step);
@@ -417,7 +417,7 @@ class Activity {
     $query->closeCursor();
     return $return;
   }
-  static public function ActivitiesByActive($start = 0, $sens = true, $step = null) {
+  static public function ActivitiesByActive($start = 0, $sens = true, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY active '. ($sens ? 'DESC' :  '') .', name LIMIT '. $start .','. $step);
@@ -426,7 +426,7 @@ class Activity {
     $query->closeCursor();
     return $return;
   }
-  static public function ActivitiesByPrice($start = 0, $sens = true, $step = null) {
+  static public function ActivitiesByPrice($start = 0, $sens = true, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY price '. ($sens ? '' :  'DESC') .', name LIMIT '. $start .','. $step);

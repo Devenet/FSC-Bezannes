@@ -192,8 +192,8 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       $a = new Activity($p->activity());
       if (!$a->aggregate())
         $s = new Schedule($p->schedule());
-      $horaire = isset($s) ? Display::Day($s->day()).' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != null ? '&nbsp; &nbsp;('.$s->more().')' : '') : '<em>Pratique libre</em>';
-      $horaire = isset($s) && $s->description() != null ? $s->description() : $horaire;
+      $horaire = isset($s) ? Display::Day($s->day()).' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() . ($s->more() != NULL ? '&nbsp; &nbsp;('.$s->more().')' : '') : '<em>Pratique libre</em>';
+      $horaire = isset($s) && $s->description() != NULL ? $s->description() : $horaire;
       $activities_participant .= '
         <tr>
           <td>'. $p->id() .'</td>

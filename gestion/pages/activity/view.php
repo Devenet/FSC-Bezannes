@@ -25,7 +25,7 @@
         <li class="active"><a href="#tab-description" id="link-tab-description" data-toggle="tab"><i class="icon-book"></i> Description</a></li>
         <li><a href="#tab-schedules" id="link-tab-schedules" data-toggle="tab"><i class="icon-time"></i> Horaires</a></li>
         <li><a href="#tab-referents" id="link-tab-referents" data-toggle="tab"><i class="icon-legal"></i> Référents</a></li>
-        <?php echo $act->active() ? '<li class="pull-right"><a href="#tab-participants" id="link-tab-participants" data-toggle="tab"><i class="icon-male"></i> Participants <span class="label label-info">'.$count_participants.'</span></a></li>' : null; ?>
+        <?php echo $act->active() ? '<li class="pull-right"><a href="#tab-participants" id="link-tab-participants" data-toggle="tab"><i class="icon-male"></i> Participants <span class="label label-info">'.$count_participants.'</span></a></li>' : NULL; ?>
       </ul>
       
       <div class="tab-content">
@@ -93,19 +93,19 @@
     
     <div class="alert alert-info">
       <strong>Tarif</strong> : <?php echo $act->price(); ?> €
-      <?php echo ($act->price_young() != -1 ? '<br /><strong>Tarif jeune</strong> : '. $act->price_young() .' €' : null); ?>
+      <?php echo ($act->price_young() != -1 ? '<br /><strong>Tarif jeune</strong> : '. $act->price_young() .' €' : NULL); ?>
     </div>
     
     <div class="well well-small">
       <address style="margin-bottom:0;"><i class="icon-map-marker"></i> <?php echo $act->place(); ?></address>
     <?php
-      if ($act->email() != null || $act->website() != null) {
+      if ($act->email() != NULL || $act->website() != NULL) {
         echo '<div style="margin-top:5px;"></div>';
-        if ($act->email() != null)
+        if ($act->email() != NULL)
           echo '<i class="icon-envelope-alt"></i> <a href="mailto:', $act->email(), '" title="', $act->email() , '">Courriel</a>';
-        if ($act->email() != null && $act->website() != null)
+        if ($act->email() != NULL && $act->website() != NULL)
           echo '<br />';
-        if ($act->website() != null)
+        if ($act->website() != NULL)
           echo '<i class="icon-globe"></i> <a href="http://', $act->website(), '" title="', $act->website() , '" rel="external">Site web</a>';
       }
     ?>

@@ -50,10 +50,10 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
   
   
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
     
     foreach ($inputs as $input)
-      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
     
     try {
 

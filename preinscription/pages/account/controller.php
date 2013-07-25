@@ -19,7 +19,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   $u = $_SESSION['user'];
 
   // change password
-  if (isset($_POST) && isset($_POST['password']) && $_POST['password'] != null) { 
+  if (isset($_POST) && isset($_POST['password']) && $_POST['password'] != NULL) { 
     try {
       if (!UserInscription::isAuthorizedUser($u->login(), htmlspecialchars($_POST['password'])))
         throw new \Exception('Mot de passe actuel incorrect');

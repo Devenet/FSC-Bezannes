@@ -14,12 +14,12 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 // set actual page
 $pages = ceil(Activity::countActivities() / Pagination::step());
 $browse = 1;
-if (isset($_GET['browse']) && $_GET['browse'] != null)
+if (isset($_GET['browse']) && $_GET['browse'] != NULL)
   $browse = min($pages, max(1, $_GET['browse']+0));
 
-$type = null;
+$type = NULL;
 $sens = true;
-$url = null;
+$url = NULL;
 if (isset($_GET['sort'])) {
   $data = explode('-', htmlspecialchars($_GET['sort']));
   $type = $data[0];
@@ -48,7 +48,7 @@ switch($type) {
   default:
     $activities = Activity::Activities(($browse-1) * Pagination::step());
 }
-if ($type != null) $sort[$type]->sens($sens ? 'asc' : 'desc');
+if ($type != NULL) $sort[$type]->sens($sens ? 'asc' : 'desc');
 
 // pagination
 $display_pagination = '';

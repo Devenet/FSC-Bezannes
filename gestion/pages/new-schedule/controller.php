@@ -19,7 +19,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
   $form = new Form('new-schedule', './?page=new-schedule&amp;activity='. $act->id(), 'Ajouter', 'Nouvel horaire');
   
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
     $inputs = array(
       'day',
       'time_begin_hour',
@@ -30,7 +30,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
       'description'
     );
     foreach ($inputs as $input)
-      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
     
     $s = new Schedule();
     $s->setActivity($act->id());
@@ -38,7 +38,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
     try {
       
       // horaire journalier
-      if ($_POST['description'] == null) {
+      if ($_POST['description'] == NULL) {
         $s->setType();
         
         if (!$s->setDay($_POST['day']))

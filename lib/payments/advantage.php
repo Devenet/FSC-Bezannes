@@ -13,8 +13,8 @@ class Advantage {
   private $description;
   private $created;
   
-  public function __construct($id = null) {
-    if ($id != null && Advantage::isAdvantage($id+0)) {
+  public function __construct($id = NULL) {
+    if ($id != NULL && Advantage::isAdvantage($id+0)) {
       $query = SQL::sql()->prepare('SELECT id, adherent, amount, date, description FROM fsc_payments_advantages WHERE id = ?');
       $query->execute(array($id+0));
       $data = $query->fetch();
@@ -38,7 +38,7 @@ class Advantage {
     return $this->adherent;
   }
   public function setAdherent($id) {
-    if ($id != null && Member::isAdherent($id+0)) {
+    if ($id != NULL && Member::isAdherent($id+0)) {
       $this->adherent = $id+0;
       return true;
     }
@@ -50,7 +50,7 @@ class Advantage {
   }
   public function setAmount($amount) {
     $amount = preg_replace('#,#', '.', $amount) + 0;
-    if ($amount != null && (is_int($amount) || is_double($amount) || is_float($amount))) {
+    if ($amount != NULL && (is_int($amount) || is_double($amount) || is_float($amount))) {
       $this->amount = $amount;
       return true;
     }
@@ -61,7 +61,7 @@ class Advantage {
     return $this->date;
   }
   public function setDate($year, $month, $day) {
-    if ($year != null && $month != null && $day != null && $year >= _YEAR_ && $year <= _YEAR_+1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
+    if ($year != NULL && $month != NULL && $day != NULL && $year >= _YEAR_ && $year <= _YEAR_+1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
       $this->date = $year.'-'.$month.'-'.$day;
       return true;
     }
@@ -84,7 +84,7 @@ class Advantage {
     return htmlspecialchars_decode($this->description);
   }
   public function setDescription($string) {
-    if ($string != null) {
+    if ($string != NULL) {
       $this->description = htmlspecialchars($string);
       return true;
     }

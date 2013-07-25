@@ -29,7 +29,7 @@ $page->addParameter('bar', 'danger');
 $form = new Form('signup', _PREINSCRIPTION_.'/signup', 'Créer mon compte');
 
 // controle formulaire
-if (isset($_POST) and $_POST != null) {
+if (isset($_POST) and $_POST != NULL) {
   $inputs = array(
     'login',
     'password',
@@ -37,7 +37,7 @@ if (isset($_POST) and $_POST != null) {
     'cnil'
   );
   foreach ($inputs as $input)
-    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
 
   
   $u = new UserInscription();
@@ -81,7 +81,7 @@ Voici un petit rappel des informations utiles :
     
   }
   catch (\Exception $e) {
-    $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Oups... !', null);
+    $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Oups... !', NULL);
   }
 }
 

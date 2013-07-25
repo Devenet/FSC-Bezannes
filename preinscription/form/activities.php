@@ -1,6 +1,6 @@
 
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
-  <?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>
+  <?php echo ($form->legend() != NULL ? '<legend>'. $form->legend() .'</legend>' : NULL); ?>
   
   <!-- form messages -->
   <?php
@@ -14,7 +14,7 @@
   <div class="control-group">
     <label class="control-label" for="activity">Activité</label>
     <div class="controls">
-      <?php echo ($form->radio('activity') != null ? $form->radio('activity', $form->input('activity')) : '<div class="alert alert-error span6">Aucune activité n’est disponible !</div>'); ?>
+      <?php echo ($form->radio('activity') != NULL ? $form->radio('activity', $form->input('activity')) : '<div class="alert alert-error span6">Aucune activité n’est disponible !</div>'); ?>
     </div>
   </div>  
   

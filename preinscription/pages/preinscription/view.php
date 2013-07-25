@@ -14,7 +14,7 @@ use lib\preinscriptions\Preinscription;
 <div class="row">
   <div class="span3">
     <div class="well well-small">
-      <?php echo Display::HtmlGender($m->gender()), ' ', $m->last_name(), ' ', $m->first_name(); ?>
+      <?php echo Display::HtmlGender($m->gender()), ' ', $m->name(); ?>
       <br /><?php echo Display::Date($m->date_birthday()), ' (', $m->age(), ' ans)'; ?>
     </div>
 
@@ -42,7 +42,7 @@ use lib\preinscriptions\Preinscription;
       <div class="span4">
         <h4>Contact</h4>
           <i class="icon-phone"></i> <?php echo Display::Phone($m->phone()); ?>
-          <?php echo ($m->mobile() != null ? '<br /><i class="icon-phone"></i> '. Display::Phone($m->mobile()) : null); ?>
+          <?php echo ($m->mobile() != NULL ? '<br /><i class="icon-phone"></i> '. Display::Phone($m->mobile()) : NULL); ?>
           <br /><i class="icon-envelope-alt"></i> <?php echo Display::Email($m->email()); ?>
       </div>
 

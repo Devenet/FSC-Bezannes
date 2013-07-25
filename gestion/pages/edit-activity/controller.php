@@ -31,10 +31,10 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
       $form->add($input, ($act->$input()==-1 ? '' : ($input == 'description' ? $act->wysihtmlDescription() : $act->$input())));
   
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
 
     foreach ($inputs as $input)
-      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
     
     try {
       
@@ -44,10 +44,10 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
       throw new \Exception('Merci de compléter la description de l’activité');
     if (!$act->setPlace(stripslashes($_POST['place'])))
       throw new \Exception('Merci de compléter le lieu de l’activité');
-    if (isset($_FILES['image']) && $_FILES['image']['name'] != null)
+    if (isset($_FILES['image']) && $_FILES['image']['name'] != NULL)
       $act->setImage($_FILES['image']);
     /*
-    if (!$act->setAggregate(isset($_POST['aggregate']) ? $_POST['aggregate'] : null))
+    if (!$act->setAggregate(isset($_POST['aggregate']) ? $_POST['aggregate'] : NULL))
       throw new \Exception('Merci de préciser s’il s’agit d’une activité à créneaux libres');
     */
     if (!$act->setPrice($_POST['price']))

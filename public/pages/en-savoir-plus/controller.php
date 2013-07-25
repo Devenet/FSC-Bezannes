@@ -16,7 +16,7 @@ $pageMenu = new Menu();
   $pageMenu->addLink('Bureau', $pageInfos['url'].'/bureau');
   $pageMenu->addLink('Assemblée générale', $pageInfos['url'].'/assemblee-generale');
 
-$rel = null;
+$rel = NULL;
 $display_parent = true;
 
 if (isset($_GET['rel'])) {

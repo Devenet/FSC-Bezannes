@@ -8,8 +8,8 @@ use lib\content\Display;
       <h2 style="margin-bottom:0;"><?php echo $m->name(); ?>
       <div class="btn-group pull-right btn-small">
         <a href="./?page=edit-member&amp;id=<?php echo $m->id(); ?>" class="btn btn-small" title="Modifier le membre"><i class="icon-pencil"></i></a>
-        <?php echo ($m->minor() ? '<a href="./?page=choose-responsible&amp;member='. $m->id() .'"  class="btn btn-small" title="Modifier le responsable"><i class="icon-male"></i> Responsable</a>' : null); ?>
-        <?php echo ($m->adherent() ? '<a href="./?page=new-participant&amp;adherent='. $m->id() .'"  class="btn btn-small" title="Ajouter une activité"><i class="icon-plus"></i> Activité</a>' : null); ?>
+        <?php echo ($m->minor() ? '<a href="./?page=choose-responsible&amp;member='. $m->id() .'"  class="btn btn-small" title="Modifier le responsable"><i class="icon-male"></i> Responsable</a>' : NULL); ?>
+        <?php echo ($m->adherent() ? '<a href="./?page=new-participant&amp;adherent='. $m->id() .'"  class="btn btn-small" title="Ajouter une activité"><i class="icon-plus"></i> Activité</a>' : NULL); ?>
         <a href="#confirmBox<?php echo $m->id(); ?>" class="btn btn-small" role="button" data-toggle="modal" title="Supprimer le membre"><i class="icon-trash"></i></a>
       </div>
       <?php /*
@@ -19,8 +19,8 @@ use lib\content\Display;
         </a>
         <ul class="dropdown-menu">
           <li><a href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
-          <?php echo ($m->minor() ? '<li><a href="/?page=choose-responsible&amp;member='. $m->id() .'"><i class="icon-user"></i> Représentant</a></li>' : null); ?>
-          <?php echo ($m->adherent() ? '<li class="divider"></li> <li><a href="/?page=new-participant&amp;adherent='. $m->id() .'"><i class="icon-plus"></i> Activité</a></li>' : null); ?>
+          <?php echo ($m->minor() ? '<li><a href="/?page=choose-responsible&amp;member='. $m->id() .'"><i class="icon-user"></i> Représentant</a></li>' : NULL); ?>
+          <?php echo ($m->adherent() ? '<li class="divider"></li> <li><a href="/?page=new-participant&amp;adherent='. $m->id() .'"><i class="icon-plus"></i> Activité</a></li>' : NULL); ?>
           <li class="divider"></li>
           <li><a href="#confirmBox<?php echo $m->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
         </ul>
@@ -33,7 +33,7 @@ use lib\content\Display;
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab-infos" id="link-tab-infos" data-toggle="tab"><i class="icon-user"></i> Informations</a></li>
         <li><a href="#tab-address" id="link-tab-adress" data-toggle="tab"><i class="icon-map-marker"></i> Coordonnées</a></li>
-        <?php echo ($m->adherent() ? '<li><a href="#tab-payments" id="link-tab-payments" data-toggle="tab"><i class="icon-shopping-cart"></i> Paiements</a></li><li class="pull-right"><a href="#tab-activities" id="link-tab-activities" data-toggle="tab"><i class="icon-globe"></i> Activités <span class="label label-info">'. $count_activites .'</span></a></li>' : null); ?>
+        <?php echo ($m->adherent() ? '<li><a href="#tab-payments" id="link-tab-payments" data-toggle="tab"><i class="icon-shopping-cart"></i> Paiements</a></li><li class="pull-right"><a href="#tab-activities" id="link-tab-activities" data-toggle="tab"><i class="icon-globe"></i> Activités <span class="label label-info">'. $count_activites .'</span></a></li>' : NULL); ?>
       </ul>
       
       <div class="tab-content">
@@ -73,7 +73,7 @@ use lib\content\Display;
           ?>
           <?php
             if (isset($display_referent)) {
-              echo '<div class="span3'. ($m->countResponsabilities() > 0 ? ' offset1': null) .'">', '<h4>Référent</h4>';
+              echo '<div class="clearfix"></div><hr /><div class="span6">', '<h4>Référent</h4>';
               echo '<ul>', $display_referent, '</ul>';
               echo '</div>';
             }
@@ -103,7 +103,7 @@ use lib\content\Display;
             <h4>Contact</h4>
             <p>
               <i class="icon-phone"></i> <?php echo Display::Phone($m->phone()); ?>
-              <?php echo ($m->mobile() != null ? '<br /><i class="icon-phone"></i> '. Display::Phone($m->mobile()) : null); ?>
+              <?php echo ($m->mobile() != NULL ? '<br /><i class="icon-phone"></i> '. Display::Phone($m->mobile()) : NULL); ?>
             </p>
             <p><i class="icon-envelope-alt"></i> <?php echo Display::Email($m->email()); ?></p>
             
@@ -111,7 +111,7 @@ use lib\content\Display;
             <h4>Responsable</h4>
             <p>
               <i class="icon-phone"></i> <?php echo Display::Phone($r->phone()); ?>
-              <?php echo ($r->mobile() != null ? '<br /><i class="icon-phone"></i> '. Display::Phone($r->mobile()) : null); ?>
+              <?php echo ($r->mobile() != NULL ? '<br /><i class="icon-phone"></i> '. Display::Phone($r->mobile()) : NULL); ?>
             </p>
             <p><i class="icon-envelope-alt"></i> <?php echo Display::Email($r->email()); ?></p>
             <?php endif; ?>

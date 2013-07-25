@@ -13,7 +13,7 @@ class Referent {
   private $display_phone;
   private $created;
   
-  public function __construct($id = null) {
+  public function __construct($id = NULL) {
     if (is_int($id+0) && $this->isReferent($id+0)) {
       $query = SQL::sql()->query('SELECT id, activity, member, type, display_phone FROM fsc_referents WHERE id = '. $id);
       $member = $query->fetch();
@@ -59,7 +59,7 @@ class Referent {
     return $this->type;
   }
   public function setType($type) {
-    if ($type != null) {
+    if ($type != NULL) {
       $this->type = ($type == 1) ? 1 : 0;
       return true;
     }

@@ -17,7 +17,7 @@ class Schedule {
   private $description;
   private $created;
   
-  public function __construct($id = null) {
+  public function __construct($id = NULL) {
     if (is_int($id+0) && $this->isSchedule($id+0)) {
       $query = SQL::sql()->query('SELECT activity, more, type, day, time_begin, time_end, description FROM fsc_schedules WHERE id = '. $id);
       $schedule = $query->fetch();
@@ -54,9 +54,9 @@ class Schedule {
   public function more() {
     return $this->more;
   }
-  public function setMore($string = null) {
-    if ($string == null) {
-      $this->more = null;
+  public function setMore($string = NULL) {
+    if ($string == NULL) {
+      $this->more = NULL;
       return true;
     }
     elseif (is_string($string)) {
@@ -72,7 +72,7 @@ class Schedule {
   public function setType($int = 0) {
     if ($int == 0) {
       $this->type = 0;
-      $this->description = null;
+      $this->description = NULL;
     }
     else {
       $this->type = 1;
@@ -87,7 +87,7 @@ class Schedule {
   public function day() {
     return $this->day;
   }
-  public function setDay($day = null) {
+  public function setDay($day = NULL) {
     if ($this->type == 0) {
       if ($day >= 0 && $day <= 6) {
         $this->day = $day;
@@ -95,22 +95,22 @@ class Schedule {
       }
       return false;
     }
-    $this->day = null;
+    $this->day = NULL;
     return true;
   }
   
   public function time_begin() {
     return substr($this->time_begin, 0, -3);
   }
-  public function setTimeBegin($hour = null, $minute = null) {
+  public function setTimeBegin($hour = NULL, $minute = NULL) {
     if ($this->type == 0) {
-      if ($hour != null && $minute != null && $hour <= 24 && $hour >= 0 && $minute <= 60 && $minute >= 0) {
+      if ($hour != NULL && $minute != NULL && $hour <= 24 && $hour >= 0 && $minute <= 60 && $minute >= 0) {
         $this->time_begin = $hour .':'. $minute;
         return true;
       }
       return false;
     }
-    $this->time_begin = null;
+    $this->time_begin = NULL;
     return true;
   }
   public function time_begin_hour() {
@@ -123,15 +123,15 @@ class Schedule {
   public function time_end() {
     return substr($this->time_end, 0, -3);
   }
-  public function setTimeEnd($hour = null, $minute = null) {
+  public function setTimeEnd($hour = NULL, $minute = NULL) {
     if ($this->type == 0) {
-      if ($hour != null && $minute != null &&  $hour <= 24 && $hour >= 0 && $minute <= 60 && $minute >= 0) {
+      if ($hour != NULL && $minute != NULL &&  $hour <= 24 && $hour >= 0 && $minute <= 60 && $minute >= 0) {
         $this->time_end = $hour .':'. $minute;
         return true;
       }
       return false;
     }
-    $this->time_end = null;
+    $this->time_end = NULL;
     return true;
   }
   public function time_end_hour() {
@@ -144,15 +144,15 @@ class Schedule {
   public function description() {
     return $this->description;
   }
-  public function setDescription($string = null) {
+  public function setDescription($string = NULL) {
     if ($this->type == 1) {
-      if ($string != null && is_string($string)) {
+      if ($string != NULL && is_string($string)) {
         $this->description = htmlspecialchars($string);
         return true;
       }
       return false;
     }
-    $this->description = null;
+    $this->description = NULL;
     return true;
   }
   

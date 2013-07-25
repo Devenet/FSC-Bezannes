@@ -18,8 +18,8 @@ class UserAdmin extends User {
    * 9 god
    */
   
-  public function __construct($id = null) {
-    if ($id != null) {
+  public function __construct($id = NULL) {
+    if ($id != NULL) {
       $query = SQL::sql()->prepare('SELECT login, password, name, privilege FROM fsc_users_admin WHERE id = ?');
       $query->execute(array($id+0));
       $data = $query->fetch();
@@ -39,7 +39,7 @@ class UserAdmin extends User {
     return $this->name;
   }
   public function setName($string) {
-    if ($string != null) {
+    if ($string != NULL) {
       $this->name = Str::title(htmlspecialchars($string));
       return true;
     }
@@ -156,7 +156,7 @@ class UserAdmin extends User {
     ));
     $query->closeCursor();
   }
-  public static function getHistory($start = 0, $step = null) {
+  public static function getHistory($start = 0, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $query = SQL::sql()->query('SELECT fsc_users_admin.login, fsc_users_admin.name, fsc_users_admin.privilege, date, ip FROM fsc_history_admin INNER JOIN fsc_users_admin ON fsc_users_admin.id = fsc_history_admin.id_user_admin ORDER BY fsc_history_admin.date DESC LIMIT '. $start .','. $step);
     $return = array();

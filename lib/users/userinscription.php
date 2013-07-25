@@ -10,8 +10,8 @@ class UserInscription extends User {
   private $ip;
   private $date;
    
-  public function __construct($id = null) {
-    if ($id != null) {
+  public function __construct($id = NULL) {
+    if ($id != NULL) {
       $query = SQL::sql()->prepare('SELECT login, ip, date FROM fsc_users_inscription WHERE id = ?');
       $query->execute(array($id+0));
       $data = $query->fetch();

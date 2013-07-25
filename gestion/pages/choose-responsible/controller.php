@@ -19,8 +19,8 @@ if (isset($_SESSION['member']) && $_SESSION['member']->minor()) {
     $form->addOption('adulte', $adult->name(), $adult->id());
     
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
-    $form->add('adulte', (isset($_POST['adulte']) ? htmlspecialchars($_POST['adulte']) : null));
+  if (isset($_POST) and $_POST != NULL) {
+    $form->add('adulte', (isset($_POST['adulte']) ? htmlspecialchars($_POST['adulte']) : NULL));
     
     $m = $_SESSION['member'];
     
@@ -61,9 +61,9 @@ elseif(isset($_GET['member']) && !Member::isAdult($_GET['member']+0)) {
   $form->add('adulte', $m->responsible());
     
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
     
-    $form->add('adulte', (isset($_POST['adulte']) ? htmlspecialchars($_POST['adulte']) : null));
+    $form->add('adulte', (isset($_POST['adulte']) ? htmlspecialchars($_POST['adulte']) : NULL));
     
     try {
       

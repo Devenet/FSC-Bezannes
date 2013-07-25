@@ -1,6 +1,6 @@
 
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
-  <?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>
+  <?php echo ($form->legend() != NULL ? '<legend>'. $form->legend() .'</legend>' : NULL); ?>
   
   <!-- form messages -->
   <?php

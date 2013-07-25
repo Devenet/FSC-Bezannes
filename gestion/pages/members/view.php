@@ -22,12 +22,12 @@
   <tbody>
     <?php foreach ($members as $m): ?>
     <tr>
-      <td<?php echo $m->adherent() == 0 ? ' class="muted"' : null; ?>><?php echo $m->id(); ?></td>
+      <td<?php echo $m->adherent() == 0 ? ' class="muted"' : NULL; ?>><?php echo $m->id(); ?></td>
       <td class="go"><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->last_name(); ?></a></td>
       <td class="go"><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->first_name(); ?></a></td>
       <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->adherent() ? 'ok' : ''); ?>"></i></td>
       <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->bezannais() ? 'ok' : ''); ?>"></i></td>
-      <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : 'A'); ?></td>
+      <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : ($m->countResponsabilities() > 0 ? 'A <span style="position:absolute; padding-left:5px; color:#333;">&bull;</span>' : 'A')); ?></td>
       <!--<td style="width: 80px;">
         <div class="btn-group">
           <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="./?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-edit"></i> 

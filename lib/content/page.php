@@ -16,8 +16,8 @@ class Page {
   
   public function __construct($name, $url, $breadcrumb) {
     $this->name = $name;
-    $this->url = ($url != null) ? $url : null;
-    $this->search_engine = ($url != null) ? 'INDEX, FOLLOW, ARCHIVE' : 'NOINDEX, NOARCHIVE';
+    $this->url = ($url != NULL) ? $url : NULL;
+    $this->search_engine = ($url != NULL) ? 'INDEX, FOLLOW, ARCHIVE' : 'NOINDEX, NOARCHIVE';
     $this->breadcrumb = new Menu();
     $this->breadcrumb->addLink('Accueil', '/', '');
     foreach ($breadcrumb as $link) $this->breadcrumb->addLink($link['name'], $link['url'], '');
@@ -77,7 +77,7 @@ class Page {
     $this->parameters[$param] = $data;
   }
   public function parameter($param) {
-    return isset($this->parameters[$param]) ? $this->parameters[$param] : null;
+    return isset($this->parameters[$param]) ? $this->parameters[$param] : NULL;
   }
   
   

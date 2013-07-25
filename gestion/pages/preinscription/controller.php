@@ -16,6 +16,8 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
   
   $pre = new Member($_GET['id']+0);
   $account = new UserInscription($pre->id_user_inscription());
+  if ($pre->minor())
+    $respo = new Member($pre->responsible());
     
   $pageInfos = array(
    'name' => $pre->name(),
@@ -27,6 +29,8 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       array('name' => $account->login(), 'url' => '?page=preinscriptions&amp;detail='.$account->id()),
       $pageInfos)
   );
+
+  $_SCRIPT[] = '<script>$(function(){ $(\'.status-tooltip span\').tooltip({"placement": "right"}); });</script>';
 
   
 }

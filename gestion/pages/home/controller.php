@@ -14,24 +14,24 @@ $pageInfos = array(
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 $activities = Activity::countActivities();
-$plural_activities = ($activities > 1 ? 's' : null);
+$plural_activities = ($activities > 1 ? 's' : NULL);
 
 $active_activities = Activity::countActiveActivities();
-$plural_active_activities = ($active_activities > 1 ? 's' : null);
+$plural_active_activities = ($active_activities > 1 ? 's' : NULL);
 
 $members = Member::countMembers();
-$plural_members = ($members > 1 ? 's' : null);
+$plural_members = ($members > 1 ? 's' : NULL);
 
 $adherents = Member::countAdherents();
-$plural_adherents = ($adherents > 1 ? 's' : null);
+$plural_adherents = ($adherents > 1 ? 's' : NULL);
 
 $inscription_accounts = Preinscription::countAccounts();
-$plural_PREINSCRIPTION_accounts = ($inscription_accounts > 1 ? 's' : null);
+$plural_PREINSCRIPTION_accounts = ($inscription_accounts > 1 ? 's' : NULL);
 
 $inscriptions = Preinscription::countPreinscriptions();
-$plural_inscriptions = ($inscriptions > 1 ? 's' : null);
+$plural_inscriptions = ($inscriptions > 1 ? 's' : NULL);
 
 $inscription_adherents = Preinscription::countAdherents();
-$plural_PREINSCRIPTION_adherents = ($inscription_adherents > 1 ? 's' : null);
+$plural_PREINSCRIPTION_adherents = ($inscription_adherents > 1 ? 's' : NULL);
 
 ?>

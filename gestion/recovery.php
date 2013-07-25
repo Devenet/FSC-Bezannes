@@ -27,7 +27,7 @@ elseif (isset($_SESSION['to_ban']) && $_SESSION['to_ban'] > 3) {
   exit();
 }
 // demande envoie
-elseif (isset($_POST['user']) && $_POST['user'] != null) {
+elseif (isset($_POST['user']) && $_POST['user'] != NULL) {
   // si user est bien dans la BDD, on lui envoie le mail
   if (UserAdmin::isUser(htmlspecialchars($_POST['user']))) {
     unset($_SESSION['to_ban']);
@@ -61,9 +61,9 @@ elseif (isset($_POST['user']) && $_POST['user'] != null) {
   }
 }
 // accept token
-elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) && $_GET['user'] != null) {
+elseif (isset($_GET['token']) && $_GET['token'] != NULL && isset($_GET['user']) && $_GET['user'] != NULL) {
   if (RecoverPassword::accept(htmlspecialchars($_GET['token']), UserAdmin::getID(htmlspecialchars($_GET['user'])))) {
-    if (isset($_POST['new-password']) && $_POST['new-password'] != null && isset($_POST['confirm-new-password']) && $_POST['confirm-new-password'] != null) {
+    if (isset($_POST['new-password']) && $_POST['new-password'] != NULL && isset($_POST['confirm-new-password']) && $_POST['confirm-new-password'] != NULL) {
       $u = new UserAdmin(UserAdmin::getID(htmlspecialchars($_GET['user'])));
       try {
         if ($_POST['new-password'] != $_POST['confirm-new-password'])
@@ -228,7 +228,7 @@ elseif (isset($_GET['token']) && $_GET['token'] != null && isset($_GET['user']) 
 					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 				})();
-			</script>": null);
+			</script>": NULL);
 		?>
 	</body>
 </html>

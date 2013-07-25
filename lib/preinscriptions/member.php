@@ -28,7 +28,7 @@ class Member {
   protected $status;
   private $created;
   
-  public function __construct($id = null) {
+  public function __construct($id = NULL) {
     if (is_int($id+0) && $this->isMember($id+0)) {
       $query = SQL::sql()->query('SELECT gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_creation, id_user_inscription, status FROM fsc_members_inscription WHERE id = '. $id);
       $member = $query->fetch();
@@ -86,7 +86,7 @@ class Member {
     return $this->gender;
   }
   public function setGender($gender) {
-    if ($gender != null && $gender >= 0 && $gender <= 2) {
+    if ($gender != NULL && $gender >= 0 && $gender <= 2) {
       $this->gender = $gender+0;
       return true;
     }
@@ -97,7 +97,7 @@ class Member {
     return $this->last_name;
   }
   public function setLastName($name) {
-    if ($name != null) {
+    if ($name != NULL) {
       $this->last_name = Str::title(htmlspecialchars($name));
       return true;
     }
@@ -108,7 +108,7 @@ class Member {
     return $this->first_name;
   }
   public function setFirstName($name) {
-    if ($name != null) {
+    if ($name != NULL) {
       $this->first_name = Str::title(htmlspecialchars($name));
       return true;
     }
@@ -123,7 +123,7 @@ class Member {
     return $this->date_birthday;
   }
   public function setDateBirthday($year, $month, $day) {
-    if ($year != null && $month != null && $day != null && $year >= date('Y')-100 && $year <= date('Y')-1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
+    if ($year != NULL && $month != NULL && $day != NULL && $year >= date('Y')-100 && $year <= date('Y')-1 && $month >= 1 && $month <= 12 && $day >= 1 && $day <= 31) {
       if ($month == 2) {
         // bissextile (et 29 days max) ou 28 days max
         if ((date("L", mktime(0, 0, 0, 1, 1, $year)) == 1 && $day <= 29) || $day <= 28) {
@@ -182,7 +182,7 @@ class Member {
   public function address_different() {
     return $this->address_different;
   }
-  public function setAddressDifferent($bool = null) {
+  public function setAddressDifferent($bool = NULL) {
     if (!$this->minor()) {
       $this->address_different = 0;
       return true;
@@ -199,7 +199,7 @@ class Member {
   }
   public function setAddressNumber($number) {
     // peut etre 1bis
-    if ($number != null) {
+    if ($number != NULL) {
       $this->address_number = htmlspecialchars($number);
       return true;
     }
@@ -210,7 +210,7 @@ class Member {
     return $this->address_street;
   }
   public function setAddressStreet($street) {
-    if ($street != null) {
+    if ($street != NULL) {
       $this->address_street = ucwords(mb_strtolower(htmlspecialchars($street), 'UTF-8'));
       return true;
     }
@@ -220,7 +220,7 @@ class Member {
   public function address_further() {
     return $this->address_further;
   }
-  public function setAddressFurther($further = null) {
+  public function setAddressFurther($further = NULL) {
     $this->address_further = ucwords(mb_strtolower(htmlspecialchars($further), 'UTF-8'));;
     return true;
   }
@@ -229,7 +229,7 @@ class Member {
     return $this->address_zip_code;
   }
   public function setAddressZipCode($zip) {
-    if ($zip != null && $zip > 0 && $zip <= 99000) {
+    if ($zip != NULL && $zip > 0 && $zip <= 99000) {
       $this->address_zip_code = $zip;
       return true;
     }
@@ -240,7 +240,7 @@ class Member {
     return $this->address_town;
   }
   public function setAddressTown($town) {
-    if ($town != null) {
+    if ($town != NULL) {
       $this->address_town = preg_replace('#((\s)+$)|(^(\s)+)#', '', ucwords(mb_strtolower(htmlspecialchars($town), 'UTF-8')));
       return true;
     }
@@ -248,7 +248,7 @@ class Member {
   }
   
   public function address() {
-    return $this->address_number .' '. $this->address_street .'<br />'. ($this->address_further != null ? $this->address_further.'<br />' : null) . $this->address_zip_code .' '. $this->address_town;
+    return $this->address_number .' '. $this->address_street .'<br />'. ($this->address_further != NULL ? $this->address_further.'<br />' : NULL) . $this->address_zip_code .' '. $this->address_town;
   }
   
   public function bezannais() {
@@ -277,7 +277,7 @@ class Member {
     return $this->email;
   }
   public function setEmail($email) {
-    if ($email != null && preg_match('#^[a-z0-9._\+-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', strtolower(htmlspecialchars($email)))) {
+    if ($email != NULL && preg_match('#^[a-z0-9._\+-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#', strtolower(htmlspecialchars($email)))) {
       $this->email = strtolower(htmlspecialchars($email));
       return true;
     }
@@ -288,7 +288,7 @@ class Member {
     return $this->phone;
   }
   public function setPhone($phone) {
-    if ($phone != null && preg_match('#^0[1-9]([0-9]{2}){4}$#', $phone)) {
+    if ($phone != NULL && preg_match('#^0[1-9]([0-9]{2}){4}$#', $phone)) {
       $this->phone = htmlspecialchars($phone);
       return true;
     }
@@ -298,8 +298,8 @@ class Member {
   public function mobile() {
     return $this->mobile;
   }
-  public function setMobile($phone = null) {
-    if ($phone != null) {
+  public function setMobile($phone = NULL) {
+    if ($phone != NULL) {
       if (preg_match('#^0[1-9]([0-9]{2}){4}$#', $phone)) {
         $this->mobile = htmlspecialchars($phone);
         return true;
@@ -317,7 +317,7 @@ class Member {
     return $this->responsible;
   }
   public function setResponsible($id) {
-    if ($id != null && $this->isAdult($id+0)) {
+    if ($id != NULL && $this->isAdult($id+0)) {
       $this->responsible = $id+0;
       return true;
     }
@@ -380,7 +380,7 @@ class Member {
         'address_number' => addslashes($this->address_number),
         'address_street' => addslashes($this->address_street),
         'address_further' => addslashes($this->address_further),
-        'address_zip_code' => $this->address_zip_code == null ? '' : $this->address_zip_code,
+        'address_zip_code' => $this->address_zip_code == NULL ? '' : $this->address_zip_code,
         'address_town' => addslashes($this->address_town),
         'phone' => $this->phone,
         'email' => $this->email,

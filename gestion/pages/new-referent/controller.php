@@ -23,14 +23,14 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
     $form->addOption('member', $adherent->name(), $adherent->id());
     
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
     $inputs = array(
       'member',
       'type',
       'display_phone'
     );
     foreach ($inputs as $input)
-      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
   
     $r = new Referent();
     $r->setActivity($act->id());
@@ -38,7 +38,7 @@ if (isset($_GET['activity']) && Activity::isActivity($_GET['activity']+0)) {
     
     try {
       
-      if (!$r->setMember(isset($_POST['member']) ? $_POST['member']+0 : null))
+      if (!$r->setMember(isset($_POST['member']) ? $_POST['member']+0 : NULL))
         throw new \Exception('Impossible d’ajouter l’adhérent sélectionné');
       if (!$r->setType($form->input('type')))
         throw new \Exception('Merci de sélectionner le type de référent');

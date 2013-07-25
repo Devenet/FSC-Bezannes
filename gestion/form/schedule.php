@@ -11,7 +11,7 @@ $form->addOption('day', 'Dimanche', '0');
 ?>
 
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
-  <!--<?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>-->
+  <!--<?php echo ($form->legend() != NULL ? '<legend>'. $form->legend() .'</legend>' : NULL); ?>-->
   
   <!-- form messages -->
   <?php
@@ -25,12 +25,12 @@ $form->addOption('day', 'Dimanche', '0');
   
   <div class="tabbable">
     <ul class="nav nav-tabs">
-      <li <?php echo ($form->name() == 'edit-schedule' ? ($form->input('type') != 1 ? 'class="active"' : null) : 'class="active"'); ?>><a href="#tab1" data-toggle="tab">Horaire journalier</a></li>
-      <li <?php echo ($form->name() == 'edit-schedule' && $form->input('type') == 1 ? 'class="active"' : null); ?>><a href="#tab2" data-toggle="tab">Horaire libre</a></li>
+      <li <?php echo ($form->name() == 'edit-schedule' ? ($form->input('type') != 1 ? 'class="active"' : NULL) : 'class="active"'); ?>><a href="#tab1" data-toggle="tab">Horaire journalier</a></li>
+      <li <?php echo ($form->name() == 'edit-schedule' && $form->input('type') == 1 ? 'class="active"' : NULL); ?>><a href="#tab2" data-toggle="tab">Horaire libre</a></li>
     </ul>
       
     <div class="tab-content">
-      <div class="tab-pane <?php echo ($form->name() == 'edit-schedule' ? ($form->input('type') != 1 ? 'active' : null) : 'active'); ?>" id="tab1">
+      <div class="tab-pane <?php echo ($form->name() == 'edit-schedule' ? ($form->input('type') != 1 ? 'active' : NULL) : 'active'); ?>" id="tab1">
                 <div class="control-group">
           <label class="control-label" for="day">Jour</label>
           <div class="controls">
@@ -64,7 +64,7 @@ $form->addOption('day', 'Dimanche', '0');
         </div>
       </div>
       
-      <div class="tab-pane <?php echo ($form->name() == 'edit-schedule' && $form->input('type') == 1 ? 'active' : null); ?>" id="tab2">
+      <div class="tab-pane <?php echo ($form->name() == 'edit-schedule' && $form->input('type') == 1 ? 'active' : NULL); ?>" id="tab2">
         <div class="control-group">
           <label class="control-label" for="description">Decsription</label>
           <div class="controls">

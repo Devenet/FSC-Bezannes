@@ -35,7 +35,7 @@ foreach ($months as $value => $month) {
 ?>
 
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
-  <!--<?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>-->
+  <!--<?php echo ($form->legend() != NULL ? '<legend>'. $form->legend() .'</legend>' : NULL); ?>-->
   
   <!-- form messages -->
   <?php
@@ -52,13 +52,13 @@ foreach ($months as $value => $month) {
     <label class="control-label" for="gender">Civilité</label>
     <div class="controls">
       <label class="radio inline">
-        <input type="radio" id="gender" value="0" name="gender" <?php echo ($form->input('gender') == '0' ? 'checked="checked"' : null); ?> /> <?php echo Display::FullGender(0); ?>
+        <input type="radio" id="gender" value="0" name="gender" <?php echo ($form->input('gender') == '0' ? 'checked="checked"' : NULL); ?> /> <?php echo Display::FullGender(0); ?>
       </label>
       <label class="radio inline">
-        <input type="radio" value="1" name="gender" <?php echo ($form->input('gender') == '1' ? 'checked="checked"' : null); ?> /> <?php echo Display::FullGender(1); ?>
+        <input type="radio" value="1" name="gender" <?php echo ($form->input('gender') == '1' ? 'checked="checked"' : NULL); ?> /> <?php echo Display::FullGender(1); ?>
       </label>
       <label class="radio inline">
-        <input type="radio" value="2" name="gender" <?php echo ($form->input('gender') == '2' ? 'checked="checked"' : null); ?> /> <?php echo Display::FullGender(2); ?>
+        <input type="radio" value="2" name="gender" <?php echo ($form->input('gender') == '2' ? 'checked="checked"' : NULL); ?> /> <?php echo Display::FullGender(2); ?>
       </label>
     </div>
   </div>

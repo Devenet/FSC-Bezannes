@@ -26,7 +26,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 </div>';
 
   // controle formulaire
-  if (isset($_POST) and $_POST != null) {
+  if (isset($_POST) and $_POST != NULL) {
     $inputs = array(
       'last_name',
       'first_name',
@@ -50,7 +50,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       'date_registration_year'
     );
     foreach ($inputs as $input)
-      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+      $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
     
     $m = new Member();
     
@@ -101,7 +101,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       if (!$m->minor()) {
         $m->setBezannais();      
         $m->create();
-        $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été préinscrit :)', 1, 'Ajout réussi !');
+        $_SESSION['msg'] = new Message('<em>'. $m->name() .'</em> a bien été ajouté <i class="icon-smile"></i>', 1, 'Ajout réussi !');
         header ('Location: '. _PREINSCRIPTION_ .'/list');
         exit();
       }

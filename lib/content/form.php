@@ -13,7 +13,7 @@ class Form {
   private $selects;
   private $radios;
   
-  public function __construct($name = 'default', $action = '?', $submit = 'Envoyer', $legend = null, $method = 'post') {
+  public function __construct($name = 'default', $action = '?', $submit = 'Envoyer', $legend = NULL, $method = 'post') {
     $this->name = $name;
     $this->action = $action;
     $this->submit = $submit;
@@ -30,8 +30,8 @@ class Form {
   public function submit() {
     return $this->submit;
   }
-  public function reset($value = null) {
-    if ($value != null)
+  public function reset($value = NULL) {
+    if ($value != NULL)
       $this->reset = $value;
     return $this->reset;
   }
@@ -42,7 +42,7 @@ class Form {
     return $this->method;
   }
 
-  public function add($input, $value = null) {
+  public function add($input, $value = NULL) {
     $this->inputs[$input] = $value;
   }
   
@@ -54,29 +54,29 @@ class Form {
   }
   
   public function value($input) {
-    return (isset($this->inputs[$input]) ? ' value="'. stripslashes($this->inputs[$input]) .'" ' : null); 
+    return (isset($this->inputs[$input]) ? ' value="'. stripslashes($this->inputs[$input]) .'" ' : NULL); 
   }
   
   public function input($input) {
-    return (isset($this->inputs[$input]) ? stripslashes($this->inputs[$input]) : null);
+    return (isset($this->inputs[$input]) ? stripslashes($this->inputs[$input]) : NULL);
   }
   
   public function checkbox($input) {
-    return ((isset($this->inputs[$input]) && ($this->inputs[$input] == 'on' || $this->inputs[$input] == 1)) ? 'checked="checked"' : null);
+    return ((isset($this->inputs[$input]) && ($this->inputs[$input] == 'on' || $this->inputs[$input] == 1)) ? 'checked="checked"' : NULL);
   }
   
-  public function select($select, $active = 'absolutly null') {
+  public function select($select, $active = 'absolutly NULL') {
     $return = '';
     foreach ($this->selects[$select] as $option)
-      $return .= '<option value="'. $option['value'] .'" '. ($active == $option['value'] ? 'selected="selected"' : null) .'>'. $option['name'] .'</option>'."\n";
+      $return .= '<option value="'. $option['value'] .'" '. ($active == $option['value'] ? 'selected="selected"' : NULL) .'>'. $option['name'] .'</option>'."\n";
     return $return;
   }
   
-  public function radio($radio, $active = 'absolutly null') {
+  public function radio($radio, $active = 'absolutly NULL') {
     $return = '';
-    if ($this->radios != null) {
+    if ($this->radios != NULL) {
       foreach ($this->radios[$radio] as $input)
-        $return .= '<label class="radio" for="'. $radio .'-'. $input['value'] .'"><input type="radio" name="'. $radio .'"  id="'. $radio .'-'. $input['value'] .'" value="'. $input['value'] .'" '. ($active == $input['value'] ? 'checked="checked"' : null) .' />'. $input['name'] .'</label>'."\n";
+        $return .= '<label class="radio" for="'. $radio .'-'. $input['value'] .'"><input type="radio" name="'. $radio .'"  id="'. $radio .'-'. $input['value'] .'" value="'. $input['value'] .'" '. ($active == $input['value'] ? 'checked="checked"' : NULL) .' />'. $input['name'] .'</label>'."\n";
     }
     return $return;
   }

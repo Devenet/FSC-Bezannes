@@ -45,7 +45,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<title><?php echo ($page->url() != _GESTION_) ? $page->admin_title() .' &ndash; ' : null; ?>Gestion &ndash; FSC Bezannes</title>
+		<title><?php echo ($page->url() != _GESTION_) ? $page->admin_title() .' &ndash; ' : NULL; ?>Gestion &ndash; FSC Bezannes</title>
 		<meta name="author" content="Nicolas Devenet" />
 		<meta name="robots" content="NOINDEX, NOFOLLOW, NOARCHIVE" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -161,7 +161,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 						ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 					})();
-				</script>": null), PHP_EOL;
+				</script>": NULL), PHP_EOL;
 
 			$timeend=microtime(true);
       $page_time = number_format(($timeend-$timestart)*1000, 2);

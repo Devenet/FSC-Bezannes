@@ -37,7 +37,7 @@ class Preinscription {
       class="normal cursor-default text-'. self::StatusColor($status) .'">'. self::StatusIcon($status) .'</span>';
   }
 
-  static public function Preinscriptions($start = 0, $step = null) {
+  static public function Preinscriptions($start = 0, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_users_inscription LIMIT '. $start .','. $step);
@@ -47,7 +47,7 @@ class Preinscription {
     return $return;
   }
 
-  static public function PreinscriptionsByStatus($start = 0, $sens = true, $step = null) {
+  static public function PreinscriptionsByStatus($start = 0, $sens = true, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_users_inscription ORDER BY status '. ($sens ? 'DESC' :  '') .', login LIMIT '. $start .','. $step);
@@ -57,7 +57,7 @@ class Preinscription {
     return $return;
   }
 
-  static public function PreinscriptionsByLogin($start = 0, $sens = true, $step = null) {
+  static public function PreinscriptionsByLogin($start = 0, $sens = true, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
     $query = SQL::sql()->query('SELECT id FROM fsc_users_inscription ORDER BY login '. ($sens ? '' :  'DESC') .' LIMIT '. $start .','. $step);

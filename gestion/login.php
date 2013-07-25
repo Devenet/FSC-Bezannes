@@ -28,7 +28,7 @@ elseif (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 	header('Location: '. _GESTION_);
 	exit;
 }
-elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd']) && $_POST['user'] != null && $_POST['pwd'] != null) {
+elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd']) && $_POST['user'] != NULL && $_POST['pwd'] != NULL) {
 	$path = isset($_GET['path']) ? htmlspecialchars($_GET['path']) : '';
 	if (UserAdmin::isAuthorizedUser($_POST['user'], $_POST['pwd'])) {
 		$_SESSION['user'] = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
@@ -147,7 +147,7 @@ else {
 					ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 					var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 				})();
-			</script>": null);
+			</script>": NULL);
 		?>
 	</body>
 </html>

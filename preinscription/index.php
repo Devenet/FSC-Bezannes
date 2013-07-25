@@ -37,7 +37,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
-		<title><?php echo ($page->url() != _PREINSCRIPTION_.'/') ? $page->title() .' &middot; ' : null; ?>Présinscriptions &middot; FSC Bezannes</title>
+		<title><?php echo ($page->url() != _PREINSCRIPTION_.'/') ? $page->title() .' &middot; ' : NULL; ?>Présinscriptions &middot; FSC Bezannes</title>
 		<meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
 		<meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
 		<meta name="author" content="Nicolas Devenet" />
@@ -104,9 +104,9 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 				<?php if ($page->option('steps')) { ?>
 				<div class="span4 hidden-phone">
 					<ul class="unstyled">
-						<li><span class="strong">Étape <?php echo $page->parameter('step'); ?></span> : <?php echo ($page->parameter('step-info') != null ? $page->parameter('step-info') : $pageInfos['name']); ?>
+						<li><span class="strong">Étape <?php echo $page->parameter('step'); ?></span> : <?php echo ($page->parameter('step-info') != NULL ? $page->parameter('step-info') : $pageInfos['name']); ?>
 							<div class="progress progress-important">
-								<div class="bar<?php echo $page->option('bar') ? ' bar-'. $page->parameter('bar') : null; ?>" style="width: <?php echo $page->parameter('step-width'); ?>%;"></div>
+								<div class="bar<?php echo $page->option('bar') ? ' bar-'. $page->parameter('bar') : NULL; ?>" style="width: <?php echo $page->parameter('step-width'); ?>%;"></div>
 							</div>
 						</li>
 					</ul>
@@ -134,9 +134,9 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 
     <!-- content -->
     <?php
-      echo !$page->option('no-container') ? '<div class="container">' : null;
+      echo !$page->option('no-container') ? '<div class="container">' : NULL;
       include dirname($controller) . '/view.php';
-      echo !$page->option('no-container') ? '</div>' : null;
+      echo !$page->option('no-container') ? '</div>' : NULL;
     ?>
     <!-- /content -->
 
@@ -172,7 +172,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 
 			  ga('create', 'UA-37435384-4', 'fsc-bezannes.fr');
 			  ga('send', 'pageview');
-			</script>": null);
+			</script>": NULL);
 
 			$timeend=microtime(true);
       $page_time = number_format(($timeend-$timestart)*1000, 2);

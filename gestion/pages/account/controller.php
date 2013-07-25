@@ -14,7 +14,7 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 $u = $_SESSION['user'];
 
 // change password
-if (isset($_POST) && isset($_POST['password']) && $_POST['password'] != null) { 
+if (isset($_POST) && isset($_POST['password']) && $_POST['password'] != NULL) { 
   try {
     if (!UserAdmin::isAuthorizedUser($u->login(), htmlspecialchars($_POST['password'])))
       throw new \Exception('Mot de passe actuel incorrect !');
@@ -41,7 +41,7 @@ $display_privilege = ucfirst(Display::Privilege($u->privilege()));
 
 // affichage dernière connexion
 $data = $u->lastHistory();
-$display_last_history = ($data != null) ? Display::FullTimestamp($data['date']) .'<br /> depuis l’IP '. $data['ip'] : 'Aucune, c’est votre première connexion';
+$display_last_history = ($data != NULL) ? Display::FullTimestamp($data['date']) .'<br /> depuis l’IP '. $data['ip'] : 'Aucune, c’est votre première connexion';
 
 
 ?>

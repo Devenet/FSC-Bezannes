@@ -46,7 +46,7 @@ abstract class Upload {
     return $this->file;
   }
  
-  public function save($name = null, $path = null) {
+  public function save($name = NULL, $path = NULL) {
     $this->path = dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . _PATH_UPLOADS_FULL_ . DIRECTORY_SEPARATOR . (is_null($path) ? $this->files : preg_replace('#(.*)/$#', '$1', $path)) . DIRECTORY_SEPARATOR;
     $this->file =  $this->path . (is_null($name) ? Str::lower(basename($this->file_name)) : $name);
     

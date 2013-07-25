@@ -26,7 +26,7 @@ foreach ($months as $value => $month)
 ?>
 
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >
-  <?php echo ($form->legend() != null ? '<legend>'. $form->legend() .'</legend>' : null); ?>
+  <?php echo ($form->legend() != NULL ? '<legend>'. $form->legend() .'</legend>' : NULL); ?>
   
   <!-- form messages -->
   <?php
@@ -53,13 +53,13 @@ foreach ($months as $value => $month)
     <label class="control-label" for="date_day"><i class="icon-time"></i> Date</label>
     <div class="controls">
       <select class="span1" name="date_day" id="date_day">
-        <?php echo $form->select('date_day', ($form->input('date_day') != null ? $form->input('date_day') : date('d'))); ?>
+        <?php echo $form->select('date_day', ($form->input('date_day') != NULL ? $form->input('date_day') : date('d'))); ?>
       </select>
       <select class="input-medium" name="date_month" id="date_month">
-        <?php echo $form->select('date_month', ($form->input('date_month') != null ? $form->input('date_month') : date('m'))); ?>
+        <?php echo $form->select('date_month', ($form->input('date_month') != NULL ? $form->input('date_month') : date('m'))); ?>
       </select>
       <select class="input-small" name="date_year" id="date_year">
-        <?php echo $form->select('date_year', ($form->input('date_year') != null ? $form->input('date_year') : date('Y'))); ?>
+        <?php echo $form->select('date_year', ($form->input('date_year') != NULL ? $form->input('date_year') : date('Y'))); ?>
       </select>
     </div>
   </div>

@@ -36,9 +36,9 @@ $inputs = array(
     'password'
   );
   foreach ($inputs as $input)
-    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+    $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
 
-if (isset($_POST['login']) && isset($_POST['password']) && $_POST['login'] != null && $_POST['password'] != null) {
+if (isset($_POST['login']) && isset($_POST['password']) && $_POST['login'] != NULL && $_POST['password'] != NULL) {
   
   if (UserInscription::isAuthorizedUser($_POST['login'], $_POST['password'])) {
     $_SESSION['user'] = new UserInscription(UserInscription::getID(htmlspecialchars($_POST['login'])));

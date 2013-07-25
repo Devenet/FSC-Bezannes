@@ -21,7 +21,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   if ($u->acceptToken(htmlspecialchars($_GET['rel']))) {
 
     // if post data confirmed, delete account (and preinscriptions) user
-    if (isset($_POST['password']) && $_POST['password'] != null) {
+    if (isset($_POST['password']) && $_POST['password'] != NULL) {
 
       try {
         // check if password is correct
