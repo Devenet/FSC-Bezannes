@@ -10,6 +10,13 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   if (isset($_GET['rel']) && Member::isMember($_GET['rel']+0, $_SESSION['user']->id())) {
     
     $m = new Member($_GET['rel']+0);
+
+        // check status of the preinscription
+    if ($m->status() != Preinscription::AWAITING) {
+      $_SESSION['msg'] = new Message('Une préinscription validée ne permet plus d’être modifée', -1, 'Opération impossible');
+      header('Location: '. _PREINSCRIPTION_ .'/list');
+      exit();
+    }
     
     $pageInfos = array(
      'name' => 'Modifier la préinscription',
@@ -43,10 +50,10 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     
     
     // controle formulaire
-    if (isset($_POST) and $_POST != null) {
+    if (isset($_POST) and $_POST != NULL) {
       
       foreach ($inputs as $input)
-        $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : null));
+        $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
       
       try {
         
