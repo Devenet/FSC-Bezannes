@@ -8,7 +8,7 @@ Source code of the FSC Bezannes webapplication
 
 ## Database configuration
 
-Juste add a JSON file called `database.json` in `config/`  folder with these informations:
+Just add a JSON file called `database.json` in `config/`  folder with these informations:
 
 
     {
@@ -16,3 +16,24 @@ Juste add a JSON file called `database.json` in `config/`  folder with these inf
       "login": "fsc",
       "password": "fsc"
     }
+
+## Application configuration
+
+Just add a JSON file called `configuration.json` in `config/` folder with these information:
+
+  {
+    "year": "2012",
+    "phone": "0326362384",
+    "email": "contac@fsc.local",
+    "search_engine": "false",
+    "fsc": "//fsc.local",
+    "gestion": "//gestion.fsc.local",
+    "preinscription": "//preinscriptions.fsc.local",
+    "analytics_fsc": "false",
+    "analytics_gestion": "false",
+    "analytics_preinscription": "false",
+    "jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",
+    "path_uploads_full": "public/uploads",
+    "static": "//fsc.local",
+    "uploads": "//fsc.local/uploads",
+  }

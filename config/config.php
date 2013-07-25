@@ -18,17 +18,17 @@
     define('_ANALYTICS_PREINSCRIPTION_', $fsc->analytics_preinscription);
     define('_JQUERY_', $fsc->jquery);
 
-    define('_PATH_PUBLIC_', $fsc->path_public);
-    define('_PATH_GESTION_', $fsc->path_gestion);
-    define('_PATH_PREINSCRIPTION_', $fsc->path_preinscription);
-    define('_PATH_UPLOADS_', $fsc->path_uploads);
+    define('_PATH_PUBLIC_', 'public');
+    define('_PATH_GESTION_', 'gestion');
+    define('_PATH_PREINSCRIPTION_', 'preinscription');
+    define('_PATH_UPLOADS_', 'uploads');
     define('_PATH_UPLOADS_FULL_', $fsc->path_uploads_full);
     define('_PATH_API_', 'api');
     
     define('_STATIC_', $fsc->static);
     define('_UPLOADS_', $fsc->uploads);
-    define('_PUBLIC_API_', $fsc->public_api);
-    define('_PRIVATE_API_', $fsc->private_api);
+    define('_PUBLIC_API_', _FSC_.'/'._PATH_API_);
+    define('_PRIVATE_API_', _GESTION_.'/'._PATH_API_);
 
   }
   else {
