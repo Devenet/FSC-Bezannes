@@ -35,5 +35,5 @@ Just add a JSON file called `configuration.json` in `config/` folder with these 
       "jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",
       "path_uploads_full": "public/uploads",
       "static": "//fsc.local",
-      "uploads": "//fsc.local/uploads",
+      "uploads": "//fsc.local/uploads"
     }
