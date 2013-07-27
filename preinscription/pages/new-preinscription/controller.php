@@ -4,7 +4,7 @@ use lib\content\Page;
 use lib\content\Form;
 use lib\content\Message;
 use lib\users\UserInscription;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
@@ -16,7 +16,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
   $form = new Form('new-member', _PREINSCRIPTION_ .'/new-preinscription', 'Ajouter', 'membre à préinscrire');
 
-  $display_warning_adult = Member::countAdults($_SESSION['user']->id()) > 0 ? '' : '<div class="row">
+  $display_warning_adult = Preinscription::countAdults($_SESSION['user']->id()) > 0 ? '' : '<div class="row">
   <div class="span10 offset1">
     <div class="alert">
       <strong>Aide :</strong> Si vous souhaitez préinscrire un mineur, vous devez d’abord créer une préinscription pour le responsable du mineur.
@@ -52,7 +52,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     foreach ($inputs as $input)
       $form->add($input, (isset($_POST[$input]) ? htmlspecialchars($_POST[$input]) : NULL));
     
-    $m = new Member();
+    $m = new Preinscription();
     
     try {
 

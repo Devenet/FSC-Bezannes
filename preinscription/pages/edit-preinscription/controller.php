@@ -1,15 +1,15 @@
 <?php
 
 use lib\content\Page;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 use lib\content\Message;
 use lib\content\Form;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
-  if (isset($_GET['rel']) && Member::isMember($_GET['rel']+0, $_SESSION['user']->id())) {
+  if (isset($_GET['rel']) && Preinscription::isMember($_GET['rel']+0, $_SESSION['user']->id())) {
     
-    $m = new Member($_GET['rel']+0);
+    $m = new Preinscription($_GET['rel']+0);
 
         // check status of the preinscription
     if ($m->status() != Preinscription::AWAITING) {

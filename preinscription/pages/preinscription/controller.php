@@ -1,8 +1,7 @@
 <?php
 
 use lib\content\Page;
-use lib\preinscriptions\Member;
-use lib\preinscriptions\Participant;
+use lib\preinscriptions\FutureParticipant;
 use lib\preinscriptions\Preinscription;
 use lib\payments\Price;
 use lib\activities\Activity;
@@ -17,11 +16,11 @@ function quit() {
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
-  if (isset($_GET['rel']) && Member::isMember($_GET['rel']+0, $_SESSION['user']->id())) {
+  if (isset($_GET['rel']) && Preinscription::isMember($_GET['rel']+0, $_SESSION['user']->id())) {
     
-    $m = new Member($_GET['rel']+0);
+    $m = new Preinscription($_GET['rel']+0);
     if ($m->minor())
-      $r = new Member($m->responsible());
+      $r = new Preinscription($m->responsible());
     
     // suppression membre
     if (isset($_GET['data']) && $_GET['data'] == 'delete') {
@@ -51,7 +50,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     
     
     // Activités
-    $count_activites = Participant::countActivities($m->id());
+    $count_activites = FutureParticipant::countActivities($m->id());
     $plural_count_activities = $count_activites > 1 ? 's' : '';
     
     $activities_participant = '';
@@ -64,7 +63,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         </tr>
         </thead><tbody>
       ';
-      foreach (Participant::Activities($m->id()) as $p) {
+      foreach (FutureParticipant::Activities($m->id()) as $p) {
         $a = new Activity($p->activity());
         if (!$a->aggregate())
           $s = new Schedule($p->schedule());
@@ -82,7 +81,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       $activities_participant .= '</tbody></table>';
       $_SCRIPT[] = '<script>$(function(){ $(\'table td.status span\').tooltip(); });</script>';
 
-      foreach (Participant::Activities($m->id()) as $p)
+      foreach (FutureParticipant::Activities($m->id()) as $p)
         $activities_participant .= '
         <div id="confirmBoxP'. $p->id() .'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelParticipant'. $p->id() .'" aria-hidden="true">
           <div class="modal-header">

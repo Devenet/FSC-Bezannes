@@ -3,7 +3,7 @@
 namespace lib\users;
 use lib\users\User;
 use lib\db\SQL;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 
 class UserInscription extends User {
   
@@ -66,7 +66,7 @@ class UserInscription extends User {
   public function delete($bool = false) {
     if ($bool && $this->created) {
       // delete each presinscription and participation
-      foreach(Member::Members($this->id) as $m)
+      foreach(Preinscription::Members($this->id) as $m)
         $m->delete(true);
       // delete user account
       $query = SQL::sql()->prepare('DELETE FROM fsc_users_inscription WHERE id = :id');

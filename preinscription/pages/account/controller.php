@@ -5,7 +5,7 @@ use lib\content\Form;
 use lib\content\Message;
 use lib\content\Display;
 use lib\users\UserInscription;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 use lib\preinscriptions\Participant;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
@@ -39,7 +39,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     }
   }
 
-  $count_members = Member::countMembers($u->id());
+  $count_members = Preinscription::countMembers($u->id());
   $display_count_members = 'Il y a actuellement <span class="label label-info">'. $count_members . '</span> personne'. Display::Plural($count_members) .' préinscrite'. Display::Plural($count_members) .' sur votre compte.';
   
   $lastConnection = $u->lastConnection();

@@ -3,8 +3,7 @@
 use lib\content\Page;
 use lib\users\UserInscription;
 use lib\preinscriptions\Preinscription;
-use lib\preinscriptions\Member;
-use lib\preinscriptions\Participant;
+use lib\preinscriptions\FutureParticipant;
 use lib\content\Message;
 use lib\content\Display;
 use lib\activities\Activity;
@@ -15,18 +14,18 @@ function quit() {
   exit();
 }
 
-if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
+if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
   
-  $pre = new Member($_GET['id']+0);
+  $pre = new Preinscription($_GET['id']+0);
   $account = new UserInscription($pre->id_user_inscription());
   if ($pre->minor())
-    $respo = new Member($pre->responsible());
+    $respo = new Preinscription($pre->responsible());
 
   // if minor, chech that the responsible's preinscription is already validated
   if ($pre->minor() && $respo->status() != Preinscription::VALIDATED) {
     // responsible already in database but have no preinscription done, so accept this minor
     if (!isset($_GET['forced'])) {
-      $_SESSION['msg'] = new Message('La préinscription du responsable légal n’a pas encore été validée !<br /><a href="?page=validate-preinscription&amp;id='.$pre->id().'&forced">Forcer la préinscription</a>', -1, 'Validation impossible', FALSE);
+      $_SESSION['msg'] = new Message('La préinscription du responsable légal n’a pas encore été validée !<br /><i class="icon-unlock-alt"></i> <a href="?page=validate-preinscription&amp;id='.$pre->id().'&forced">Forcer la préinscription</a>', -1, 'Validation impossible', FALSE);
       header('Location: '. _GESTION_ .'/?page=preinscription&id='.$pre->id());
       exit();
     }

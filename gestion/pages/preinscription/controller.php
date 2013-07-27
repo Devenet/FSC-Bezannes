@@ -3,8 +3,7 @@
 use lib\content\Page;
 use lib\users\UserInscription;
 use lib\preinscriptions\Preinscription;
-use lib\preinscriptions\Member;
-use lib\preinscriptions\Participant;
+use lib\preinscriptions\FutureParticipant;
 use lib\content\Message;
 use lib\content\Display;
 use lib\activities\Activity;
@@ -15,12 +14,12 @@ function quit() {
   exit();
 }
 
-if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
+if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
   
-  $pre = new Member($_GET['id']+0);
+  $pre = new Preinscription($_GET['id']+0);
   $account = new UserInscription($pre->id_user_inscription());
   if ($pre->minor())
-    $respo = new Member($pre->responsible());
+    $respo = new Preinscription($pre->responsible());
     
   $pageInfos = array(
    'name' => $pre->name(),
@@ -36,13 +35,13 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
   // generation des buttons du membre en fonction de son status
   function getButtonsMember() {
     global $pre;
-    $result = '<a ';
+    $result = '<div class="btn-group"><a ';
     if ($pre->status() ==  Preinscription::AWAITING)
       $result .= 'href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $pre->id() .'" title="Valider la préinscription"';
     $result .= ' class="btn btn-small';
     if ($pre->status() !=  Preinscription::AWAITING)
       $result .= ' disabled';
-    $result .= '"><i class="icon-plus"></i></a>'. PHP_EOL;
+    $result .= '"><i class="icon-plus"></i></a></div>'. PHP_EOL;
     $result .= '<div class="btn-group">';
     $result .= '<a ';
     if ($pre->status() ==  Preinscription::AWAITING)
@@ -61,7 +60,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
     global $pre;
     switch ($pre->status()) {
       case Preinscription::AWAITING:
-        return 'préinscription non validée';
+        return '<em>Préinscription non validée</em>';
         break;
 
       case Preinscription::INCOMPLETE:
@@ -80,7 +79,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
 
 
   // Activités
-  $count_activites = Participant::countActivities($pre->id());
+  $count_activites = FutureParticipant::countActivities($pre->id());
   $plural_count_activities = $count_activites > 1 ? 's' : '';
   
   $display_participatitions = '';
@@ -93,7 +92,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       </tr>
       </thead><tbody>
     ';
-    foreach (Participant::Activities($pre->id()) as $p) {
+    foreach (FutureParticipant::Activities($pre->id()) as $p) {
       $a = new Activity($p->activity());
       if (!$a->aggregate())
         $s = new Schedule($p->schedule());
@@ -111,7 +110,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
     $display_participatitions .= '</tbody></table>';
     $_SCRIPT[] = '<script>$(function(){ $(\'table td.status span\').tooltip(); });</script>';
 
-    foreach (Participant::Activities($pre->id()) as $p)
+    foreach (FutureParticipant::Activities($pre->id()) as $p)
       $display_participatitions .= '
       <div id="confirmBoxP'. $p->id() .'" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelParticipant'. $p->id() .'" aria-hidden="true">
         <div class="modal-header">

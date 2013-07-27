@@ -4,17 +4,16 @@ use lib\content\Page;
 use lib\activities\Activity;
 use lib\activities\Schedule;
 use lib\preinscriptions\Preinscription;
-use lib\preinscriptions\Member;
-use lib\preinscriptions\Participant;
+use lib\preinscriptions\FutureParticipant;
 use lib\content\Message;
 use lib\content\Form;
 use lib\content\Display;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
-  if (isset($_GET['rel']) && Member::isAdherent($_GET['rel']+0, $_SESSION['user']->id())) {
+  if (isset($_GET['rel']) && Preinscription::isAdherent($_GET['rel']+0, $_SESSION['user']->id())) {
     
-    $a = new Member($_GET['rel']+0);
+    $a = new Preinscription($_GET['rel']+0);
 
     // check status of the preinscription
     if ($a->status() != Preinscription::AWAITING) {
@@ -60,7 +59,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     if (isset($_POST) and $_POST != NULL) {
       $form->add('activity', (isset($_POST['activity']) ? htmlspecialchars($_POST['activity']) : NULL));
       
-      $p = new Participant();
+      $p = new FutureParticipant();
       $p->setAdherent($a->id());
       
       $data = explode('-', htmlspecialchars($_POST['activity']));

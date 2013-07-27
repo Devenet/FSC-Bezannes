@@ -2,8 +2,7 @@
 
 use lib\users\UserInscription;
 use lib\preinscriptions\Preinscription;
-use lib\preinscriptions\Member;
-use lib\preinscriptions\Participant;
+use lib\preinscriptions\FutureParticipant;
 use lib\content\Page;
 use lib\content\Pagination;
 use lib\content\Sort;
@@ -31,7 +30,7 @@ if (isset($_GET['account'])) {
 
     $required_view = 'account';
 
-    $count_members = Member::countMembers($u->id());
+    $count_members = Preinscription::countMembers($u->id());
     $count_activities = 99999;
     $count_adherents = 0;
     // affichage des préinscriptions du compte
@@ -54,14 +53,14 @@ if (isset($_GET['account'])) {
           </tr>
         </thead>
         <tbody>';
-      foreach (Member::Members($u->id()) as $m) {
-        $act = Participant::countActivities($m->id());
+      foreach (Preinscription::Members($u->id()) as $m) {
+        $act = FutureParticipant::countActivities($m->id());
         if ($m->adherent()) {
           $count_adherents++;
           $count_activities = min($act, $count_activities);
         }
         if ($m->minor())
-          $resp = new Member($m->responsible());
+          $resp = new Preinscription($m->responsible());
         $display_members .= '
           <tr>
             <td>'. $m->id() .'</td>
@@ -72,7 +71,7 @@ if (isset($_GET['account'])) {
             <td class="center">'. ($m->minor() ? 'e' : ($m->countResponsabilities() > 0 ? 'A <span style="position:absolute; padding-left:5px; color:#333;">&bull;</span>' : 'A')) .'</td>
             <td class="status center">'. Preinscription::StatusTooltip($m->status()) .'</td>
             <td class="center" style="padding-left:0; padding-right:0;">
-              <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $m->id() .'"' :'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
+              <a'. ($m->status() == Preinscription::AWAITING || $m->status() == Preinscription::INCOMPLETE ? ' href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $m->id() .'"' :'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING || $m->status() == Preinscription::INCOMPLETE ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
               <div class="btn-group">
                 <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-eye-open"></i></a>
                 <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-pencil"></i></a>
@@ -129,15 +128,15 @@ if (isset($_GET['account'])) {
 
   switch($type) {
     case 'login':
-      $preinscriptions = Preinscription::PreinscriptionsByLogin(($browse-1) * Pagination::step(), $sens);
+      $preinscriptions = Preinscription::AccountsByLogin(($browse-1) * Pagination::step(), $sens);
       $url = '&amp;sort=login-' . ($sens ? 'asc' : 'desc');
       break;
     case 'status':
-      $preinscriptions = Preinscription::PreinscriptionsByStatus(($browse-1) * Pagination::step(), $sens);
+      $preinscriptions = Preinscription::AccountsByStatus(($browse-1) * Pagination::step(), $sens);
       $url = '&amp;sort=status-' . ($sens ? 'asc' : 'desc');
       break;
     default:
-      $preinscriptions = Preinscription::Preinscriptions(($browse-1) * Pagination::step());
+      $preinscriptions = Preinscription::Accounts(($browse-1) * Pagination::step());
   }
   if ($type != NULL) $sort[$type]->sens($sens ? 'asc' : 'desc');
 

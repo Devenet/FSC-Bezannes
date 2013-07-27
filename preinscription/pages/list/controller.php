@@ -5,8 +5,7 @@ use lib\content\Form;
 use lib\content\Message;
 use lib\content\Display;
 use lib\users\UserInscription;
-use lib\preinscriptions\Member;
-use lib\preinscriptions\Participant;
+use lib\preinscriptions\FutureParticipant;
 use lib\preinscriptions\Preinscription;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
@@ -19,7 +18,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   
   $u = $_SESSION['user'];
 
-  $count_members = Member::countMembers($u->id());
+  $count_members = Preinscription::countMembers($u->id());
   $display_count_members = 'Il y a actuellement <span class="label">'. $count_members . '</span> personne'. Display::Plural($count_members) .' préinscrite'. Display::Plural($count_members) .' sur votre compte.';
   $count_activities = 99999;
   $count_adherents = 0;
@@ -41,8 +40,8 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         </tr>
       </thead>
       <tbody>';
-    foreach (Member::Members($_SESSION['user']->id()) as $m) {
-      $act = Participant::countActivities($m->id());
+    foreach (Preinscription::Members($_SESSION['user']->id()) as $m) {
+      $act = FutureParticipant::countActivities($m->id());
       if ($m->adherent()) {
         $count_adherents++;
         $count_activities = min($act, $count_activities);

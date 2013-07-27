@@ -5,7 +5,7 @@ use lib\content\Form;
 use lib\content\Message;
 use lib\content\Display;
 use lib\users\UserInscription;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
 
@@ -43,7 +43,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     // else, ask confirmation to delete user
     else {
 
-      $count_members = Member::countMembers($u->id());
+      $count_members = Preinscription::countMembers($u->id());
       if ($count_members == 1)
         $display_count_members = 'votre préinscription sera aussi supprimée !' ;
       else if ($count_members > 1) {

@@ -1,7 +1,7 @@
 <?php
 
 use lib\content\Page;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 use lib\content\Message;
 use lib\content\Form;
 
@@ -16,13 +16,13 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     );
     $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Nouvelle préinscription', 'url' => _PREINSCRIPTION_.'new-preinscription'), $pageInfos));
 
-    $_SESSION['form_msg'] = Member::countAdults($_SESSION['user']->id()) == 0 ? '<div class="alert alert-error">
+    $_SESSION['form_msg'] = Preinscription::countAdults($_SESSION['user']->id()) == 0 ? '<div class="alert alert-error">
       <strong>Oups !</strong> Vous tentez de choisir un responsable pour un mineur alors qu’aucune personne majeure n’a précédement été préinscrite.
       <br />Si le responsable ne souhaite pas devenir adhérent, il suffit de ne pas cocher la case pré-adhérer dans le <a href="/new-preinscription">formulaire de préinscription</a>.
     </div>' : '';
     
     $form = new Form('choose-responsible', _PREINSCRIPTION_ .'/choose-responsible', 'Choisir', 'Représentant légal pour <strong>'. $_SESSION['member']->name() .'</strong>');
-    foreach (Member::Adults($_SESSION['user']->id()) as $adult)
+    foreach (Preinscription::Adults($_SESSION['user']->id()) as $adult)
       $form->addOption('adulte', $adult->name(), $adult->id());
       
     // controle formulaire

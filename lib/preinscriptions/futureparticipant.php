@@ -1,12 +1,12 @@
 <?php
 
 namespace lib\preinscriptions;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 use lib\activities\Activity;
 use lib\activities\Schedule;
 use lib\db\SQL;
 
-class Participant {
+class FutureParticipant {
   protected $id;
   protected $activity;
   protected $adherent;
@@ -17,12 +17,12 @@ class Participant {
   public function __construct($id = NULL) {
     if (is_int($id+0) && $this->isParticipant($id+0)) {
       $query = SQL::sql()->query('SELECT id, activity, adherent, schedule, status FROM fsc_participants_inscription WHERE id = '. $id);
-      $member = $query->fetch();
+      $participant = $query->fetch();
       $this->id = $id+0;
-      $this->activity = $member['activity'];
-      $this->adherent = $member['adherent'];
-      $this->schedule = $member['schedule'];
-      $this->status = $member['status'];
+      $this->activity = $participant['activity'];
+      $this->adherent = $participant['adherent'];
+      $this->schedule = $participant['schedule'];
+      $this->status = $participant['status'];
       $this->created = true;
       $query->closeCursor();
     }
@@ -65,7 +65,7 @@ class Participant {
     return $this->adherent;
   }
   public function setAdherent($id) {
-    if (Member::isAdherent($id+0)) {
+    if (Preinscription::isAdherent($id+0)) {
       $this->adherent = $id+0;
       return true;
     }
@@ -149,7 +149,7 @@ class Participant {
     $query = SQL::sql()->prepare('SELECT id FROM fsc_participants_inscription WHERE adherent = :adherent');
     $query->execute(array('adherent' => $adherent));
     while ($data = $query->fetch())
-      $return[] = new Participant($data['id']);
+      $return[] = new FutureParticipant($data['id']);
     return $return;
   }
   
@@ -164,7 +164,7 @@ class Participant {
       $query->execute(array('activity' => $activity));
     }
     while ($data = $query->fetch())
-      $return[] = new Participant($data['id']);
+      $return[] = new FutureParticipant($data['id']);
     return $return;
   }
   
