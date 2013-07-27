@@ -29,7 +29,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
   $page = new Page($pageInfos['name'], $pageInfos['url'], 
     array(
       array('name' => 'Préinscriptions', 'url' => '?page=preinscriptions'),
-      array('name' => $account->login(), 'url' => '?page=preinscriptions&amp;detail='.$account->id()),
+      array('name' => $account->login(), 'url' => '?page=preinscriptions&amp;account='.$account->id()),
       $pageInfos)
   );
 

@@ -16,12 +16,12 @@ function quit() {
 }
 
 $required_view = 'pre';
-// detail page ie: lis preinscriptions for an account
-if (isset($_GET['detail'])) {
+// account page ie: list preinscriptions for an account
+if (isset($_GET['account'])) {
 
-  if (UserInscription::isUser(UserInscription::getLogin($_GET['detail']+0))) {
+  if (UserInscription::isUser(UserInscription::getLogin($_GET['account']+0))) {
     
-    $u = new UserInscription($_GET['detail']+0);
+    $u = new UserInscription($_GET['account']+0);
       
     $pageInfos = array(
      'name' => $u->login(),
@@ -29,7 +29,7 @@ if (isset($_GET['detail'])) {
     );
     $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Préinscriptions', 'url' => '?page=preinscriptions'), $pageInfos));
 
-    $required_view = 'details';
+    $required_view = 'account';
 
     $count_members = Member::countMembers($u->id());
     $count_activities = 99999;
