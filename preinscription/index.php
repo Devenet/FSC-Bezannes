@@ -36,22 +36,40 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 ?><!DOCTYPE html>
 <html lang="fr">
 	<head>
-		<meta charset="UTF-8" />
-		<title><?php echo ($page->url() != _PREINSCRIPTION_.'/') ? $page->title() .' &middot; ' : NULL; ?>Présinscriptions &middot; FSC Bezannes</title>
-		<meta name="description" content="Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques. Venez vite nous rejoindre !" />
-		<meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, bonne humeur, enfants, adultes"/>
-		<meta name="author" content="Nicolas Devenet" />
-		<meta name="robots" content="<?php echo $page->search_engine(); ?>" />
+    <meta charset="UTF-8" />
+    <title><?php echo ($page->url() != _PREINSCRIPTION_.'/') ? $page->title() .' &middot; ' : NULL; ?>Présinscriptions &middot; FSC Bezannes</title>
+    
+    <!--
+    $$$$$$$$\  $$$$$$\   $$$$$$\        $$$$$$$\                                                                       
+    $$  _____|$$  __$$\ $$  __$$\       $$  __$$\                                                                      
+    $$ |      $$ /  \__|$$ /  \__|      $$ |  $$ | $$$$$$\  $$$$$$$$\ $$$$$$\  $$$$$$$\  $$$$$$$\   $$$$$$\   $$$$$$$\ 
+    $$$$$\    \$$$$$$\  $$ |            $$$$$$$\ |$$  __$$\ \____$$  |\____$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  _____|
+    $$  __|    \____$$\ $$ |            $$  __$$\ $$$$$$$$ |  $$$$ _/ $$$$$$$ |$$ |  $$ |$$ |  $$ |$$$$$$$$ |\$$$$$$\  
+    $$ |      $$\   $$ |$$ |  $$\       $$ |  $$ |$$   ____| $$  _/  $$  __$$ |$$ |  $$ |$$ |  $$ |$$   ____| \____$$\ 
+    $$ |      \$$$$$$  |\$$$$$$  |      $$$$$$$  |\$$$$$$$\ $$$$$$$$\\$$$$$$$ |$$ |  $$ |$$ |  $$ |\$$$$$$$\ $$$$$$$  |
+    \__|       \______/  \______/       \_______/  \_______|\________|\_______|\__|  \__|\__|  \__| \_______|\_______/ 
+    -->
+    
+    <meta name="description" content="Site des préinscriptions du Foyer Social et Culturel de Bezannes, association proposant de nombreuses activit&eacute;s culturelles, sportives et artistiques." />
+    <meta name="keywords" content="FSC, Foyer, Bezannes, FSC Bezannes, activit&eacute;s, préinscriptions, inscriptions, enfants, adultes"/>
+    
+    <!-- Parce qu’il y a toujours un peu d’humain derrière un site... -->
+    <meta name="author" content="Nicolas Devenet" />
+    <link rel="author" href="<?php echo _FSC_; ?>/humans.txt" />
+		
+    <meta name="robots" content="<?php echo $page->search_engine(); ?>" />
 		<meta name="google-site-verification" content="nVrzZ_xZ8UdawohpsECIOvSgTsaU0R0GDWNqxnNpeis" />
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="shortcut icon" type="image/x-icon" href="<?php echo _STATIC_; ?>/img/favicon/round_16.ico" />
-		<link rel="icon"          type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_32.png" />
-		<link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
+    <link rel="shortcut icon"    type="image/x-icon" href="<?php echo _STATIC_; ?>/img/favicon/round_16.ico" />
+    <link rel="icon"             type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_32.png" />
+    <link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
+
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
-		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" />
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
+    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
 		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" /><?php } ?> 
 	</head>

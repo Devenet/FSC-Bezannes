@@ -22,10 +22,6 @@
     <ul>
       <li><a href="/db.php" rel="external">État de la BDD <i class="icon-external-link"></i></a></li>
     </ul>
-    <ul>
-      <li><a href="/clean.php" onclick="if (confirm('Cette action va nettoyer les descriptions des activités ! \nAction irréversible.')) return true; return false;" rel="external">Nettoyage <i class="icon-external-link"></i></a></li>
-      <li><a href="/init.php" onclick="if (confirm('Cette action va tenter d’initialiser la BDD. \nAjout d’une activité, un référent et des horaires.')) return true; return false;" rel="external">Initialisation <i class="icon-external-link"></i></a></li>
-    </ul>
     <hr />
     <h4>OVH</h4>
     <ul>

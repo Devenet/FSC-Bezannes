@@ -28,7 +28,7 @@ Location: Reims, France.
 
 /* SITE */
 
-Version: bêta
+Version: RC1
 Standards: HTML5, CSS3, PHP5
 Components: Bootstrap, Font Awesome, jQuery, Laravel
 IDE: Sublime Text, MAMP, Fireworks, FileZila, Brain

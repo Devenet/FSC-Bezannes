@@ -1,11 +1,10 @@
 <?php
 
-use lib\content\Display;
+use lib\users\Privilege;
 
-for ($i = 8; $i > 2 ; $i--) {
-  if (Display::Privilege($i) != '')
-    $form->addOption('privilege', ucfirst(Display::FrenchPrivilege($i)), $i);
-}
+$form->addOption('privilege', ucfirst(Privilege::FrenchTranslation(Privilege::ADMINISTRATOR)), Privilege::ADMINISTRATOR);
+$form->addOption('privilege', ucfirst(Privilege::FrenchTranslation(Privilege::VISITOR)), Privilege::VISITOR);
+
 ?>
 
 <form action="<?php echo $form->action(); ?>" method="<?php echo $form->method();?>" class="form-horizontal" >

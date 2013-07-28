@@ -26,7 +26,7 @@ else {
   foreach (Preinscription::Accounts(0, 200) as $p) {
     $data[] = array (
       "login" => $p->login(),
-      "url" => _GESTION_ .'/?page=preinscriptions&detail='. $p->id()
+      "url" => _GESTION_ .'/?page=preinscriptions&account='. $p->id()
     );
   }
 

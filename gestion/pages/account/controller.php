@@ -2,6 +2,7 @@
 
 use lib\content\Page;
 use lib\users\UserAdmin;
+use lib\users\Privilege;
 use lib\content\Display;
 use lib\content\Message;
 
@@ -37,7 +38,7 @@ if (isset($_POST) && isset($_POST['password']) && $_POST['password'] != NULL) {
 
 
 // affichage privilege
-$display_privilege = ucfirst(Display::Privilege($u->privilege()));
+$display_privilege = ucfirst(Privilege::Translation($u->privilege()));
 
 // affichage dernière connexion
 $data = $u->lastHistory();

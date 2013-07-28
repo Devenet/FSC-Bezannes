@@ -3,14 +3,14 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Ven 26 Juillet 2013 à 11:38
+-- Généré le : Lun 29 Juillet 2013 à 00:43
 -- Version du serveur: 5.5.9
 -- Version de PHP: 5.3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Base de données: `fsc`
+-- Base de données: `foyer`
 --
 
 -- --------------------------------------------------------
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `fsc_members_inscription` (
   `date_creation` date NOT NULL,
   `id_user_inscription` int(11) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '0',
-  `id_member` int(11) NOT NULL DEFAULT '0',
+  `id_member` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `minor` (`minor`),
   KEY `adherent` (`adherent`)

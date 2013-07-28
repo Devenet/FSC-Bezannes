@@ -2,6 +2,7 @@
 
 namespace lib\users;
 use lib\users\User;
+use lib\users\Privilege;
 use lib\db\SQL;
 use lib\content\Pagination;
 use lib\laravel\Str;
@@ -10,13 +11,6 @@ class UserAdmin extends User {
   
   private $name;
   private $privilege;
-  /**
-   * 0 disabled
-   * 1 referent
-   * 7 manager
-   * 8 administrator
-   * 9 god
-   */
   
   public function __construct($id = NULL) {
     if ($id != NULL) {
@@ -50,9 +44,9 @@ class UserAdmin extends User {
     return $this->privilege;
   }
   public function setPrivilege($int) {
-    if ($int == 1 || $int >= 7 && $int <= 8)
+    if ($int == Privilege::VISITOR || $int == Privilege::ADMINISTRATOR)
       $this->privilege = $int;
-    else $this->privilege = 0;
+    else $this->privilege = Privilege::DISABLED;
     return true;
   }
   
@@ -177,6 +171,17 @@ class UserAdmin extends User {
     $data = $query->fetch();
     $query->closeCursor();
     return $data['total'];
+  }
+
+  public static function clean() {
+    $total = self::countHistory();
+    if ($total > 300) {
+      $query = SQL::sql()->query('SELECT id from fsc_history_admin ORDER BY id DESC LIMIT 300,'. $total);
+      $delete = SQL::sql()->prepare('DELETE FROM fsc_history_admin WHERE id = ?');
+      while ($data = $query->fetch())
+        $delete->execute(array($data['id']));
+      $query->closeCursor();
+    }
   }
   
 }

@@ -65,15 +65,6 @@ class Display {
     return $types[$type];
   }
   
-  static public function Privilege($int) {
-    $privileges = array('disabled', 'referent', '', '', '', '', '', 'manager', 'administrator', 'god');
-    return $privileges[$int];
-  }
-  static public function FrenchPrivilege($int) {
-    $privileges = array('désactivé', 'référant', '', '', '', '', '', 'gestionnaire', 'administrateur', 'dieu');
-    return $privileges[$int];
-  }
-  
   static public function Double($double) {
     return $double;
   }

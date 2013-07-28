@@ -1,6 +1,21 @@
 <style>
-  h3 {font-weight: normal; font-size: 20px;}
+  h3 {font-weight:normal; font-size:20px;}
+  h5 {margin:5px 10px; border-bottom:1px solid #aaa; color:#aaa;}
 </style>
+
+<div class="row espace-bottom">
+  <div class="span6">
+    <form class="form-search">
+      <input type="text" class="global-search span4" placeholder="Accès rapide" autofocus/>
+    </form>
+  </div>
+  <div class="span6">
+    <ul class="inline nav nav-pills pull-right">
+      <li><a href="<?php echo _FSC_; ?>" rel="external"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span> <span class="normal external-link"><i class="icon-external-link"></i></span></a></li>
+      <li><a href="<?php echo _PREINSCRIPTION_; ?>" rel="external">Présincriptions <span class="normal external-link"><i class="icon-external-link"></i></span></a></li>
+    </ul>
+  </div>
+</div>
 
 <div class="row">
 
@@ -65,3 +80,52 @@
 
 </div>
 -->
+
+<?php
+$_SCRIPT[] = '<script src="'. _FSC_ .'/js/hogan.js"></script>';
+$_SCRIPT[] = '<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';
+$_SCRIPT[] = "
+<script>
+  $(function(){
+    $('input.global-search').typeahead([
+      {
+        name: 'activities',
+        valueKey: 'activity',
+        prefetch: {
+          'url': 'http:". _PRIVATE_API_ ."/activities.php',
+          'ttl': 5000
+        },
+        template: '<a href=\"{{url}}\">{{activity}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
+        engine: Hogan,
+        header: '<h5>Activités</h5>'
+      },
+      {
+        name: 'members',
+        valueKey: 'name',
+        prefetch: {
+          'url': 'http:". _PRIVATE_API_ ."/members.php',
+          'ttl': 5000
+          },
+        template: '<a href=\"{{url}}\">{{name}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
+        engine: Hogan,
+        header: '<h5>Membres</h5>'
+      },
+      {
+        name: 'accounts',
+        valueKey: 'login',
+        prefetch: {
+          'url': 'http:". _PRIVATE_API_ ."/accounts.php',
+          'ttl': 5000
+          },
+        template: '<a href=\"{{url}}\">{{login}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
+        engine: Hogan,
+        header: '<h5>Préinscriptions</h5>'
+      }
+    ]);
+    $('input.global-search').on(['typeahead:autocompleted', 'typeahead:selected'].join(' '), function (e) {
+          var v = [].slice.call(arguments, 1);
+          document.location.href = v[0].url;
+        });
+  });
+</script>";
+?>
