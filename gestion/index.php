@@ -76,7 +76,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<div class="navbar navbar-static-top">
 			<div class="navbar-inner">
 				<div class="container">
-				<a class="brand" href="<?php echo _FSC_; ?>" rel="external"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
+				<a class="brand" href="<?php echo _GESTION_; ?>">Gestion</a>
 				<ul class="nav"><?php echo $mainMenu->display($page->url()); ?></ul>
 				<!-- settings -->
 				<ul class="nav pull-right">
@@ -143,7 +143,8 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		</footer>
 		<!-- /footer -->
 		
-		<script src="<?php echo _JQUERY_; ?>"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?php echo _STATIC_; ?>/js/jquery.min.js"><\/script>')</script>
 		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
 		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
 		<?php

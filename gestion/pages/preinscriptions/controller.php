@@ -7,6 +7,7 @@ use lib\content\Page;
 use lib\content\Pagination;
 use lib\content\Sort;
 use lib\content\Display;
+use lib\content\Message;
 
 
 function quit() {
@@ -21,6 +22,23 @@ if (isset($_GET['account'])) {
   if (UserInscription::isUser(UserInscription::getLogin($_GET['account']+0))) {
     
     $u = new UserInscription($_GET['account']+0);
+
+    // suppression d'un account de préinscriptions
+    if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+      try {
+        $email = $u->login();
+
+        if (! $u->delete(true))
+          throw new \Exception('Une erreure applicative est survenue...');
+
+        $_SESSION['msg'] = new Message('Le compte '. $email .' ainsi que les préinscriptions associées ont bien été supprimées.', 1, 'Suppression réussie');
+        quit();
+      }
+      catch(\Exception $e) {
+        $_SESSION['msg'] = new Message($e->getMesssage(), -1, 'Suppression impossible');
+        quit();
+      }
+    }
       
     $pageInfos = array(
      'name' => $u->login(),
@@ -33,11 +51,13 @@ if (isset($_GET['account'])) {
     $count_members = Preinscription::countMembers($u->id());
     $count_activities = 99999;
     $count_adherents = 0;
+    $preinscriptions = array();
     // affichage des préinscriptions du compte
     if ($count_members == 0) {
       $display_members = '<div class="span8"><div class="alert">Aucune préinscription enregistrée</div></div>';
     }
     else {
+      $preinscriptions = Preinscription::Members($u->id());
       $display_members = '<div class="span12">
       <table class="table table-striped table-hover table-go">
         <thead>
@@ -53,7 +73,7 @@ if (isset($_GET['account'])) {
           </tr>
         </thead>
         <tbody>';
-      foreach (Preinscription::Members($u->id()) as $m) {
+      foreach ($preinscriptions as $m) {
         $act = FutureParticipant::countActivities($m->id());
         if ($m->adherent()) {
           $count_adherents++;
@@ -71,12 +91,12 @@ if (isset($_GET['account'])) {
             <td class="center">'. ($m->minor() ? 'e' : ($m->countResponsabilities() > 0 ? 'A <span style="position:absolute; padding-left:5px; color:#333;">&bull;</span>' : 'A')) .'</td>
             <td class="status center">'. Preinscription::StatusTooltip($m->status()) .'</td>
             <td class="center" style="padding-left:0; padding-right:0;">
-              <a'. ($m->status() == Preinscription::AWAITING || $m->status() == Preinscription::INCOMPLETE ? ' href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $m->id() .'"' :'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING || $m->status() == Preinscription::INCOMPLETE ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
+              <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $m->id() .'"' : NULL) .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
               <div class="btn-group">
                 <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-eye-open"></i></a>
                 <a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-pencil"></i></a>
               </div>
-              <a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-trash"></i></a>
+              <a href="#confirmBox'. $m->id() .'" data-toggle="modal" role="button" class="btn btn-small"><i class="icon-trash"></i></a>
             </td>
           </tr>
         ';

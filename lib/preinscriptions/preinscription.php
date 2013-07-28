@@ -36,11 +36,12 @@ class Preinscription {
   protected $date_creation;
   protected $id_user_inscription;
   protected $status;
+  protected $id_member = 0;
   private $created;
   
   public function __construct($id = NULL) {
     if (is_int($id+0) && $this->isMember($id+0)) {
-      $query = SQL::sql()->query('SELECT gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_creation, id_user_inscription, status FROM fsc_members_inscription WHERE id = '. $id);
+      $query = SQL::sql()->query('SELECT gender, last_name, first_name, date_birthday, address_number, address_street, address_further, address_zip_code, address_town, phone, email, mobile, bezannais, minor, responsible, address_different, adherent, date_creation, id_user_inscription, status, id_member FROM fsc_members_inscription WHERE id = '. $id);
       $member = $query->fetch();
       $this->id = $id+0;
       $this->gender = $member['gender'];
@@ -63,6 +64,7 @@ class Preinscription {
       $this->date_creation = $member['date_creation'];
       $this->id_user_inscription = $member['id_user_inscription'];
       $this->status = $member['status'];
+      $this->id_member = $member['id_member'];
       $this->created = true;
       $query->closeCursor();
     }
@@ -86,10 +88,33 @@ class Preinscription {
   }
   public function setStatus($status) {
     $this->status = $status;
-    $this->updateStatus();
+    $this->update_sql('status', $this->status);
   }
-  private function updateStatus() {
-    update_sql('status', $this->status);
+  public function checkStatus() {
+    switch($this->status) {
+      case self::INCOMPLETE:
+        $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM `fsc_participants_inscription` WHERE adherent = :id');
+        $query->execute(array('id' => $this->id));
+        $data = $query->fetch();
+        $total = $data['total'];
+        $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM `fsc_participants_inscription` WHERE adherent = :id AND STATUS = :status');
+        $query->execute(array('id' => $this->id, 'status' => self::VALIDATED));
+        $data = $query->fetch();
+        $validated = $data['total'];
+        $query->closeCursor();
+        if ($validated == $total) {
+          $this->setStatus(self::VALIDATED);
+          return TRUE;
+        }
+        return FALSE;
+        break;
+
+      case self::VALIDATED:
+      case self::REJECTED:
+      default:
+        return FALSE;
+        break;
+    }
   }
 
   public function gender() {
@@ -171,7 +196,7 @@ class Preinscription {
     return $this->minor;
   }
   public function setMinor() {
-    // Majeur avant le 1er septembre exclu
+    // Mineur avant le 1er septembre exclu
     $date = explode('-', $this->date_birthday);
     if (_YEAR_ - $date[0] > 18) {
       $this->minor = 0;
@@ -346,8 +371,12 @@ class Preinscription {
     }
   }
 
-  public function validated() {
-    return FALSE;
+  public function id_member() {
+    return $this->id_member;
+  }
+  public function setIDMember($id) {
+    $this->id_member = $id+0;
+    $this->update_sql('id_member', $this->id_member);
   }
   
   public function date_creation() {
@@ -551,6 +580,14 @@ class Preinscription {
     $display = array('En attente de validation', 'Préinscription validée', 'Préinscription partiellement validée', 'Préinscription rejetée');
     return $display[$status];
   }
+  static public function StatusDescriptionActivity($status) {
+    $display = array('En attente de validation', 'Activitée validée', 'Activité partiellement validée', 'Activitée rejetée');
+    return $display[$status];
+  }
+  static public function StatusDescriptionAccount($status) {
+    $display = array('En attente de validation', 'Compte validé', 'Compte partiellement validé', 'Compte rejeté');
+    return $display[$status];
+  }
   static public function StatusIcon($status) {
     $display = array('time', 'ok-sign', 'warning-sign', 'ban-circle');
     return '<i class="icon-'. $display[$status] .'"></i>';
@@ -563,7 +600,14 @@ class Preinscription {
     return '<span data-toggle="tooltip" data-placement="bottom" data-title="'. self::StatusDescription($status) .'" 
       class="normal cursor-default text-'. self::StatusColor($status) .'">'. self::StatusIcon($status) .'</span>';
   }
-
+  static public function StatusTooltipActivity($status, $placement = 'bottom') {
+    return '<span data-toggle="tooltip" data-placement="bottom" data-title="'. self::StatusDescriptionActivity($status) .'" 
+      class="normal cursor-default text-'. self::StatusColor($status) .'">'. self::StatusIcon($status) .'</span>';
+  }
+  static public function StatusTooltipAccount($status, $placement = 'bottom') {
+    return '<span data-toggle="tooltip" data-placement="bottom" data-title="'. self::StatusDescriptionAccount($status) .'" 
+      class="normal cursor-default text-'. self::StatusColor($status) .'">'. self::StatusIcon($status) .'</span>';
+  }
   static public function Accounts($start = 0, $step = NULL) {
     $step = is_null($step) ? Pagination::step() : $step;
     $return = array();

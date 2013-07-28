@@ -12,18 +12,55 @@ class UserInscription extends User {
    
   public function __construct($id = NULL) {
     if ($id != NULL) {
-      $query = SQL::sql()->prepare('SELECT login, ip, date FROM fsc_users_inscription WHERE id = ?');
+      $query = SQL::sql()->prepare('SELECT login, ip, date, status FROM fsc_users_inscription WHERE id = ?');
       $query->execute(array($id+0));
       $data = $query->fetch();
       $this->id = $id;
       $this->login = $data['login'];
       $this->ip = $data['ip'];
       $this->date = $data['date'];
+      $this->status = $data['status'];
       $query->closeCursor();
+      $this->checkStatus();
       $this->created = true;
     }
     else 
       $created = false;
+  }
+
+  public function status() {
+    return $this->status;
+  }
+  public function setStatus($status) {
+    $this->status = $status;
+    $this->update_sql('status', $this->status);
+  }
+  public function checkStatus() {
+    switch($this->status) {
+      case Preinscription::INCOMPLETE:
+      case Preinscription::AWAITING:
+        $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM `fsc_members_inscription` WHERE id_user_inscription = :id');
+        $query->execute(array('id' => $this->id));
+        $data = $query->fetch();
+        $total = $data['total'];
+        $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM `fsc_members_inscription` WHERE id_user_inscription = :id AND STATUS = :status');
+        $query->execute(array('id' => $this->id, 'status' => Preinscription::VALIDATED));
+        $data = $query->fetch();
+        $validated = $data['total'];
+        $query->closeCursor();
+        if ($validated == $total) {
+          $this->setStatus(Preinscription::VALIDATED);
+          return TRUE;
+        }
+        return FALSE;
+        break;
+
+      case Preinscription::VALIDATED:
+      case Preinscription::REJECTED:
+      default:
+        return FALSE;
+        break;
+    }
   }
   
   public function create() {

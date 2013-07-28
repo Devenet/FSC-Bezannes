@@ -13,12 +13,12 @@
     </div>
     <div class="row espace-top">
       <div class="span3 offset3">
-        <p>Vous avez déjà un compte ?</p>
+        <p>Vous avez un compte ?</p>
         <a href="<?php echo _PREINSCRIPTION_; ?>/login" class="btn btn-large btn-primary">Se connecter</a>
       </div>
       <div class="span3">
         <p>Pas encore de compte ?</p>
-        <a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-large btn-success">Se préinscrire</a>
+        <a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-large btn-success">Inscription</a>
       </div>
     </div>
   </div>

@@ -73,8 +73,8 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
           <tr>
             <td class="go"><a href="'. _FSC_ .'/activite/'. $a->url() .'" rel="external">'. $a->name() .'</a> <span class="external-link"><i class="icon-external-link"></i></span></td>
             <td>'. $horaire .'</td>
-            <td class="center status">'. Preinscription::StatusTooltip($p->status()) .'</td>
-            <td class="center">'. ($p->status() == Preinscription::AWAITING ? '<a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a>' : NULL) .'</td>
+            <td class="center status">'. Preinscription::StatusTooltipActivity($p->status()) .'</td>
+            <td class="center">'. ($m->status() == Preinscription::AWAITING  ? '<a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="btn btn-small"><i class="icon-trash"></i></a>' : '<a class="btn btn-small disabled"><i class="icon-trash"></i></a>') .'</td>
           </tr>
         ';
       }

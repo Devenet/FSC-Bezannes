@@ -34,6 +34,12 @@ h1 {
 	display: block;
 }
 
+@media (min-width: 768px) {
+	.preinscription-infos {
+		margin-top: 20px;
+	}
+}
+
 @media (max-width: 979px) {
 	.page-home .hero-unit h1 {
 		line-height: 40px;

@@ -29,10 +29,9 @@ Just add a JSON file called `configuration.json` in `config/` folder with these 
       "fsc": "//fsc.local",
       "gestion": "//gestion.fsc.local",
       "preinscription": "//preinscriptions.fsc.local",
-      "analytics_fsc": "false",
-      "analytics_gestion": "false",
-      "analytics_preinscription": "false",
-      "jquery": "//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",
+      "analytics_fsc": false,
+      "analytics_gestion": false,
+      "analytics_preinscription": false,
       "path_uploads_full": "public/uploads",
       "static": "//fsc.local",
       "uploads": "//fsc.local/uploads"

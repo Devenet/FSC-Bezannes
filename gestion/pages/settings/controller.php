@@ -27,7 +27,6 @@ $configs = array (
   '_ANALYTICS_FSC_',
   '_ANALYTICS_GESTION_',
   '_ANALYTICS_PREINSCRIPTION_',
-  '_JQUERY_',
   '_STATIC_',
   '_UPLOADS_',
   '_PUBLIC_API_',

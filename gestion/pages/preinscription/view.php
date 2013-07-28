@@ -1,6 +1,7 @@
 <?php
 use lib\content\Display;
 use lib\preinscriptions\Preinscription;
+$countResponsabilities = $pre->countResponsabilities();
 ?>
 
 <div class="row">
@@ -27,15 +28,15 @@ use lib\preinscriptions\Preinscription;
 
     <div class="row-fluid espace-top">
       <?php if (!$pre->minor() || $pre->address_different()) : ?>
-        <div class="span4">
-          <h4>Coordonnées</h4>
+        <div class="<?php echo ($pre->minor() && $pre->address_different()) || $countResponsabilities > 0 ? 'span4' : 'span6'; ?>">
+          <h4>Adresse</h4>
           <address>
             <?php echo $pre->address(); ?>
           </address>
         </div>
       <?php endif; ?>
 
-      <div class="span4">
+      <div class="<?php echo ($pre->minor() && $pre->address_different()) || $countResponsabilities > 0 ? 'span4' : 'span6'; ?>">
         <h4>Contact</h4>
           <p><i class="icon-phone"></i> <?php echo Display::Phone($pre->phone()); ?>
           <?php echo ($pre->mobile() != NULL ? '<br /><i class="icon-phone"></i> '. Display::Phone($pre->mobile()) : NULL); ?>
@@ -43,14 +44,14 @@ use lib\preinscriptions\Preinscription;
       </div>
 
       <?php if ($pre->minor()): ?>
-        <div class="span4">
+        <div class="<?php echo ($pre->minor() && $pre->address_different()) || $countResponsabilities > 0 ? 'span4' : 'span6'; ?>">
           <h4>Reponsable</h4>
           <p><?php echo Display::HtmlGender($respo->gender()), ' ', $respo->name(); ?> [<a href="<?php echo _GESTION_; ?>/?page=preinscription&amp;id=<?php echo $respo->id(); ?>">#<?php echo $respo->id(); ?></a>]
           <br /><span class="muted"><?php echo $respo->address_zip_code(), ' ', $respo->address_town(); ?></span></p>
         </div>
       <?php
       endif;
-      if ($pre->countResponsabilities() > 0) {
+      if ($countResponsabilities > 0) {
         echo '<div class="span4">', '<h4>Responsabilité</h4>';
         $minors = $pre->Responsabilities();
         echo '<ul>';
@@ -67,12 +68,11 @@ use lib\preinscriptions\Preinscription;
       <strong>Préinscription :</strong> #<?php echo $pre->id(); ?>
     </div>
 
-    <div class="alert <?php echo ($pre->adherent() ? 'alert-success' : ''); ?>">
-      <strong><?php echo ($pre->adherent() ? 'Pré-adhérent' : 'Non-adherent'); ?></strong>
-    </div>
+    <?php echo getWellMember(); ?>
   </div>
 </div>
 
+<?php if ($pre->adherent()) : ?>
 <div class="row espace-top">
   <div class="span8 espace-bottom">
     <hr />
@@ -84,6 +84,7 @@ use lib\preinscriptions\Preinscription;
     <?php echo $display_participatitions; ?>
   </div>
 </div>
+<?php endif; ?>
 
 
 <div id="confirmRemoveInscription<?php echo $pre->id(); ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelInscription<?php echo $pre->id(); ?>" aria-hidden="true">
@@ -96,6 +97,6 @@ use lib\preinscriptions\Preinscription;
 </div>
 <div class="modal-footer">
 <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-<a href="./?page=preinscription&amp;id=<?php echo $pre->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
+<a href="./?page=edit-preinscription&amp;id=<?php echo $pre->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
 </div>
 </div>

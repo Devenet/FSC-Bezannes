@@ -16,7 +16,6 @@
     define('_ANALYTICS_FSC_', $fsc->analytics_fsc);
     define('_ANALYTICS_GESTION_', $fsc->analytics_gestion);
     define('_ANALYTICS_PREINSCRIPTION_', $fsc->analytics_preinscription);
-    define('_JQUERY_', $fsc->jquery);
 
     define('_PATH_PUBLIC_', 'public');
     define('_PATH_GESTION_', 'gestion');

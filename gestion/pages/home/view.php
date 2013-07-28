@@ -38,7 +38,7 @@
   <div class="span4">
     <h3><i class="icon-hand-right"></i> Préinscriptions</h3>
     <div class="btn-group">
-      <a href="<?php echo _GESTION_; ?>/?page=preinscriptions" class="btn btn-inverse">Work in progress <i class="icon-spinner icon-spin"></i></a>
+      <a href="<?php echo _GESTION_; ?>/?page=preinscriptions" class="btn"><i class="icon-eye-open"></i> Voir</a>
     </div>
     <div style="margin-top:20px;">
       <p><span class="label"><?php echo $inscription_accounts; ?></span> compte<?php echo $plural_PREINSCRIPTION_accounts; ?></p>

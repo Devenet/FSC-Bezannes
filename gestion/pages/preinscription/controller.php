@@ -55,7 +55,30 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
     return $result;
 
   }
-  // geneation des boutons en fonction du status (préinscription & participation)
+  // generation du cadre (pre-)adhérent ou (pre-)membre
+  function  getWellMember() {
+    global $pre;
+    $result = '<div class="alert';
+    switch ($pre->status()) {
+      case Preinscription::VALIDATED:
+      case Preinscription::INCOMPLETE:
+        $result .= (!$pre->adherent() ? NULL : ' alert-success');
+        $result .= '"><strong>'. ($pre->adherent() ? 'Adhérent' : 'Membre') .'</strong> [<a href="?page=member&amp;id='. $pre->id_member() .'">#'. $pre->id_member() .'</a>]';
+        break;
+
+      case Preinscription::AWAITING;
+        $result .= ($pre->adherent() ? ' alert-info' : ' alert-well');
+        $result .= '">'. ($pre->adherent() ? 'Adhérent' : 'Membre');
+        break;
+
+
+      default:
+        $result .= ' alert-error"><strong>Rejected</strong>';
+    }
+    $result .= '</div>';
+    return $result;
+  }
+  // generation des boutons des activités en fonction du status (préinscription & participation)
   function getButtonsParticipant($p) {
     global $pre;
     switch ($pre->status()) {
@@ -66,8 +89,8 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
       case Preinscription::INCOMPLETE:
       case Preinscription::VALIDATED:
         if ($p->status() == Preinscription::AWAITING)
-          return '<a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="normal"><i class="icon-trash"></i></a>';
-        return 'nop';
+          return '<a href="?page=validate-future-participant&amp;id='. $p->id() .'" class="btn btn-small"><i class="icon-plus"></i></a> <a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="btn btn-small"><i class="icon-trash"></i></a>';
+        return '<a class="btn btn-small disabled"><i class="icon-plus"></i></a> <a class="btn btn-small disabled"><i class="icon-trash"></i></a>';
         break;
 
       case Preinscription::REJECTED:
@@ -122,10 +145,13 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
         </div>
         <div class="modal-footer">
           <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-          <a href="'. _PREINSCRIPTION_ .'/remove-activity/'. $p->id() .'" class="btn btn-danger">Confirmer</a>
+          <a href="'. _GESTION_ .'/?page=validate-future-participant&amp;id='. $p->id() .'&amp;action=delete" class="btn btn-danger">Confirmer</a>
         </div>
       </div>
       ';
+  }
+  else {
+    $display_participatitions = 'Aucune';
   }
 
 

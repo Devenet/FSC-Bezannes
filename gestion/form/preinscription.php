@@ -80,7 +80,7 @@ foreach ($months as $value => $month) {
   <div class="control-group">
     <label class="control-label" for="date_birthday_day">Date de naissance</label>
     <div class="controls">
-      <select class="span1" name="date_birthday_day" id="date_birthday_day">
+      <select class="input-mini" name="date_birthday_day" id="date_birthday_day">
         <?php echo $form->select('date_birthday_day', $form->input('date_birthday_day')); ?>
       </select>
       <select class="input-medium" name="date_birthday_month" id="date_birthday_month">
@@ -93,10 +93,11 @@ foreach ($months as $value => $month) {
   </div>
   
   <div class="control-group">
-    <label class="control-label" for="minor">Mineur</label>
+    <label class="control-label" for="minor">Jeune</label>
     <div class="controls">
       <label class="checkbox" for="minor">
         <input type="checkbox" name="minor" id="minor" <?php echo $form->checkbox('minor'); ?> />
+        moins de 18 ans au 1<sup>er</sup> septembre <?php echo _YEAR_; ?>
       </label>
     </div>
   </div>

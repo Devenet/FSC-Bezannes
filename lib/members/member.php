@@ -23,7 +23,7 @@ class Member {
   protected $minor;
   protected $responsible;
   protected $address_different;
-  protected $adherent;
+  protected $adherent = 0;
   protected $date_registration;
   protected $date_creation;
   private $created;
@@ -584,6 +584,19 @@ class Member {
     $data = $query->fetch();
     $query->closeCursor();
     return $data['total'];
+  }
+
+  public static function SearchName($last, $first) {
+    $query = SQL::sql()->prepare('SELECT id FROM fsc_members WHERE last_name LIKE :last AND first_name LIKE :first');
+    $query->execute(array(
+      'last' => htmlspecialchars($last),
+      'first' => htmlspecialchars($first)
+    ));
+    $result = array();
+    while ($data = $query->fetch())
+      $result[] = new Member($data['id']);
+    $query->closeCursor();
+    return $result;
   }
 }
 

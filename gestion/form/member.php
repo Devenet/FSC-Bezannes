@@ -86,7 +86,7 @@ foreach ($months as $value => $month) {
   <div class="control-group">
     <label class="control-label" for="date_birthday_day">Date de naissance</label>
     <div class="controls">
-      <select class="span1" name="date_birthday_day" id="date_birthday_day">
+      <select class="input-mini" name="date_birthday_day" id="date_birthday_day">
         <?php echo $form->select('date_birthday_day', $form->input('date_birthday_day')); ?>
       </select>
       <select class="input-medium" name="date_birthday_month" id="date_birthday_month">
@@ -99,15 +99,16 @@ foreach ($months as $value => $month) {
   </div>
   
   <div class="control-group">
-    <label class="control-label" for="minor">Mineur</label>
+    <label class="control-label" for="minor">Jeune</label>
     <div class="controls">
       <label class="checkbox" for="minor">
         <input type="checkbox" name="minor" id="minor" <?php echo $form->checkbox('minor'); ?> />
+        moins de 18 ans au 1<sup>er</sup> septembre <?php echo _YEAR_; ?>
       </label>
     </div>
   </div>
   
-  <h3 class="controls">Coordonnées</h3>
+  <h3 class="controls">Adresse</h3>
   
   <div class="control-group" id="box_address_different">
     <div class="controls">
@@ -214,9 +215,9 @@ foreach ($months as $value => $month) {
   </div>
   
   <div class="control-group" id="box_date_registration">
-    <label class="control-label" for="date_registration_day">Date d’inscription</label>
+    <label class="control-label" for="date_registration_day">Date d’adhésion</label>
     <div class="controls">
-      <select class="span1" name="date_registration_day" id="date_registration_day">
+      <select class="input-mini" name="date_registration_day" id="date_registration_day">
         <?php echo $form->select('date_registration_day', ($form->input('date_registration_day') != NULL ? $form->input('date_registration_day') : date('d'))); ?>
       </select>
       <select class="input-medium" name="date_registration_month" id="date_registration_month">
@@ -242,12 +243,9 @@ foreach ($months as $value => $month) {
   $(document).ready(function() {
   
       var minor, address_different, adherent;
-      if ($("#minor").attr("checked") == "checked") minor = true;
-      else minor = false;
-      if ($("#address_different").attr("checked") == "checked") address_different = true;
-      else address_different = false;
-      if ($("#adherent").attr("checked") == "checked") adherent = true;
-      else adherent = false;
+      minor = ($("#minor").attr("checked") == "checked");
+      address_different = ($("#address_different").attr("checked") == "checked");
+      adherent = ($("#adherent").attr("checked") == "checked");
       
       if (!minor) $("#box_address_different").hide();
       else if (!address_different) $("#address").hide();

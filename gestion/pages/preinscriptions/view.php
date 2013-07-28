@@ -1,6 +1,7 @@
 <?php
 
 use lib\content\Display;
+use lib\preinscriptions\Preinscription;
 
 if ($required_view == 'account') {
 ?>
@@ -10,7 +11,7 @@ if ($required_view == 'account') {
     <div class="page-header" style="overflow:hidden; padding-bottom:5px;">
       <h2 style="margin-bottom:0;"><?php echo $u->login(); ?>
       <div class="btn-group pull-right btn-small">
-        <a href="#" class="btn btn-small" title="Supprimer ce compte"><i class="icon-trash"></i></a>
+        <a href="#confirmBoxAccount<?php echo $u->id(); ?>" data-toggle="modal" role="button" class="btn btn-small <?php echo $u->status() == Preinscription::VALIDATED ? 'btn-danger' : NULL; ?>" title="Supprimer ce compte"><i class="icon-trash"></i></a>
       </div>
       </h2>
     </div>
@@ -23,8 +24,49 @@ if ($required_view == 'account') {
   </div>
 </div>
 
+<?php if ($u->status() == Preinscription::VALIDATED) : ?>
+<div class="row espace-top center">
+  <div class="span6 offset3">
+    <div class="alert alert-error">
+      Toutes les préinscriptions du compte ont été validées.
+      <br />Merci de supprimer le compte !
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+
 <div class="row espace-top">
   <?php echo $display_members; ?>
+</div>
+
+<?php foreach($preinscriptions as $p) :?>
+<div id="confirmBox<?php echo $p->id(); ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelPreinscription<?php echo $p->id(); ?>" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="ConfirmDelPreinscription<?php echo $p->id(); ?>"><?php echo $p->name(); ?></h3>
+  </div>
+  <div class="modal-body">
+    <p class="text-error">Êtes-vous sûr de vouloir supprimer cette préinscription ?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+    <a href="./?page=edit-preinscription&amp;id=<?php echo $p->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
+  </div>
+</div>
+<?php endforeach; ?>
+
+<div id="confirmBoxAccount<?php echo $u->id(); ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ConfirmDelAccount<?php echo $u->id(); ?>" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="ConfirmDelAccount<?php echo $u->id(); ?>"><?php echo $u->login(); ?></h3>
+  </div>
+  <div class="modal-body">
+    <p class="text-error">Êtes-vous sûr de vouloir supprimer ce compte et toutes les préinscriptions associées ?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+    <a href="./?page=preinscriptions&amp;account=<?php echo $u->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
+  </div>
 </div>
 
 <?php
@@ -59,10 +101,16 @@ if ($required_view == 'account') {
       <td class="go"><a href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
       <td><span class="label"><?php echo $p->countPreinscriptions(); ?></span></td>
       <td><span class="label label-info"><?php echo $p->countAdherents(); ?></span></td>
-      <td>?</td>
-      <td style="padding-left:0; padding-right:0;" class="center"><a class="btn btn-small" href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></td>
+      <td class="tip"><?php echo Preinscription::StatusTooltipAccount($p->status()); ?></td>
+      <td style="padding-left:0; padding-right:0;" class="center">
+        <a class="btn btn-small" href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></a>
+        <a class="btn btn-small <?php echo $p->status() == Preinscription::VALIDATED ? 'btn-danger' : NULL; ?>" href="#confirmBox<?php echo $p->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i>
+        </td>
     </tr>
-    <?php endforeach; ?>
+    <?php
+    $_SCRIPT[] = '<script>$(function(){ $(\'table td.tip span\').tooltip(); });</script>';
+    endforeach;
+    ?>
   </tbody>
 </table>
 
@@ -83,7 +131,7 @@ if ($required_view == 'account') {
   </div>
   <div class="modal-footer">
     <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
-    <a href="./?page=preinscription&amp;id=<?php echo $p->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
+    <a href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>&amp;action=delete" class="btn btn-danger">Confirmer</a>
   </div>
 </div>
 <?php endforeach; ?>

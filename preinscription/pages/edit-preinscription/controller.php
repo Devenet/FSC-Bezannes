@@ -71,9 +71,9 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $m->setMinor();
         // vérifie que l'on a pas changé de catégorie
         if ($minor != $m->minor())
-          throw new \Exception('Mince, la personne est passée '. ($m->minor() ? 'mineure' : 'majeure') .'. Merci de supprimer sa préinscription et d’en créer une nouvelle avec la bonne date de naissance.');
+          throw new \Exception('Mince, la personne est passée '. ($m->minor() ? 'jeune' : 'adulte') .'. Merci de supprimer sa préinscription et d’en créer une nouvelle avec la bonne date de naissance.');
         if ($m->minor() != (isset($_POST['minor']) ? 1 : 0))
-          throw new \Exception('La date de naissance et l’option mineur ne correspondent pas !');
+          throw new \Exception('La date de naissance et l’option jeune ne correspondent pas !');
         
         if (!$m->setAddressDifferent(($form->input('address_different') == 'on' ? 1 : 0)))
           throw new \Exception('Impossible de définir si l’adresse du mineur est différente');          
@@ -109,7 +109,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         
       }
       catch (\Exception $e) {
-        $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !');
+        $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !', FALSE);
       }
       
     }

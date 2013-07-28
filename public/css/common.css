@@ -89,6 +89,12 @@ a.external-link {
   margin-bottom: 5px;
 }
 
+div.alert.alert-well {
+  background-color: rgb(245, 245, 245);
+  border-color: rgb(227, 227, 227);
+  color: rgb(51, 51, 51);
+}
+
 /* time execution */
 div.execution {
   position: fixed;

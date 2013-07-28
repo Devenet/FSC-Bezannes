@@ -86,7 +86,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 					<?php } else { ?>
 					<div class="nav pull-right" style="padding-right:8px;">
 						<a href="<?php echo _PREINSCRIPTION_; ?>/login" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
-						<a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Se préinscrire</a> 
+						<a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Inscription</a> 
 					</div>
 					<?php } ?>
 	
@@ -156,7 +156,8 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		</footer>
 		<!-- /footer -->
 		
-		<script src="<?php echo _JQUERY_; ?>"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="<?php echo _STATIC_; ?>/js/jquery.min.js"><\/script>')</script>
 		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
 		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
 		<?php

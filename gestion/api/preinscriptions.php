@@ -1,7 +1,7 @@
 <?php
 
 namespace lib;
-use lib\preinscriptions\Member;
+use lib\preinscriptions\Preinscription;
 
 set_include_path('../../');
 spl_autoload_extensions('.php');
@@ -23,7 +23,7 @@ else {
 
   $data = array();
 
-  foreach (Member::Members(0, 500) as $m) {
+  foreach (Preinscription::Members(0, 500) as $m) {
     $data[] = array (
       "name" => $m->name(),
       "url" => _GESTION_ .'/?page=preinscription&id='. $m->id()

@@ -6,7 +6,7 @@
   <div class="span4 espace-top hidden-phone">
     <div class="well center">
       <p>Vous n’avez pas encore votre compte ?</p>
-      <a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success">Se préinscrire</a>
+      <a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success">Inscription</a>
     </div>
   </div>
 

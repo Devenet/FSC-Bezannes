@@ -65,7 +65,7 @@ foreach ($types as $key => $value) {
   <div class="control-group">
     <label class="control-label" for="date_day"><i class="icon-time"></i> Date</label>
     <div class="controls">
-      <select class="span1" name="date_day" id="date_day">
+      <select class="input-mini" name="date_day" id="date_day">
         <?php echo $form->select('date_day', ($form->input('date_day') != NULL ? $form->input('date_day') : date('d'))); ?>
       </select>
       <select class="input-medium" name="date_month" id="date_month">

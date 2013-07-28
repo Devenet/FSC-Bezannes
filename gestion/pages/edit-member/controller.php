@@ -66,7 +66,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
         if ($minor != $m->minor())
           throw new \Exception('Mince, la personne est passée '. ($m->minor() ? 'mineure' : 'majeure') .'. Merci de supprimer le membre et de le créer de nouveau avec la bonne date de naissance.');
       if ($m->minor() != (isset($_POST['minor']) ? 1 : 0))
-        throw new \Exception('La date de naissance et l’option mineur ne correspondent pas !');
+        throw new \Exception('La date de naissance et l’option jeune ne correspondent pas !');
       
       if (!$m->setAddressDifferent(($form->input('address_different') == 'on' ? 1 : 0)))
         throw new \Exception('Impossible de définir si l’adresse du mineur est différente');
@@ -108,7 +108,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       
     }
     catch (\Exception $e) {
-      $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !');
+      $_SESSION['form_msg'] = new Message($e->getMessage(), -1, 'Formulaire incomplet !', FALSE);
     }
     
   }

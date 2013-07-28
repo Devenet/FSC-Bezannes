@@ -53,6 +53,10 @@ class Form {
     $this->radios[$radio][] = array('name' => $name, 'value' => $value);
   }
   
+  public function raw($input) {
+    return (isset($this->inputs[$input]) ? stripslashes($this->inputs[$input]) : NULL);
+  }
+
   public function value($input) {
     return (isset($this->inputs[$input]) ? ' value="'. stripslashes($this->inputs[$input]) .'" ' : NULL); 
   }
