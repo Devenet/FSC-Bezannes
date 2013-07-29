@@ -4,6 +4,7 @@ namespace lib\users;
 use lib\users\User;
 use lib\db\SQL;
 use lib\preinscriptions\Preinscription;
+use lib\mail\Mail;
 
 class UserInscription extends User {
   
@@ -21,7 +22,6 @@ class UserInscription extends User {
       $this->date = $data['date'];
       $this->status = $data['status'];
       $query->closeCursor();
-      $this->checkStatus();
       $this->created = true;
     }
     else 
@@ -39,6 +39,7 @@ class UserInscription extends User {
     switch($this->status) {
       case Preinscription::INCOMPLETE:
       case Preinscription::AWAITING:
+      case Preinscription::VALIDATED:
         $query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM `fsc_members_inscription` WHERE id_user_inscription = :id');
         $query->execute(array('id' => $this->id));
         $data = $query->fetch();
@@ -47,15 +48,25 @@ class UserInscription extends User {
         $query->execute(array('id' => $this->id, 'status' => Preinscription::VALIDATED));
         $data = $query->fetch();
         $validated = $data['total'];
+        $query->execute(array('id' => $this->id, 'status' => Preinscription::INCOMPLETE));
+        $data = $query->fetch();
+        $incomplete = $data['total'];
         $query->closeCursor();
         if ($validated == $total) {
           $this->setStatus(Preinscription::VALIDATED);
           return TRUE;
         }
+        else if (($validated+$incomplete) > 0 && ($validated+$incomplete) <= $total) {
+          $this->setStatus(Preinscription::INCOMPLETE);
+          return TRUE; 
+        }
+        else if ($validated == 0 && $total > 0) {
+          $this->setStatus(Preinscription::AWAITING);
+          return TRUE;
+        }
         return FALSE;
         break;
 
-      case Preinscription::VALIDATED:
       case Preinscription::REJECTED:
       default:
         return FALSE;
@@ -109,6 +120,16 @@ class UserInscription extends User {
       $query = SQL::sql()->prepare('DELETE FROM fsc_users_inscription WHERE id = :id');
       $query->execute(array('id' => $this->id));
       $query->closeCursor();
+
+      // send email
+      $body = 'Bonjour,
+
+Nous vous informons que votre compte sur le site des préincsriptions du FSC Bezannes est maintenant supprimé.
+Toutes les données concernant votre compte, vos préincsriptions et les activités choisies ont bien été supprimées.
+
+À bientôt !';
+      Mail::text($this->email(), 'Préinscriptions', $body);
+
       return true;
     }
     return false;

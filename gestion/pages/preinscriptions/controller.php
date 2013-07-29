@@ -22,6 +22,7 @@ if (isset($_GET['account'])) {
   if (UserInscription::isUser(UserInscription::getLogin($_GET['account']+0))) {
     
     $u = new UserInscription($_GET['account']+0);
+    $u->checkStatus();
 
     // suppression d'un account de préinscriptions
     if (isset($_GET['action']) && $_GET['action'] == 'delete') {

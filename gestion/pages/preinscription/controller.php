@@ -18,6 +18,7 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
   
   $pre = new Preinscription($_GET['id']+0);
   $account = new UserInscription($pre->id_user_inscription());
+  $account->checkStatus();
   if ($pre->minor())
     $respo = new Preinscription($pre->responsible());
     
