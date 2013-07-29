@@ -37,7 +37,7 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       }
     }
     else {
-      $_SESSION['msg'] = new Message($m->name(). ' est référent d’activités ou responsable de mineurs.<br />Supprimez-les d’abord.', -1, 'Suppression impossible :/');
+      $_SESSION['msg'] = new Message($m->name(). ' est référent d’activités ou responsable de jeunes.<br />Supprimez-les d’abord.', -1, 'Suppression impossible :/');
         quit();
     }
   }

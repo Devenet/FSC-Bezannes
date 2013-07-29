@@ -37,7 +37,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         }
       }
       else {
-        $_SESSION['msg'] = new Message($m->name(). ' est responsable de mineurs.<br />Supprimez leur préinscription d’abord.', -1, 'Suppression impossible :/');
+        $_SESSION['msg'] = new Message($m->name(). ' est responsable d’au moins un jeune.<br />Supprimez leurs préinscriptions d’abord.', -1, 'Suppression impossible :/');
           quit();
       }
     }

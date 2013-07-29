@@ -64,12 +64,12 @@ if (isset($_GET['id']) && Member::isMember($_GET['id']+0)) {
       $m->setMinor();
               // vérifie que l'on a pas changé de catégorie
         if ($minor != $m->minor())
-          throw new \Exception('Mince, la personne est passée '. ($m->minor() ? 'mineure' : 'majeure') .'. Merci de supprimer le membre et de le créer de nouveau avec la bonne date de naissance.');
+          throw new \Exception('Mince, la personne est passée '. ($m->minor() ? 'jeune' : 'majeure') .'. Merci de supprimer le membre et de le créer de nouveau avec la bonne date de naissance.');
       if ($m->minor() != (isset($_POST['minor']) ? 1 : 0))
         throw new \Exception('La date de naissance et l’option jeune ne correspondent pas !');
       
       if (!$m->setAddressDifferent(($form->input('address_different') == 'on' ? 1 : 0)))
-        throw new \Exception('Impossible de définir si l’adresse du mineur est différente');
+        throw new \Exception('Impossible de définir si l’adresse du jeune est différente');
       
       // majeur ou mineur avec adresse differente
       if (!$m->minor() || $m->minor() && $m->address_different()) {

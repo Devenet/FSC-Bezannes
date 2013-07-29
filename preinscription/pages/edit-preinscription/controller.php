@@ -76,7 +76,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
           throw new \Exception('La date de naissance et l’option jeune ne correspondent pas !');
         
         if (!$m->setAddressDifferent(($form->input('address_different') == 'on' ? 1 : 0)))
-          throw new \Exception('Impossible de définir si l’adresse du mineur est différente');          
+          throw new \Exception('Impossible de définir si l’adresse du jeune est différente');          
         
         // majeur ou mineur avec adresse differente
         if (!$m->minor() || $m->minor() && $m->address_different()) {

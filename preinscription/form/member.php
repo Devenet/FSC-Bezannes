@@ -108,7 +108,7 @@ foreach ($months as $value => $month) {
     <div class="controls">
       <label class="checkbox">
         <input type="checkbox" name="address_different" id="address_different" <?php echo $form->checkbox('address_different'); ?> />
-        Adresse du mineur différente du représentant légal
+        Adresse du jeune différente du représentant légal
       </label>
     </div>
   </div>
