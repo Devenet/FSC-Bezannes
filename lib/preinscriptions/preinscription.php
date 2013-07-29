@@ -196,19 +196,17 @@ class Preinscription {
     return $this->minor;
   }
   public function setMinor() {
-    // Mineur avant le 1er septembre exclu
+    // Jeune après le 1er septembre inclus
     $date = explode('-', $this->date_birthday);
-    if (_YEAR_ - $date[0] > 18) {
+    if ($date[0] < (_YEAR_ - 18)) {
       $this->minor = 0;
       $this->address_different = 0;
     }
-    elseif (_YEAR_ - $date[0] == 18) {
-      if ($date[1] < 9) {
-        $this->minor = 0;
-        $this->address_different = 0;
-      }
-      else
-        $this->minor = 1;
+    else if ($date[0] > (_YEAR_ - 18))
+      $this->minor = 1;
+    else if ($date[1] < 9) {
+      $this->minor = 0;
+      $this->address_different = 0;
     }
     else
       $this->minor = 1;
