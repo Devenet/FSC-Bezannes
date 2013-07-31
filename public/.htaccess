@@ -6,11 +6,6 @@ SetEnv SESSION_USE_TRANS_SID 0
 SetEnv REGISTER_GLOBALS 0
 Options -Indexes
 
-## Cross-site allowed for webfonts with Firefox
-<FilesMatch "\.(ttf|otf|eot|woff)$">
-  Header set Access-Control-Allow-Origin "*"
-</FilesMatch>
-
 ## URL rewriting
 RewriteEngine On
 # pages
@@ -22,14 +17,8 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/$ /$1 [R,L]
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([a-z-]+)/([a-z0-9-]+)/$ /$1/$2 [R,L]
-# img
-RewriteRule ^uploads/activities/default.jpg$ /img/logo/fsc-210x135.png
 # api
 RewriteRule ^api/([a-z-]+)\.json$ /api/$1.php
-# favicon
-RewriteRule ^favicon.ico$ /img/favicon/round_16.ico
-RewriteRule ^favicon.png$ /img/favicon/round_32.png
-RewriteRule ^apple-touch-icon.png$ /img/logo/fsc-128x128.png
 
 ## Document errors
 ErrorDocument 404 /index.php?page=404

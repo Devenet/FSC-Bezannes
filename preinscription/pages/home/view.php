@@ -2,7 +2,7 @@
 
   <div class="container espace-top">
     <div class="hero-unit center">
-      <img src="<?php echo _FSC_; ?>/img/logo/fsc-113x75.png" alt="FSC" class="pull-left" />
+      <img src="<?php echo _STATIC_; ?>/img/logo/fsc-113x75.png" alt="FSC" class="pull-left" />
       <h1>Site des préinscriptions du FSC Bezannes</h1>
     </div>
   </div>

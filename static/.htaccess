@@ -1,0 +1,51 @@
+# Security
+Options -Indexes -Includes
+ServerSignature Off
+ErrorDocument 403 /403.php
+ErrorDocument 404 /403.php
+
+# Rewriting
+RewriteEngine On
+RewriteRule ^(.+)-([0-9]+)\.(css|js)$  $1.$3
+RewriteRule ^favicon.ico$ /img/favicon/round_16.ico
+RewriteRule ^favicon.png$ /img/favicon/round_32.png
+RewriteRule ^apple-touch-icon.png$ /img/logo/fsc-128x128.png
+RewriteRule ^uploads/activities/default.jpg$ /img/logo/fsc-210x135.png
+
+# Cross-site allowed
+<FilesMatch "\.(ttf|otf|eot|woff)$">
+  Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
+
+# Remove ETag
+Header unset ETag
+FileETag none
+
+# Remove cookie
+Header unset Set-Cookie
+RequestHeader unset Cookie
+
+# Expire headers
+<IfModule mod_expires.c>
+	ExpiresActive On
+	ExpiresDefault "access plus 2419200 seconds"
+</IfModule>
+
+# Cache control headers
+<IfModule mod_headers.c>
+	<FilesMatch "\.(css|ico|png|jpe?g|gif|pdf)">
+		Header set Cache-Control "max-age=2419200, public"
+	</FilesMatch>
+	<FilesMatch "\.(js)$">
+		Header set Cache-Control "max-age=2419200, private"
+	</FilesMatch>
+</IfModule>
+
+# Compression
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+Header append Vary User-Agent env=!dont-vary
