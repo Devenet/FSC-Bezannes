@@ -12,20 +12,6 @@ use lib\content\Display;
         <?php echo ($m->adherent() ? '<a href="./?page=new-participant&amp;adherent='. $m->id() .'"  class="btn btn-small" title="Ajouter une activité"><i class="icon-plus"></i> Activité</a>' : NULL); ?>
         <a href="#confirmBox<?php echo $m->id(); ?>" class="btn btn-small" role="button" data-toggle="modal" title="Supprimer le membre"><i class="icon-trash"></i></a>
       </div>
-      <?php /*
-      <div class="btn-group pull-right">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>"><i class="icon-cog"></i>
-        <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="/?page=edit-member&amp;id=<?php echo $m->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
-          <?php echo ($m->minor() ? '<li><a href="/?page=choose-responsible&amp;member='. $m->id() .'"><i class="icon-user"></i> Représentant</a></li>' : NULL); ?>
-          <?php echo ($m->adherent() ? '<li class="divider"></li> <li><a href="/?page=new-participant&amp;adherent='. $m->id() .'"><i class="icon-plus"></i> Activité</a></li>' : NULL); ?>
-          <li class="divider"></li>
-          <li><a href="#confirmBox<?php echo $m->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
-        </ul>
-      </div>
-      */ ?>
       </h2>
     </div>
     
@@ -126,18 +112,6 @@ use lib\content\Display;
               Les frais d’inscription de <?php echo $m->first_name(); ?> s’élèvent à <span class="label"><?php echo preg_replace('#\.#', ',', $cost_payments); ?></span> &euro;.
               <?php if ($total_payments != $cost_payments) echo '<br />Les frais totaux de '. $m->first_name() .' s’élèvent à <span class="label label-inverse">'. preg_replace('#\.#', ',', $total_payments) .'</span> &euro;.'; ?>
             </p>
-            <!--
-            <div class="btn-group pull-right">
-              <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-plus"></i> Ajouter
-              <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><a href="/?page=new-transaction&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-shopping-cart"></i> Transaction</a></li>
-                <li class="divider"></li>
-                <li><a href="/?page=new-advantage&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-gift"></i> Avantage</a></li>
-              </ul>
-            </div>
-            -->
             <div class="btn-group pull-right">
               <a class="btn btn-small" href="./?page=new-transaction&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-shopping-cart"></i> Transaction</a>
               <a class="btn btn-small" href="./?page=new-advantage&amp;adherent=<?php echo $m->id(); ?>"><i class="icon-gift"></i> Avantage</a>
@@ -199,5 +173,5 @@ use lib\content\Display;
 </div>
 
 <?php
-  $_SCRIPT[] = '<script src="'. _FSC_ .'/js/fsc-active-tab.js"></script>';
+  $_SCRIPT[] = '<script src="'. _STATIC_ .'/js/fsc-active-tab-'. _VERSION_ .'.js"></script>';
 ?>

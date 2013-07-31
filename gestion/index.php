@@ -17,6 +17,7 @@ session_name('fsc_gestion');
 session_start();
 
 require '../config/config.php';
+require '../config/version.php';
 
 if (!isset($_SESSION['authentificated']) || !$_SESSION['authentificated']) {
 	header('Location: '. _GESTION_ .'/login.php');
@@ -53,14 +54,14 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="icon"          type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_diago_32.png" />
 		<link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
-		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-fileupload.min.css" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/common.css" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-wysihtml5.css" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-<?php echo _VERSION_CSS_; ?>.min.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min-<?php echo _VERSION_CSS_; ?>.css" />
+		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7-<?php echo _VERSION_CSS_; ?>.min.css"><![endif]-->
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-fileupload-<?php echo _VERSION_CSS_; ?>.min.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/common-<?php echo _VERSION_CSS_; ?>.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-wysihtml5-<?php echo _VERSION_CSS_; ?>.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2-<?php echo _VERSION_CSS_; ?>.css" />
+		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify-<?php echo _VERSION_CSS_; ?>.css" />
 		<style>
 			header {margin: 20px 0 0 0;}
 			.page-header {margin-top: 0;}
@@ -145,8 +146,8 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo _STATIC_; ?>/js/jquery.min.js"><\/script>')</script>
-		<script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
-		<script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
+		<script src="<?php echo _STATIC_; ?>/js/bootstrap-<?php echo _VERSION_CSS_; ?>.min.js"></script>
+		<script src="<?php echo _STATIC_; ?>/js/fsc-common-<?php echo _VERSION_CSS_; ?>.js"></script>
 		<?php
       foreach ($_SCRIPT as $script) {
         echo $script, PHP_EOL;

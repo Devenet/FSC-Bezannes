@@ -39,6 +39,8 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $m->setBezannais();
         $m->create();
         unset ($_SESSION['member']);
+
+        $_SESSION['user']->checkStatus();
         
         $_SESSION['msg'] = new Message('Le membre <em>'. $m->name() .'</em> a bien été préinscrit :)', 1, 'Ajout réussi !');
         header ('Location: '. _PREINSCRIPTION_ .'/list');

@@ -4,14 +4,6 @@
       <h2 style="margin-bottom:0;"><?php echo $act->name(); ?>
       <div class="btn-group pull-right btn-small">
         <a href="./?page=edit-activity&amp;id=<?php echo $act->id(); ?>" class="btn  btn-small" title="Modifier l’activité"><i class="icon-pencil"></i></a>
-        <?php /*
-        <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-plus"></i></a>  
-        <ul class="dropdown-menu">
-          <li><a href="/?page=new-schedule&amp;activity=<?php echo $act->id(); ?>"><i class="icon-time"></i> Horaire</a></li>
-          <li><a href="/?page=new-referent&amp;activity=<?php echo $act->id(); ?>"><i class="icon-legal"></i> Référent</a></li>
-          <?php if ($act->active()) echo '<li><a href="/?page=new-participant&amp;activity='. $act->id() .'"><i class="icon-male"></i> Participant</a></li>'; ?>
-        </ul>
-        */ ?>
         <a href="./?page=new-schedule&amp;activity=<?php echo $act->id(); ?>" title="Ajouter un horaire" class="btn btn-small"><i class="icon-plus"></i> Horaire</a>
         <a href="./?page=new-referent&amp;activity=<?php echo $act->id(); ?>" title="Ajouter un référent" class="btn btn-small"><i class="icon-plus"></i> Référent</a>
         <a href="#confirmBox<?php echo $act->id(); ?>" role="button" data-toggle="modal" class="btn btn-small" title="Supprimer l’activité"><i class="icon-trash"></i></a>
@@ -141,9 +133,9 @@
 </div>
 
 <?php
-$_SCRIPT[] = '<script src="'. _FSC_ .'/js/fsc-active-tab.js"></script>';
+$_SCRIPT[] = '<script src="'. _STATIC_ .'/js/fsc-active-tab-'. _VERSION_JS_ .'.js"></script>';
 $_SCRIPT[] = '<script>$(function(){ 
-  $("a#change-status").tooltip();
-  $("a.img-polaroid").tooltip();
+$("a#change-status").tooltip();
+$("a.img-polaroid").tooltip();
 });</script>'
 ?>

@@ -101,6 +101,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       if (!$m->minor()) {
         $m->setBezannais();      
         $m->create();
+        $_SESSION['user']->checkStatus();
         $_SESSION['msg'] = new Message('<em>'. $m->name() .'</em> a bien été ajouté <i class="icon-smile"></i>', 1, 'Ajout réussi !');
         header ('Location: '. _PREINSCRIPTION_ .'/list');
         exit();

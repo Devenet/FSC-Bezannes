@@ -2,7 +2,6 @@
 
 use lib\content\Page;
 use lib\users\UserAdmin;
-use lib\users\Privilege;
 use lib\content\Display;
 use lib\content\Pagination;
 
@@ -24,8 +23,8 @@ $history = UserAdmin::getHistory(($browse-1) * Pagination::step());
 $display_history = '<tbody>';
 foreach ($history as $data) 
   $display_history .= '<tr><td>' . Display::FullTimestampDate($data['date']) . '</td><td>'. Display::FullTimestampHour($data['date']) .'</td>
-    <td>'. $data['name'] . ' <span class="pull-right"><a href="mailto:'. $data['login'] .'" title="Envoyer un courriel" class="normal" rel="external"><i class="icon-envelope-alt"></i></a></span></td>
-    <td><code>'. Privilege::FrenchTranslation($data['privilege']) .'</code></td><td>'. $data['ip'] . '</td></tr>';
+    <td><img src="'. UserAdmin::getGravatar($data['login'], 20) .'" alt="gravatar" style="margin-right:10px;" />'. $data['name'] . ' <span class="pull-right"><a href="mailto:'. $data['login'] .'" title="Envoyer un courriel" class="normal" rel="external"><i class="icon-envelope-alt"></i></a></span></td>
+    <td>'. $data['ip'] . '</td></tr>';
 $display_history .= '</tbody>';
 
 // pagination

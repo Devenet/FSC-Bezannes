@@ -28,6 +28,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       $name = $m->name();
       if ($m->countResponsabilities() <= 0) {
         if ($m->delete(true)) {
+          $_SESSION['user']->checkStatus();
           $_SESSION['msg'] = new Message('La préinscription de <em>'. $name .'</em> a bien été supprimée :/', 1, 'Suppression réussie !');
           quit();
         }

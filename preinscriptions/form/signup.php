@@ -88,117 +88,117 @@
  $_SCRIPT[] = '
 <script>
 $(document).ready(function(){
-  function isValidMail(email) {
-    var pattern = '."/^([\w-\+\.]+@([\w-]+\.)+[\w]{2,4})?$/".';
-    return pattern.test(email);
-  }
-  function check_login() {
-    var length = $("#login").val().length;
-    if (length > 0) {
-      if (!isValidMail($("#login").val())) {
-        $("#parent-login").removeClass("success").addClass("error");
-        $("#icon-login").removeClass().addClass("icon-envelope");
-        $("#parent-login span.help-block").text("Adresse invalide !");
-      }
-      else {
-        $("#parent-login").removeClass("error").addClass("success");
-        $("#icon-login").removeClass().addClass("icon-ok");
-        $("#parent-login span.help-block").text("Votre identifiant sera donc "+$("#login").val());
-      }
-    }
-    else {
-      $("#parent-login").removeClass("error").removeClass("success");
+function isValidMail(email) {
+  var pattern = '."/^([\w-\+\.]+@([\w-]+\.)+[\w]{2,4})?$/".';
+  return pattern.test(email);
+}
+function check_login() {
+  var length = $("#login").val().length;
+  if (length > 0) {
+    if (!isValidMail($("#login").val())) {
+      $("#parent-login").removeClass("success").addClass("error");
       $("#icon-login").removeClass().addClass("icon-envelope");
-      $("#parent-login span.help-block").text("'. $login_message .'");
-    }
-  }
-  function check_password() {
-    var length = $("#password").val().length;
-    if (length >= 7) {
-      $("#parent-password").addClass("success");
-      $("#icon-password").removeClass().addClass("icon-ok");
-      $("#parent-password span.help-block").text("Bien ! N’hésitez pas à mettre des caractères spéciaux ;)");
+      $("#parent-login span.help-block").text("Adresse invalide !");
     }
     else {
-      $("#parent-password").removeClass("success");
-      $("#icon-password").removeClass().addClass("icon-lock");
-      $("#parent-password span.help-block").text("'. $password_message .'");
-    }
-    check_confirm_password();
-  }
-  function check_confirm_password() {
-    var length = $("#confirm-password").val().length;
-    var password = $("#password").val();
-    var confirmation = $("#confirm-password").val();
-    if (length >= 7) {
-      if (password == confirmation) {
-        $("#parent-confirm-password").addClass("success");
-        $("#icon-confirm-password").removeClass().addClass("icon-ok");
-        $("#parent-confirm-password span.help-block").text("Les mots de passe correspondent :)");
-      }
-      else {
-        $("#parent-confirm-password").addClass("error").removeClass("success");
-        $("#icon-confirm-password").removeClass().addClass("icon-repeat");
-        $("#parent-confirm-password span.help-block").text("Les mots de passe ne correspondent pas !");
-      }
-    }
-    else {
-      $("#parent-confirm-password").removeClass("success").removeClass("error");
-      $("#icon-confirm-password").removeClass().addClass("icon-repeat");
-      $("#parent-confirm-password span.help-block").text("'. $confirm_password_message .'");
+      $("#parent-login").removeClass("error").addClass("success");
+      $("#icon-login").removeClass().addClass("icon-ok");
+      $("#parent-login span.help-block").text("Votre identifiant sera donc "+$("#login").val());
     }
   }
-  function check_captcha() {
-    var length = $("#captcha").val().length;
-    if (length > 0 && $("#captcha").val() == '. ($_SESSION['captcha'][0] + $_SESSION['captcha'][1]) .') {
-      $("#parent-captcha").removeClass("error").addClass("success");
-      $("#icon-captcha").removeClass().addClass("icon-ok");
-    }
-    else {
-      $("#parent-captcha").removeClass("success");
-      $("#icon-captcha").removeClass().addClass("icon-plus");
-    }
+  else {
+    $("#parent-login").removeClass("error").removeClass("success");
+    $("#icon-login").removeClass().addClass("icon-envelope");
+    $("#parent-login span.help-block").text("'. $login_message .'");
   }
-
-  function toogleCNIL() {
-    if (cnil) {
-      $(".cnil span.text").show();
-      $(".cnil span.info").html("<i class=\"icon-minus-sign-alt\"></i> Réduire mes droits");
-    }
-    else {
-      $(".cnil span.text").hide();
-      $(".cnil span.info").html("<i class=\"icon-plus-sign-alt\"></i> Afficher mes droits");
-    }
-    cnil = !cnil;
+}
+function check_password() {
+  var length = $("#password").val().length;
+  if (length >= 7) {
+    $("#parent-password").addClass("success");
+    $("#icon-password").removeClass().addClass("icon-ok");
+    $("#parent-password span.help-block").text("Bien ! N’hésitez pas à mettre des caractères spéciaux ;)");
   }
-  
-  /*
-  check_login();
-  check_password();
+  else {
+    $("#parent-password").removeClass("success");
+    $("#icon-password").removeClass().addClass("icon-lock");
+    $("#parent-password span.help-block").text("'. $password_message .'");
+  }
   check_confirm_password();
-  */
-  
-  $("#login").keyup(function() {
-    check_login();
-  });
-  $("#password").keyup(function() {
-    check_password();
-  });
-  $("#confirm-password").keyup(function() {
-    check_confirm_password();
-  });
-  $("#captcha").keyup(function() {
-    check_captcha();
-  });
-  
-  // cnil
-  var cnil = false;
+}
+function check_confirm_password() {
+  var length = $("#confirm-password").val().length;
+  var password = $("#password").val();
+  var confirmation = $("#confirm-password").val();
+  if (length >= 7) {
+    if (password == confirmation) {
+      $("#parent-confirm-password").addClass("success");
+      $("#icon-confirm-password").removeClass().addClass("icon-ok");
+      $("#parent-confirm-password span.help-block").text("Les mots de passe correspondent :)");
+    }
+    else {
+      $("#parent-confirm-password").addClass("error").removeClass("success");
+      $("#icon-confirm-password").removeClass().addClass("icon-repeat");
+      $("#parent-confirm-password span.help-block").text("Les mots de passe ne correspondent pas !");
+    }
+  }
+  else {
+    $("#parent-confirm-password").removeClass("success").removeClass("error");
+    $("#icon-confirm-password").removeClass().addClass("icon-repeat");
+    $("#parent-confirm-password span.help-block").text("'. $confirm_password_message .'");
+  }
+}
+function check_captcha() {
+  var length = $("#captcha").val().length;
+  if (length > 0 && $("#captcha").val() == '. ($_SESSION['captcha'][0] + $_SESSION['captcha'][1]) .') {
+    $("#parent-captcha").removeClass("error").addClass("success");
+    $("#icon-captcha").removeClass().addClass("icon-ok");
+  }
+  else {
+    $("#parent-captcha").removeClass("success");
+    $("#icon-captcha").removeClass().addClass("icon-plus");
+  }
+}
+
+function toogleCNIL() {
+  if (cnil) {
+    $(".cnil span.text").show();
+    $(".cnil span.info").html("<i class=\"icon-minus-sign-alt\"></i> Réduire mes droits");
+  }
+  else {
+    $(".cnil span.text").hide();
+    $(".cnil span.info").html("<i class=\"icon-plus-sign-alt\"></i> Afficher mes droits");
+  }
+  cnil = !cnil;
+}
+
+/*
+check_login();
+check_password();
+check_confirm_password();
+*/
+
+$("#login").keyup(function() {
+  check_login();
+});
+$("#password").keyup(function() {
+  check_password();
+});
+$("#confirm-password").keyup(function() {
+  check_confirm_password();
+});
+$("#captcha").keyup(function() {
+  check_captcha();
+});
+
+// cnil
+var cnil = false;
+toogleCNIL();
+$(".cnil span.info").click(function() {
   toogleCNIL();
-  $(".cnil span.info").click(function() {
-    toogleCNIL();
-  });
+});
 
 });
 </script>
- ';
+';
  ?>

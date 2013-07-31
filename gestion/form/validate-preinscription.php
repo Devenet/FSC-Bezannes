@@ -109,41 +109,41 @@ foreach ($months as $value => $month)
   <input type="hidden" name="activities" value="<?php echo time(); ?>" />
 
   <?php
-    $_SCRIPT[] = "
-    <script>
-    $(function() {
-      var inscription = $('#inscription').attr('checked') == 'checked';
-      if (!inscription)
-        $('#box_date_registration').hide();
+  $_SCRIPT[] = "
+<script>
+$(function() {
+  var inscription = $('#inscription').attr('checked') == 'checked';
+  if (!inscription)
+    $('#box_date_registration').hide();
 
-      $('#inscription').click(function() {
-        inscription = !inscription;
-        if (inscription)
-          $('#box_date_registration').fadeIn();
-        else
-          $('#box_date_registration').hide();
-      });
+  $('#inscription').click(function() {
+    inscription = !inscription;
+    if (inscription)
+      $('#box_date_registration').fadeIn();
+    else
+      $('#box_date_registration').hide();
+  });
 
-      var checked_all = false;
-      function toggleActivities() {
-        checked_all = !checked_all;
-        checkboxes = $('#participant_boxes label input');
-        for(var i=0, n=checkboxes.length;i<n;i++) {
-          checkboxes[i].checked = checked_all;
-        }
-      }
-      $('#toggle-activities').click(function() {
-        toggleActivities();
-        if (checked_all)
-          $('#toggle-activities').html('<span class=\"btn btn-small\">Tout désélectionner</span>');
-        else
-          $('#toggle-activities').html('<span class=\"btn btn-small\">Tout sélectionner</span>');
-      });
+  var checked_all = false;
+  function toggleActivities() {
+    checked_all = !checked_all;
+    checkboxes = $('#participant_boxes label input');
+    for(var i=0, n=checkboxes.length;i<n;i++) {
+      checkboxes[i].checked = checked_all;
+    }
+  }
+  $('#toggle-activities').click(function() {
+    toggleActivities();
+    if (checked_all)
+      $('#toggle-activities').html('<span class=\"btn btn-small\">Tout désélectionner</span>');
+    else
       $('#toggle-activities').html('<span class=\"btn btn-small\">Tout sélectionner</span>');
+  });
+  $('#toggle-activities').html('<span class=\"btn btn-small\">Tout sélectionner</span>');
 
-    });
-    </script>
-    ";
+});
+</script>
+  ";
 
   endif;
   ?>

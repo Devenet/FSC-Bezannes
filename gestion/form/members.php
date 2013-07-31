@@ -53,16 +53,14 @@
 
 
 <?php
-$_SCRIPT[] = '
-  <script src="'. _FSC_ .'/js/select2.min.js"></script>
-  <script src="'. _FSC_ .'/js/select2_locale_fr.js"></script>
-  <script>
-    $(document).ready(function() {
-      $("#member").select2({
-        placeholder: "Sélectionnez un membre",
-        allowClear: true
-      });
-    });
-  </script>
+$_SCRIPT[] = '<script src="'. _STATIC_ .'/js/select2-'. _VERSION_JS_ .'.min.js"></script>';
+$_SCRIPT[] = '<script>
+$(document).ready(function() {
+$("#member").select2({
+  placeholder: "Sélectionnez un membre",
+  allowClear: true
+});
+});
+</script>
 ';
 ?>

@@ -62,28 +62,27 @@ if ($pages > 0) {
   $display_pagination .= '<li '. ($browse == $pages ? ' class="disabled"><span>' : '><a href="/?page=activities'. $url .'&browse='. $pages .'">') .'<i class="icon-double-angle-right"></i>'. ($browse == $pages ? '</span>' : '</a>') .'</li>' ;
 }
 
-$_SCRIPT[] = '<script src="'. _FSC_ .'/js/hogan.js"></script>';
-$_SCRIPT[] = '<script src="'. _FSC_ .'/js/typeahead.min.js"></script>';
+$_SCRIPT[] = '<script src="'. _STATIC_ .'/js/hogan-'. _VERSION_JS_ .'.min.js"></script>';
+$_SCRIPT[] = '<script src="'. _STATIC_ .'/js/typeahead-'. _VERSION_JS_ .'.min.js"></script>';
 $_SCRIPT[] = "
 <script>
-  $(document).ready(function() {
-    //$('input.search-activities').typeahead('destroy');
-    $('input.search-activities').typeahead({
-      name: 'activities',
-      valueKey: 'activity',
-      prefetch: {
-        'url': 'http:". _PRIVATE_API_ ."/activities.php',
-        'ttl': 5000
-        },
-      template: '<a href=\"{{url}}\">{{activity}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
-      engine: Hogan
-    });
+$(document).ready(function() {
+$('input.search-activities').typeahead({
+  name: 'activities',
+  valueKey: 'activity',
+  prefetch: {
+    'url': 'http:". _PRIVATE_API_ ."/activities.php',
+    'ttl': 5000
+    },
+  template: '<a href=\"{{url}}\">{{activity}} <i class=\"icon-share-alt\" style=\"font-size:14px; margin-left:5px;\"></i></a>',
+  engine: Hogan
+});
 
-    $('input.search-activities').on(['typeahead:autocompleted', 'typeahead:selected'].join(' '), function (e) {
-      var v = [].slice.call(arguments, 1);
-      document.location.href = v[0].url;
-    });
-  });
+$('input.search-activities').on(['typeahead:autocompleted', 'typeahead:selected'].join(' '), function (e) {
+  var v = [].slice.call(arguments, 1);
+  document.location.href = v[0].url;
+});
+});
 </script>
 ";
 

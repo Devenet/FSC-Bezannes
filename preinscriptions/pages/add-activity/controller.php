@@ -82,6 +82,8 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         if(!$p->create())
           throw new \Exception('Impossible d’ajouter le participant');
         
+        $_SESSION['user']->checkStatus();
+
         $_SESSION['msg'] = new Message('<em>'. $a->name() .'</em> est maintenant inscrit à l’activité :)', 1, 'Ajout réussi !');
         header ('Location: '. _PREINSCRIPTION_ .'/preinscription/'. $a->id());
         exit();

@@ -13,10 +13,11 @@ spl_autoload_register();
 //error_reporting (0);
 error_reporting(E_ALL & ~E_STRICT);
 
-session_name('preinscription');
+session_name('fsc_preinscriptions');
 session_start();
 
 require '../config/config.php';
+require '../config/version.php';
 
 // Menu navigation
 $mainMenu = new Menu();
@@ -65,14 +66,14 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
     <link rel="icon"             type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_32.png" />
     <link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
 
-    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/preinscription.css" />
-    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify.css" />
-    <?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2.css" /><?php } ?>
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-<?php echo _VERSION_CSS_; ?>.min.css" />
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-<?php echo _VERSION_CSS_; ?>.min.css" />
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc-preinscriptions-<?php echo _VERSION_CSS_; ?>.css" />
+    <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify-<?php echo _VERSION_CSS_; ?>.css" />
+    <?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2-<?php echo _VERSION_CSS_; ?>.css" /><?php } ?>
     <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
-    <!--[if IE 6]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/ie6.min.css"><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7-<?php echo _VERSION_CSS_; ?>.min.css"><![endif]-->
+    <!--[if IE 6]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/ie6-<?php echo _VERSION_CSS_; ?>.min.css"><![endif]-->
   </head>
 
   <body>
@@ -180,9 +181,9 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="<?php echo _STATIC_; ?>/js/jquery.min.js"><\/script>')</script>
-    <script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
-    <!--[if IE 6]><script src="<?php echo _STATIC_; ?>/js/ie6.min.js"></script><![endif]-->
+    <script src="<?php echo _STATIC_; ?>/js/bootstrap-<?php echo _VERSION_JS_; ?>.min.js"></script>
+    <script src="<?php echo _STATIC_; ?>/js/fsc-common-<?php echo _VERSION_JS_; ?>.js"></script>
+    <!--[if IE 6]><script src="<?php echo _STATIC_; ?>/js/ie6-<?php echo _VERSION_JS_; ?>.min.js"></script><![endif]-->
     <?php
       foreach ($_SCRIPT as $script) {
         echo $script, PHP_EOL;

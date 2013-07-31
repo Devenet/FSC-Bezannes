@@ -49,6 +49,9 @@ abstract class User {
   public function gravatar($size = 50, $type = 'retro') {
     return '//gravatar.com/avatar/' . md5(strtolower(trim($this->login()))) . '?size=' . $size . '&amp;default=' . $type;
   }
+  public static function getGravatar($login, $size = 50, $type = 'retro') {
+    return '//gravatar.com/avatar/' . md5(strtolower(trim($login))) . '?size=' . $size . '&amp;default=' . $type;
+  }
 
   public function token() {
     $this->token = md5(rand());

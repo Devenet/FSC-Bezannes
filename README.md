@@ -29,7 +29,7 @@ Just add a JSON file called `configuration.json` in `config/` folder with these 
   "year": "2012",
   "phone": "0326000000",
   "email": "contact@fsc.local",
-  "search_engine": "false",
+  "search_engine": false,
   "fsc": "//fsc.local",
   "gestion": "//gestion.fsc.local",
   "preinscription": "//preinscriptions.fsc.local",

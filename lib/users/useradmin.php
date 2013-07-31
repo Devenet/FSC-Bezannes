@@ -121,16 +121,11 @@ class UserAdmin extends User {
   }
   
   public static function getUsers() {
-    $query = SQL::sql()->query('SELECT id, login, name, privilege FROM fsc_users_admin');
+    $query = SQL::sql()->query('SELECT id FROM fsc_users_admin');
     $users = array();
-    while ($data = $query->fetch()) {
-      $users[] = array(
-        'id' => $data['id'],
-        'login' => $data['login'],
-        'name' => $data['name'],
-        'privilege' => $data['privilege']
-      );
-    }
+    while ($data = $query->fetch())
+      $users[] = new UserAdmin($data['id']);
+    $query->closeCursor();
     return $users;
   }
   
@@ -139,6 +134,7 @@ class UserAdmin extends User {
     $logins = array();
     while ($data = $query->fetch())
       $logins[] = $data['login'];
+    $query->closeCursor();
     return $logins;
   }
   

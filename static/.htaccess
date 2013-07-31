@@ -6,7 +6,7 @@ ErrorDocument 404 /403.php
 
 # Rewriting
 RewriteEngine On
-RewriteRule ^(.+)-([0-9]+)\.(css|js)$  $1.$3
+RewriteRule ^(.+)-([0-9]+)(\.min)?\.(css|js)$  $1$3.$4
 RewriteRule ^favicon.ico$ /img/favicon/round_16.ico
 RewriteRule ^favicon.png$ /img/favicon/round_32.png
 RewriteRule ^apple-touch-icon.png$ /img/logo/fsc-128x128.png

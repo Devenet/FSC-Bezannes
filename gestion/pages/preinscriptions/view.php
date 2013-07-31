@@ -75,13 +75,19 @@ if ($required_view == 'account') {
 ?>
 
 <form class="form-search pull-left">
-  <input type="text" class="search-accounts span4" placeholder="Accès rapide compte" autofocus />
+  <input type="text" class="search-preinscriptions span4" placeholder="Accès rapide" autofocus />
 </form>
-<form class="form-search pull-right">
-  <input type="text" class="search-preinscriptions span4" placeholder="Accès rapide préinscription" />
-</form>
+<div class="pull-right">
+  <a href="<?php echo $_SERVER['REQUEST_URI']; ?>&amp;check-status"  class="btn btn-small"><i class="icon-refresh"></i> Mettre à jour les statuts</a>
+</div>
+<style>
+h5 {margin:5px 10px; border-bottom:1px solid #aaa; color:#aaa;}
+</style>
 
 <div class="clearfix">&nbsp;</div>
+<style>
+table img.gravatar {margin-right: 10px;}
+</style>
 
 <table class="table table-striped table-go espace-top">
   <thead>
@@ -98,7 +104,7 @@ if ($required_view == 'account') {
     <?php foreach ($preinscriptions as $p): ?>
     <tr>
       <td><?php echo $p->id(); ?></td>
-      <td class="go"><a href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
+      <td class="go"><img src="<?php echo $p->gravatar(20); ?>" alt="\o/" class="gravatar" /><a href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
       <td><span class="label"><?php echo $p->countPreinscriptions(); ?></span></td>
       <td><span class="label label-info"><?php echo $p->countAdherents(); ?></span></td>
       <td class="tip"><?php echo Preinscription::StatusTooltipAccount($p->status()); ?></td>
@@ -108,8 +114,8 @@ if ($required_view == 'account') {
         </td>
     </tr>
     <?php
-    $_SCRIPT[] = '<script>$(function(){ $(\'table td.tip span\').tooltip(); });</script>';
     endforeach;
+    $_SCRIPT[] = '<script>$(function(){ $(\'table td.tip span\').tooltip(); });</script>';
     ?>
   </tbody>
 </table>

@@ -14,6 +14,7 @@
       <th>#</th>
       <th>Utilisateur</th>
       <th>Privilège</th>
+      <th>Courriel</th>
       <th class="center">Actions</th>
     </tr>
   </thead>
@@ -22,6 +23,9 @@
   </tbody>
 </table>
 
+<style>
+table img.gravatar { margin-right: 10px; }
+</style>
 
 <?php
   echo $display_users_confirm;
