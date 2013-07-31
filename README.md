@@ -12,17 +12,19 @@ __Version__ : RC1
 
 Just add a JSON file called `database.json` in `config/`  folder with these informations:
 
-
+    ```json
     {
       "dsn": "mysql:localhost;dbname=fsc",
       "login": "fsc",
       "password": "fsc"
     }
+    ```
 
 ## Application configuration
 
 Just add a JSON file called `configuration.json` in `config/` folder with these information:
 
+    ```json
     {
       "year": "2012",
       "phone": "0326000000",
@@ -38,3 +40,4 @@ Just add a JSON file called `configuration.json` in `config/` folder with these 
       "static": "//fsc.local",
       "uploads": "//fsc.local/uploads"
     }
+    ```
