@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="span2 hidden-phone">
-    <img src="<?php echo _FSC_; ?>/img/error.png" alt="Oups" class="img-error" />
+    <img src="<?php echo _STATIC_; ?>/img/error.png" alt="Oups" class="img-error" />
   </div>
 </div>
 
