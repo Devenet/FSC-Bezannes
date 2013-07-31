@@ -3,19 +3,19 @@
 @import url('common.css');
 
 header {
-  margin: 20px 0 0 0;
+	margin: 20px 0 0 0;
 }
 
 h1 {
-  font-weight: 400;
+	font-weight: 400;
 }
 
 .cnil {
-  font-size: 13px;
+	font-size: 13px;
 }
 .cnil span.info {
-  display: block;
-  cursor: pointer;
+	display: block;
+	cursor: pointer;
 }
 
 .page-home .hero-unit {
@@ -61,7 +61,7 @@ h1 {
 }
 
 @media (max-width: 480px) {
-  	.page-home .hero-unit h1 {
+		.page-home .hero-unit h1 {
 		line-height: 30px;
 		font-size: 25px;
 	}
