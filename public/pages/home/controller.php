@@ -9,7 +9,5 @@ $pageInfos = array(
 $page = new Page($pageInfos['name'], $pageInfos['url'], array());
 $page->addOption('no-container');
 
-//$displayMainMenu = $mainMenu->display($page->url());
-//$displayRightMenu = $rightMenu->display($page->url());
 
 ?>
