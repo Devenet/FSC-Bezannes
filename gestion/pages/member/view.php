@@ -173,5 +173,5 @@ use lib\content\Display;
 </div>
 
 <?php
-  $_SCRIPT[] = '<script src="'. _STATIC_ .'/js/fsc-active-tab-'. _VERSION_ .'.js"></script>';
+  $_SCRIPT[] = '<script src="'. _STATIC_ .'/js/fsc-active-tab-'. _VERSION_JS_ .'.js"></script>';
 ?>
