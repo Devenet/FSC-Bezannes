@@ -14,10 +14,10 @@ class Menu {
   }
   
   public function display($current = NULL, $white = false) {
-    $return = PHP_EOL;
+    $return = '';
     $white = $white ? ' icon-white' : NULL;
     foreach($this->links as $link)
-      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : NULL) .'<li'. (($link['url'] == $current) ? ' class="active"' : NULL) .'><a href="'. $link['url'] .'"'. ($link['external'] ? ' rel="external"' : NULL) .'>'. ($link['icon'] != NULL && !$link['right'] ? '<i class="icon-'. $link['icon'] . $white .'"></i> ' : NULL) . $link['name'] . ($link['icon'] != NULL && $link['right'] ? ' <i class="icon-'. $link['icon'] . $white .'"></i>' : NULL) .'</a></li>' . PHP_EOL;
+      $return .= ($link['separator'] != false ? '<li class="divider-vertical"></li>' : NULL) .'<li'. (($link['url'] == $current) ? ' class="active"' : NULL) .'><a href="'. $link['url'] .'"'. ($link['external'] ? ' rel="external"' : NULL) .'>'. ($link['icon'] != NULL && !$link['right'] ? '<i class="icon-'. $link['icon'] . $white .'"></i> ' : NULL) . $link['name'] . ($link['icon'] != NULL && $link['right'] ? ' <i class="icon-'. $link['icon'] . $white .'"></i>' : NULL) .'</a></li>';
     return $return;
   }
   public function displayWhite($current) {

@@ -28,10 +28,9 @@
     define('_UPLOADS_', $fsc->uploads);
     define('_PUBLIC_API_', _FSC_.'/'._PATH_API_);
     define('_PRIVATE_API_', _GESTION_.'/'._PATH_API_);
-
   }
   else {
-    echo 'Configuration files not found';
+    echo 'Configuration file not found';
     exit();
   }
 
