@@ -77,15 +77,16 @@ require_once $controller;
     <link rel="icon"             type="image/png"    href="<?php echo _STATIC_; ?>/img/favicon/round_32.png" />
     <link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
     
-    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome.min.css" />
-    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
     <link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc.css" />
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc.ie.css" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7.min.css"><![endif]-->
+    <!--[if IE 6]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/ie6.min.css"><![endif]-->
   </head>
 
-	<body class="page-<?php echo strtolower($_GET['page']); ?>">
+  <body class="page-<?php echo strtolower($_GET['page']); ?>">
 
     <!-- head -->
     <header>
@@ -94,7 +95,7 @@ require_once $controller;
         <h1><span class="fsc-blue">Foyer</span> <span class="fsc-green">Social</span> et <span class="fsc-orange">Culturel</span> <?php echo $page->url() != _FSC_.'/' ? '' : '<span class="bezannes">de Bezannes</span>'; ?></h1>
       </div>
     </header>
-  <!-- /head -->
+    <!-- /head -->
     
     <!-- menu -->
     <div class="navbar navbar-static-top clearfix" id="menu">
@@ -149,6 +150,7 @@ require_once $controller;
     <script>window.jQuery || document.write('<script src="<?php echo _STATIC_; ?>/js/jquery.min.js"><\/script>')</script>
     <script src="<?php echo _STATIC_; ?>/js/bootstrap.min.js"></script>
     <script src="<?php echo _STATIC_; ?>/js/fsc-common.js"></script>
+    <!--[if IE 6]><script src="<?php echo _STATIC_; ?>/js/ie6.min.js"></script><![endif]-->
     <?php
       foreach ($_SCRIPT as $script) {
         echo $script, PHP_EOL;
@@ -168,7 +170,7 @@ require_once $controller;
 
       $timeend=microtime(true);
       $page_time = number_format(($timeend-$timestart)*1000, 2);
-      echo '<div class="execution">', $page_time, ' ms<br />', SQL::access(),' db</div>';
+      echo '<div class="execution">', $page_time, ' ms<br />', SQL::access(),' db</div>' . PHP_EOL;
     ?>
   </body>
 </html>
