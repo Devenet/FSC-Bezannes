@@ -29,7 +29,7 @@
 
 
 <?php
-$_SCRIPT[] = '<script src="'. _STATIC_ .'/js/select2-'. _VERSION_ .'.min.js"></script>';
+$_SCRIPT[] = '<script src="'. _STATIC_ .'/js/select2-'. _VERSION_JS_ .'.min.js"></script>';
 $_SCRIPT[] = '<script>
 $(document).ready(function() {
 $("#adherent").select2({
