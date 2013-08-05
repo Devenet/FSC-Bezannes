@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * (c) 2012-2013  Nicolas Devenet <nicolas@devenet.info>
+ * Code source hosted on https://github.com/nicolabricot/FSC-Bezannes
+ */
+
 $dir = dirname(__FILE__) . '/';
 
   if (file_exists($dir.'version.json')) {

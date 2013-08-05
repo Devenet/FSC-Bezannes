@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * (c) 2012-2013  Nicolas Devenet <nicolas@devenet.info>
+ * Code source hosted on https://github.com/nicolabricot/FSC-Bezannes
+ */
+
 namespace lib\preinscriptions;
 use lib\preinscriptions\Preinscription;
 use lib\activities\Activity;
