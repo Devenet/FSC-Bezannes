@@ -5,7 +5,7 @@ Source code of the FSC Bezannes webapplication
 
 ***
 
-__Version__ : RC1
+__Version__ : RC
 
 
 ## Database configuration
