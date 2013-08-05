@@ -53,6 +53,17 @@ if (isset($_GET['action'])) {
             throw new \Exception('Impossible d’ajouter le nouvel utilisateur');
           
           $u->create();
+
+          $body = 'Bonjour, 
+
+Ceci est un email automatique pour vous informer qu’un compte d’administration sur le site de gestion du Foyer Social et Culturel de Bezannes vous a été créé. 
+
+Votre identifiant est : '. $u->login() .'.
+Pour définir votre mot de passe, merci de vous rendre sur http:'. _GESTION_ .'/recovery.php
+
+Une fois votre mot de passe réinitialisé, vous pourrez vous connecter sur http:'. _GESTION .'/login.php';
+          Mail::text($u->email(), 'Gestion', $body);
+
           $_SESSION['msg'] = new Message('L’utilisateur <em>'. $u->name() .'</em> a bien été créé :)', 1, 'Ajout réussi !');
           redirect();
         }
