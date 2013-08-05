@@ -1,16 +1,17 @@
-@import url(http://fonts.googleapis.com/css?family=Imprima|Open+Sans:400,600);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,400italic,700);
 
 /*
  * fonts
  */
 .imprima,
 .page-error h2 {
-  font-family: Imprima, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Roboto, "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
 }
 
 body {
-  /*font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 h2 {
