@@ -60,6 +60,7 @@ else {
   	<link rel="apple-touch-icon" href="<?php echo _STATIC_; ?>/img/logo/fsc-128x128.png" />
 		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap.min.css" />
+		<meta name="google-site-verification" content="nVrzZ_xZ8UdawohpsECIOvSgTsaU0R0GDWNqxnNpeis" />
 		<style type="text/css">
 			body {
         	background-color: #f5f5f5;

@@ -62,6 +62,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-wysihtml5-<?php echo _VERSION_CSS_; ?>.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2-<?php echo _VERSION_CSS_; ?>.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify-<?php echo _VERSION_CSS_; ?>.css" />
+		<meta name="google-site-verification" content="nVrzZ_xZ8UdawohpsECIOvSgTsaU0R0GDWNqxnNpeis" />
 		<style>
 			header {margin: 20px 0 0 0;}
 			.page-header {margin-top: 0;}
