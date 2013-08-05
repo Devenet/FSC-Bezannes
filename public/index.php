@@ -15,6 +15,9 @@ spl_autoload_register();
 require '../config/config.php';
 require '../config/version.php';
 
+header('Location: '._PREINSCRIPTION_);
+exit();
+
 // Menu navigation
 $mainMenu = new Menu();
 	$mainMenu->addLink('Accueil', _FSC_.'/', 'home');
