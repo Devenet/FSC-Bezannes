@@ -50,7 +50,7 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
     array(
       array('name' => 'Préinscriptions', 'url' => '?page=preinscriptions'),
       array('name' => $account->login(), 'url' => '?page=preinscriptions&amp;account='.$account->id()),
-      array('name' => $pre->name(), 'url' => '?page=Preinscription&amp;id='.$pre->id()),
+      array('name' => $pre->name(), 'url' => '?page=preinscription&amp;id='.$pre->id()),
       $pageInfos)
   );
 
