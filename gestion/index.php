@@ -10,8 +10,8 @@ $timestart=microtime(true);
 set_include_path('../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
-//error_reporting (0);
-error_reporting(E_ALL & ~E_STRICT);
+error_reporting (0);
+//error_reporting(E_ALL & ~E_STRICT);
 
 session_name('fsc_gestion');
 session_start();
