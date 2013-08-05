@@ -36,8 +36,7 @@ Just add a JSON file called `configuration.json` in `config/` folder with these 
   "analytics_fsc": false,
   "analytics_gestion": false,
   "analytics_preinscription": false,
-  "path_uploads_full": "public/uploads",
-  "static": "//fsc.local",
-  "uploads": "//fsc.local/uploads"
+  "static": "//static.fsc.local",
+  "uploads": "//static.fsc.local/uploads"
 }
 ```
