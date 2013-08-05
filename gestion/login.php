@@ -37,7 +37,7 @@ elseif (isset($_GET['login']) && isset($_POST['user']) && isset($_POST['pwd']) &
 	$path = isset($_GET['path']) ? htmlspecialchars($_GET['path']) : '';
 	if (UserAdmin::isAuthorizedUser($_POST['user'], $_POST['pwd'])) {
 		$_SESSION['user'] = new UserAdmin(UserAdmin::getID(htmlspecialchars($_POST['user'])));
-		//if ($user->privilege() < 9)
+		if ($_SESSION['user']->privilege() < 9)
 			UserAdmin::historize($_SESSION['user']->id(), $_SERVER['REMOTE_ADDR']);
 		$_SESSION['authentificated'] = true;
 		header('Location: '. _GESTION_ .'/'. $path);
