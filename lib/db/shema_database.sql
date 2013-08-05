@@ -3,14 +3,14 @@
 -- http://www.phpmyadmin.net
 --
 -- Serveur: localhost
--- Généré le : Lun 29 Juillet 2013 à 00:43
+-- Généré le : Lun 05 Août 2013 à 01:03
 -- Version du serveur: 5.5.9
 -- Version de PHP: 5.3.6
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Base de données: `foyer`
+-- Base de données: `fsc`
 --
 
 -- --------------------------------------------------------
@@ -19,6 +19,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Structure de la table `fsc_activities`
 --
 
+DROP TABLE IF EXISTS `fsc_activities`;
 CREATE TABLE IF NOT EXISTS `fsc_activities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
@@ -40,6 +41,7 @@ CREATE TABLE IF NOT EXISTS `fsc_activities` (
 -- Structure de la table `fsc_history_admin`
 --
 
+DROP TABLE IF EXISTS `fsc_history_admin`;
 CREATE TABLE IF NOT EXISTS `fsc_history_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user_admin` int(11) NOT NULL,
@@ -54,6 +56,7 @@ CREATE TABLE IF NOT EXISTS `fsc_history_admin` (
 -- Structure de la table `fsc_members`
 --
 
+DROP TABLE IF EXISTS `fsc_members`;
 CREATE TABLE IF NOT EXISTS `fsc_members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gender` int(1) NOT NULL,
@@ -86,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `fsc_members` (
 -- Structure de la table `fsc_members_inscription`
 --
 
+DROP TABLE IF EXISTS `fsc_members_inscription`;
 CREATE TABLE IF NOT EXISTS `fsc_members_inscription` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gender` int(1) NOT NULL,
@@ -120,6 +124,7 @@ CREATE TABLE IF NOT EXISTS `fsc_members_inscription` (
 -- Structure de la table `fsc_participants`
 --
 
+DROP TABLE IF EXISTS `fsc_participants`;
 CREATE TABLE IF NOT EXISTS `fsc_participants` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `activity` int(11) NOT NULL,
@@ -134,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `fsc_participants` (
 -- Structure de la table `fsc_participants_inscription`
 --
 
+DROP TABLE IF EXISTS `fsc_participants_inscription`;
 CREATE TABLE IF NOT EXISTS `fsc_participants_inscription` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `activity` int(11) NOT NULL,
@@ -149,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `fsc_participants_inscription` (
 -- Structure de la table `fsc_payments_advantages`
 --
 
+DROP TABLE IF EXISTS `fsc_payments_advantages`;
 CREATE TABLE IF NOT EXISTS `fsc_payments_advantages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `adherent` int(11) NOT NULL,
@@ -164,6 +171,7 @@ CREATE TABLE IF NOT EXISTS `fsc_payments_advantages` (
 -- Structure de la table `fsc_payments_transactions`
 --
 
+DROP TABLE IF EXISTS `fsc_payments_transactions`;
 CREATE TABLE IF NOT EXISTS `fsc_payments_transactions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `adherent` int(11) NOT NULL,
@@ -180,6 +188,7 @@ CREATE TABLE IF NOT EXISTS `fsc_payments_transactions` (
 -- Structure de la table `fsc_referents`
 --
 
+DROP TABLE IF EXISTS `fsc_referents`;
 CREATE TABLE IF NOT EXISTS `fsc_referents` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `activity` int(11) NOT NULL,
@@ -195,6 +204,7 @@ CREATE TABLE IF NOT EXISTS `fsc_referents` (
 -- Structure de la table `fsc_schedules`
 --
 
+DROP TABLE IF EXISTS `fsc_schedules`;
 CREATE TABLE IF NOT EXISTS `fsc_schedules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `activity` int(11) NOT NULL,
@@ -213,6 +223,7 @@ CREATE TABLE IF NOT EXISTS `fsc_schedules` (
 -- Structure de la table `fsc_users_admin`
 --
 
+DROP TABLE IF EXISTS `fsc_users_admin`;
 CREATE TABLE IF NOT EXISTS `fsc_users_admin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
@@ -223,12 +234,24 @@ CREATE TABLE IF NOT EXISTS `fsc_users_admin` (
   UNIQUE KEY `login` (`login`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+INSERT INTO `fsc_users_admin` (
+  `id` ,
+  `login` ,
+  `password` ,
+  `name` ,
+  `privilege`
+)
+VALUES (
+NULL ,  'admin', '68196d44350ba7a579fa43b08309a166217432e5b29067b8d1012ccecb0c96963466da7386f86fd272f6bed9ba36ed6679c0ff222305eff7fc813959ebc9b590',  'Admin',  '8'
+);
+
 -- --------------------------------------------------------
 
 --
 -- Structure de la table `fsc_users_inscription`
 --
 
+DROP TABLE IF EXISTS `fsc_users_inscription`;
 CREATE TABLE IF NOT EXISTS `fsc_users_inscription` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
@@ -245,6 +268,7 @@ CREATE TABLE IF NOT EXISTS `fsc_users_inscription` (
 -- Structure de la table `fsc_users_recover_passwords`
 --
 
+DROP TABLE IF EXISTS `fsc_users_recover_passwords`;
 CREATE TABLE IF NOT EXISTS `fsc_users_recover_passwords` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` int(1) NOT NULL,

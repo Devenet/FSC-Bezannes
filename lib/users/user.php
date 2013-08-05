@@ -36,7 +36,7 @@ abstract class User {
   }
   
   protected static function hash_password($password, $login) {
-    return sha1($login . $password . $login);
+    return hash('sha512', $login . $password . $login);
   }
   public function setPassword($password, $length = 7) {
     if ($password != NULL && strlen($password) >= $length && $this->login != NULL) {
