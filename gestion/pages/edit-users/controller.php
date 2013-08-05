@@ -4,6 +4,7 @@ use lib\content\Page;
 use lib\content\Message;
 use lib\content\Form;
 use lib\users\UserAdmin;
+use lib\mail\Mail;
 
 $pageInfos = array(
  'name' => 'Nouvel utilisateur',
