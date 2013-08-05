@@ -62,7 +62,7 @@ Ceci est un email automatique pour vous informer qu’un compte d’administrati
 Votre identifiant est : '. $u->login() .'.
 Pour définir votre mot de passe, merci de vous rendre sur http:'. _GESTION_ .'/recovery.php
 
-Une fois votre mot de passe réinitialisé, vous pourrez vous connecter sur http:'. _GESTION .'/login.php';
+Une fois votre mot de passe réinitialisé, vous pourrez vous connecter sur http:'. _GESTION_ .'/login.php';
           Mail::text($u->email(), 'Gestion', $body);
 
           $_SESSION['msg'] = new Message('L’utilisateur <em>'. $u->name() .'</em> a bien été créé :)', 1, 'Ajout réussi !');
