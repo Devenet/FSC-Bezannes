@@ -98,7 +98,7 @@ require_once _PATH_GESTION_. DIRECTORY_SEPARATOR .$controller;
 						<li class="divider"></li>
 						<li><a href="./?page=history"><i class="icon-table"></i> Historique</a></li>
 						<li><a href="./?page=settings"><i class="icon-cog"></i> Configuration</a></li>
-						<li><a href="mailto:nicolas+fsc@devenet.info" rel="external"><i class="icon-bullhorn"></i> Feedback</a></li>
+						<li><a href="mailto:fsc@devenet.info" rel="external"><i class="icon-bullhorn"></i> Feedback</a></li>
 						<li class="divider"></li>
 						<li><a href="<?php echo _FSC_; ?>" rel="external"><i class="icon-home"></i> Accueil <span class="fsc-blue fsc-hover-white">F</span><span class="fsc-green fsc-hover-white">S</span><span class="fsc-orange fsc-hover-white">C</span> <span class="normal external-link"><i class="icon-external-link"></i></span></a></li>
 						<li><a href="<?php echo _PREINSCRIPTION_; ?>" rel="external"><i class="icon-hand-right"></i> Présincriptions <span class="normal external-link"><i class="icon-external-link"></i></span></a></li>
