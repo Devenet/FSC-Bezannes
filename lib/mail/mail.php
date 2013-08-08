@@ -19,13 +19,13 @@ class Mail {
   }
 
   public static function text($to, $subject, $body) {
-    $body .= "
+    $body .= '
 
 --
 Foyer Social et Culturel de Bezannes
-contact@bezannes-fsc.fr
-http:" . _FSC_ ."
-";
+'. _EMAIL_ .'
+http:'. _FSC_ .'
+';
     return self::send($to, $subject .' · FSC Bezannes', $body);
   }
   
