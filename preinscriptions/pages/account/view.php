@@ -17,7 +17,7 @@
       <dt>Avatar</dt>
         <dd>
           <a id="gravatar-help" href="//fr.gravatar.com/emails" data-toggle="tooltip" title="Votre avatar est généré à partir votre courriel grâce au service Gravatar." data-placement="right" class="normal" rel="external">
-            <img class="img-polaroid" style="margin-right:5px;" src="<?php echo $u->gravatar(60); ?>" alt="\o/" />
+            <img class="img-polaroid" style="margin-right:5px;" src="<?php echo $u->gravatar(100); ?>" alt="\o/" />
           </a>
       </dd>
     </dl>
