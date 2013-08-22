@@ -39,7 +39,7 @@
       <p>v0.1.0</p>
       <ul>
         <li>Logo FSC centré sur la page d’accueil</li>
-        <li>Correction bogue d’affichage de la colonne d’informations dans l’affichage d’une activité (descriptions trop longue faisait descendre les infos...)</li>
+        <li>Correction bogue d’affichage de la colonne d’informations dans l’affichage d’une activité (description trop longue faisait descendre les infos...)</li>
         <li>Pas de franglish : url des pages en anglais</li>
         <li>Ajout d’URL Rewriting pour les images pour les activités (passage de <code>id.jpg</code> à <code>id-name.jpg</code>)</li>
       </ul>
