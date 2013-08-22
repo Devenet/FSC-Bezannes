@@ -98,6 +98,10 @@ border:1px solid #dedede;
 border-radius:3px;
 }
 
+
+/*
+ * media queries
+ */
 @media (min-width: 768px) {
 	.page-activite .infos {
 	margin-top: 15px;

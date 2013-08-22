@@ -18,25 +18,27 @@
     
   </div>
   
-  <div class="span3 hidden-phone">
-    <div class="center">
+  <div class="span3">
+    <div class="center hidden-phone">
       <img src="<?php echo $act->image(); ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
     </div>
-  </div>
-  
-  <div class="span3 offset1 pull-right infos">
-    <div class="alert alert-info">
-      <strong>Tarif</strong> : <?php echo ($act->price() > 0 ? $act->price().' &euro;' : 'gratuit'); ?>
-      <?php echo ($act->price_young() != -1 ? '<br /><strong>Tarif jeune</strong> : '. $act->price_young() .' €' : NULL); ?>
+
+    <div class="infos">
+
+      <div class="alert alert-info">
+        <strong>Tarif</strong> : <?php echo ($act->price() > 0 ? $act->price().' &euro;' : 'gratuit'); ?>
+        <?php echo ($act->price_young() != -1 ? '<br /><strong>Tarif jeune</strong> : '. $act->price_young() .' €' : NULL); ?>
+      </div>
+      
+      <div class="well well-small">
+        <?php echo $display_schedules; ?>
+      </div>
+      
+      <div class="referents">
+        <?php echo $display_referents; ?>
+      </div>
     </div>
-    
-    <div class="well well-small">
-      <?php echo $display_schedules; ?>
-    </div>
-    
-    <div class="referents">
-      <?php echo $display_referents; ?>
-    </div>
+
   </div>
   
 </div><!-- /row -->
