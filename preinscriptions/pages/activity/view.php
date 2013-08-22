@@ -20,7 +20,7 @@
   
   <div class="span3">
     <div class="center hidden-phone">
-      <img src="<?php echo $act->image(); ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
+      <img src="<?php echo substr($act->image(), 0, -4), '-', $act->url(),'.jpg'; ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
     </div>
 
     <div class="infos">

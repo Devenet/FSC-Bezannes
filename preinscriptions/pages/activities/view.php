@@ -9,7 +9,7 @@
   <ul class="inline">
     <?php foreach ($activities as $act): ?>
     <li>
-      <a href="<?php echo _PREINSCRIPTION_; ?>/activite/<?php echo $act->url(); ?>" title="<?php echo $act->name(); ?>">
+      <a href="<?php echo _PREINSCRIPTION_; ?>/activity/<?php echo $act->url(); ?>" title="<?php echo $act->name(); ?>">
         <img src="<?php echo $act->image(); ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
         <h4><?php echo $act->name(); ?></h4>
       </a>

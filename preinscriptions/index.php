@@ -28,7 +28,7 @@ require '../config/version.php';
 $mainMenu = new Menu();
 	//$mainMenu->addLink('', _FSC_.'/', 'home');
 	$mainMenu->addLink('Préinscriptions', _PREINSCRIPTION_.'/', 'hand-right');
-	$mainMenu->addLink('Activités', _PREINSCRIPTION_.'/activites', 'globe');
+	$mainMenu->addLink('Activités', _PREINSCRIPTION_.'/activities', 'globe');
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
@@ -90,7 +90,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 			<div class="navbar-inner">
 				<div class="container">
 					<a class="brand" href="<?php echo _PREINSCRIPTION_; ?>"><span class="fsc-blue">F</span><span class="fsc-green">S</span><span class="fsc-orange">C</span></a>
-					<ul class="nav"><?php echo $mainMenu->display($pageInfos['url'] != _PREINSCRIPTION_.'/activites' ? _PREINSCRIPTION_.'/' : _PREINSCRIPTION_.'/activites'); ?></ul>
+					<ul class="nav"><?php echo $mainMenu->display($pageInfos['url'] != _PREINSCRIPTION_.'/activities' ? _PREINSCRIPTION_.'/' : _PREINSCRIPTION_.'/activities'); ?></ul>
 
 					<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?>
 					<!-- settings -->

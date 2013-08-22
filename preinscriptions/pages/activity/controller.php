@@ -15,9 +15,9 @@ if (isset($_GET['rel']) && Activity::isActiveActivityURL($_GET['rel'])) {
   
   $pageInfos = array(
    'name' => $act->name(),
-   'url' => _PREINSCRIPTION_.'/activites'
+   'url' => _PREINSCRIPTION_.'/activities'
   );
-  $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '../activites'), $pageInfos));
+  $page = new Page($pageInfos['name'], $pageInfos['url'], array(array('name' => 'Activités', 'url' => '../activities'), $pageInfos));
   
   /* preparation affichage schedules */
   $display_schedules = '<ul class="unstyled" style="padding-top:10px;">';

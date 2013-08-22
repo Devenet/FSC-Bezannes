@@ -72,7 +72,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
         $horaire = isset($s) && $s->description() != NULL ? $s->description() : $horaire;
         $activities_participant .= '
           <tr>
-            <td class="go"><a href="'. _PREINSCRIPTION_ .'/activite/'. $a->url() .'">'. $a->name() .'</a></span></td>
+            <td class="go"><a href="'. _PREINSCRIPTION_ .'/activity/'. $a->url() .'">'. $a->name() .'</a></span></td>
             <td>'. $horaire .'</td>
             <td class="center status">'. Preinscription::StatusTooltipActivity($p->status()) .'</td>
             <td class="center">'. ($m->status() == Preinscription::AWAITING  ? '<a href="#confirmBoxP'. $p->id() .'"  role="button" data-toggle="modal" class="btn btn-small"><i class="icon-trash"></i></a>' : '<a class="btn btn-small disabled"><i class="icon-trash"></i></a>') .'</td>

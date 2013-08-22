@@ -5,7 +5,7 @@ use lib\content\Page;
 
 $pageInfos = array(
 	'name' => 'Activités',
-	'url' => _PREINSCRIPTION_.'/activites'
+	'url' => _PREINSCRIPTION_.'/activities'
 );
 $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
