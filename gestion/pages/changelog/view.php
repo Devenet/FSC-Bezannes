@@ -36,6 +36,11 @@
     <div class="tab-pane" id="tab-preinscriptions">
       <p><strong>Version actuelle : <?php echo _VERSION_PREINSCRIPTION_; ?></strong></p>
 
+      <p>v0.1.1</p>
+      <ul>
+        <li>Harmonisation couleur des boutons “connexion” et “inscription”</li>
+      </ul>
+
       <p>v0.1.0</p>
       <ul>
         <li>Logo FSC centré sur la page d’accueil</li>

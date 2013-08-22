@@ -78,7 +78,7 @@
 
   
   <div class="form-actions">
-    <input type="submit" class="btn btn-primary" value="<?php echo $form->submit(); ?>" /> 
+    <input type="submit" class="btn btn-success" value="<?php echo $form->submit(); ?>" /> 
     <input type="reset" class="btn" value="Effacer" />
   </div>
   

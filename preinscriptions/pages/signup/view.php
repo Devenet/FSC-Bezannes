@@ -6,7 +6,7 @@
   <div class="span4 espace-top hidden-phone">
     <div class="well center">
       <p>Vous avez déjà votre compte ?</p>
-      <a href="/login" class="btn btn-success">Connexion</a>
+      <a href="/login" class="btn btn-primary">Connexion</a>
     </div>
   </div>
 </div>
