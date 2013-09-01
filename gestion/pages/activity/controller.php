@@ -251,7 +251,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 						<tr>
 							<td>'. $p->id() .'</td>
 							<td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
-							<td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;') .'</td>
+							<td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
 							<td style="text-align:center;">'. ($m->minor() ? 'e' : 'A') .'</td>
 						</tr>
 					';
@@ -328,7 +328,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 						<tr>
 							<td>'. $p->id() .'</td>
 							<td><a href="./?page=preinscription&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
-							<td class="center">'. ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;') .'</td>
+							<td class="center">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
 							<td class="center">'. ($m->minor() ? 'e' : 'A') .'</td>
 							<td class="center status">'.Preinscription::StatusTooltip($data['status']).'</td>
 						</tr>
