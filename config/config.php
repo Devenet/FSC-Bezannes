@@ -7,8 +7,8 @@
   
   $dir = dirname(__FILE__) . '/';
 
-  if (file_exists($dir.'configuration.json')) {
-	$fsc = json_decode(file_get_contents($dir.'configuration.json'));
+  if (file_exists($dir.'settings.json')) {
+	$fsc = json_decode(file_get_contents($dir.'settings.json'));
 
 	define('_SEARCH_ENGINE_', $fsc->search_engine);
 	define('_YEAR_', $fsc->year);
