@@ -2,6 +2,7 @@
 
 use lib\activities\Activity;
 use lib\content\Page;
+use lib\payments\Price;
 
 $pageInfos = array(
 	'name' => 'Activités',
@@ -11,6 +12,7 @@ $page = new Page($pageInfos['name'], $pageInfos['url'], array($pageInfos));
 
 
 $activities = Activity::ActiveActivities();
+$price = new Price();
 
 /*
 $_SCRIPT[] = '<script src="'. _STATIC_ .'/js/hogan-'. _VERSION_JS_ .'.min.js"></script>' . "\n";

@@ -12,7 +12,7 @@ use lib\DB\SQL;
 class Price {
   
   public static function price($age, $bezannais) {
-    $file = dirname(__FILE__).'/../../config/price.json';
+    $file = dirname(__FILE__).'/../../config/prices.json';
     if (file_exists($file)) {
       $price = json_decode(file_get_contents($file));
       
