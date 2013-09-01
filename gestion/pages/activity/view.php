@@ -17,7 +17,12 @@
 				<li class="active"><a href="#tab-description" id="link-tab-description" data-toggle="tab"><i class="icon-book"></i> Description</a></li>
 				<li><a href="#tab-schedules" id="link-tab-schedules" data-toggle="tab"><i class="icon-time"></i> Horaires</a></li>
 				<li><a href="#tab-referents" id="link-tab-referents" data-toggle="tab"><i class="icon-legal"></i> Référents</a></li>
-				<?php echo $act->active() ? '<li class="pull-right"><a href="#tab-participants" id="link-tab-participants" data-toggle="tab"><i class="icon-male"></i> Participants <span class="label label-info">'.$count_participants.'</span></a></li>' : NULL; ?>
+				<?php if($act->active()) : ?>
+				<?php if(_PREINSCRIPTION_ENABLED_): ?>
+				<li class="pull-right"><a href="#tab-preinscriptions" id="link-tab-preinscriptions" data-toggle="tab"><i class="icon-hand-right"></i> <span class="label label-info"><?php echo $count_preinscriptions; ?></span></a></li>
+				<?php endif; ?>
+				<li class="pull-right"><a href="#tab-participants" id="link-tab-participants" data-toggle="tab"><i class="icon-male"></i> Participants <span class="label label-info"><?php echo $count_participants; ?></span></a></li>
+				<?php endif; ?>
 			</ul>
 			
 			<div class="tab-content">
@@ -60,6 +65,18 @@
 					</div>
 					<div style="clear:both; margin-top: 10px;">
 						<?php echo $display_participants; ?>
+					</div>
+				</div>
+				<?php endif; ?>
+
+				<!-- preinscriptions -->
+				<?php if ($act->active() && _PREINSCRIPTION_ENABLED_): ?>
+				<div class="tab-pane" id="tab-preinscriptions">
+					<div style="overflow: hidden;">
+						<p class="pull-left">L’activité possède <span class="label"><?php echo $count_preinscriptions; ?></span> préinscription<?php echo $plural_count_preinscriptions; ?>.</p>
+					</div>
+					<div style="clear:both; margin-top: 10px;">
+						<?php echo $display_preinscriptions; ?>
 					</div>
 				</div>
 				<?php endif; ?>
@@ -140,5 +157,6 @@ $_SCRIPT[] = '<script src="'. _STATIC_ .'/js/fsc-active-tab-'. _VERSION_JS_ .'.j
 $_SCRIPT[] = '<script>$(function(){ 
 $("a#change-status").tooltip();
 $("a.img-polaroid").tooltip();
+$("table td.status span").tooltip();
 });</script>'
 ?>

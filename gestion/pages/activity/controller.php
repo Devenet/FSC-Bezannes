@@ -8,6 +8,8 @@ use lib\members\Participant;
 use lib\members\Referent;
 use lib\content\Message;
 use lib\content\Display;
+use lib\db\SQL;
+use lib\preinscriptions\Preinscription;
 
 function quit() {
 	header('Location: '. _GESTION_ .'/?page=activities');
@@ -205,14 +207,16 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 	$count_participants = Participant::countAdherents($act->id());
 	$plural_count_participants = $count_participants > 1 ? 's' : '';
 	$display_participants = '';
-	if ($count_participants > 0) {
-		if ($act->aggregate()) {
+	if ($act->aggregate()) {
+		if ($count_participants == 0) {
+			$display_participants = '<div class="alert">Aucun participant pour l’instant !</div>';
+		} else {
 			$display_participants = '<table class="table table-striped"><thead>
 			<tr>
 				<th>#</th>
 				<th>Membre</th>
-				<th style="text-align:center;">Bezannais</th>
-				<th style="text-align:center;">Catégorie</th>
+				<th class="center">Bezannais</th>
+				<th class="center">Catégorie</th>
 			</tr>
 			</thead><tbody>';
 			foreach(Participant::Adherents($act->id()) as $p) {
@@ -221,46 +225,121 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 					<tr>
 						<td>'. $p->id() .'</td>
 						<td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
-						<td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
-						<td style="text-align:center;">'. ($m->minor() ? 'e' : 'A') .'</td>
+						<td class="center">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
+						<td class="center">'. ($m->minor() ? 'e' : 'A') .'</td>
 					</tr>
 				';
 			}
 			$display_participants .= '</tbody></table>';
 		}
-		else {
-			foreach (Schedule::Schedules($act->id()) as $s) {
-				$display_participants .= '<h5><i class="icon-time"></i> '. (!$s->type() ? (ucfirst(Display::Day($s->day())) .' &rsaquo; '. $s->time_begin() .' à '. $s->time_end()) : $s->description()) .'</h5>';
-				if (Participant::countAdherents($act->id(), $s->id()) > 0) {
-					$display_participants .= '<table class="table table-striped"><thead>
-					<tr>
-						<th>#</th>
-						<th>Membre</th>
-						<th style="text-align:center;">Bezannais</th>
-						<th style="text-align:center;">Catégorie</th>
-					</tr>
-					</thead><tbody>';
-					foreach(Participant::Adherents($act->id(), $s->id()) as $p) {
-						$m = new Member($p->adherent());
-						$display_participants .= '
-							<tr>
-								<td>'. $p->id() .'</td>
-								<td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
-								<td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;') .'</td>
-								<td style="text-align:center;">'. ($m->minor() ? 'e' : 'A') .'</td>
-							</tr>
-						';
-					}
-					$display_participants .= '</tbody></table>';
+	}
+	else {
+		foreach (Schedule::Schedules($act->id()) as $s) {
+			$display_participants .= '<h5><i class="icon-time"></i> '. (!$s->type() ? (ucfirst(Display::Day($s->day())) .' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() .' <span style="font-weight:normal;margin-left:10px;font-size:12px;">'.$s->more().'</span>') : $s->description()) .'</h5>';
+			if (Participant::countAdherents($act->id(), $s->id()) > 0) {
+				$display_participants .= '<table class="table table-striped"><thead>
+				<tr>
+					<th>#</th>
+					<th>Membre</th>
+					<th style="text-align:center;">Bezannais</th>
+					<th style="text-align:center;">Catégorie</th>
+				</tr>
+				</thead><tbody>';
+				foreach(Participant::Adherents($act->id(), $s->id()) as $p) {
+					$m = new Member($p->adherent());
+					$display_participants .= '
+						<tr>
+							<td>'. $p->id() .'</td>
+							<td><a href="./?page=member&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
+							<td style="text-align:center;">'. ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;') .'</td>
+							<td style="text-align:center;">'. ($m->minor() ? 'e' : 'A') .'</td>
+						</tr>
+					';
 				}
-				else
-					$display_participants .= '<div class="alert">Aucun participant pour cet horaire !</div>';
+				$display_participants .= '</tbody></table>';
 			}
+			else
+				$display_participants .= '<div class="alert">Aucun participant pour cet horaire !</div>';
 		}
 	}
-	else
-		$display_participants = '<div class="alert">Aucun participant pour l’instant !</div>';
-	
+		
+	// preparation affichage préinscriptions
+	$query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_participants_inscription WHERE activity = ?');
+	$query->execute(array($act->id()));
+	$data = $query->fetch();
+	$query->closeCursor();
+	$count_preinscriptions = $data['total'];
+	$plural_count_preinscriptions = $count_preinscriptions > 1 ? 's' : '';
+	$display_preinscriptions = '';
+	if ($act->aggregate()) {
+		if ($count_preinscriptions == 0) {
+			$display_preinscriptions = '<div class="alert">Aucune préinscription pour l’instant !</div>';
+		} else {
+			$display_preinscriptions = '<table class="table table-striped"><thead>
+			<tr>
+				<th>#</th>
+				<th>Préinscription</th>
+				<th class="center">Bezannais</th>
+				<th class="center">Catégorie</th>
+				<th class="center">Status</th>
+			</tr>
+			</thead><tbody>';
+
+			$query = SQL::sql()->prepare('SELECT adherent, status FROM fsc_participants_inscription WHERE activity = ?');
+			$query->execute(array($act->id()));			
+			while($data = $query->fetch()) {
+				$m = new Preinscription($data['adherent']);
+				$display_preinscriptions .= '
+					<tr>
+						<td>'. $p->id() .'</td>
+						<td><a href="./?page=preinscription&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
+						<td class="center">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
+						<td class="center">'. ($m->minor() ? 'e' : 'A') .'</td>
+						<td class="center status">'.Preinscription::StatusTooltip($data['status']).'</td>
+					</tr>
+				';
+			}
+			$query->closeCursor();
+			$display_preinscriptions .= '</tbody></table>';
+		}
+	}
+	else {
+		foreach (Schedule::Schedules($act->id()) as $s) {
+			$display_preinscriptions .= '<h5><i class="icon-time"></i> '. (!$s->type() ? (ucfirst(Display::Day($s->day())) .' &rsaquo; '. $s->time_begin() .' à '. $s->time_end() .' <span style="font-weight:normal;margin-left:10px;font-size:12px;">'.$s->more().'</span>') : $s->description()) .'</h5>';
+			$query = SQL::sql()->prepare('SELECT COUNT(id) AS total FROM fsc_participants_inscription WHERE activity = ? AND schedule = ?');
+			$query->execute(array($act->id(), $s->id()));
+			$data = $query->fetch();
+			$query->closeCursor();
+			if ($data['total'] > 0) {
+				$display_preinscriptions .= '<table class="table table-striped"><thead>
+				<tr>
+					<th>#</th>
+					<th>Préinscription</th>
+					<th class="center">Bezannais</th>
+					<th class="center">Catégorie</th>
+					<th class="center">Status</th>
+				</tr>
+				</thead><tbody>';
+				$query = SQL::sql()->prepare('SELECT adherent, status FROM fsc_participants_inscription WHERE activity = ? AND schedule = ?');
+			$query->execute(array($act->id(), $s->id()));
+			while($data = $query->fetch()) {
+				$m = new Preinscription($data['adherent']);
+					$display_preinscriptions .= '
+						<tr>
+							<td>'. $p->id() .'</td>
+							<td><a href="./?page=preinscription&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
+							<td class="center">'. ($m->bezannais() ? '<i class="icon-home"></i>' : '&ndash;') .'</td>
+							<td class="center">'. ($m->minor() ? 'e' : 'A') .'</td>
+							<td class="center status">'.Preinscription::StatusTooltip($data['status']).'</td>
+						</tr>
+					';
+				}
+				$display_preinscriptions .= '</tbody></table>';
+			}
+			else
+				$display_preinscriptions .= '<div class="alert">Aucune préinscription pour cet horaire !</div>';
+		}
+	}
 	
 }
 else {
