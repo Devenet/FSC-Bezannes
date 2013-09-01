@@ -26,13 +26,13 @@
 						<tbody>
 							<tr>
 								<td><strong>Jeune</strong> *</td>
-								<td><?php echo $price->price(1,1); ?> €</td>
-								<td><?php echo $price->price(1,0); ?> €</td>
+								<td><?php echo $prices->price(1,1); ?> €</td>
+								<td><?php echo $prices->price(1,0); ?> €</td>
 							</tr>
 							<tr>
 								<td><strong>Adulte</strong></td>
-								<td><?php echo $price->price(0,1); ?> €</td>
-								<td><?php echo $price->price(0,0); ?> €</td>
+								<td><?php echo $prices->price(0,1); ?> €</td>
+								<td><?php echo $prices->price(0,0); ?> €</td>
 							</tr>
 						</tbody>
 					</table>
