@@ -44,7 +44,7 @@
 					<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Supprimer</a>
 				</div>
 			</div>
-			<span class="help-inline" style="margin-left:10px; margin-top:20px;">L’image sera automatiquement redimensionnée<br />L’image ne doit pas excéder 2Mo
+			<span class="help-inline" style="margin-left:10px; margin-top:20px;">L’image sera automatiquement redimensionnée en 210px par 135px<br />L’image ne doit pas excéder 1,5Mo
 				<br /><small>Si une erreur survient, merci de réessayer avec une image plus petite</small></span>
 		</div>
 	</div>
@@ -57,7 +57,8 @@
 		<div class="controls">
 			<label class="checkbox" for="aggregate">
 				<input type="checkbox" name="aggregate" id="aggregate" <?php echo $form->checkbox('aggregate'); ?>/>
-				<span class="help-inline">L’activité est en <abbr title="L’inscription à l’activité permet aux participants de venir à tous les créneaux" data-toggle="tooltip" class="tip">pratique libre</abbr></span>
+				<span class="help-inline">L’inscription à l’activité permet aux participants de venir à tous les créneaux (bibliothèque, badminton, &hellip;).
+					<br /><small>Une fois l’activité créée, il ne sera plus possible de modifier ce paramètre.</small></span>
 			</label>
 		</div>
 	</div>
