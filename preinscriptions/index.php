@@ -111,7 +111,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 							</ul>
 						</li>
 					</ul>
-					<?php } else { ?>
+					<?php } elseif (_PREINSCRIPTION_ENABLED_) { ?>
 					<div class="nav pull-right" style="padding-right:8px;">
 						<a href="<?php echo _PREINSCRIPTION_; ?>/login" class="btn btn-small btn-primary" style="margin-top: 6px;">Connexion</a>
 						<a href="<?php echo _PREINSCRIPTION_; ?>/signup" class="btn btn-success btn-small hidden-phone" style="margin-top: 6px;">Inscription</a> 

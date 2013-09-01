@@ -82,12 +82,22 @@ if ($required_view == 'account') {
 </div>
 <style>
 h5 {margin:5px 10px; border-bottom:1px solid #aaa; color:#aaa;}
+table img.gravatar {margin-right: 10px;}
 </style>
 
 <div class="clearfix">&nbsp;</div>
-<style>
-table img.gravatar {margin-right: 10px;}
-</style>
+
+<?php if (!_PREINSCRIPTION_ENABLED_) : ?>
+<div class="row">
+  <div class="span8 offset2">
+    <div class="alert text-center">
+      <strong>Les préinscriptions sont actuellements désactivées !</strong>
+      <br /><a href="?page=settings">Changer la configuration ?</a>
+    </div>
+  </div>
+</div>
+<?php endif; ?>
+
 
 <table class="table table-striped table-go espace-top">
   <thead>

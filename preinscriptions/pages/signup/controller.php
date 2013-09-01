@@ -6,6 +6,11 @@ use lib\content\Message;
 use lib\users\UserInscription;
 use lib\mail\Mail;
 
+if (!_PREINSCRIPTION_ENABLED_) {
+  header('Location: '. _PREINSCRIPTION_.'/disabled');
+  exit();
+}
+
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   header ('Location: '. _PREINSCRIPTION_);
   exit();

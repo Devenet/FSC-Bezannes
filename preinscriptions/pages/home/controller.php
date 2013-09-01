@@ -2,6 +2,11 @@
 
 use lib\content\Page;
 
+if (!_PREINSCRIPTION_ENABLED_) {
+	header('Location: '. _PREINSCRIPTION_.'/disabled');
+	exit();
+}
+
 $pageInfos = array(
   'name' => 'Préinscriptions',
   'url' => _PREINSCRIPTION_.'/'

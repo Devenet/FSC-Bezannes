@@ -7,6 +7,10 @@ use lib\users\RecoverPassword;
 
 error_reporting(E_ERROR);
 
+if (!_PREINSCRIPTION_ENABLED_) {
+  header('Location: '. _PREINSCRIPTION_.'/disabled');
+  exit();
+}
 
 if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
   header('Location: '. _PREINSCRIPTION_ .'/account');
