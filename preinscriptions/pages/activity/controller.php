@@ -54,7 +54,7 @@ if (isset($_GET['rel']) && Activity::isActiveActivityURL($_GET['rel'])) {
   }
   $display_referents .= '</ul>';
   
-  
+  $page->addOption('title-lg');
   
 }
 else {

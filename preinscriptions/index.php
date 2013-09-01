@@ -75,10 +75,10 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-<?php echo _VERSION_CSS_; ?>.min.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-<?php echo _VERSION_CSS_; ?>.min.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc-preinscriptions-<?php echo _VERSION_CSS_; ?>.css" />
-		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc-ie-<?php echo _VERSION_CSS_; ?>.css" />
 		<link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-notify-<?php echo _VERSION_CSS_; ?>.css" />
 		<?php if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) { ?><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/bootstrap-select2-<?php echo _VERSION_CSS_; ?>.css" /><?php }
 		 ?><!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		 <!--[if lte IE 8]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/fsc-ie-<?php echo _VERSION_CSS_; ?>.css" /><![endif]-->
 		<!--[if IE 7]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/font-awesome-ie7-<?php echo _VERSION_CSS_; ?>.min.css"><![endif]-->
 		<!--[if IE 6]><link rel="stylesheet" href="<?php echo _STATIC_; ?>/css/ie6-<?php echo _VERSION_CSS_; ?>.min.css"><![endif]-->
 	</head>
@@ -126,7 +126,7 @@ require_once _PATH_PREINSCRIPTION_. DIRECTORY_SEPARATOR .$controller;
 		<?php if(! $page->option('no-title')) { ?>
 		<header class="container">
 			<div class="row">
-				<div class="span8">
+				<div class="<?php echo $page->option('title-lg') ? 'span12' : 'span8'; ?>">
 						<h1><?php echo $page->name(); ?></h1>
 				</div>
 				<?php if ($page->option('steps')) { ?>
