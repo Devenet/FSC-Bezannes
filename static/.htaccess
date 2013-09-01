@@ -10,7 +10,7 @@ RewriteRule ^(.+)-([0-9]+)(\.min)?\.(css|js)$  $1$3.$4
 RewriteRule ^favicon.ico$ /img/favicon/round_16.ico
 RewriteRule ^favicon.png$ /img/favicon/round_32.png
 RewriteRule ^apple-touch-icon.png$ /img/logo/fsc-128x128.png
-RewriteRule ^uploads/activities/default(-[a-zA-Z0-9-]+)?.jpg$ /img/logo/fsc-210x135.png
+RewriteRule ^uploads/activities/default.jpg$ /img/logo/fsc-210x135.png
 RewriteRule ^uploads/activities/([0-9]+)-([a-zA-Z0-9-]+)\.jpg$ /uploads/activities/$1.jpg
 
 # Cross-site allowed

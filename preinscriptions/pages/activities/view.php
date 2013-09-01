@@ -47,7 +47,7 @@
 		<?php foreach ($activities as $act): ?>
 		<li>
 			<a href="<?php echo _PREINSCRIPTION_; ?>/activity/<?php echo $act->url(); ?>" title="<?php echo $act->name(); ?>">
-				<img src="<?php echo substr($act->image(), 0, -4), '-', $act->url(),'.jpg'; ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
+				<img src="<?php echo ($act->hasImage() ? substr($act->image(), 0, -4).'-'.$act->url().'.jpg' : $act->image()); ?>" alt="<?php echo $act->name(); ?>" class="img-polaroid" />
 				<h4><?php echo $act->name(); ?></h4>
 			</a>
 		</li>
