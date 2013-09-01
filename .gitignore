@@ -6,5 +6,6 @@ CIMG*
 .ovh
 *.ovh.*
 config/configuration.*
+config/prices.json
 database.json
 *.sublime-*

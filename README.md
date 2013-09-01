@@ -22,7 +22,9 @@ Just add a JSON file called `database.json` in `config/`  folder with these info
 
 ## Application configuration
 
-Just add a JSON file called `configuration.json` in `config/` folder with these information:
+### General settings
+
+Add a JSON file called `settings.json` in `config/` folder with these information:
 
 ```json
 {
@@ -33,6 +35,7 @@ Just add a JSON file called `configuration.json` in `config/` folder with these 
   "fsc": "//fsc.local",
   "gestion": "//gestion.fsc.local",
   "preinscription": "//preinscriptions.fsc.local",
+  "preinscription_enabled": true,
   "analytics_fsc": false,
   "analytics_gestion": false,
   "analytics_preinscription": false,
@@ -40,3 +43,22 @@ Just add a JSON file called `configuration.json` in `config/` folder with these 
   "uploads": "//static.fsc.local/uploads"
 }
 ```
+### Prices
+
+Add a JSON file called `prices.json` in `config/` folder with these information:
+
+```json
+{
+  "adult": [
+    21,
+    17
+  ],
+  "teen": [
+    15,
+    11
+  ]
+}
+```
+
+_First price is for external people, second price is for local people._
+
