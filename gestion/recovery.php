@@ -43,7 +43,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != NULL) {
       <form class="form-signin">
         <h2 class="form-signin-heading">Envoyé</h2>
         <p>Un email contenant un lien pour réinitialiser votre mot de passe a bien été envoyé à <code>'. $u->login() .'</code>.</p>
-        <p>Vérifier vos emails :)</p>
+        <p>Vérifiez vos emails :)</p>
       </form> 
       ';
     }

@@ -28,7 +28,7 @@ elseif (isset($_POST['user']) && $_POST['user'] != NULL) {
       $content = '
         <h2 class="form-signin-heading">Envoyé</h2>
         <p>Un email contenant un lien pour réinitialiser votre mot de passe a bien été envoyé à <code>'. $u->login() .'</code>.</p>
-        <p>Vérifier vos emails <i class="icon-smile"></i></p>
+        <p>Vérifiez vos emails <i class="icon-smile"></i></p>
       ';
     }
     // s'il a déja fait une demande, il doit attendre pour en faire une autre
