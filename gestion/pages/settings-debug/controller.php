@@ -1,7 +1,6 @@
 <?php
 
 use lib\content\Page;
-use lib\users\UserAdmin;
 use lib\content\Display;
 use lib\db\SQL;
 
