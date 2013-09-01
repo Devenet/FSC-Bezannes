@@ -36,7 +36,7 @@
 				<thead>
 					<tr>
 						<th>Nom de la table</th>
-						<th class="center">Valeur</th>
+						<th class="center">Entrées</th>
 					</tr>
 				</thead>
 				<?php echo $display_db; ?>
