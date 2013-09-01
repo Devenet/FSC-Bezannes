@@ -75,7 +75,7 @@
     </div>
     
     <div class="alert <?php echo ($act->active() == 1 ? 'alert-success' : ''); ?>">
-      <?php echo ($act->active() == 1) ? '<a href="'. _FSC_ .'/activite/'. $act->url() .'" rel="external" class="normal text-success">' : ''; ?>
+      <?php echo ($act->active() == 1) ? '<a href="'. _FSC_ .'/activity/'. $act->url() .'" rel="external" class="normal text-success">' : ''; ?>
       Activité <strong><?php echo ($act->active() == 1) ? 'activée' : 'désactivée' ; ?></strong>
       <?php echo ($act->active() == 1) ? ' <span class="external-link"><i class="icon-external-link"></i></a>' : ''; ?>
       <a href="?page=activity&amp;id=<?php echo $act->id(); ?>&amp;action=change-status" class="pull-right normal" id="change-status" style="margin-right:0px;" data-toggle="tooltip" 
