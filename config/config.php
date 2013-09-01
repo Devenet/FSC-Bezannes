@@ -14,6 +14,7 @@
 	define('_YEAR_', $fsc->year);
 	define('_PHONE_SEC_', $fsc->phone);
 	define('_EMAIL_', $fsc->email);
+	define('_PREINSCRIPTION_ENABLED_', $fsc->preinscription_enabled);
 
 	define('_FSC_', $fsc->fsc);
 	define('_GESTION_', $fsc->gestion);
