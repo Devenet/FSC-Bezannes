@@ -67,7 +67,7 @@ foreach ($months as $value => $month)
   <div class="control-group">
     <label class="control-label" for="description"><i class="icon-pencil"></i> Description</label>
     <div class="controls">
-      <input type="text" name="description" id="description" placeholder="Remise adhésion famille" <?php echo $form->value('description'); ?> class="input-xxlarge" />
+      <input type="text" name="description" id="description" placeholder="Description de l’avantage" <?php echo $form->value('description'); ?> class="input-xxlarge" />
     </div>
   </div>
   
