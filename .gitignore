@@ -7,8 +7,9 @@ CIMG*
 *.ovh.*
 config/configuration.*
 config/settings.*
-config/prices.json
+config/*.json
 database.json
 *.sublime-*
-
 preinscriptions/pages/disabled/data.disabled
+
+config/prices.json
