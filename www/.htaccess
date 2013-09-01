@@ -16,3 +16,5 @@ RewriteRule ^(.*)$ http://fsc-bezannes.fr/ [QSA,L,R=302]
 
 #RedirectMatch 302 /(.*) http://bezannes.fr/association/foyer-social-et-culturel-10
 #Redirect temp / http://bezannes.fr/association/foyer-social-et-culturel-10
+
+RedirectMatch 301 /(.*) http://preinscriptions.fsc-bezannes.fr
