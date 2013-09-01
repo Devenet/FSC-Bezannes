@@ -10,3 +10,5 @@ config/settings.*
 config/prices.json
 database.json
 *.sublime-*
+
+preinscriptions/pages/disabled/data.disabled

@@ -14,11 +14,11 @@
 	define('_YEAR_', $fsc->year);
 	define('_PHONE_SEC_', $fsc->phone);
 	define('_EMAIL_', $fsc->email);
-	define('_PREINSCRIPTION_ENABLED_', $fsc->preinscription_enabled);
 
 	define('_FSC_', $fsc->fsc);
 	define('_GESTION_', $fsc->gestion);
 	define('_PREINSCRIPTION_', $fsc->preinscription);
+	define('_PREINSCRIPTION_ENABLED_', $fsc->preinscription_enabled);
 	define('_ANALYTICS_FSC_', $fsc->analytics_fsc);
 	define('_ANALYTICS_GESTION_', $fsc->analytics_gestion);
 	define('_ANALYTICS_PREINSCRIPTION_', $fsc->analytics_preinscription);

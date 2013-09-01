@@ -101,6 +101,15 @@ border:1px solid #dedede;
 border-radius:3px;
 }
 
+/*
+ * disabled page
+ */
+.page-disabled {
+	margin: 40px auto 30px;
+}
+.page-disabled p {
+	margin-top: 40px;
+}
 
 /*
  * media queries

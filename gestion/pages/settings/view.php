@@ -49,12 +49,13 @@
 		<label class="control-label" for="preinscriptions">Préinscriptions</label>
 		<div class="controls">
 			<label class="radio inline" for="preinscriptions">
-				<input type="radio" name="preinscriptions" id="preinscriptions" value="enabled" <?php if(_PREINSCRIPTION_ENABLED_) {echo 'checked="checked"';} ?>/> activées <i class="icon-ok"></i>
+				<input type="radio" name="preinscriptions" id="preinscriptions" value="enabled" <?php if(_PREINSCRIPTION_ENABLED_) {echo 'checked="checked"';} ?>/> activées 
 			</label>
 			<label class="radio inline" for="preinscriptions2">
-				<input type="radio" name="preinscriptions" id="preinscriptions2" value="disabled" <?php if(!_PREINSCRIPTION_ENABLED_) {echo 'checked="checked"';} ?>/> désactivées <i class="icon-remove"></i>
+				<input type="radio" name="preinscriptions" id="preinscriptions2" value="disabled" <?php if(!_PREINSCRIPTION_ENABLED_) {echo 'checked="checked"';} ?>/> désactivées 
 			</label>
-			<span class="help-block espace-small-top">La désactivation des préinscriptions ne supprime pas les préinscriptions.</span>
+			<span class="help-block espace-small-top">La désactivation des préinscriptions ne supprime pas les préinscriptions.
+				<br /><small>Vous pouvez <a href="#change-disabled-more" role="button" data-toggle="modal">modifier le texte d’information</a>.</small></span>
 		</div>
 	</div>
 
@@ -78,8 +79,8 @@
 				<span class="add-on"><i class="icon-envelope-alt"></i></span>
 				<input type="text" name="email" id="email" placeholder="contact@fsc-bezannes.fr"  class="input-xlarge" value="<?php echo _EMAIL_; ?>"/>
 			</div>
-			<span class="help-block">L’adresse e-mail est utilitée dans les courriels automatiques envoyés par le site.
-				<br /><small>Le courriel par défaut est <strong>contact@fsc-bezannes.fr</strong>. Tous les messages reçus à cette adresse sont automatiquement renvoyés vers <em>fscbezannes.isabelle@orange.fr</em>, <em>fscbezannes.monique@orange.fr</em> et <em>fscbezannes@orange.fr</em>.</small></span>
+			<span class="help-block">L’adresse e-mail est utilitée dans les courriels automatiques envoyés par le site.</span>
+			<span class="help-block" style="margin-top:5px;line-height:16px;"><small>Le courriel par défaut est <a href="mailto:contact@fsc-bezannes.fr">contact@fsc-bezannes.fr</a>. Tous les messages reçus à cette adresse sont automatiquement renvoyés vers <em>fscbezannes.isabelle@orange.fr</em>, <em>fscbezannes.monique@orange.fr</em> et <em>fscbezannes@orange.fr</em>.</small></span>
 		</div>
 	</div>
 
@@ -90,3 +91,25 @@
 	</div>
 	
 </form>
+
+<!-- Modal -->
+<div id="change-disabled-more" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="modalChangeInfos" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="modalChangeInfos">Modifier le texte d’information</h3>
+  </div>
+  <form method="post" action="<?php echo _GESTION_; ?>/?page=settings&amp;update=disabled-infos" class="form" style="margin-bottom:0;">
+    <div class="modal-body">
+    	<div class="alert alert-info"><strong>Note :</strong> ce texte apparaît lorsque les préinscriptions sont désactivées. Un aperçu est disponible sur <a href="<?php echo _PREINSCRIPTION_; ?>/disabled" rel="external">cette page <span class="external-link normal"><i class="icon-external-link"></i></span></a>.</div>
+
+			<textarea id="infos" name="infos" rows="8" style="width:510px;"><?php echo $display_infos_disabled; ?></textarea>
+			<input type="hidden" name="token" value="42" />
+      
+    </div>
+    <div class="modal-footer">
+    	<span class="btn pull-left" id="write-default-text">Texte par défaut</span>
+      <a class="btn" data-dismiss="modal" aria-hidden="true">Annuler</a>
+      <input type="submit" class="btn btn-primary" value="Modifier" />
+    </div>
+  </form>
+</div>
