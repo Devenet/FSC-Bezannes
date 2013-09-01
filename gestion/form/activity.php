@@ -41,7 +41,7 @@
 				<div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 175px; max-height: 115px; line-height: 20px;"></div>
 				<div>
 					<span class="btn btn-file"><span class="fileupload-new">Choisir</span><span class="fileupload-exists">Remplacer</span><input type="file" name="image" id="image" /></span>
-					<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Supprimer</a>
+					<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Effacer</a>
 				</div>
 			</div>
 			<span class="help-inline" style="margin-left:10px; margin-top:20px;">L’image sera automatiquement redimensionnée en 210px par 135px<br />L’image ne doit pas excéder 1,5Mo
