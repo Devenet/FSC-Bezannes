@@ -5,7 +5,7 @@ Source code of the FSC Bezannes webapplication
 
 ***
 
-__Version__ : RC
+__Version__ : See [`version.json`](https://github.com/nicolabricot/FSC-Bezannes/blob/master/config/version.json) file
 
 
 ## Database configuration
@@ -28,7 +28,7 @@ Add a JSON file called `settings.json` in `config/` folder with these informatio
 
 ```json
 {
-  "year": "2012",
+  "year": 2013,
   "phone": "0326000000",
   "email": "contact@fsc.local",
   "search_engine": false,
