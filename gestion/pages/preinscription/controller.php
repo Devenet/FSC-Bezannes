@@ -124,7 +124,7 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
       $horaire = isset($s) && $s->description() != NULL ? $s->description() : $horaire;
       $display_participatitions .= '
         <tr>
-          <td class="go"><a href="'. _FSC_ .'/activite/'. $a->url() .'" rel="external">'. $a->name() .'</a> <span class="external-link"><i class="icon-external-link"></i></span></td>
+          <td class="go"><a href="'. _GESTION_ .'/?page=activity&amp;id='. $a->id() .'">'. $a->name() .'</a></td>
           <td>'. $horaire .'</td>
           <td class="center status">'. Preinscription::StatusTooltip($p->status()) .'</td>
           <td class="center">'. getButtonsParticipant($p) .'</td>
