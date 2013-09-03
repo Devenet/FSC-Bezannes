@@ -30,7 +30,7 @@
       \____|\___|___/\__|_|\___/|_| |_|
       -->
 
-      <p>v0.1.1</p>
+      <p>v1.1.0</p>
       <ul>
         <li>Changement du texte d’aide pour la description des avantages (<del>Remise adhésion famille</del> &rarr; Description de l’avantage) pour les adhérents</li>
         <li>Ajout de la taille des miniatures des activités (redimensionnée en 210px par 135px, que l’image soit trop petite (hauteur ou largeur) ou trop grande), ainsi que la possibilité de supprimer l’image</li>
@@ -50,13 +50,13 @@
         <li>Ajout dans une activité de la liste des préinscriptions par horaires</li>
       </ul>
       
-      <p>v0.1.0</p>
+      <p>v1.0.1</p>
       <ul>
         <li>Augmentation taille image gravatar dans la page compte</li>
         <li>Correction lien vers activité dans les préinscriptions</li>
       </ul>
 
-      <p>v0.0.9</p>
+      <p>v1.0.0</p>
       <ul>
         <li>Mise en ligne</li>
       </ul>
@@ -72,7 +72,7 @@
                                             |_|                          
       -->
 
-      <p>v0.1.3</p>
+      <p>v1.0.4</p>
       <ul>
         <li>Sur la page de la liste des activités :
           <ul>
@@ -84,18 +84,18 @@
         <li>Prise en compte de la désactivation des préinscriptions (impossibilité de se créer un compte, d’ajouter ou modifier ses préinscriptions)</li>
       </ul>
 
-      <p>v0.1.2</p>
+      <p>v1.0.3</p>
       <ul>
         <li>Titre d’une activité sur tout la longueur de l’en-tête (avec l’ajout de l’option <code>$page->addOption('title-lg')</code>)</li>
         <li>Dans la liste des miniatures des activités, feuille de style conditionnnelle pour fond foncé sur IE inférieur ou égal à 8</li>
       </ul>
 
-      <p>v0.1.1</p>
+      <p>v1.0.2</p>
       <ul>
         <li>Harmonisation couleur des boutons “connexion” et “inscription”</li>
       </ul>
 
-      <p>v0.1.0</p>
+      <p>v1.0.1</p>
       <ul>
         <li>Logo FSC centré sur la page d’accueil</li>
         <li>Correction bogue d’affichage de la colonne d’informations dans l’affichage d’une activité (description trop longue faisait descendre les infos...)</li>
@@ -103,7 +103,7 @@
         <li>Ajout d’URL Rewriting pour les images pour les activités (passage de <code>id.jpg</code> à <code>id-name.jpg</code>)</li>
       </ul>
 
-      <p>v0.0.9</p>
+      <p>v1.0.0</p>
       <ul>
         <li>Mise en ligne</li>
       </ul>
