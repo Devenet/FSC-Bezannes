@@ -465,7 +465,7 @@ class Member {
   
   static public function Members($start = 0, $step = NULL) {
     $return = array();
-    if ($start == 'all') { $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY id'); }
+    if ($start === 'all') { $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY id'); }
     else {
       $step = is_null($step) ? Pagination::step() : $step;
       $query = SQL::sql()->query('SELECT id FROM fsc_members ORDER BY id LIMIT '. $start .','. $step);
