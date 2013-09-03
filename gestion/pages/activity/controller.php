@@ -291,7 +291,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 				$m = new Preinscription($data['adherent']);
 				$display_preinscriptions .= '
 					<tr>
-						<td>'. $p->id() .'</td>
+						<td>'. $m->id() .'</td>
 						<td><a href="./?page=preinscription&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
 						<td class="center">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
 						<td class="center">'. ($m->minor() ? 'e' : 'A') .'</td>
@@ -326,7 +326,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 				$m = new Preinscription($data['adherent']);
 					$display_preinscriptions .= '
 						<tr>
-							<td>'. $p->id() .'</td>
+							<td>'. $m->id() .'</td>
 							<td><a href="./?page=preinscription&amp;id='. $m->id() .'">'. $m->name() .'</a></td>
 							<td class="center">'. ($m->bezannais() ? '<i class="icon-ok"></i>' : '&ndash;') .'</td>
 							<td class="center">'. ($m->minor() ? 'e' : 'A') .'</td>
