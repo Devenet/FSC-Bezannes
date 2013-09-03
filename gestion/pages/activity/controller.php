@@ -281,7 +281,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 				<th>Préinscription</th>
 				<th class="center">Bezannais</th>
 				<th class="center">Catégorie</th>
-				<th class="center">Status</th>
+				<th class="center">Statut</th>
 			</tr>
 			</thead><tbody>';
 
@@ -317,7 +317,7 @@ if (isset($_GET['id']) && Activity::isActivity($_GET['id']+0)) {
 					<th>Préinscription</th>
 					<th class="center">Bezannais</th>
 					<th class="center">Catégorie</th>
-					<th class="center">Status</th>
+					<th class="center">Statut</th>
 				</tr>
 				</thead><tbody>';
 				$query = SQL::sql()->prepare('SELECT adherent, status FROM fsc_participants_inscription WHERE activity = ? AND schedule = ?');
