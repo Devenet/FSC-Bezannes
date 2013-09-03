@@ -612,9 +612,12 @@ class Preinscription {
       class="normal cursor-default text-'. self::StatusColor($status) .'">'. self::StatusIcon($status) .'</span>';
   }
   static public function Accounts($start = 0, $step = NULL) {
-    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_users_inscription LIMIT '. $start .','. $step);
+    if ($start == 'all') { $query = SQL::sql()->query('SELECT id FROM fsc_users_inscription'); }
+    else {
+      $step = is_null($step) ? Pagination::step() : $step;
+      $query = SQL::sql()->query('SELECT id FROM fsc_users_inscription LIMIT '. $start .','. $step);
+    }
     while ($data = $query->fetch())
       $return[] = new UserInscription($data['id']); 
     $query->closeCursor();

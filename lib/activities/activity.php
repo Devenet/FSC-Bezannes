@@ -396,9 +396,12 @@ class Activity {
   }
   
   static public function Activities($start = 0, $step = NULL) {
-    $step = is_null($step) ? Pagination::step() : $step;
     $return = array();
-    $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY id LIMIT '. $start .','. $step);
+    if ($start == 'all') { $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY id'); }
+    else {
+      $step = is_null($step) ? Pagination::step() : $step;
+      $query = SQL::sql()->query('SELECT id FROM fsc_activities ORDER BY id LIMIT '. $start .','. $step);
+    }
     while ($data = $query->fetch())
       $return[] = new Activity($data['id']); 
     $query->closeCursor();

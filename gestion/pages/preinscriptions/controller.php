@@ -17,7 +17,7 @@ function quit() {
 
 // if status refresh asked
 if (isset($_GET['check-status'])) {
-	foreach (Preinscription::Accounts() as $p)
+	foreach (Preinscription::Accounts('all') as $p)
 		$p->checkStatus();
 	header('Location: '. substr($_SERVER['REQUEST_URI'], 0, -(1+strlen('check-status'))));
 	exit();

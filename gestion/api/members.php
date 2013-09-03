@@ -23,7 +23,7 @@ else {
 
   $data = array();
 
-  foreach (Member::Members(0, 500) as $m) {
+  foreach (Member::Members('all') as $m) {
     $data[] = array (
       "name" => $m->name(),
       "url" => _GESTION_ .'/?page=member&id='. $m->id()

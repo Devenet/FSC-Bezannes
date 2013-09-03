@@ -23,7 +23,7 @@ else {
 
   $data = array();
 
-  foreach (Activity::Activities(0, 200) as $act) {
+  foreach (Activity::Activities('all') as $act) {
     $data[] = array (
       "activity" => $act->name(),
       "url" => _GESTION_ .'/?page=activity&id='. $act->id()

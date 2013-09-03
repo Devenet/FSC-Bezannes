@@ -23,7 +23,7 @@ else {
 
   $data = array();
 
-  foreach (Activity::Activities(0, 200) as $act) {
+  foreach (Activity::Activities('all') as $act) {
 
     if (! in_array(array('place' => $act->place()), $data))
       $data[] = array(

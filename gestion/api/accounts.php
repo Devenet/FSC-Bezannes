@@ -6,7 +6,7 @@ use lib\preinscriptions\Preinscription;
 set_include_path('../../');
 spl_autoload_extensions('.php');
 spl_autoload_register();
-error_reporting (0);
+//error_reporting (0);
 
 session_name('fsc_gestion');
 session_start();
@@ -23,7 +23,7 @@ else {
 
   $data = array();
 
-  foreach (Preinscription::Accounts(0, 200) as $p) {
+  foreach (Preinscription::Accounts('all') as $p) {
     $data[] = array (
       "login" => $p->login(),
       "url" => _GESTION_ .'/?page=preinscriptions&account='. $p->id()

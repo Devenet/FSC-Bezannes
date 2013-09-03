@@ -23,7 +23,7 @@ else {
 
   $data = array();
 
-  foreach (Preinscription::Members(0, 500) as $m) {
+  foreach (Preinscription::Members() as $m) {
     $data[] = array (
       "name" => $m->name(),
       "url" => _GESTION_ .'/?page=preinscription&id='. $m->id()
