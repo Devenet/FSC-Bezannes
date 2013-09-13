@@ -46,12 +46,12 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
     $result .= '<div class="btn-group">';
     $result .= '<a ';
     if ($pre->status() ==  Preinscription::AWAITING)
-      $result .= 'href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $pre->id() .'" title="Modifier la préinscription"';
+      $result .= 'href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $pre->id() .'" title="Modifier"';
     $result .= ' class="btn btn-small';
     if ($pre->status() !=  Preinscription::AWAITING)
       $result .= ' disabled';
     $result .= '"><i class="icon-pencil"></i></a>';
-    $result .= '<a href="#confirmRemoveInscription'. $pre->id() .'" role="button" data-toggle="modal" title="Supprimer la préinscription" class="btn btn-small"><i class="icon-trash"></i></a>';
+    $result .= '<a href="#confirmRemoveInscription'. $pre->id() .'" role="button" data-toggle="modal" title="Supprimer" class="btn btn-small"><i class="icon-trash"></i></a>';
     $result .= '</div>';
     return $result;
 
@@ -63,13 +63,13 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
     switch ($pre->status()) {
       case Preinscription::VALIDATED:
       case Preinscription::INCOMPLETE:
-        $result .= (!$pre->adherent() ? NULL : ' alert-success');
+        $result .= (!$pre->adherent() ? ' alert-warning' : ' alert-success');
         $result .= '"><strong>'. ($pre->adherent() ? 'Adhérent' : 'Membre') .'</strong> [<a href="?page=member&amp;id='. $pre->id_member() .'">#'. $pre->id_member() .'</a>]';
         break;
 
       case Preinscription::AWAITING;
         $result .= ($pre->adherent() ? ' alert-info' : ' alert-well');
-        $result .= '">'. ($pre->adherent() ? 'Adhérent' : 'Membre');
+        $result .= '">'. ($pre->adherent() ? 'Pré-adhérent' : 'Pré-membre');
         break;
 
 
@@ -108,7 +108,7 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
   
   $display_participatitions = '';
   if ($count_activites >= 1) {
-    $display_participatitions = '<table class="table table-striped table-go"><thead>
+    $display_participatitions = '<table class="table table-striped"><thead>
       <tr>
         <th>Activité</th>
         <th>Horaire</th>
@@ -124,7 +124,7 @@ if (isset($_GET['id']) && Preinscription::isMember($_GET['id']+0)) {
       $horaire = isset($s) && $s->description() != NULL ? $s->description() : $horaire;
       $display_participatitions .= '
         <tr>
-          <td class="go"><a href="'. _GESTION_ .'/?page=activity&amp;id='. $a->id() .'">'. $a->name() .'</a></td>
+          <td><a href="'. _GESTION_ .'/?page=activity&amp;id='. $a->id() .'">'. $a->name() .'</a></td>
           <td>'. $horaire .'</td>
           <td class="center status">'. Preinscription::StatusTooltip($p->status()) .'</td>
           <td class="center">'. getButtonsParticipant($p) .'</td>

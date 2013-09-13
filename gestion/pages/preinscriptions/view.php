@@ -99,7 +99,7 @@ table img.gravatar {margin-right: 10px;}
 <?php endif; ?>
 
 
-<table class="table table-striped table-go espace-top">
+<table class="table table-striped espace-top">
   <thead>
     <tr class="small">
       <th>#</th>
@@ -114,13 +114,13 @@ table img.gravatar {margin-right: 10px;}
     <?php foreach ($preinscriptions as $p): ?>
     <tr>
       <td><?php echo $p->id(); ?></td>
-      <td class="go"><img src="<?php echo $p->gravatar(20); ?>" alt="\o/" class="gravatar" /><a href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
+      <td><img src="<?php echo $p->gravatar(20); ?>" alt="\o/" class="gravatar" /><a href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><?php echo $p->login(); ?></a></td>
       <td><span class="label"><?php echo $p->countPreinscriptions(); ?></span></td>
       <td><span class="label label-info"><?php echo $p->countAdherents(); ?></span></td>
       <td class="tip"><?php echo Preinscription::StatusTooltipAccount($p->status()); ?></td>
       <td style="padding-left:0; padding-right:0;" class="center">
-        <a class="btn btn-small" href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><i class="icon-eye-open"></i></a>
-        <a class="btn btn-small <?php echo $p->status() == Preinscription::VALIDATED ? 'btn-danger' : NULL; ?>" href="#confirmBox<?php echo $p->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i>
+        <a class="btn btn-small" href="./?page=preinscriptions&amp;account=<?php echo $p->id(); ?>"><i class="icon-eye-open" title="Voir"></i></a>
+        <a class="btn btn-small <?php echo $p->status() == Preinscription::VALIDATED ? 'btn-danger' : NULL; ?>" href="#confirmBox<?php echo $p->id(); ?>" role="button" data-toggle="modal" title="Supprimer"><i class="icon-trash"></i>
         </td>
     </tr>
     <?php

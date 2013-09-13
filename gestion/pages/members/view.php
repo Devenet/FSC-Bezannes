@@ -7,7 +7,7 @@
 
 <div class="clearfix">&nbsp;</div>
 
-<table class="table table-striped table-go espace-top">
+<table class="table table-striped espace-top">
   <thead>
     <tr class="small">
       <th><a href="./?page=members&amp;sort=id-<?php echo isset($_GET['sort']) && $_GET['sort'] == 'id-asc' ? 'desc' : 'asc'; ?>"><?php echo $sort['id']->icon(); ?></a> #</th>
@@ -23,24 +23,11 @@
     <?php foreach ($members as $m): ?>
     <tr>
       <td<?php echo $m->adherent() == 0 ? ' class="muted"' : NULL; ?>><?php echo $m->id(); ?></td>
-      <td class="go"><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->last_name(); ?></a></td>
-      <td class="go"><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->first_name(); ?></a></td>
+      <td><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->last_name(); ?></a></td>
+      <td><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><?php echo $m->first_name(); ?></a></td>
       <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->adherent() ? 'ok' : ''); ?>"></i></td>
       <td style="width:110px; text-align:center;"><i class="icon-<?php echo ($m->bezannais() ? 'ok' : ''); ?>"></i></td>
       <td style="width:110px; text-align:center;"><?php echo ($m->minor() ? 'e' : ($m->countResponsabilities() > 0 ? 'A <span style="position:absolute; padding-left:5px; color:#333;">&bull;</span>' : 'A')); ?></td>
-      <!--<td style="width: 80px;">
-        <div class="btn-group">
-          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="./?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-edit"></i> 
-          <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="./?page=member&amp;id=<?php echo $m->id(); ?>"><i class="icon-eye-open"></i> Voir</a></li>
-            <li><a href="./?page=edit-member&amp;id=<?php echo $m->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
-            <li class="divider"></li>
-            <li><a href="#confirmBox<?php echo $m->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
-          </ul>
-        </div>
-      </td>-->
       <td style="padding-left:0; padding-right:0;" class="center">
         <div class="btn-group">
           <a href="./?page=member&amp;id=<?php echo $m->id(); ?>" class="btn btn-small" title="Voir"><i class="icon-eye-open"></i></a>

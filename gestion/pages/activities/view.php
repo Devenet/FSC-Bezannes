@@ -7,7 +7,7 @@
 
 <div class="clearfix">&nbsp;</div>
 
-<table class="table table-striped table-go espace-top">
+<table class="table table-striped espace-top">
   <thead>
     <tr>
       <th>#</th>
@@ -22,23 +22,10 @@
     <?php foreach ($activities as $act): ?>
     <tr <?php echo $act->active() == 0 ? 'class="muted"' : NULL; ?>>
       <td><?php echo $act->id(); ?></td>
-      <td class="go"><a href="./?page=activity&amp;id=<?php echo $act->id(); ?>"><?php echo $act->name(); ?></a></td>
+      <td><a href="./?page=activity&amp;id=<?php echo $act->id(); ?>"><?php echo $act->name(); ?></a></td>
       <td><?php echo ($act->active() == 1) ? '<i class="icon-ok"></i>' : '' ; ?></td>
       <td><?php echo $act->price(); ?> €</td>
       <td><?php echo ($act->price_young() == -1) ? '&ndash;' : $act->price_young() .' €'; ?></td>
-      <!--<td style="width: 80px;">
-        <div class="btn-group">
-          <a class="btn dropdown-toggle btn-small" data-toggle="dropdown" href="#"><i class="icon-edit"></i> 
-          <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="./?page=activity&amp;id=<?php echo $act->id(); ?>"><i class="icon-eye-open"></i> Voir</a></li>
-            <li><a href="./?page=edit-activity&amp;id=<?php echo $act->id(); ?>"><i class="icon-pencil"></i> Modifier</a></li>
-            <li class="divider"></li>
-            <li><a href="#confirmBox<?php echo $act->id(); ?>" role="button" data-toggle="modal"><i class="icon-trash"></i> Supprimer</a></li>
-          </ul>
-        </div>
-      </td>-->
       <td style="padding-right:0; padding-left:0;" class="center">
         <div class="btn-group">
           <a href="./?page=activity&amp;id=<?php echo $act->id(); ?>" class="btn btn-small" title="Voir"><i class="icon-eye-open"></i></a>

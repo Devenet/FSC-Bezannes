@@ -28,7 +28,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
     <br />Faire ma <a href="'. _PREINSCRIPTION_ .'/new-preinscription">première préinscription</a> !</div></div></div>';
   }
   else {
-    $display_members = '<table class="table table-striped table-hover table-go">
+    $display_members = '<table class="table table-striped table-hover">
       <thead>
         <tr>
           <th style="text-align:right;"><i class="icon-user"></i></th>
@@ -49,7 +49,7 @@ if (isset($_SESSION['authentificated']) && $_SESSION['authentificated']) {
       $display_members .= '
         <tr>
           <td style="text-align:right; padding-left:0;">'. Display::HtmlGender($m->gender()) .'</td>
-          <td class="go"><a href="'. _PREINSCRIPTION_ .'/preinscription/'. $m->id() .'" >'. $m->name() .' <span class="normal" style="margin-left:5px;"><i class="icon-share-alt"></i></span></a></td>
+          <td><a href="'. _PREINSCRIPTION_ .'/preinscription/'. $m->id() .'" >'. $m->name() .'</a></td>
           <td class="center">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
           <td class="center">'. ($m->adherent() ? '<span class="label '. ($act == 0 ? ' label-important' : 'label-'.Preinscription::StatusColor($m->status())) .'">'. $act .'</span> '.
            ($m->status() == Preinscription::AWAITING ? '<a href="'. _PREINSCRIPTION_ .'/add-activity/'. $m->id() .'" style="color:#333; text-decoration:none; margin-left:10px; position:absolute; margin-top:1px;"><i class="icon-plus-sign"></i></a>' : '') : '') .'</td>

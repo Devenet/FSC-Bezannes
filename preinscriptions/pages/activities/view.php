@@ -6,7 +6,7 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span10 offset1">
+	<div class="span8 offset2">
 		<div class="prices">
 			<p><strong>Note :</strong> Ces activités sont réservées aux adhérents du FSC.</p>
 			<div class="row-fluid">
@@ -15,7 +15,7 @@
 					<small>* moins de 18 ans au 1<sup>er</sup> septembre <?php echo _YEAR_; ?></small>
 				</div>
 				<div class="span8">
-					<table class="table table-striped table-hover">
+					<table class="table table-hover">
 						<thead>
 							<tr>
 								<th></th>

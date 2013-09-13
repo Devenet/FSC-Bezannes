@@ -85,7 +85,7 @@ background: none repeat scroll 0% 0% rgba(255, 255, 255, .9);
 .page-activites .prices { margin: 0 auto 15px; position: relative; }
 .page-activites .prices .span4 p { margin-top: -5px;}
 .page-activites .prices table { margin-top: -10px;}
-.page-activites .prices small { display: block; position: absolute; bottom: 0px;}
+.page-activites .prices small { display: block; position: absolute; bottom: 0;}
 
 /*
  * activite
@@ -116,9 +116,6 @@ border-radius:3px;
  */
 @media (min-width: 768px) {
 	.page-activite .infos { margin-top: 15px; }
-}
-@media (min-width: 980px) {
-	.page-activites .prices small { bottom: 20px;}
 }
 
 @media (max-width: 979px) {

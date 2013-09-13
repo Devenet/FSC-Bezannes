@@ -59,7 +59,7 @@ $countResponsabilities = $m->countResponsabilities();
 
       <?php if ($m->minor()): ?>
         <div class="span6">
-          <h4>Reponsable</h4>
+          <h4>Responsable</h4>
           <p><?php echo Display::HtmlGender($r->gender()), ' ', $r->name(); ?> <a href="<?php echo _PREINSCRIPTION_; ?>/preinscription/<?php echo $r->id(); ?>" style="text-decoration:none; padding-left:2px;"><i class="icon-share-alt"></i></a></p>
         </div>
       <?php

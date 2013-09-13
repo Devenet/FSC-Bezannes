@@ -45,7 +45,7 @@ $countResponsabilities = $pre->countResponsabilities();
 
       <?php if ($pre->minor()): ?>
         <div class="<?php echo ($pre->minor() && $pre->address_different()) || $countResponsabilities > 0 ? 'span4' : 'span6'; ?>">
-          <h4>Reponsable</h4>
+          <h4>Responsable</h4>
           <p><?php echo Display::HtmlGender($respo->gender()), ' ', $respo->name(); ?> [<a href="<?php echo _GESTION_; ?>/?page=preinscription&amp;id=<?php echo $respo->id(); ?>">#<?php echo $respo->id(); ?></a>]
           <br /><span class="muted"><?php echo $respo->address_zip_code(), ' ', $respo->address_town(); ?></span></p>
         </div>

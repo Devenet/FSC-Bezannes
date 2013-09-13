@@ -68,13 +68,13 @@ if (isset($_GET['account'])) {
 		else {
 			$preinscriptions = Preinscription::Members($u->id());
 			$display_members = '<div class="span12">
-			<table class="table table-striped table-hover table-go">
+			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th>#</th>
 						<th>Nom</th>
 						<th>Prénom</th>
-						<th style="width:120px;" class="center">Adhérent</th>
+						<th style="width:120px;" class="center">Pré-adhérent</th>
 						<th class="center"><i class="icon-globe"></i> Activités</th>
 						<th class="center">Cat.</th>
 						<th class="center">Statut</th>
@@ -93,19 +93,19 @@ if (isset($_GET['account'])) {
 				$display_members .= '
 					<tr>
 						<td>'. $m->id() .'</td>
-						<td class="go"><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->last_name() .'</a></td>
-						<td class="go"><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->first_name() .'</a></td>
+						<td><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->last_name() .'</a></td>
+						<td><a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" >'. $m->first_name() .'</a></td>
 						<td style="width:120px;" class="center">'. ($m->adherent() ? '<i class="icon-ok" style="color:#444;"></i>' : '') .'</td>
 						<td style="text-align:center;">'. ($m->adherent() ? '<span class="label label-'. Preinscription::StatusColor($m->status()) .'">'. $act .'</span>' : '') .'</td>
 						<td class="center">'. ($m->minor() ? 'e' : ($m->countResponsabilities() > 0 ? 'A <span style="position:absolute; padding-left:5px; color:#333;">&bull;</span>' : 'A')) .'</td>
 						<td class="status center">'. Preinscription::StatusTooltip($m->status()) .'</td>
 						<td class="center" style="padding-left:0; padding-right:0;">
-							<a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $m->id() .'"' : NULL) .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-plus"></i></a>
+							<a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=validate-preinscription&amp;id='. $m->id() .'"' : NULL) .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'" title="Valider"><i class="icon-plus"></i></a>
 							<div class="btn-group">
-								<a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small"><i class="icon-eye-open"></i></a>
-								<a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'"><i class="icon-pencil"></i></a>
+								<a href="'. _GESTION_ .'/?page=preinscription&amp;id='. $m->id() .'" class="btn btn-small" title="Voir"><i class="icon-eye-open"></i></a>
+								<a'. ($m->status() == Preinscription::AWAITING ? ' href="'. _GESTION_ .'/?page=edit-preinscription&amp;id='. $m->id() .'"':'') .' class="btn btn-small'. ($m->status() == Preinscription::AWAITING ? '' : ' disabled') .'" title="Modifier"><i class="icon-pencil"></i></a>
 							</div>
-							<a href="#confirmBox'. $m->id() .'" data-toggle="modal" role="button" class="btn btn-small"><i class="icon-trash"></i></a>
+							<a href="#confirmBox'. $m->id() .'" data-toggle="modal" role="button" class="btn btn-small" title="Supprimer"><i class="icon-trash"></i></a>
 						</td>
 					</tr>
 				';
