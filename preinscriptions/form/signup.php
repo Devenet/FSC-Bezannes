@@ -134,12 +134,12 @@ function check_confirm_password() {
     if (password == confirmation) {
       $("#parent-confirm-password").addClass("success");
       $("#icon-confirm-password").removeClass().addClass("icon-ok");
-      $("#parent-confirm-password span.help-block").text("Les mots de passe correspondent :)");
+      $("#parent-confirm-password span.help-block").text("Les mots de passes correspondent :)");
     }
     else {
       $("#parent-confirm-password").addClass("error").removeClass("success");
       $("#icon-confirm-password").removeClass().addClass("icon-repeat");
-      $("#parent-confirm-password span.help-block").text("Les mots de passe ne correspondent pas !");
+      $("#parent-confirm-password span.help-block").text("Les mots de passes ne correspondent pas !");
     }
   }
   else {

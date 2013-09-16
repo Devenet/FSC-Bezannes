@@ -95,6 +95,7 @@
 				<li>Mise à jour du design du tableau des cotisations dans la liste des activités</li>
 				<li>Suppression des liens-lignes cliquables dans les tableaux <del><code>class="go"</code></del> (problème avec ouverture dans nouvel onglet par clic)</li>
 				<li>Correction faute de français dans l’affiche d’une préinscriptions (<del>Reponsable</del> &rarr; Responsable)</li>
+				<li>Correction orthographique dans le javascript du formulaire de création de compte</li>
 			</ul>
 
 			<p><strong>v1.1.0</strong></p>
