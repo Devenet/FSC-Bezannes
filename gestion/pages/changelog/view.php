@@ -34,7 +34,7 @@
 			<ul>
 				<li>Ajout d’infobulles sur les boutons dans la liste des préinscriptions et des comptes de préinscriptions</li>
 				<li>Suppression des liens-lignes cliquables dans les tableaux <del><code>class="go"</code></del> (problème avec ouverture dans nouvel onglet par clic)</li>
-				<li>Correction faute de français dans l’affiche d’une préinscriptions (<del>Reponsable</del> &rarr; Responsable)</li>
+				<li>Correction faute de français dans l’affichage d’une préinscriptions (<del>Reponsable</del> &rarr; Responsable)</li>
 				<li>Mise à jour des en-têtes de tableau (<del>Adhérent</del> &rarr; Pré-adhérent) dans l’affiche d’un compte de préinscription</li>
 				<li>Dans une préinscription, harmonisation des couleurs et des noms du type de membre (“Pré-membre” en gris, “Pré-adhérent” en bleu, “Membre” en orange, “Adhérent” en vert)</li>
 			</ul>
@@ -94,7 +94,7 @@
 			<ul>
 				<li>Mise à jour du design du tableau des cotisations dans la liste des activités</li>
 				<li>Suppression des liens-lignes cliquables dans les tableaux <del><code>class="go"</code></del> (problème avec ouverture dans nouvel onglet par clic)</li>
-				<li>Correction faute de français dans l’affiche d’une préinscriptions (<del>Reponsable</del> &rarr; Responsable)</li>
+				<li>Correction faute de français dans l’affichage d’une préinscriptions (<del>Reponsable</del> &rarr; Responsable)</li>
 				<li>Correction orthographique dans le javascript du formulaire de création de compte</li>
 			</ul>
 
