@@ -129,8 +129,8 @@ class UserInscription extends User {
       // send email
       $body = 'Bonjour,
 
-Nous vous informons que votre compte sur le site des préincsriptions du FSC Bezannes est maintenant supprimé.
-Toutes les données concernant votre compte, vos préincsriptions et les activités choisies ont bien été supprimées.
+Nous vous informons que votre compte sur le site des préincsriptions du FSC Bezannes est maintenant clôturé.
+Toutes les données concernant ce compte, les préincsriptions et les activités associées ont bien été supprimées.
 
 À bientôt !';
       Mail::text($this->email(), 'Préinscriptions', $body);
