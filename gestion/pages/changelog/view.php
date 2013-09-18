@@ -37,6 +37,7 @@
 				<li>Correction faute de français dans l’affichage d’une préinscriptions (<del>Reponsable</del> &rarr; Responsable)</li>
 				<li>Mise à jour des en-têtes de tableau (<del>Adhérent</del> &rarr; Pré-adhérent) dans l’affiche d’un compte de préinscription</li>
 				<li>Dans une préinscription, harmonisation des couleurs et des noms du type de membre (“Pré-membre” en gris, “Pré-adhérent” en bleu, “Membre” en orange, “Adhérent” en vert)</li>
+				<li>Mise à jour du texte lors de l’envoi d’un email pour la suppression d’un compte de préinscriptions</li>
 			</ul>
 
 			<p>v1.1.1</p>
