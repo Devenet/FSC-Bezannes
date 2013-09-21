@@ -32,6 +32,7 @@ $mainMenu = new Menu();
 
 // Contenu de la page
 if (empty($_GET['page'])) $_GET['page'] = 'home';
+$_GET['page'] = htmlspecialchars($_GET['page']);
 $_GET['page'] = str_replace("\0", '', $_GET['page']);
 $_GET['page'] = str_replace(DIRECTORY_SEPARATOR, '', $_GET['page']);
 
